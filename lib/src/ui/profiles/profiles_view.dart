@@ -111,38 +111,41 @@ class _ProfilesViewState extends State<ProfilesView> with RouteAware {
                   ],
                 ),
               ),
-              Platform.isIOS
-                  ? SizedBox(
-                      width: 160,
-                      child: Container(
-                        decoration: BoxDecoration(
-                          color: Theme.of(context).accentColor.withOpacity(0.3),
-                          borderRadius: BorderRadius.circular(10),
-                        ),
-                        alignment: Alignment.center,
-                        margin: EdgeInsets.symmetric(vertical: 15),
-                        child: InkWell(
-                          onTap: () async {
-                            await viewModel.addProfile();
-                          },
-                          child: Container(
-                            alignment: Alignment.center,
-                            constraints: BoxConstraints.expand(
-                              height: 40,
-                            ),
-                            child: Text(
-                              MessageProvider.of(context)
-                                  .actionAddProfile
-                                  .toUpperCase(),
-                              style: TextStyle(
-                                  fontSize: 16, fontWeight: FontWeight.w400),
-                              textAlign: TextAlign.center,
+              Padding(
+                padding: EdgeInsets.all(20),
+                child: Platform.isIOS
+                    ? SizedBox(
+                        width: 160,
+                        child: Container(
+                          decoration: BoxDecoration(
+                            color: Theme.of(context).accentColor.withOpacity(0.3),
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                          alignment: Alignment.center,
+                          margin: EdgeInsets.symmetric(vertical: 15),
+                          child: InkWell(
+                            onTap: () async {
+                              await viewModel.addProfile();
+                            },
+                            child: Container(
+                              alignment: Alignment.center,
+                              constraints: BoxConstraints.expand(
+                                height: 40,
+                              ),
+                              child: Text(
+                                MessageProvider.of(context)
+                                    .actionAddProfile
+                                    .toUpperCase(),
+                                style: TextStyle(
+                                    fontSize: 16, fontWeight: FontWeight.w400),
+                                textAlign: TextAlign.center,
+                              ),
                             ),
                           ),
                         ),
-                      ),
-                    )
-                  : SizedBox.shrink(),
+                      )
+                    : SizedBox.shrink(),
+              ),
             ],
           ),
         );

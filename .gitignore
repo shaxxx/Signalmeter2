@@ -82,3 +82,5 @@ pubspec.lock
 !**/ios/**/default.pbxuser
 !**/ios/**/default.perspectivev3
 !/packages/flutter_tools/test/data/dart_dependencies_test/**/.packages
+ios/Podfile.lock
+ios/Podfile
