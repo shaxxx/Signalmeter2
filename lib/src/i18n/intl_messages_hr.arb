@@ -1,0 +1,688 @@
+{
+  "@@locale": "hr",
+  "appName": "SignalMeter",
+  "@appName": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "devices": "Uređaji",
+  "@devices": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "bouquets": "Kategorije",
+  "@bouquets": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "services": "Kanali",
+  "@services": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "signal": "Signal",
+  "@signal": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "actionScreenshot": "Snimka ekrana",
+  "@actionScreenshot": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "actionStream": "Stream",
+  "@actionStream": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "errFailedConnect": "Povezivanje na {profileName} nije uspjelo.",
+  "@errFailedConnect": {
+    "type": "text",
+    "placeholders": {
+      "profileName": {}
+    }
+  },
+  "errCheckYourConnection": "Provjerite mrežnu vezu.",
+  "@errCheckYourConnection": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "errCheckYourSettings": "Provjerite postavke.",
+  "@errCheckYourSettings": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "errCheckYourCredentials": "Provjerite pristupne podatke.",
+  "@errCheckYourCredentials": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "errOperationTimedOut": "Vrijeme spajanja isteklo.",
+  "@errOperationTimedOut": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "errCommandFailed": "Naredba {command} neuspješna.",
+  "@errCommandFailed": {
+    "type": "text",
+    "placeholders": {
+      "command": {}
+    }
+  },
+  "errRequestFailedWithStatusCode": "HTTP status {code} .",
+  "@errRequestFailedWithStatusCode": {
+    "type": "text",
+    "placeholders": {
+      "code": {}
+    }
+  },
+  "infConnectingTo": "Spajam se na {profileName}",
+  "@infConnectingTo": {
+    "type": "text",
+    "placeholders": {
+      "profileName": {}
+    }
+  },
+  "infConnectedTo": "Spojen na {profileName}",
+  "@infConnectedTo": {
+    "type": "text",
+    "placeholders": {
+      "profileName": {}
+    }
+  },
+  "infDisconnected": "Veza prekinuta",
+  "@infDisconnected": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "infInitializingStream": "Preuzimam stream",
+  "@infInitializingStream": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "requestTime": "Vrijeme zahtjeva",
+  "@requestTime": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "dvbtService": "DVB-T usluga",
+  "@dvbtService": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "dvbcService": "DVB-C usluga",
+  "@dvbcService": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "streamService": "Stream usluga",
+  "@streamService": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "dvbsService": "DVB-S usluga",
+  "@dvbsService": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "errPortNotAvailable": "Port nije otvoren!",
+  "@errPortNotAvailable": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "errFailedToInitializeStream": "Inicijalizacija Stream-a neuspješna!",
+  "@errFailedToInitializeStream": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "actionAddProfile": "Dodaj uređaj",
+  "@actionAddProfile": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "actionEditProfile": "Uredi uređaj",
+  "@actionEditProfile": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "actionDeleteProfile": "Izbriši uređaj",
+  "@actionDeleteProfile": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "actionConnect": "Spajanje",
+  "@actionConnect": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "actionSave": "Spremi",
+  "@actionSave": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "actionTakeScreenshot": "Snimi zaslon",
+  "@actionTakeScreenshot": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "actionSleep": "Stanje mirovanja",
+  "@actionSleep": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "actionRestart": "Restartaj sučelje",
+  "@actionRestart": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "titleQuestion": "Pitanje",
+  "@titleQuestion": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "questionDeleteProfile": "Briši uređaj {profileName}?",
+  "@questionDeleteProfile": {
+    "type": "text",
+    "placeholders": {
+      "profileName": {}
+    }
+  },
+  "questionRestartGui": "Ponovno pokreni sučelje na {profileName}?",
+  "@questionRestartGui": {
+    "type": "text",
+    "placeholders": {
+      "profileName": {}
+    }
+  },
+  "actionScreenshotAll": "Snimi sve",
+  "@actionScreenshotAll": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "actionScreenshotOsd": "Snimi OSD",
+  "@actionScreenshotOsd": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "actionScreenshotPicture": "Slika bez OSD",
+  "@actionScreenshotPicture": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "infSavedFilename": "Spremljeno kao {fileName}",
+  "@infSavedFilename": {
+    "type": "text",
+    "placeholders": {
+      "fileName": {}
+    }
+  },
+  "errSaveFailed": "Spremanje neuspješno.",
+  "@errSaveFailed": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "startMonitor": "Pokreni",
+  "@startMonitor": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "stopMonitor": "Zaustavi",
+  "@stopMonitor": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "profileName": "Naziv",
+  "@profileName": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "profileNameHint": "npr. Prijemnik doma",
+  "@profileNameHint": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "profileAddress": "Adresa",
+  "@profileAddress": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "profileAddressHint": "npr. 192.168.1.2",
+  "@profileAddressHint": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "profileUsername": "Login",
+  "@profileUsername": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "profileUsernameHint": "npr. root",
+  "@profileUsernameHint": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "profilePassword": "Lozinka",
+  "@profilePassword": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "profilePasswordHint": "",
+  "@profilePasswordHint": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "profilePort": "Port",
+  "@profilePort": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "profilePortHint": "80",
+  "@profilePortHint": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "profileStreamingEnable": "Omogući stream",
+  "@profileStreamingEnable": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "profileStreamingPort": "Stream port",
+  "@profileStreamingPort": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "profileStreamingPorthint": "8001",
+  "@profileStreamingPorthint": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "profileTranscodingEnable": "Omogući transkodiranje",
+  "@profileTranscodingEnable": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "profileTranscodingPort": "Transcoding Port",
+  "@profileTranscodingPort": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "profileTranscodingPortHint": "8002",
+  "@profileTranscodingPortHint": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "profileEnigmaVersion": "Verzija",
+  "@profileEnigmaVersion": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "profileUseSsl": "Koristi SSL",
+  "@profileUseSsl": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "warnUsingAlternativePort": "Koristim alternativni port {port}",
+  "@warnUsingAlternativePort": {
+    "type": "text",
+    "placeholders": {
+      "port": {}
+    }
+  },
+  "profileTranscodingLocalLan": "Transkodiranje na lokalnoj mreži",
+  "@profileTranscodingLocalLan": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "checkingParameters": "Provjeravam parametre",
+  "@checkingParameters": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "questionSaveChanges": "Spremi promjene?",
+  "@questionSaveChanges": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "errInvalidProfileName": "Neispravno ime profila",
+  "@errInvalidProfileName": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "errInvalidAddress": "Neispravna adresa",
+  "@errInvalidAddress": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "errInvalidUsername": "Neispravno korisničko ime",
+  "@errInvalidUsername": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "errInvalidHttpPort": "Neispravan http port",
+  "@errInvalidHttpPort": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "errInvalidEnigmaType": "Neispravan verzija enigme",
+  "@errInvalidEnigmaType": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "errInvalidStreamingPort": "Neispravan stream port",
+  "@errInvalidStreamingPort": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "errInvalidTranscodingPort": "Neispravan port za transkodiranje",
+  "@errInvalidTranscodingPort": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "errFailedToInitializeTtsEngine": "Neuspješna inicijalizacija pretvaranja teksta u govor!",
+  "@errFailedToInitializeTtsEngine": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "questionOpenTtsSettings": "Otvori postavke pretvaranja teksta u govor?",
+  "@questionOpenTtsSettings": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "errNoTtsLanguageAvailable": "Odabrani jezik pretvaranja nije dostupan.",
+  "@errNoTtsLanguageAvailable": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "infSignalLevelsWillNotBeSpoken": "Razina signala neće biti izgovarana.",
+  "@infSignalLevelsWillNotBeSpoken": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "questionIgnoreFurtherTtsError": "Ignoriraj daljnje greške pretvaranja teksta u govor?",
+  "@questionIgnoreFurtherTtsError": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "titleError": "Greška",
+  "@titleError": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "titleWarning": "Upozorenje",
+  "@titleWarning": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "titleDownloading": "Preuzimam",
+  "@titleDownloading": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "questionTryTtsLanguageDownload": "Pokušaj preuzeti i instalirati jezike?",
+  "@questionTryTtsLanguageDownload": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "pleaseWait": "Molimo pričekajte",
+  "@pleaseWait": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "errDownloadFailed": "Preuzimanje neuspješno",
+  "@errDownloadFailed": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "errInstallFailed": "Instalacija neuspješna",
+  "@errInstallFailed": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "version": "Verzija",
+  "@version": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "releaseName": "Ime izdanja",
+  "@releaseName": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "build": "Build",
+  "@build": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "manufacturer": "Proizvođač",
+  "@manufacturer": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "informationsSupport": "Informacije i podrška",
+  "@informationsSupport": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "aboutRightsReserved": "Sva prava zadržana",
+  "@aboutRightsReserved": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "specialThanksGoesTo": "Posebna zahvala na podršci",
+  "@specialThanksGoesTo": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "thanksForTestingTo": "Zahvala na testiranju",
+  "@thanksForTestingTo": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "errInvalidEnigmaTypeOrNotEnigma": "Pogrešna verzija Enigme ili nije Enigma web sučelje.",
+  "@errInvalidEnigmaTypeOrNotEnigma": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "errServerError": "Web sučelje vratilo je pogrešku 500. Nešto se srušilo na prijemniku. Neispravni znakovi u listi kanala?? Pokušajte otvoriti {profileName} u svom web-pregledniku da biste saznali više.",
+  "@errServerError": {
+    "type": "text",
+    "placeholders": {
+      "profileName": {}
+    }
+  },
+  "warnHttpPortClosed": "{address} : {port} se čini trenutno nedostupnim.",
+  "@warnHttpPortClosed": {
+    "type": "text",
+    "placeholders": {
+      "address": {},
+      "port": {}
+    }
+  },
+  "warnTranscodingPortClosed": "Port za transkodiranje se čini zatvorenim.",
+  "@warnTranscodingPortClosed": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "warnStreamingPortClosed": "Streaming port se čini zatvorenim.",
+  "@warnStreamingPortClosed": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "warnSaveTheProfileAnyway": "Ipak nastavi sa spremanjem?",
+  "@warnSaveTheProfileAnyway": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "voice": "Glas",
+  "@voice": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "checkingPorts": "Provjeravam portove",
+  "@checkingPorts": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "contentNotAvailable": "Sadržaj trenutno nije dostupan",
+  "@contentNotAvailable": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "failedToParseResponse": "Neispravan odgovor.",
+  "@failedToParseResponse": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "tryAgain": "Pokušaj ponovno",
+  "@tryAgain": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "oops": "Oops",
+  "@oops": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "actionDisconnect": "Prekid",
+  "@actionDisconnect": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "actionEdit": "Uredi",
+  "@actionEdit": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "actionDelete": "Briši",
+  "@actionDelete": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "noInformation": "Nema informacija",
+  "@noInformation": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "actionAbout": "O programu",
+  "@actionAbout": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "close": "Zatvori",
+  "@close": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "open": "Otvori",
+  "@open": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "details": "Detalji",
+  "@details": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "platformNotSupported": "Platforma {platform} nije podržana",
+  "@platformNotSupported": {
+    "type": "text",
+    "placeholders": {
+      "platform": {}
+    }
+  },
+  "unknownError": "Nepoznata greška.",
+  "@unknownError": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "pleaseSubmitDetails": "Molimo javite detalje.",
+  "@pleaseSubmitDetails": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "confirm": "Potvrdi",
+  "@confirm": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "yes": "Da",
+  "@yes": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "no": "Ne",
+  "@no": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "ok": "U redu",
+  "@ok": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "cancel": "Odustani",
+  "@cancel": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "average": "Prosječno",
+  "@average": {
+    "type": "text",
+    "placeholders": {}
+  }, 
+  "enableTts": "Čitaj signal",
+  "@enableTts": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "disableTts": "Isključi čitanje",
+  "@disableTts": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "defaultLook": "Zadani izgled",
+  "@defaultLook": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "alternativeLook": "Alternativni izgled",
+  "@alternativeLook": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "searchByName": "Pretraga po nazivu",
+  "@searchByName": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "streamRequiresVlc": "Stream zahtjeva VLC player",
+  "@streamRequiresVlc": {
+    "type": "text",
+    "placeholders": {}
+  },
+    "formNotValid": "Postoje neispravna polja",
+  "@formNotValid": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "more": "Više",
+  "@more": {
+    "type": "text",
+    "placeholders": {}
+  },
+    "profileStreamingPorthintEnigma1": "obično 31339",
+  "@profileStreamingPorthintEnigma1": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "considerCoffee": "Možete platiti kavu.",
+  "@considerCoffee": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "likeTheApp": "Sviđa Vam se aplikacija?",
+  "@likeTheApp": {
+    "type": "text",
+    "placeholders": {}
+  }
+}
