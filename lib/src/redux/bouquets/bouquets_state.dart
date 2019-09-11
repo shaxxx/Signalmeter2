@@ -8,21 +8,15 @@ class BouquetsState {
   final LoadingStatus status;
   final IBouquetItemBouquet selectedBouquet;
   final List<IBouquetItemBouquet> bouquets;
-  final Exception loadingError;
-
   BouquetsState({
     @required this.status,
     @required this.selectedBouquet,
     @required this.bouquets,
-    @required this.loadingError,
   }) : assert(status != null);
 
   static BouquetsState initial() {
     return BouquetsState(
-        status: LoadingStatus.idle,
-        bouquets: null,
-        selectedBouquet: null,
-        loadingError: null);
+        status: LoadingStatus.idle, bouquets: null, selectedBouquet: null);
   }
 
   BouquetsState copyWith({
@@ -34,8 +28,7 @@ class BouquetsState {
     return BouquetsState(
         status: status ?? this.status,
         selectedBouquet: selectedBouquet ?? this.selectedBouquet,
-        bouquets: bouquets ?? this.bouquets,
-        loadingError: loadingError ?? this.loadingError);
+        bouquets: bouquets ?? this.bouquets);
   }
 
   @override

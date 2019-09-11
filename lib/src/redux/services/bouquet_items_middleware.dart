@@ -2,7 +2,6 @@ import 'package:enigma_signal_meter/src/model/enums.dart';
 import 'package:enigma_signal_meter/src/redux/app/app_state.dart';
 import 'package:enigma_signal_meter/src/redux/bouquets/bouquets_events.dart';
 import 'package:enigma_signal_meter/src/redux/enigma/enigma_command_events.dart';
-import 'package:enigma_signal_meter/src/redux/monitor/connection_state_events.dart';
 import 'package:enigma_signal_meter/src/utils/string_utils.dart';
 import 'package:logging/logging.dart';
 import 'package:redux/redux.dart';
@@ -37,12 +36,6 @@ class BouquetItemsMiddleware extends MiddlewareClass<AppState> {
       Logger.root.fine(
           "Dispatching BouquetItemsStatusChangedEvent from BouquetItemsMiddleware as response to SentToSleepSuccessEvent");
       store.dispatch(BouquetItemsStatusChangedEvent(LoadingStatus.idle));
-    } else if (action is ConnectionStatusChangedEvent) {
-      if (action.status == ConnectionStatusEnum.disconnected) {
-        Logger.root.fine(
-            "Dispatching BouquetItemsStateResetEvent from BouquetItemsMiddleware as response to ConnectionStatusChangedEvent");
-        store.dispatch(BouquetItemsStateResetEvent());
-      }
     } else if (action is GetCurrentServiceSuccessEvent) {
       if (action.response.currentService !=
           store.state.bouquetItemsState.selectedService) {

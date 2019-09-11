@@ -37,6 +37,10 @@ class ConnectionStateMiddleware extends MiddlewareClass<AppState> {
       store.dispatch(
         ConnectionStatusChangedEvent(ConnectionStatusEnum.disconnecting),
       );
+    } else if (action is ConnectionStatusChangedEvent) {
+      if (action.status == ConnectionStatusEnum.disconnected) {
+        store.dispatch(ResetStateEvent());
+      }
     }
     next(action);
   }

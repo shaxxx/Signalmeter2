@@ -1,3 +1,4 @@
+import 'package:enigma_signal_meter/src/redux/monitor/connection_state_events.dart';
 import 'package:logging/logging.dart';
 
 import 'package:redux/redux.dart';
@@ -12,6 +13,7 @@ final tabsReducer = combineReducers<TabState>([
   TypedReducer<TabState, SignalChartFullScreenActiveChangedEvent>(
       _signalChartFullScreenActiveChangedEvent),
   TypedReducer<TabState, ChangeSignalView>(_alternativeLookChangedReducer),
+  TypedReducer<TabState, ResetStateEvent>(_tabStateResetEventReducer),
 ]);
 
 TabState _activeTabChangedReducer(TabState state, ActiveTabChangedEvent event) {
@@ -35,4 +37,9 @@ TabState _signalChartFullScreenActiveChangedEvent(
 TabState _alternativeLookChangedReducer(
     TabState state, ChangeSignalView event) {
   return state.copyWith(signalView: event.view);
+}
+
+TabState _tabStateResetEventReducer(TabState state, ResetStateEvent event) {
+  Logger.root.fine('Reseting tabs state');
+  return TabState.initial();
 }

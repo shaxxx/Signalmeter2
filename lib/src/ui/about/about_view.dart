@@ -3,7 +3,6 @@ import 'package:enigma_signal_meter/src/ui/common/hyperlink.dart';
 import 'package:enigma_signal_meter/src/ui/common/scaffold_background.dart';
 import 'package:flutter/material.dart';
 import 'package:package_info/package_info.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 import '../../message_provider.dart';
 

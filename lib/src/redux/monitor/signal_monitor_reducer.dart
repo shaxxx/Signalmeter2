@@ -1,4 +1,5 @@
 import 'package:enigma_signal_meter/src/redux/enigma/enigma_command_events.dart';
+import 'package:enigma_signal_meter/src/redux/monitor/connection_state_events.dart';
 import 'package:enigma_web/enigma_web.dart';
 import 'package:logging/logging.dart';
 import 'package:redux/redux.dart';
@@ -13,6 +14,9 @@ final signalMonitorReducer = combineReducers<SignalMonitorState>([
   ),
   TypedReducer<SignalMonitorState, GetSignalLevelSuccessEvent>(
     _getSignalLevelSuccessReducer,
+  ),
+  TypedReducer<SignalMonitorState, ResetStateEvent>(
+    _signalResetStateEvent,
   ),
 ]);
 
@@ -31,4 +35,10 @@ SignalMonitorState _getSignalLevelSuccessReducer(
   }
   responses.add(event.response);
   return state.copyWith(responses: responses);
+}
+
+SignalMonitorState _signalResetStateEvent(
+    SignalMonitorState state, ResetStateEvent event) {
+  Logger.root.fine("Reseting signal state");
+  return SignalMonitorState.initial();
 }

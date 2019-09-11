@@ -18,6 +18,3 @@ class BouquetsStatusChangedEvent {
   final LoadingStatus status;
   BouquetsStatusChangedEvent(this.status) : assert(status != null);
 }
-
-@immutable
-class BouquetsStateResetEvent {}

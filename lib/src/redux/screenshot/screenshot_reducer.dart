@@ -1,4 +1,5 @@
 import 'package:enigma_signal_meter/src/redux/enigma/enigma_command_events.dart';
+import 'package:enigma_signal_meter/src/redux/monitor/connection_state_events.dart';
 import 'package:enigma_signal_meter/src/redux/screenshot/screenshot_events.dart';
 import 'package:redux/redux.dart';
 
@@ -11,6 +12,7 @@ final screenshotReducer = combineReducers<ScreenshotState>([
       _screenshotSuccessReducer),
   TypedReducer<ScreenshotState, GetScreenShotOfCurrentServiceErrorEvent>(
       _screenshotErrorReducer),
+  TypedReducer<ScreenshotState, ResetStateEvent>(_screenshotStateResetReducer),
 ]);
 
 ScreenshotState _screenshotStatusChangedReducer(
@@ -26,4 +28,9 @@ ScreenshotState _screenshotSuccessReducer(
 ScreenshotState _screenshotErrorReducer(
     ScreenshotState state, GetScreenShotOfCurrentServiceErrorEvent event) {
   return state.copyWith(response: null);
+}
+
+ScreenshotState _screenshotStateResetReducer(
+    ScreenshotState state, ResetStateEvent event) {
+  return ScreenshotState.initial();
 }

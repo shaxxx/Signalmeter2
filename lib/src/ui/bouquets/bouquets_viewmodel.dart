@@ -11,15 +11,11 @@ class BouquetsViewModel {
     @required this.status,
     @required this.bouquets,
     @required this.refreshBouquets,
-    @required this.loadingError,
   });
 
   final LoadingStatus status;
   final List<IBouquetItemBouquet> bouquets;
   final Function refreshBouquets;
-  final Exception loadingError;
-
-  String get errorText => loadingError?.toString();
 
   static BouquetsViewModel fromStore(
     Store<AppState> store,
@@ -27,7 +23,6 @@ class BouquetsViewModel {
     return BouquetsViewModel(
       status: store.state.bouquetsState.status,
       bouquets: store.state.bouquetsState.bouquets,
-      loadingError: store.state.bouquetsState.loadingError,
       refreshBouquets: () => store.dispatch(
           GetBouquetsEvent(profile: store.state.profilesState.selectedProfile)),
     );
@@ -39,12 +34,8 @@ class BouquetsViewModel {
       other is BouquetsViewModel &&
           runtimeType == other.runtimeType &&
           status == other.status &&
-          loadingError == other.loadingError &&
           const IterableEquality().equals(bouquets, other.bouquets);
 
   @override
-  int get hashCode =>
-      status.hashCode ^
-      loadingError.hashCode ^
-      const IterableEquality().hash(bouquets);
+  int get hashCode => status.hashCode ^ const IterableEquality().hash(bouquets);
 }

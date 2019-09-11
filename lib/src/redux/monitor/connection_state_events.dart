@@ -6,3 +6,6 @@ class ConnectionStatusChangedEvent {
   final ConnectionStatusEnum status;
   ConnectionStatusChangedEvent(this.status) : assert(status != null);
 }
+
+@immutable
+class ResetStateEvent {}

@@ -1,3 +1,5 @@
+import 'package:enigma_signal_meter/src/model/enums.dart';
+import 'package:enigma_signal_meter/src/redux/monitor/connection_state_events.dart';
 import 'package:logging/logging.dart';
 
 import 'package:redux/redux.dart';
@@ -11,6 +13,7 @@ final ttsReducer = combineReducers<TtsState>([
   TypedReducer<TtsState, SpeakSignalLevelEvent>(_speakSignalReducer),
   TypedReducer<TtsState, ChangeTtsInitializationStatusEvent>(
       _initializationStatusReducer),
+  TypedReducer<TtsState, ResetStateEvent>(_ttsResetStateEventReducer),
 ]);
 
 TtsState _statusChangedReducer(TtsState state, ChangeTtsStatusEvent event) {
@@ -35,4 +38,13 @@ TtsState _initializationStatusReducer(
   Logger.root
       .fine("TTS initialization status changed to " + event.status.toString());
   return state.copyWith(ttsInitializationStatus: event.status);
+}
+
+TtsState _ttsResetStateEventReducer(TtsState state, ResetStateEvent event) {
+  Logger.root.fine('Reseting TTS state');
+  return state.copyWith(
+    status: TtsStatus.Idle,
+    response: null,
+    ttsEnabled: false,
+  );
 }

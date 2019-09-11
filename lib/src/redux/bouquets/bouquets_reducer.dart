@@ -1,4 +1,5 @@
 import 'package:enigma_signal_meter/src/redux/enigma/enigma_command_events.dart';
+import 'package:enigma_signal_meter/src/redux/monitor/connection_state_events.dart';
 import 'package:logging/logging.dart';
 import 'package:redux/redux.dart';
 
@@ -12,8 +13,7 @@ final bouquetsReducer = combineReducers<BouquetsState>([
   TypedReducer<BouquetsState, GetBouquetsSuccessEvent>(_bouquetsLoadedReducer),
   TypedReducer<BouquetsState, GetBouquetsErrorEvent>(
       _bouquetsLoadingErrorReducer),
-  TypedReducer<BouquetsState, BouquetsStateResetEvent>(
-      _bouquetsStateResetReducer),
+  TypedReducer<BouquetsState, ResetStateEvent>(_bouquetsResetReducer),
 ]);
 
 BouquetsState _bouquetSelectedReducer(
@@ -41,8 +41,8 @@ BouquetsState _bouquetsLoadingErrorReducer(
   return state.copyWith(loadingError: event.error);
 }
 
-BouquetsState _bouquetsStateResetReducer(
-    BouquetsState state, BouquetsStateResetEvent event) {
-  Logger.root.fine("Reseting bouquets status to inital.");
+BouquetsState _bouquetsResetReducer(
+    BouquetsState state, ResetStateEvent event) {
+  Logger.root.shout("Reseting bouquets.");
   return BouquetsState.initial();
 }

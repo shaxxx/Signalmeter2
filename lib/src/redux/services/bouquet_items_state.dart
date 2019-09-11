@@ -8,7 +8,6 @@ class BouquetItemsState {
   final LoadingStatus status;
   final IBouquetItemService selectedService;
   final Map<IBouquetItemBouquet, List<IBouquetItem>> cachedBouquetItems;
-  final Exception loadingError;
   final Map<int, String> satellites;
   final String searchTerm;
 
@@ -16,7 +15,6 @@ class BouquetItemsState {
     @required this.status,
     @required this.selectedService,
     @required this.cachedBouquetItems,
-    @required this.loadingError,
     @required this.satellites,
     @required this.searchTerm,
   })  : assert(status != null),
@@ -27,7 +25,6 @@ class BouquetItemsState {
     return BouquetItemsState(
       status: LoadingStatus.idle,
       selectedService: null,
-      loadingError: null,
       cachedBouquetItems: Map<IBouquetItemBouquet, List<IBouquetItem>>(),
       satellites: Map<int, String>(),
       searchTerm: null,
@@ -61,7 +58,6 @@ class BouquetItemsState {
     return BouquetItemsState(
       status: status ?? this.status,
       selectedService: selectedService ?? this.selectedService,
-      loadingError: loadingError ?? this.loadingError,
       cachedBouquetItems: cachedBouquetItems ?? this.cachedBouquetItems,
       satellites: satellites ?? this.satellites,
       searchTerm: searchTerm ?? this.searchTerm,
@@ -72,7 +68,6 @@ class BouquetItemsState {
   int get hashCode =>
       status.hashCode ^
       selectedService.hashCode ^
-      loadingError.hashCode ^
       const MapEquality().hash(cachedBouquetItems) ^
       const MapEquality().hash(satellites) ^
       searchTerm.hashCode;
@@ -84,7 +79,6 @@ class BouquetItemsState {
           runtimeType == other.runtimeType &&
           status == other.status &&
           selectedService == other.selectedService &&
-          loadingError == other.loadingError &&
           const MapEquality()
               .equals(cachedBouquetItems, other.cachedBouquetItems) &&
           const MapEquality().equals(satellites, other.satellites) &&

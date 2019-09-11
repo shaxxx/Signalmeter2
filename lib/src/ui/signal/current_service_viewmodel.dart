@@ -3,6 +3,7 @@ import 'package:enigma_signal_meter/src/redux/app/app_state.dart';
 import 'package:enigma_web/enigma_web.dart';
 import 'package:flutter/material.dart';
 import 'package:redux/redux.dart';
+import 'package:collection/collection.dart';
 
 class CurrentServiceViewModel {
   final IBouquetItemService currentService;
@@ -36,5 +37,7 @@ class CurrentServiceViewModel {
 
   @override
   int get hashCode =>
-      currentService.hashCode ^ satellites.hashCode ^ messages.hashCode;
+      currentService.hashCode ^
+      messages.hashCode ^
+      const MapEquality().hash(satellites);
 }

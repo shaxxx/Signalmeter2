@@ -1,6 +1,6 @@
 name: enigma_signal_meter
 description: Use your phone or tablet to align your satellite dish by reading signal levels from Enigma 1 or Enigma2 satellite receiver.
-homepage: http://www.krkadoni.com
+homepage: https://www.krkadoni.com
 
 # The following defines the version and build number for your application.
 # A version number is three numbers separated by dots, like 1.2.43
@@ -30,7 +30,7 @@ dependencies:
   enigma_web: ^0.9.6
   redux: ^3.0.0
   flutter_redux: ^0.5.3
-  redux_logging: ^0.3.0
+  #redux_logging: ^0.3.0
   percent_indicator: ^2.1.1
   flutter_flip_view: ^1.0.1
   xml: ^3.4.0 

@@ -1,7 +1,6 @@
 import 'package:enigma_signal_meter/src/model/enums.dart';
 import 'package:enigma_signal_meter/src/redux/app/app_state.dart';
 import 'package:enigma_signal_meter/src/redux/enigma/enigma_command_events.dart';
-import 'package:enigma_signal_meter/src/redux/monitor/connection_state_events.dart';
 import 'package:logging/logging.dart';
 import 'package:redux/redux.dart';
 
@@ -39,12 +38,6 @@ class BouquetsMiddleware extends MiddlewareClass<AppState> {
       Logger.root.fine(
           "Dispatching BouquetsStatusChangedEvent from BouquetsMiddleware as response to SentToSleepSuccessEvent");
       store.dispatch(BouquetsStatusChangedEvent(LoadingStatus.idle));
-    } else if (action is ConnectionStatusChangedEvent) {
-      if (action.status == ConnectionStatusEnum.disconnected) {
-        Logger.root.fine(
-            "Dispatching BouquetsStateResetEvent from BouquetsMiddleware as response to ConnectionStatusChangedEvent");
-        store.dispatch(BouquetsStateResetEvent());
-      }
     }
     next(action);
   }

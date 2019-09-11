@@ -1,4 +1,6 @@
+import 'package:enigma_signal_meter/src/model/enums.dart';
 import 'package:enigma_signal_meter/src/redux/enigma/enigma_command_events.dart';
+import 'package:enigma_signal_meter/src/redux/monitor/connection_state_events.dart';
 import 'package:enigma_web/enigma_web.dart';
 import 'package:logging/logging.dart';
 import 'package:redux/redux.dart';
@@ -15,12 +17,12 @@ final bouquetsItemsReducer = combineReducers<BouquetItemsState>([
       _bouquetItemsLoadedReducer),
   TypedReducer<BouquetItemsState, GetBouquetItemsErrorEvent>(
       _bouquetItemsLoadingErrorReducer),
-  TypedReducer<BouquetItemsState, BouquetItemsStateResetEvent>(
-      _bouquetItemsStateResetReducer),
   TypedReducer<BouquetItemsState, SatellitesLoadedEvent>(
       _satellitesLoadedReducer),
   TypedReducer<BouquetItemsState, BouquetItemsSearchTermChanged>(
       _searchTermChangedReducer),
+  TypedReducer<BouquetItemsState, ResetStateEvent>(
+      _bouquetItemsStateResetReducer),
 ]);
 
 BouquetItemsState _bouquetItemSelectedReducer(
@@ -52,12 +54,6 @@ BouquetItemsState _bouquetItemsLoadingErrorReducer(
   return state.copyWith(loadingError: event.error);
 }
 
-BouquetItemsState _bouquetItemsStateResetReducer(
-    BouquetItemsState state, BouquetItemsStateResetEvent event) {
-  Logger.root.fine("Reseting bouquet items status to inital.");
-  return BouquetItemsState.initial();
-}
-
 BouquetItemsState _satellitesLoadedReducer(
     BouquetItemsState state, SatellitesLoadedEvent event) {
   Logger.root.fine("Loaded ${event.satellites.length} satellites.");
@@ -68,4 +64,15 @@ BouquetItemsState _searchTermChangedReducer(
     BouquetItemsState state, BouquetItemsSearchTermChanged event) {
   Logger.root.fine("Search term set to ${event.searchTerm}");
   return state.copyWith(searchTerm: event.searchTerm);
+}
+
+BouquetItemsState _bouquetItemsStateResetReducer(
+    BouquetItemsState state, ResetStateEvent event) {
+  Logger.root.fine("Reseting bouquet items state");
+  return state.copyWith(
+    status: LoadingStatus.idle,
+    selectedService: null,
+    cachedBouquetItems: Map<IBouquetItemBouquet, List<IBouquetItem>>(),
+    searchTerm: null,
+  );
 }

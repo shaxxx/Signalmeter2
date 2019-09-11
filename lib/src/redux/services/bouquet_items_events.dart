@@ -20,9 +20,6 @@ class BouquetItemsStatusChangedEvent {
 }
 
 @immutable
-class BouquetItemsStateResetEvent {}
-
-@immutable
 class LoadSatellitesEvent {}
 
 @immutable

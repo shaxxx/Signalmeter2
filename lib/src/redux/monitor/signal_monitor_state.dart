@@ -6,32 +6,26 @@ import 'package:collection/collection.dart';
 @immutable
 class SignalMonitorState {
   final MonitorStatus status;
-  final Exception loadingError;
   final List<ISignalResponse> responses;
 
   SignalMonitorState({
     @required this.status,
-    @required this.loadingError,
     @required this.responses,
   }) : assert(status != null);
 
   static SignalMonitorState initial() {
     return SignalMonitorState(
       status: MonitorStatus.stopped,
-      loadingError: null,
       responses: List<ISignalResponse>(),
     );
   }
 
   SignalMonitorState copyWith({
     MonitorStatus status,
-    Exception loadingError,
     List<ISignalResponse> responses,
   }) {
     return SignalMonitorState(
-        status: status ?? this.status,
-        loadingError: loadingError ?? this.loadingError,
-        responses: responses ?? this.responses);
+        status: status ?? this.status, responses: responses ?? this.responses);
   }
 
   @override
