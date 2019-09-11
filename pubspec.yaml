@@ -27,7 +27,7 @@ dependencies:
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   #cupertino_icons: ^0.1.2
-  enigma_web: ^0.9.6
+  enigma_web: ^0.9.7
   redux: ^3.0.0
   flutter_redux: ^0.5.3
   #redux_logging: ^0.3.0
