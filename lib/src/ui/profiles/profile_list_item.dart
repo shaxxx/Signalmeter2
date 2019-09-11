@@ -60,6 +60,7 @@ class _ProfileListItemState extends State<ProfileListItem>
 
   @override
   Widget build(BuildContext context) {
+    var theme = Theme.of(context);
     return StoreConnector<AppState, ProfileListItemViewModel>(
         distinct: true,
         converter: (store) =>
@@ -72,8 +73,8 @@ class _ProfileListItemState extends State<ProfileListItem>
             child: Card(
               elevation: 2,
               color: viewModel.selected
-                  ? Theme.of(context).accentColor.withOpacity(0.3)
-                  : Theme.of(context).primaryColor.withOpacity(0.3),
+                  ? theme.accentColor.withOpacity(0.3)
+                  : theme.primaryColor.withOpacity(0.3),
               child: _buildRow(context, viewModel),
             ),
           );
@@ -172,6 +173,7 @@ class _ProfileListItemState extends State<ProfileListItem>
 
   Widget _buildItemInfo(
       BuildContext context, ProfileListItemViewModel viewModel) {
+    var theme = Theme.of(context);
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -180,7 +182,7 @@ class _ProfileListItemState extends State<ProfileListItem>
         Flexible(
           child: Text(
             viewModel.name,
-            style: Theme.of(context).textTheme.subhead,
+            style: theme.textTheme.subhead,
             textAlign: TextAlign.left,
             overflow: TextOverflow.ellipsis,
           ),
@@ -188,7 +190,7 @@ class _ProfileListItemState extends State<ProfileListItem>
         Flexible(
           child: Text(
             viewModel.address,
-            style: Theme.of(context).textTheme.body1,
+            style: theme.textTheme.body1,
             overflow: TextOverflow.ellipsis,
           ),
         ),

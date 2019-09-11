@@ -18,6 +18,7 @@ class BouquetsListItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var theme = Theme.of(context);
     return StoreConnector<AppState, BouquetsListItemViewModel>(
       distinct: true,
       converter: (store) => BouquetsListItemViewModel.fromStore(store, bouquet),
@@ -36,10 +37,10 @@ class BouquetsListItem extends StatelessWidget {
                       const Radius.circular(10.0),
                     ),
                     color: viewModel.selected
-                        ? Theme.of(context).accentColor.withOpacity(0.3)
-                        : Theme.of(context).primaryColor.withOpacity(0.3),
-                    border: Border.all(
-                        color: Theme.of(context).accentColor.withOpacity(0.3)),
+                        ? theme.accentColor.withOpacity(0.3)
+                        : theme.primaryColor.withOpacity(0.3),
+                    border:
+                        Border.all(color: theme.accentColor.withOpacity(0.3)),
                   ),
                   child: Container(
                     alignment: Alignment.centerLeft,

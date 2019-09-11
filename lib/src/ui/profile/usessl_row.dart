@@ -7,6 +7,7 @@ import 'profile_widget.dart';
 class UseSslRow extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    var theme = Theme.of(context);
     return Padding(
       padding: EdgeInsets.only(left: 20, right: 20, top: 20),
       child: Row(
@@ -16,14 +17,14 @@ class UseSslRow extends StatelessWidget {
               padding: EdgeInsets.only(left: 10),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(10),
-                border: Border.all(color: Theme.of(context).hintColor),
+                border: Border.all(color: theme.hintColor),
               ),
               child: Row(
                 children: <Widget>[
                   Text(
                     MessageProvider.of(context).profileUseSsl,
                     style: TextStyle(
-                      color: Theme.of(context).hintColor,
+                      color: theme.hintColor,
                       fontSize: 16,
                     ),
                   ),

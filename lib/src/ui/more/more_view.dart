@@ -22,7 +22,6 @@ class MoreView extends StatelessWidget {
           return Container(
             padding: EdgeInsets.all(20),
             child: GridView.extent(
-              ///crossAxisCount: 3,
               maxCrossAxisExtent: 160,
               children:
                   buildItems(context, viewModel, backgroundColor, messages),

@@ -7,6 +7,7 @@ import 'profile_widget.dart';
 class EnigmaVersionRow extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    var theme = Theme.of(context);
     return Padding(
       padding: EdgeInsets.only(left: 20, right: 20, top: 20),
       child: Row(
@@ -15,7 +16,7 @@ class EnigmaVersionRow extends StatelessWidget {
             child: Container(
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(10),
-                border: Border.all(color: Theme.of(context).hintColor),
+                border: Border.all(color: theme.hintColor),
               ),
               child: Row(
                 mainAxisSize: MainAxisSize.max,
@@ -30,7 +31,7 @@ class EnigmaVersionRow extends StatelessWidget {
                   Text(
                     'Enigma1',
                     textAlign: TextAlign.left,
-                    style: TextStyle(color: Theme.of(context).hintColor),
+                    style: TextStyle(color: theme.hintColor),
                   ),
                   Radio(
                     groupValue: ProfileWidget.of(context).profile.enigma,
@@ -42,7 +43,7 @@ class EnigmaVersionRow extends StatelessWidget {
                   Text(
                     'Enigma2',
                     textAlign: TextAlign.left,
-                    style: TextStyle(color: Theme.of(context).hintColor),
+                    style: TextStyle(color: theme.hintColor),
                   ),
                 ],
               ),

@@ -34,6 +34,7 @@ class BouquetItemsListItem extends StatelessWidget {
     BuildContext context,
     BouquetItemsListItemViewModel viewModel,
   ) {
+    var theme = Theme.of(context);
     return Row(
       children: <Widget>[
         Flexible(
@@ -47,10 +48,9 @@ class BouquetItemsListItem extends StatelessWidget {
                   const Radius.circular(10.0),
                 ),
                 color: viewModel.selected
-                    ? Theme.of(context).accentColor.withOpacity(0.3)
-                    : Theme.of(context).primaryColor.withOpacity(0.3),
-                border: Border.all(
-                    color: Theme.of(context).accentColor.withOpacity(0.3)),
+                    ? theme.accentColor.withOpacity(0.3)
+                    : theme.primaryColor.withOpacity(0.3),
+                border: Border.all(color: theme.accentColor.withOpacity(0.3)),
               ),
               alignment: Alignment.centerLeft,
               padding: EdgeInsets.only(left: 20),

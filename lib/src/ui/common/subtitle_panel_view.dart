@@ -12,15 +12,15 @@ class SubtitlePanelView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var theme = Theme.of(context);
     return Container(
       margin: EdgeInsets.only(top: 15, bottom: 5, left: 10, right: 10),
       decoration: new BoxDecoration(
         borderRadius: new BorderRadius.all(
           const Radius.circular(10.0),
         ),
-        color: Theme.of(context).primaryColor.withOpacity(0.3),
-        border:
-            Border.all(color: Theme.of(context).accentColor.withOpacity(0.3)),
+        color: theme.primaryColor.withOpacity(0.3),
+        border: Border.all(color: theme.accentColor.withOpacity(0.3)),
       ),
       child: child,
     );

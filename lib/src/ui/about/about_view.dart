@@ -53,11 +53,12 @@ class _AboutViewState extends State<AboutView> {
 
   @override
   Widget build(BuildContext context) {
+    var theme = Theme.of(context);
     return ScaffoldBackground(
-      backgroundColor: Theme.of(context).primaryColor.withOpacity(0.3),
+      backgroundColor: theme.primaryColor.withOpacity(0.3),
       appBar: AppBar(
         title: Text(MessageProvider.of(context).actionAbout),
-        backgroundColor: Theme.of(context).primaryColor.withOpacity(0.6),
+        backgroundColor: theme.primaryColor.withOpacity(0.6),
       ),
       child: Center(
         child: Column(
@@ -83,7 +84,7 @@ class _AboutViewState extends State<AboutView> {
               url: krkadoniUrl,
               text: krkadoniUrl,
               fontSize: 20,
-              color: Theme.of(context).accentColor.withOpacity(0.7),
+              color: theme.accentColor.withOpacity(0.7),
             ),
             Container(
               padding: EdgeInsets.only(top: 18, bottom: 5),
@@ -97,7 +98,7 @@ class _AboutViewState extends State<AboutView> {
             Text(
               'Bosnian Pharao | GigaBlue',
               style: TextStyle(
-                color: Theme.of(context).accentColor.withOpacity(0.7),
+                color: theme.accentColor.withOpacity(0.7),
                 fontSize: 17,
               ),
             ),
@@ -109,7 +110,7 @@ class _AboutViewState extends State<AboutView> {
               url: satelitskiForumUrl,
               text: satelitskiForumUrl,
               fontSize: 17,
-              color: Theme.of(context).accentColor.withOpacity(0.7),
+              color: theme.accentColor.withOpacity(0.7),
             ),
           ],
         ),

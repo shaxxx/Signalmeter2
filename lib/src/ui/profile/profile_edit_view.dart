@@ -23,11 +23,12 @@ import 'username_row.dart';
 class ProfileEditView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    var theme = Theme.of(context);
     var profile = ModalRoute.of(context).settings.arguments;
     return ScaffoldBackground(
-      backgroundColor: Theme.of(context).primaryColor.withOpacity(0.3),
+      backgroundColor: theme.primaryColor.withOpacity(0.3),
       appBar: AppBar(
-        backgroundColor: Theme.of(context).primaryColor.withOpacity(0.6),
+        backgroundColor: theme.primaryColor.withOpacity(0.6),
         title: profile == null
             ? Text(MessageProvider.of(context).actionAddProfile)
             : Text(MessageProvider.of(context).actionEditProfile),
@@ -80,13 +81,14 @@ class ProfileEditView extends StatelessWidget {
 
   Container _saveButton(
       BuildContext context, ProfileWidgetState profileWidget) {
+    var theme = Theme.of(context);
     return Container(
       padding: EdgeInsets.only(top: 20, right: 20, left: 20),
       alignment: Alignment.center,
       child: RaisedButton(
         shape: RoundedRectangleBorder(
             borderRadius: new BorderRadius.circular(10.0)),
-        color: Theme.of(context).primaryColor.withOpacity(0.6),
+        color: theme.primaryColor.withOpacity(0.6),
         onPressed: () async {
           var formValid = await profileWidget.validateForm();
           if (formValid) {
@@ -98,8 +100,7 @@ class ProfileEditView extends StatelessWidget {
           margin: EdgeInsets.symmetric(vertical: 15),
           child: Text(
             MessageProvider.of(context).actionSave.toUpperCase(),
-            style:
-                TextStyle(fontSize: 16, color: Theme.of(context).accentColor),
+            style: TextStyle(fontSize: 16, color: theme.accentColor),
           ),
         ),
       ),

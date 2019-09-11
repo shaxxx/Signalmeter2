@@ -7,13 +7,14 @@ import 'profile_widget.dart';
 class StreamingRow extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    var theme = Theme.of(context);
     return Padding(
       padding: EdgeInsets.only(left: 20, right: 20, top: 20),
       child: Container(
         padding: EdgeInsets.only(left: 10),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(10),
-          border: Border.all(color: Theme.of(context).hintColor),
+          border: Border.all(color: theme.hintColor),
         ),
         child: Row(
           children: <Widget>[
@@ -21,7 +22,7 @@ class StreamingRow extends StatelessWidget {
               MessageProvider.of(context).profileStreamingEnable,
               textAlign: TextAlign.right,
               style: TextStyle(
-                color: Theme.of(context).hintColor,
+                color: theme.hintColor,
                 fontSize: 16,
               ),
             ),

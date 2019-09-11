@@ -73,6 +73,7 @@ class _ProfilesViewState extends State<ProfilesView> with RouteAware {
         );
       },
       builder: (context, viewModel) {
+        var theme = Theme.of(context);
         return ScaffoldBackground(
           appBar: AppBar(
             title: Text(MessageProvider.of(context).appName),
@@ -118,7 +119,7 @@ class _ProfilesViewState extends State<ProfilesView> with RouteAware {
                         width: 160,
                         child: Container(
                           decoration: BoxDecoration(
-                            color: Theme.of(context).accentColor.withOpacity(0.3),
+                            color: theme.accentColor.withOpacity(0.3),
                             borderRadius: BorderRadius.circular(10),
                           ),
                           alignment: Alignment.center,

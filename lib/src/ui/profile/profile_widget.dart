@@ -185,25 +185,7 @@ class ProfileWidgetState extends State<ProfileWidget> {
   }
 
   void saveForm() {
-    widget.viewModel.onSaveProfile(profile.toProfile()
-        //   Profile(
-        //     address: profile.address,
-        //     enigma: profile.enigma,
-        //     httpPort: int.parse(profile.httpPort),
-        //     id: profile.id ?? EnigmaUtils.unixTimeStamp(),
-        //     name: profile.name,
-        //     password: profile.password ?? '',
-        //     streaming: profile.streaming,
-        //     streamingPort: profile.streamingPort != null
-        //         ? int.parse(profile.streamingPort)
-        //         : null,
-        //     transcoding: profile.transcoding,
-        //     transcodingPort:
-        //         profile.transcoding ? int.parse(profile.transcodingPort) : null,
-        //     username: profile.username,
-        //     useSsl: profile.useSsl,
-        //   ),
-        );
+    widget.viewModel.onSaveProfile(profile.toProfile());
   }
 
   void _setListeners() {

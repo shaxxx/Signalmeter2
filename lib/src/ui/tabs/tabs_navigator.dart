@@ -8,14 +8,15 @@ import 'tabs_navigator_viewmodel.dart';
 class TabsNavigator extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    var theme = Theme.of(context);
     return StoreConnector<AppState, TabsNavigatorViewModel>(
         distinct: true,
         converter: (store) => TabsNavigatorViewModel.fromStore(store),
         builder: (context, viewModel) {
-          Color iconColor = Theme.of(context).textTheme.caption.color;
+          Color iconColor = theme.textTheme.caption.color;
           return BottomNavigationBar(
             backgroundColor: Colors.transparent,
-            selectedItemColor: Theme.of(context).accentColor,
+            selectedItemColor: theme.accentColor,
             unselectedItemColor: iconColor,
             type: BottomNavigationBarType.fixed,
             onTap: viewModel.onTap,

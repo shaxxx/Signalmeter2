@@ -17,6 +17,7 @@
 
 # Visual Studio Code related
 .vscode/
+.VSCodeCounter
 
 # packages file containing multi-root paths
 .packages.generated
