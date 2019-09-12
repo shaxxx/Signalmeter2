@@ -22,7 +22,7 @@ class ProfileEditModel {
       httpPort: int.parse(this.httpPort),
       id: this.id ?? EnigmaUtils.unixTimeStamp(),
       name: this.name,
-      password: this.password,
+      password: this.password ?? '',
       streaming: this.streaming,
       streamingPort: this.streaming && this.enigma == EnigmaType.enigma2
           ? int.parse(this.streamingPort)
