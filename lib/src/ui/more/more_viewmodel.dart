@@ -143,9 +143,15 @@ class MoreViewModel {
     } else {
       var iOSUri =
           'vlc-x-callback://x-callback-url/stream?url=' + parameters.streamUri;
-      await launch(iOSUri);
+          if (await canLaunch(iOSUri)){
+              await launch(iOSUri);}
+            else {
+              store.dispatch(VlcRequiredMessageEvent());
+            return;
+            }
+          } 
     }
-  }
+  
 
   @override
   bool operator ==(Object other) =>
