@@ -41,8 +41,8 @@ apply from: "$flutterRoot/packages/flutter_tools/gradle/flutter.gradle"
         applicationId "com.krkadoni.app.signalmeter"
         minSdkVersion 21
         targetSdkVersion 28
-        versionCode 270
-        versionName 'flutter.RC1'
+        versionCode flutterVersionCode.toInteger()
+        versionName flutterVersionName
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
 
