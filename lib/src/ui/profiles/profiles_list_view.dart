@@ -15,7 +15,7 @@ class ProfilesListView extends StatefulWidget {
   }) : super(key: key);
 
   @override
-  _ProfilesListViewState createState() => new _ProfilesListViewState();
+  _ProfilesListViewState createState() => _ProfilesListViewState();
 }
 
 class _ProfilesListViewState extends State<ProfilesListView>
@@ -25,7 +25,7 @@ class _ProfilesListViewState extends State<ProfilesListView>
     begin: Offset(-1.0, 0.0),
     end: Offset.zero,
   ).chain(
-    new CurveTween(
+    CurveTween(
       curve: Curves.easeIn,
     ),
   );
@@ -49,7 +49,7 @@ class _ProfilesListViewState extends State<ProfilesListView>
           onInitialBuild: (viewModel) => _syncListItems(viewModel.profiles),
           onDidChange: (viewModel) => _syncListItems(viewModel.profiles),
           builder: (context, viewModel) {
-            return new AnimatedList(
+            return AnimatedList(
               key: animatedListKey,
               initialItemCount: insertedProfiles.length,
               itemBuilder: (context, index, animation) {
@@ -77,7 +77,7 @@ class _ProfilesListViewState extends State<ProfilesListView>
     for (var profile in profiles) {
       var existingProfile =
           insertedProfiles.where((p) => p.id == profile.id).toList();
-      if (existingProfile.length == 0) {
+      if (existingProfile.isEmpty) {
         newProfiles.add(profile.id);
       }
     }
@@ -85,7 +85,7 @@ class _ProfilesListViewState extends State<ProfilesListView>
     for (var i = (insertedProfilesCount - 1); i >= 0; i--) {
       var existingProfile =
           profiles.where((p) => p.id == insertedProfiles[i].id).toList();
-      if (existingProfile.length == 0) {
+      if (existingProfile.isEmpty) {
         setState(() {
           animatedListKey.currentState.removeItem(
               i, (context, animation) => SizedBox.shrink(),
@@ -106,7 +106,7 @@ class _ProfilesListViewState extends State<ProfilesListView>
       }
     }
 
-    if (newProfiles.length > 0) {
+    if (newProfiles.isNotEmpty) {
       await Future.delayed(
         Duration(
           milliseconds: insertedProfilesCount == 0 ? 500 : 0,

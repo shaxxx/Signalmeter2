@@ -75,11 +75,11 @@ class CurrentServiceMonitorMiddleware extends MiddlewareClass<AppState> {
       }
     } else if (action is ChangeCurrentServiceMonitorStatusEvent) {
       _timer?.cancel();
-      _operation?.cancel();
+      await _operation?.cancel();
 
       if (action.status == MonitorStatus.running) {
         _operation = CancelableOperation.fromFuture(_getCurrentService(store));
-        _timer = new Timer.periodic(
+        _timer = Timer.periodic(
           currentServiceMonitorDelay,
           (Timer timer) {
             _operation?.cancel();

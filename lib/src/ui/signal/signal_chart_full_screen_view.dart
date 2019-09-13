@@ -81,7 +81,7 @@ class _SignalChartFullScreenState extends State<SignalChartFullScreen>
 
   @override
   Widget build(BuildContext context) {
-    return new StoreConnector<AppState, SignalChartFullScreenViewModel>(
+    return StoreConnector<AppState, SignalChartFullScreenViewModel>(
       distinct: true,
       converter: (store) {
         return SignalChartFullScreenViewModel.fromStore(store);

@@ -86,8 +86,8 @@ class ProfileEditView extends StatelessWidget {
       padding: EdgeInsets.only(top: 20, right: 20, left: 20),
       alignment: Alignment.center,
       child: RaisedButton(
-        shape: RoundedRectangleBorder(
-            borderRadius: new BorderRadius.circular(10.0)),
+        shape:
+            RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.0)),
         color: theme.primaryColor.withOpacity(0.6),
         onPressed: () async {
           var formValid = await profileWidget.validateForm();

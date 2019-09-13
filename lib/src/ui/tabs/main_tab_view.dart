@@ -18,7 +18,7 @@ import 'tabs_appbar_view.dart';
 
 class MainTabView extends StatefulWidget {
   @override
-  _MainTabViewState createState() => new _MainTabViewState();
+  _MainTabViewState createState() => _MainTabViewState();
 }
 
 class _MainTabViewState extends State<MainTabView>
@@ -106,7 +106,7 @@ class _MainTabViewState extends State<MainTabView>
   }
 
   Future _animateToPage() async {
-    if (controller.positions == null || controller.positions.length == 0) {
+    if (controller.positions == null || controller.positions.isEmpty) {
       return;
     }
     //uncoment to have pageview animate to page

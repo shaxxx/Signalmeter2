@@ -56,7 +56,7 @@ class ErrorMessageTranslator {
           return prettyInstanceTypeString(error.error);
         }
 
-        if (message == null || message.length == 0) {
+        if (message == null || message.isEmpty) {
           try {
             message = error.error.osError.message;
           } catch (e) {
@@ -64,7 +64,7 @@ class ErrorMessageTranslator {
           }
         }
 
-        if (message != null && message.length > 0) {
+        if (message != null && message.isNotEmpty) {
           return message;
         }
       }

@@ -42,7 +42,7 @@ class CircularProgressView extends StatelessWidget {
       padding: EdgeInsets.symmetric(horizontal: 40, vertical: 20),
       alignment: AlignmentDirectional.center,
       child: ConstrainedBox(
-        constraints: new BoxConstraints(
+        constraints: BoxConstraints(
           maxHeight: maxSize,
           maxWidth: maxSize,
         ),

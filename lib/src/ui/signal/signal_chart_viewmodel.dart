@@ -28,7 +28,7 @@ class SignalChartViewModel {
     if (responses == null) {
       return '';
     }
-    if (responses.length == 0) {
+    if (responses.isEmpty) {
       return '';
     }
     var signalResponse = responses.last;
@@ -39,7 +39,7 @@ class SignalChartViewModel {
     if (responses == null) {
       return '';
     }
-    if (responses.length == 0) {
+    if (responses.isEmpty) {
       return '';
     }
     int averageResponseTime = responses

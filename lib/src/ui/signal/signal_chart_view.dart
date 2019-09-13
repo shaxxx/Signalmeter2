@@ -70,13 +70,13 @@ class _SignalChartViewState extends State<SignalChartView> {
                                 drawVerticalGrid: true,
                                 getDrawingVerticalGridLine: (value) {
                                   return const FlLine(
-                                    color: const Color(0xff67727d),
+                                    color: Color(0xff67727d),
                                     strokeWidth: 1,
                                   );
                                 },
                                 getDrawingHorizontalGridLine: (value) {
                                   return const FlLine(
-                                    color: const Color(0xff67727d),
+                                    color: Color(0xff67727d),
                                     strokeWidth: 0,
                                   );
                                 },

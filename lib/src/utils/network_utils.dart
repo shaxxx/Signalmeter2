@@ -11,14 +11,14 @@ const String PrivateIpAddressRegex =
 
 class NetworkUtils {
   static bool isValidAddress(String address) {
-    if (address == null || address.length == 0) {
+    if (address == null || address.isEmpty) {
       return false;
     }
     return RegExp(ValidHostnameRegex).hasMatch(address);
   }
 
   static bool isLocalIp(String address) {
-    if (address == null || address.length == 0) {
+    if (address == null || address.isEmpty) {
       return false;
     }
     return RegExp(PrivateIpAddressRegex).hasMatch(address);

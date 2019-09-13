@@ -50,7 +50,7 @@ ProfilesState _profileSaveReducer(ProfilesState state, ProfileSaveEvent event) {
   var profiles = state.profiles.toList();
   var existingProfile =
       profiles.where((profile) => profile.id == event.profile.id).toList();
-  if (existingProfile.length > 0) {
+  if (existingProfile.isNotEmpty) {
     Logger.root.fine("Updating existing profile ${event.profile.name}");
     var index = profiles.indexOf(existingProfile.first);
     profiles.removeAt(index);

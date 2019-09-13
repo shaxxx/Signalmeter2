@@ -18,7 +18,7 @@ import 'profiles_list_view.dart';
 
 class ProfilesView extends StatefulWidget {
   @override
-  _ProfilesViewState createState() => new _ProfilesViewState();
+  _ProfilesViewState createState() => _ProfilesViewState();
 }
 
 class _ProfilesViewState extends State<ProfilesView> with RouteAware {

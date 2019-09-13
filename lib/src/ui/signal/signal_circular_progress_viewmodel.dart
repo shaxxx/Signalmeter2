@@ -216,7 +216,7 @@ class SignalCircularProgressViewModel {
 
   static SignalCircularProgressViewModel fromStore(
       Store<AppState> store, Messages messages) {
-    var signalResponse = store.state.signalMonitorState.responses.length > 0
+    var signalResponse = store.state.signalMonitorState.responses.isNotEmpty
         ? store.state.signalMonitorState.responses.last
         : null;
     var signalView = store.state.tabsState.signalView;

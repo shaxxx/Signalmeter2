@@ -35,7 +35,7 @@ class ProfileWidget extends StatefulWidget {
   }
 
   @override
-  ProfileWidgetState createState() => new ProfileWidgetState();
+  ProfileWidgetState createState() => ProfileWidgetState();
 }
 
 class ProfileWidgetState extends State<ProfileWidget> {

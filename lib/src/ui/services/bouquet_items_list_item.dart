@@ -43,8 +43,8 @@ class BouquetItemsListItem extends StatelessWidget {
             child: Container(
               height: listItemHeight,
               margin: EdgeInsets.only(top: 5, bottom: 5, left: 10, right: 10),
-              decoration: new BoxDecoration(
-                borderRadius: new BorderRadius.all(
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.all(
                   const Radius.circular(10.0),
                 ),
                 color: viewModel.selected
@@ -72,8 +72,8 @@ class BouquetItemsListItem extends StatelessWidget {
     return Container(
       height: listItemHeight,
       margin: EdgeInsets.only(top: 5, bottom: 5, left: 10, right: 10),
-      decoration: new BoxDecoration(
-        borderRadius: new BorderRadius.all(
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.all(
           const Radius.circular(10.0),
         ),
         color: Theme.of(context).primaryColor.withOpacity(0.7),

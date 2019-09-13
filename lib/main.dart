@@ -48,31 +48,30 @@ void main() {
   // with Hot Reload than creating it directly in the `build` function.
 
   var initialState = AppState.inital();
-  final store = new Store<AppState>(appReducer,
-      initialState: AppState.inital(),
-      middleware: [
-        EnigmaCommandMiddleware(
-          initialState.webRequester,
-        ),
-        ConnectionStateMiddleware(),
-        TabsMiddleware(),
-        ProfilesMiddleware(),
-        BouquetsMiddleware(),
-        BouquetItemsMiddleware(),
-        CurrentServiceMonitorMiddleware(
-          initialState.webRequester,
-        ),
-        SignalMonitorMiddleware(),
-        navigation.NavigationMiddleware(),
-        NavigationMiddleware<AppState>(),
-        MessagesMiddleware(),
-        TtsMiddleware(),
-        ScreenshotMiddleware(),
-        //LoggingMiddleware(logger: Logger.root),
-      ]);
+  final store =
+      Store<AppState>(appReducer, initialState: AppState.inital(), middleware: [
+    EnigmaCommandMiddleware(
+      initialState.webRequester,
+    ),
+    ConnectionStateMiddleware(),
+    TabsMiddleware(),
+    ProfilesMiddleware(),
+    BouquetsMiddleware(),
+    BouquetItemsMiddleware(),
+    CurrentServiceMonitorMiddleware(
+      initialState.webRequester,
+    ),
+    SignalMonitorMiddleware(),
+    navigation.NavigationMiddleware(),
+    NavigationMiddleware<AppState>(),
+    MessagesMiddleware(),
+    TtsMiddleware(),
+    ScreenshotMiddleware(),
+    //LoggingMiddleware(logger: Logger.root),
+  ]);
 
   Logger.root.info("Starting Signal Meter...");
-  runApp(new EnigmaSignalMeterApp(
+  runApp(EnigmaSignalMeterApp(
     title: 'SignalMeter',
     store: store,
   ));
@@ -103,12 +102,12 @@ class _EnigmaSignalMeterAppState extends State<EnigmaSignalMeterApp>
 
   @override
   Widget build(BuildContext context) {
-    return new StoreProvider<AppState>(
+    return StoreProvider<AppState>(
       store: widget.store,
-      child: new MaterialApp(
+      child: MaterialApp(
         navigatorKey: NavigatorHolder.navigatorKey,
         navigatorObservers: [widget.store.state.routeObserver],
-        theme: new ThemeData.dark(),
+        theme: ThemeData.dark(),
         localizationsDelegates: [
           SignalMeterLocalizationsDelegate(),
           GlobalMaterialLocalizations.delegate,

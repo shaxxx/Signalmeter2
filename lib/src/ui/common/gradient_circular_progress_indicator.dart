@@ -79,8 +79,8 @@ class GradientArcPainter extends CustomPainter {
 
   @override
   void paint(Canvas canvas, Size size) {
-    final rect = new Rect.fromLTWH(0.0, 0.0, size.width, size.height);
-    final gradient = new SweepGradient(
+    final rect = Rect.fromLTWH(0.0, 0.0, size.width, size.height);
+    final gradient = SweepGradient(
       startAngle: pi / 2,
       endAngle: 5 * (pi / 2),
       tileMode: TileMode.repeated,
@@ -88,40 +88,40 @@ class GradientArcPainter extends CustomPainter {
       stops: stops,
     );
 
-    final backgroundGradient = new SweepGradient(
+    final backgroundGradient = SweepGradient(
       startAngle: pi / 2,
       endAngle: 5 * (pi / 2),
       tileMode: TileMode.repeated,
       colors: [Colors.white.withOpacity(0.3), Colors.white.withOpacity(0.3)],
     );
 
-    final backPaint = new Paint()
+    final backPaint = Paint()
       ..shader = backgroundGradient.createShader(rect)
       ..strokeCap = StrokeCap.round
       ..style = PaintingStyle.stroke
       ..strokeWidth = strokeWidth;
 
-    final paint = new Paint()
+    final paint = Paint()
       ..shader = gradient.createShader(rect)
       ..strokeCap = StrokeCap.round
       ..style = PaintingStyle.stroke
       ..strokeWidth = strokeWidth;
-    final center = new Offset(size.width / 2, size.height / 2);
+    final center = Offset(size.width / 2, size.height / 2);
     final radius = min(size.width / 2, size.height / 2) - (strokeWidth / 2);
     final startAngle = (pi / 2) + (pi / 16 * 3);
     final totalSweepAngle = ((2 * pi) - (2 * (pi / 16 * 3)));
     final sweepAngle = totalSweepAngle * progress;
 
     canvas.drawArc(
-      new Rect.fromCircle(center: center, radius: radius),
+      Rect.fromCircle(center: center, radius: radius),
       startAngle,
       totalSweepAngle,
       false,
       backPaint,
     );
 
-    canvas.drawArc(new Rect.fromCircle(center: center, radius: radius),
-        startAngle, sweepAngle, false, paint);
+    canvas.drawArc(Rect.fromCircle(center: center, radius: radius), startAngle,
+        sweepAngle, false, paint);
   }
 
   @override

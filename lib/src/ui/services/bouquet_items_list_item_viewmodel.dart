@@ -20,7 +20,7 @@ class BouquetItemsListItemViewModel {
 
   static BouquetItemsListItemViewModel fromStore(
       Store<AppState> store, IBouquetItem bouquetItem) {
-    return new BouquetItemsListItemViewModel(
+    return BouquetItemsListItemViewModel(
       selected: store.state.bouquetItemsState.selectedService == bouquetItem,
       bouquetItem: bouquetItem,
       onTap: () {

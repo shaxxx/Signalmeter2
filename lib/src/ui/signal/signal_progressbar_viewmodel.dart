@@ -115,7 +115,7 @@ class SignalProgressbarViewModel {
   static SignalProgressbarViewModel fromStore(
       Store<AppState> store, Messages messages) {
     return SignalProgressbarViewModel(
-      signalResponse: store.state.signalMonitorState.responses.length > 0
+      signalResponse: store.state.signalMonitorState.responses.isNotEmpty
           ? store.state.signalMonitorState.responses.last
           : null,
       messages: messages,

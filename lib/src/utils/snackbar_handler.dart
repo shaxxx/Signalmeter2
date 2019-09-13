@@ -99,7 +99,7 @@ class SnackbarHandler {
       return;
     }
     isShowing = true;
-    while (snackBars.length > 0) {
+    while (snackBars.isNotEmpty) {
       //take first message in queue
       var s = snackBars.first;
       //pop the message

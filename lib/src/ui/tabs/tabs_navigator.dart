@@ -22,7 +22,7 @@ class TabsNavigator extends StatelessWidget {
             onTap: viewModel.onTap,
             currentIndex: viewModel.currentIndex,
             items: [
-              new BottomNavigationBarItem(
+              BottomNavigationBarItem(
                 backgroundColor: Colors.transparent,
                 icon: Icon(
                   Icons.folder_special,
@@ -31,7 +31,7 @@ class TabsNavigator extends StatelessWidget {
                   MessageProvider.of(context).bouquets,
                 ),
               ),
-              new BottomNavigationBarItem(
+              BottomNavigationBarItem(
                 backgroundColor: Colors.transparent,
                 icon: Icon(
                   Icons.reorder,
@@ -40,7 +40,7 @@ class TabsNavigator extends StatelessWidget {
                   MessageProvider.of(context).services,
                 ),
               ),
-              new BottomNavigationBarItem(
+              BottomNavigationBarItem(
                 backgroundColor: Colors.transparent,
                 icon: Icon(
                   Icons.network_check,
@@ -49,7 +49,7 @@ class TabsNavigator extends StatelessWidget {
                   MessageProvider.of(context).signal,
                 ),
               ),
-              new BottomNavigationBarItem(
+              BottomNavigationBarItem(
                 backgroundColor: Colors.transparent,
                 icon: Icon(
                   Icons.more_horiz,

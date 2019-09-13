@@ -72,7 +72,7 @@ class SignalMonitorMiddleware extends MiddlewareClass<AppState> {
         store.dispatch(ChangeSignalMonitorStatusEvent(MonitorStatus.running));
       }
     } else if (action is ChangeSignalMonitorStatusEvent) {
-      _operation?.cancel();
+      await _operation?.cancel();
       _status = action.status;
       _requester = WebRequester(
         Logger.root,
@@ -81,13 +81,13 @@ class SignalMonitorMiddleware extends MiddlewareClass<AppState> {
       );
       _monitorHash = store.state.signalMonitorState.hashCode;
       if (action.status == MonitorStatus.running) {
-        Wakelock.enable();
+        await Wakelock.enable();
         _operation = CancelableOperation.fromFuture(_getSignal(
           store,
           store.state.signalMonitorState.hashCode,
         ));
       } else {
-        Wakelock.disable();
+        await Wakelock.disable();
       }
     }
     next(action);

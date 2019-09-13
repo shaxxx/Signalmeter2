@@ -15,8 +15,8 @@ class SubtitlePanelView extends StatelessWidget {
     var theme = Theme.of(context);
     return Container(
       margin: EdgeInsets.only(top: 15, bottom: 5, left: 10, right: 10),
-      decoration: new BoxDecoration(
-        borderRadius: new BorderRadius.all(
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.all(
           const Radius.circular(10.0),
         ),
         color: theme.primaryColor.withOpacity(0.3),

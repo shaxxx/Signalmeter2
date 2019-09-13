@@ -32,7 +32,7 @@ class BouquetItemsState {
   }
 
   List<IBouquetItem> bouquetItems(IBouquetItemBouquet bouquet) {
-    if (searchTerm == null || searchTerm.trim().length == 0) {
+    if (searchTerm == null || searchTerm.trim().isEmpty) {
       return cachedBouquetItems[bouquet];
     }
     if (cachedBouquetItems[bouquet] == null) {

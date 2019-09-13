@@ -20,7 +20,7 @@ class MessageDisplayHandler {
 
   static Future _displayErrorMessages(
       MessageDisplayerInterface viewModel, BuildContext context) async {
-    if (viewModel.errors.length > 0) {
+    if (viewModel.errors.isNotEmpty) {
       var messageEvent = viewModel.errors.first;
       viewModel.errors.remove(messageEvent);
       viewModel.messageShown(messageEvent);
@@ -42,7 +42,7 @@ class MessageDisplayHandler {
 
   static Future _displayInfoMessages(
       MessageDisplayerInterface viewModel, BuildContext context) async {
-    if (viewModel.infos.length > 0) {
+    if (viewModel.infos.isNotEmpty) {
       var messageEvent = viewModel.infos.first;
       viewModel.infos.remove(messageEvent);
       viewModel.messageShown(messageEvent);
@@ -50,7 +50,7 @@ class MessageDisplayHandler {
         MessageProvider.of(context),
         messageEvent,
       );
-      SnackbarHandler.showInfoSnackBar(
+      await SnackbarHandler.showInfoSnackBar(
         context,
         message,
       );
@@ -59,7 +59,7 @@ class MessageDisplayHandler {
 
   static Future _displayWarningMessages(
       MessageDisplayerInterface viewModel, BuildContext context) async {
-    if (viewModel.warnings.length > 0) {
+    if (viewModel.warnings.isNotEmpty) {
       var messageEvent = viewModel.warnings.first;
       viewModel.warnings.remove(messageEvent);
       viewModel.messageShown(messageEvent);

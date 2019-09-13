@@ -19,14 +19,15 @@ class ToggleConnectionViewModel {
                 ConnectionStatusEnum.disconnected) ||
             (store.state.connectionState == ConnectionStatusEnum.error),
         toggleStatus: () async {
-          if (store.state.connectionState != ConnectionStatusEnum.connected)
+          if (store.state.connectionState != ConnectionStatusEnum.connected) {
             store.dispatch(WakeUpEvent(
               profile: store.state.profilesState.selectedProfile,
             ));
-          else
+          } else {
             store.dispatch(SentToSleepEvent(
               profile: store.state.profilesState.selectedProfile,
             ));
+          }
         });
   }
 

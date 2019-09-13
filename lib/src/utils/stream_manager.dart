@@ -135,7 +135,7 @@ class StreamUtils {
     );
     if (extraParameters == null ||
         extraParameters.streamUrl == null ||
-        extraParameters.streamUrl.length == 0) {
+        extraParameters.streamUrl.isEmpty) {
       return null;
     }
     return Uri.parse(extraParameters.streamUrl);

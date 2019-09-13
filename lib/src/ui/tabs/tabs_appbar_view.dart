@@ -42,7 +42,7 @@ class TabsAppBarView {
               store, MessageProvider.of(context));
         },
         builder: (context, viewModel) {
-          if (viewModel.menuItems == null || viewModel.menuItems.length == 0) {
+          if (viewModel.menuItems == null || viewModel.menuItems.isEmpty) {
             return SizedBox.shrink();
           }
           var actions = _visibleActions(viewModel);

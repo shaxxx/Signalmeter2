@@ -29,7 +29,7 @@ class DisappearingFabState extends State<DisappearingFab>
   @override
   void initState() {
     super.initState();
-    _controller = new AnimationController(
+    _controller = AnimationController(
       duration: widget.duration,
       vsync: this,
     );
@@ -37,11 +37,10 @@ class DisappearingFabState extends State<DisappearingFab>
       setState(() {});
     });
 
-    doubleAnimation = new Tween(begin: 0.0, end: 1.0).animate(
-        new CurvedAnimation(
-            parent: _controller,
-            curve: Curves.easeIn,
-            reverseCurve: Curves.easeOut));
+    doubleAnimation = Tween(begin: 0.0, end: 1.0).animate(CurvedAnimation(
+        parent: _controller,
+        curve: Curves.easeIn,
+        reverseCurve: Curves.easeOut));
   }
 
   @override
