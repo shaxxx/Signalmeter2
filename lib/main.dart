@@ -118,6 +118,7 @@ class _EnigmaSignalMeterAppState extends State<EnigmaSignalMeterApp>
             )),
         //locale: Locale('hr', ''),
         title: 'SignalMeter',
+        debugShowCheckedModeBanner: false,
         initialRoute: AppRoutes.home,
         routes: {
           AppRoutes.home: (context) => ProfilesView(),
