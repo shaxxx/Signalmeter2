@@ -10,6 +10,7 @@ import 'package:redux/redux.dart';
 import 'package:logging/logging.dart';
 import 'package:async/async.dart';
 import 'package:wakelock/wakelock.dart';
+import 'package:pedantic/pedantic.dart';
 
 import '../../constants.dart';
 import 'connection_state_events.dart';
@@ -81,13 +82,13 @@ class SignalMonitorMiddleware extends MiddlewareClass<AppState> {
       );
       _monitorHash = store.state.signalMonitorState.hashCode;
       if (action.status == MonitorStatus.running) {
-        await Wakelock.enable();
+        unawaited(Wakelock.enable());
         _operation = CancelableOperation.fromFuture(_getSignal(
           store,
           store.state.signalMonitorState.hashCode,
         ));
       } else {
-        await Wakelock.disable();
+        unawaited(Wakelock.disable());
       }
     }
     next(action);
