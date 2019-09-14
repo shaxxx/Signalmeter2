@@ -1,18 +1,14 @@
 # SignalMeter
-
-
-Rewrite of original [SignalMeter](https://github.com/shaxxx/SignalMeter) mobile app in Flutter.
-
 Use your phone or tablet to align your satellite dish by reading signal levels from Enigma 1 or Enigma2 satellite receiver.
-YOU WILL NEED SATELLITE RECEIVER WITH ENIGMA 1 OR ENIGMA 2 SOFTWARE TO USE THIS SOFTWARE. 
+
+![](https://github.com/shaxxx/Signalmeter2/raw/master/docs/esm.gif)
+
+>YOU WILL NEED SATELLITE RECEIVER WITH ENIGMA 1 OR ENIGMA 2 SOFTWARE TO USE THIS SOFTWARE. 
+
 SUPPORTS ALL currently existing Enigma1 and Enigma2 receivers and images, has same interface for both versions and works remotely (just forward web port and you can connect from anywhere). Additionally it allows you to ZAP channels, take screenshots and watch live TV streams directly on your device. SatFinder for Dreambox, VU+ and many others.
 
-FOR STREAM:
-
-- make sure you have video player with RTSP stream support (VPlayer or Daroon player)
-- user internal IP address (192.168...) instead of public IP/hostname to avoid problems with routing and port forwarding. Once you're sure it's working locally and you have UPLOAD speed of more than 5-6 MBit/s try to forward TCP ports 80, 8001 and 31339.
-
 Tested and working on this receivers:
+
 - Dreambox DM500
 - Dreambox DM500HD
 - Dreambox DM600
@@ -34,3 +30,13 @@ Tested and working on this receivers:
 - Gigablue solo
 - ClarkeTech ET9000
 - ClarkeTech Xtrend ET5000
+- Edision OS Mio
+
+Application is available for iOS and Android mobile devices.
+
+[![SignalMeter in AppStore](appstore.svg)](https://apps.apple.com/us/app/enigma-signal-meter/id1479557163?l=hr&ls=1)
+[![SignalMeter in Play Store](play.png)](https://play.google.com/store/apps/details?id=com.krkadoni.app.signalmeter)
+
+>  Apple, the Apple logo, iPhone, and iPad are trademarks of Apple Inc., registered in the U.S. and other countries and regions. App Store is a service mark of Apple Inc. 
+>  
+> Google Play and the Google Play logo are trademarks of Google LLC.
