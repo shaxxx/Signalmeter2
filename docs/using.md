@@ -13,7 +13,7 @@ Real fun begins when you connect to the device. You can
 - watch streams
 
 ## Changing channels (ZAP)
-Each time you connect you'll get list of bouquets from the devices automatically. Taping on bouquet name will show you list of services in that bouquet. Markers (headers) are colored darker. If currently selected service is in selected bouquet it will be highlighted. 
+Each time you connect you'll get list of bouquets from the device automatically. Taping on a bouquet name will show you list of services in that bouquet. Markers (headers) are colored darker. If currently selected service is in selected bouquet it will be highlighted. 
 
 Taping on service name will zap (change) current channel and switch you to Signal monitor page.
 
@@ -26,17 +26,17 @@ Let's brake information on this page apart.
 First, you'll see the name of current channel. This information is updated automatically every 15 seconds from the device. That way you'll notice if someone changes channel by remote. Bellow that you'll see additional info about the channel. If it's DVB-T, DVB-C service, or in case if it's DVB-S service you'll see name of the satellite it broadcasts from.
 
 ### Signal levels
-Depending of Enigma type you'll see 3 progress bars on Enigma1 devices, and 4 on Enigma2 devices (Enigma2 has extra "db" levels). You can tap on progress bar to cycle active view.
+Depending on Enigma type you'll see 3 progress bars on Enigma1 devices, and 4 on Enigma2 devices (Enigma2 has extra "db" levels). You can tap on progress bar to cycle active view.
 
 ### Signal chart
-Displays last 30 signal readings in a nice chart. Each time a request to read signal level is made you'll see it in the chart as the most right one. Duration of the last request is shown on the top of the chart. This is good indicator if there are some problems with WiFi signal or network in general. Try to keep request duration as low as possible. Taping on the chart will open it in full screen and you'll also see average duration of last 30 signal readings. Taping it again will close the chart.
+Displays last 30 signal readings in a nice chart. Each time signal level is read you'll see it in the chart as the most right one. Duration of the last request is shown on the top of the chart. This is good indicator if there are some problems with Wi-Fi signal or network in general. Try to keep request duration as low as possible. Taping on the chart will open it in full screen and you'll also see average duration of last 30 signal readings. Taping it again will close the chart.
 
 ### TTS (Text to speech)
 App can read out signal level (SNR) out loud for you. This option requires active TTS language on your mobile device. You can turn this option ON/OFF from the menu. When there's no information available signal will not be read.
 
 Stream services have no information about signal and no TTS reading out loud.
  
-##More
+## More
 ### Restart GUI
 Restart only Enigma GUI, does not restart OS. App will automatically disconnect.
 ### Send to sleep
