@@ -6,8 +6,8 @@
 ## Installation
 Application is available for iOS and Android mobile devices.
 
-[![SignalMeter in AppStore](appstore.svg)](https://apps.apple.com/us/app/enigma-signal-meter/id1479557163?l=hr&ls=1)
-[![SignalMeter in Play Store](play.png)](https://play.google.com/store/apps/details?id=com.krkadoni.app.signalmeter)
+[![SignalMeter in AppStore](https://raw.githubusercontent.com/shaxxx/Signalmeter2/master/docs/appstore.svg?sanitize=true)](https://apps.apple.com/us/app/enigma-signal-meter/id1479557163?l=hr&ls=1)
+[![SignalMeter in Play Store](https://raw.githubusercontent.com/shaxxx/Signalmeter2/master/docs/play.png)](https://play.google.com/store/apps/details?id=com.krkadoni.app.signalmeter)
 
 >  Apple, the Apple logo, iPhone, and iPad are trademarks of Apple Inc., registered in the U.S. and other countries and regions. App Store is a service mark of Apple Inc. 
 >  
