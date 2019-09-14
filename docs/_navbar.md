@@ -1,4 +1,2 @@
-- [Getting Started](gettingstarted.md)
-- [Usage](using.md)
-- [Troubleshooting](troubleshooting.md)
-- [FAQ](faq.md)
+- [English](gettingstarted.md)
+- [Hrvatski](hr/gettingstarted.md)
