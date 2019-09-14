@@ -3,7 +3,7 @@ Use your phone or tablet to align your satellite dish by reading signal levels f
 
 ![](https://github.com/shaxxx/Signalmeter2/raw/master/docs/esm.gif)
 
->YOU WILL NEED SATELLITE RECEIVER WITH ENIGMA 1 OR ENIGMA 2 SOFTWARE TO USE THIS SOFTWARE. 
+>YOU WILL NEED SATELLITE RECEIVER WITH ENIGMA 1 OR ENIGMA 2 SOFTWARE TO USE THIS APPLICATION. 
 
 SUPPORTS ALL currently existing Enigma1 and Enigma2 receivers and images, has same interface for both versions and works remotely (just forward web port and you can connect from anywhere). Additionally it allows you to ZAP channels, take screenshots and watch live TV streams directly on your device. SatFinder for Dreambox, VU+ and many others.
 
