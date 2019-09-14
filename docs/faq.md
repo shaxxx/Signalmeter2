@@ -1,4 +1,4 @@
- Frequently asked questions
+# Frequently asked questions
 ### My device is not supported, what can I do about it?
 Application was thoroughly tested with numerous devices, but it's impossible to test it with all devices on the market. You can still try the app. If it doesn't work you can try to [contact](mailto:development@krkadoni.com) me.
 ### What ports do I need to forward? 
