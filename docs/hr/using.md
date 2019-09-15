@@ -1,5 +1,5 @@
 # Dodavanje novih uređaja
-Prije nego počnete zaista koristiti aplikaciju morate dodati novi uređaj. Već bi ste trebali znati sve potrebne informacije koji su vam potrebne. Jednom kada ste unijeli sve potrebne informaciju u aplikaciju potvrdite akciju klikom na dugme "SPREMI". Aplikacija će vas upozoriti ako je jedan od portova zatvoren, ili ako ste propustili unijeti neke informacije.
+Prije nego počnete zaista koristiti aplikaciju morate dodati novi uređaj. Već bi ste trebali znati sve potrebne informacije koji su vam potrebne. Jednom kada ste unijeli sve potrebne informacije u aplikaciju potvrdite akciju klikom na dugme "SPREMI". Aplikacija će vas upozoriti ako je jedan od portova zatvoren, ili ako ste propustili unijeti neke informacije.
 
 Možete dodati više uređaja, ali u jednom trenutku možete biti spojeni isključivo na jedan prijemnik.
 
