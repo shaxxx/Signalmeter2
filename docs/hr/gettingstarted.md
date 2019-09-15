@@ -30,8 +30,6 @@ Ako planirate aplikaciju koristiti samo kada ste na lokalnoj mreži (LAN) trebat
 
 Ako planirate prijemniku pristupati sa interneta trebati će vam javna adresa. Postoji veliki broj [BESPLATNIH](http://freedns.afraid.org/) i servisa sa [plaćenjem](https://www.noip.com/) preko kojih možete osigurati javnu adresu. 
 
-If you're planning to access your device from internet you'll need public hostname. There are many [FREE](http://freedns.afraid.org/) and [paid](https://www.noip.com/) services that can provide you with public hostname. 
-
 **TOPLO PREPORUČUJEMO DA APLIKACIJU NAJPRIJE TESTIRATE NA LOKALNOJ MREŽI.**
 
 ### Korisničko ime
