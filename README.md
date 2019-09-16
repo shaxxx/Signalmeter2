@@ -1,6 +1,8 @@
 # SignalMeter
 Use your phone or tablet to align your satellite dish by reading signal levels from Enigma 1 or Enigma2 satellite receiver.
 
+[DOCS & SUPPORT](https://www.krkadoni.com)
+
 ![](https://github.com/shaxxx/Signalmeter2/raw/master/docs/esm.gif)
 
 >YOU WILL NEED SATELLITE RECEIVER WITH ENIGMA 1 OR ENIGMA 2 SOFTWARE TO USE THIS APPLICATION. 
