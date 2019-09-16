@@ -41,6 +41,7 @@ class ProfileWidget extends StatefulWidget {
 class ProfileWidgetState extends State<ProfileWidget> {
   ProfileEditModel profile = ProfileEditModel();
   final _formKey = GlobalKey<FormState>();
+  FocusScopeNode focusNode = FocusScopeNode();
 
   @override
   void initState() {
@@ -296,12 +297,15 @@ class ProfileWidgetState extends State<ProfileWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return Form(
-      key: _formKey,
-      autovalidate: widget.profile != null,
-      child: _InheritedProfileWidget(
-        data: this,
-        child: widget.child,
+    return FocusScope(
+      node: focusNode,
+      child: Form(
+        key: _formKey,
+        autovalidate: widget.profile != null,
+        child: _InheritedProfileWidget(
+          data: this,
+          child: widget.child,
+        ),
       ),
     );
   }
