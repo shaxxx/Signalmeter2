@@ -9,4 +9,5 @@ Use your phone or tablet to align your satellite dish by reading signal levels f
 [![](https://github.com/shaxxx/Signalmeter2/raw/master/docs/play.png)](https://play.google.com/store/apps/details?id=com.krkadoni.app.signalmeter)
 
 [Get Started](gettingstarted.md)
+[Contact](mailto:development@krkadoni.com)
 [GitHub](https://github.com/shaxxx/Signalmeter2/)

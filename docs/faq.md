@@ -16,7 +16,7 @@ Default transcoding port for Enigma2 is
 >8002
 
 ### Why is my stream freezing?
-You're probably trying to watch streams from Internet and don't have enough bandwidth. You'll need UPLOAD speed of more than 5-6 MBit/s to watch streams without freezing. Also, your mobile will also need to have at least 6Mbit/s DOWNLOAD speed. If your device has it, use transcoding to transcode video "on the fly" to use less bandwidth.
+You're probably trying to watch streams from Internet and don't have enough bandwidth. You'll need UPLOAD speed of more than 5-6 MBit/s to watch streams without freezing. Also, your mobile will also need to have at least 6Mbit/s DOWNLOAD speed. If your device has transcoding, use it to transcode video "on the fly" to use less bandwidth.
 
 If streams are freezing on your local network you'll need to look for better Wi-Fi signal.
 
@@ -24,7 +24,7 @@ If streams are freezing on your local network you'll need to look for better Wi-
 Turn off transcoding, or reconfigure quality in Web interface plugin settings on your device. 
 
 ### Your app is nice, but why doesn't it have XYZ function?
-App has one, and only one goal. To help you align your satellite dish, as quickly as possible in the easiest way. You don't need to see EPG info, you don't set timers, you don't start recording, or check emails. Your focus is only on one thing. Keep things simple, get job done.
+App has one, and only one goal. To help you align your satellite dish, as quickly as possible in the easiest way. You don't need to see EPG info, you don't set timers, you don't start recording, or check emails. Your focus is only on one thing. Keep things simple, get job done. Beside, project is open sourced, anyone can modify it.
 
 ### There are plenty of apps like this, why should I use this one?
 You should use whatever app you feel is the best for you. However, Enigma Signal Meter was first app like this, and still the only one to support Enigma1 devices. On top of that it's been battle tested by both community and professionals. You'll see it shine on poor WiFi connections, and stream setup. Don't believe us? Try to tune your dish and tell us how it went. 

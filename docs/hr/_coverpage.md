@@ -10,4 +10,5 @@ Podesite svoje satelitski tanjur do savršenstva uz pomoć vašeg mobilnog uređ
 
 
 [Početak rada](gettingstarted.md)
+[Kontakt](mailto:development@krkadoni.com)
 [GitHub](https://github.com/shaxxx/Signalmeter2/)

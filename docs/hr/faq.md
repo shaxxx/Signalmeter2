@@ -5,7 +5,7 @@ Aplikacija je pomno testirana sa brojnim uređajima, ali je nemoguće testirati 
 ### Koje portove moram otvoriti? 
 Ne trebate otvarati nijedan port ako planirate aplikaciju koristiti samo na lokalnoj mreži. Ipak, ako želite aplikaciju koristiti i van lokalne mreže morati ćete otvoriti barem HTTP port (TCP 80 ili 443 ako koristite SSL).
 
-Na Enigma1 prijemnicima port nije unaprijed zana i ne očekujte da će stream raditi van vaše lokalne mreže.
+Na Enigma1 prijemnicima port nije unaprijed zadan i ne očekujte da će stream raditi van vaše lokalne mreže.
 
 Na Enigma2 prijemnicima i Stream i port za transkodiranje se podešavaju u postavkama dodatka na vašem prijemniku. 
 Zadani port za Stream na Enigma2 prijemnicima je

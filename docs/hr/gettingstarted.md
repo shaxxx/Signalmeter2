@@ -30,7 +30,7 @@ Ako planirate aplikaciju koristiti samo kada ste na lokalnoj mreži (LAN) trebat
 
 Ako planirate prijemniku pristupati sa interneta trebati će vam javna adresa. Postoji veliki broj [BESPLATNIH](http://freedns.afraid.org/) i servisa sa [plaćenjem](https://www.noip.com/) preko kojih možete osigurati javnu adresu. 
 
-**TOPLO PREPORUČUJEMO DA APLIKACIJU NAJPRIJE TESTIRATE NA LOKALNOJ MREŽI.**
+?> **TOPLO PREPORUČUJEMO DA APLIKACIJU NAJPRIJE TESTIRATE NA LOKALNOJ MREŽI.**
 
 ### Korisničko ime
 
@@ -62,14 +62,14 @@ To su portovi koje koristite kada prijemniku pristupate iz lokalne mreže. Ako p
 
 Zabilježeno je cijeli niz sigurnosnih propusta na Enigma web poslužitelju, [javnih](https://www.cvedetails.com/vulnerability-list/vendor_id-16623/product_id-38482/Openwebif-Project-Openwebif.html) i manje javnih koji napadaču omogućuje da preuzme potpunu kontrolu nad prijemnikom (bez lozinke).
 
-**SAVJETUJEMO VAM DA NIKADA NE DOPUŠTATE PRISTUP WEB POSLUŽITELJU NA VAŠEM PRIJEMNIKU SA UREĐAJA KOJI NISU NA VAŠOJ LOKALNOJ MREŽI**
+!> **SAVJETUJEMO VAM DA NIKADA NE DOPUŠTATE PRISTUP WEB POSLUŽITELJU NA VAŠEM PRIJEMNIKU SA UREĐAJA KOJI NISU NA VAŠOJ LOKALNOJ MREŽI**
 
 ### Jeli Web poslužitelj koristi HTTPS (SSL)
 
 Zadana vrijednost je
 > ne
 
-OVa beskorisna opcija dostupna je samo na Enigma2 prijemnicima. Ako se odlučite koristiti HTTPS pobrinite se da u postavkama aplikacije za uređaj unesete port 443. 
+Ova beskorisna opcija dostupna je samo na Enigma2 prijemnicima. Ako se odlučite koristiti HTTPS pobrinite se da u postavkama aplikacije za uređaj unesete port 443. 
 
 
 ### Enigma1 ili Enigma2

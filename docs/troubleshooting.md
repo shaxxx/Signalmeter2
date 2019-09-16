@@ -6,14 +6,15 @@ If you're having trouble connecting here are some tips for you to try. These are
 Go to network settings of your device using your remote, and check if device is online. Make sure you double check all network settings. Check cables. Once you see your device is online you can proceed with other steps. 
 
 ## Check if you see device on local network
-If you've checked network settings in previous step, you'll know current IP address of your device. Easiest way to make sure device can be seen on local network is to enter IP of the device in the browser off your PC or mobile (make sure they're connected to local network via LAN or Wi-Fi, not cellular connection). If you get dialog asking for password, or web page loaded - then congratulations, your device is ready for use. Use the same IP in app settings and you're good to go.
+If you've checked network settings in previous step, you'll know current IP address of your device. Easiest way to make sure device can be seen on local network is to enter IP of the device in the browser of your PC or mobile (make sure they're connected to local network via LAN or Wi-Fi, not cellular connection). If you get dialog asking for password, or web page loaded - then congratulations, your device is ready for use. Use the same IP in app settings and you're good to go.
 
-If you don't get any response try to [PING](https://en.wikipedia.org/wiki/Ping_networking_utility) your device. If you don't get any response this can mean one of three things
+If you don't get any response try to [PING](https://en.wikipedia.org/wiki/Ping_networking_utility) your device. If you don't get any response this can mean one of four things
 
+- you're checking the wrong IP address/hostname
+- your device is not connected to your local network or is misconfigured
 - your PC/Mobile is not connected to your local network or is misconfigured
 - your PC/Mobile has firewall blocking outgoing connection to Web interface (highly unlikely)
-- your device is not connected to your local network or is misconfigured
-- you're checking the wrong IP address/hostname
+
 
 If you can ping your device, but still can't see it in the browser this means Web server on your device is not running or at least not on port 80. Check your plugins list on your receiver, if you don't see something like "Webinterface" or with "webif" inside the name you'll need to install Web interface plugin. Consult the author of your Enigma image to find out more. 
 

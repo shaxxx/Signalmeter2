@@ -24,13 +24,13 @@ Analizirajmo informacije na ovoj stranici jednu po jednu.
 
 ### Trenutni kanal
 Na vrhu možete vidjeti naziv trenutnog kanala koji se prikazuje na prijemniku. Ova informacija ažurira se automatski svakih 15 sekundi sa prijemnika. Na ovaj način ćete primjetiti ako netko promjeni kanal putem daljinskog upravljača.
-Ispod naziv kanala vidjeti ćete dodatne informacije o kanalu. Jeli se radi o DVB-T, DVB-C kanalu, i u slučaju da se radi o DVB-S kanalu vidjeti ćete naziv satelita sa kojeg kanal emitira.
+Ispod naziva kanala vidjeti ćete dodatne informacije o kanalu. Jeli se radi o DVB-T, DVB-C kanalu, i u slučaju da se radi o DVB-S kanalu vidjeti ćete naziv satelita sa kojeg kanal emitira.
 
 ### Razina signala
 Ovisno o tome jeli se radi o Enigma1 ili Enigma2 prijemniku vidjeti ćete 3 razine signala kod Enigma1 prijemnika, a 4 razine signala kod Enigma2 prijemnika (Enigma2 ima dodatnu "db" razinu signala). Klikom na razinu signala možete mijenjati način prikaza signala.
 
 ### Graf signala
-Prikazuje posljednjih 30 očitanja signala na lijepom grafu. Nakon svakog očitanja posljednja očitanja vrijednost biti će skroz desno. Vrijeme trajanja posljednjeg očitanja prikazano je na vrhu grafa. Ovo je dobar pokazatelj jeli postoje problemi sa signalom bežične mreže ili općenito sa mrežom. Pokušajte držati vrijeme očitanja što je moguće manjim. Klikom na graf isti će se prikazati preko cijelog zaslona. Na vrhu grafa biti će vidljiva još i dodatna informacija o prosječnom vremenu trajanja posljednjih 30 mjerenja signala. Ako ponovo kliknete na graf zatvoriti će se prikaz preko cijelog zaslona.
+Prikazuje posljednjih 30 očitanja signala na zgodnom grafu. Nakon svakog očitanja posljednja očitanja vrijednost biti će skroz desno. Vrijeme trajanja posljednjeg očitanja prikazano je na vrhu grafa. Ovo je dobar pokazatelj jeli postoje problemi sa signalom bežične mreže ili općenito sa mrežom. Pokušajte držati vrijeme očitanja što je moguće manjim. Klikom na graf isti će se prikazati preko cijelog zaslona. Na vrhu grafa biti će vidljiva još i dodatna informacija o prosječnom vremenu trajanja posljednjih 30 mjerenja signala. Ako ponovo kliknete na graf zatvoriti će se prikaz preko cijelog zaslona.
 
 
 ### TTS (Pretvaranje teksta u govor)
@@ -41,16 +41,16 @@ Aplikacija Vam može naglas čitati razinu signala. Ova opcija zahtjeva da imate
 Ponovno pokreće grafičko sučelje na prijemniku, operativni sustave se ne pokreće ponovno. Aplikacija će automatski prekinuti vezu.
 
 ### Stanje pripravnosti
-Ova akcija jedaka je pritisku crvenog gumba na daljinskom upravljaču. Ništa ne pokreće ponovno. Aplikacija će automatski prekinuti vezu.
+Ova akcija jedaka je pritisku crvenog gumba na daljinskom upravljaču. Aplikacija će automatski prekinuti vezu.
 
 ### Stream
 Inicijalizira gledanje TV-a uživo na vašem uređaju putem stream funkcije.
-Ovisno o tome jeli se radi o Enigma1 ili Enigma2 prijemniku aplikacija će proći niz koraka kako bi pronašla ispravne parametre za stream. Provjeriti će jeli port otvoren, poušati pronaći alternativni, provjeriti jeli uređaj na lokalnoj mreži, pokušati uključiti transkodiranje, itd. Jednom kada pronađe dostupan port otvoriti će video preglednig u kojem ćete uživo moći gledati trenutni kanal.
+Ovisno o tome jeli se radi o Enigma1 ili Enigma2 prijemniku aplikacija će proći niz koraka kako bi pronašla ispravne parametre za stream. Provjeriti će jeli port otvoren, pokušati pronaći alternativni, provjeriti jeli uređaj na lokalnoj mreži, pokušati uključiti transkodiranje, itd. Jednom kada pronađe dostupan port otvoriti će video preglednik u kojem ćete uživo moći gledati trenutni kanal.
 
-**Na iOS uređajima ova mogućnost zahtjeva instalaciju VLC Player-a**
+?> **Na iOS uređajima ova mogućnost zahtjeva instalaciju VLC Player-a**
 
 ### Snimka ekrana
-Otvara pregled sa snimljenom slikom trenutnog kanala uključivo vidljivi grafički sadržaj korisničko sučelja. Koristite ikonicu u izborniku kako bi napravili više snimki ekrana bez izlaska iz preglednika snimki ekrana.
+Otvara pregled sa snimljenom slikom trenutnog kanala uključivo i vidljivi grafički sadržaj korisničko sučelja. Koristite ikonicu u izborniku kako bi napravili više snimki ekrana bez izlaska iz preglednika snimki ekrana.
 
 ### O aplikaciji
 Ovdje možete pronaći trenutnu verziju aplikacije i dodatne informacije o aplikaciji.

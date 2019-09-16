@@ -44,7 +44,7 @@ Sends device to Standby. Equivalent of pressing Red button on remote. Does not r
 ### Stream
 Initializes stream process. Depending on Enigma version app will take several steps to make sure it gets stream parameters. It will check open ports, try to find alternative ones, check if device is on local network, try transcoding, etc. Once open stream/transcoding port is found video player will open to play the stream.
 
-**On iOS this feature requires VLC Player installed on your mobile device.**
+?> **On iOS this feature requires VLC Player installed on your mobile device.**
 ### Screenshot
 Launches Screenshot page and takes screenshot of current channel including any on screen display if it's visible at the moment. Use menu icon to take multiple screenshots without exiting Screenshot preview.
 ### About

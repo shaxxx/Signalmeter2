@@ -1,6 +1,6 @@
 # Getting Started
 
-> In order to use this application you'll need satellite receiver with Enigma1 or  [Enigma2](https://kodi.wiki/view/Enigma2) software, and web server running and available on network
+?> In order to use this application you'll need satellite receiver with Enigma1 or  [Enigma2](https://kodi.wiki/view/Enigma2) software, and web server running and available on network
 
 
 ## Installation
@@ -30,7 +30,7 @@ If you're planning to access your device only from local network (LAN) you'll ne
 
 If you're planning to access your device from internet you'll need public hostname. There are many [FREE](http://freedns.afraid.org/) and [paid](https://www.noip.com/) services that can provide you with public hostname. 
 
-**WE STRONGLY RECOMMEND TO TESTI THE APP IN LOCAL NETWORK FIRST.**
+?> **WE RECOMMEND YOU TO TEST THE APP IN LOCAL NETWORK FIRST.**
 
 ### Username
 
@@ -54,7 +54,7 @@ Like with everything else, make sure your device is secure and keep your passwor
 
 ### Port Web server is running on
 
-Default HTTP port Web server is running on always 
+Default HTTP port Web server is running on is 
 > 80
 
 if you're using SSL (HTTPS) default port is 
@@ -62,9 +62,9 @@ if you're using SSL (HTTPS) default port is
 
 Those are the ports used when you access your device in local network. If you plan to access device from the internet you'll have to use [NAT](https://en.wikipedia.org/wiki/Network_address_translation) and [port forwarding](https://en.wikipedia.org/wiki/Port_forwarding) or some kind of [VPN](https://en.wikipedia.org/wiki/Virtual_private_network).
 
-There has been numerous security issues with Enigma web server, both [public](https://www.cvedetails.com/vulnerability-list/vendor_id-16623/product_id-38482/Openwebif-Project-Openwebif.html) and non-public allowing remote attackers to take control of your box (without password).
+There has been numerous security issues with Enigma web server, both [public](https://www.cvedetails.com/vulnerability-list/vendor_id-16623/product_id-38482/Openwebif-Project-Openwebif.html), and non-public allowing remote attackers to take control of your box (without password).
 
-**WE STRONGLY ADVISE YOU AGAINST MAKING YOUR WEB SERVER AVAILABLE ON INTERNET.**
+!> **WE STRONGLY ADVISE YOU AGAINST MAKING YOUR WEB SERVER AVAILABLE ON INTERNET.**
 
 ### Is web server using SSL (HTTPS)
 
