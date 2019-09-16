@@ -71,7 +71,7 @@ class SignalCircularProgressViewModel {
       if (db == -1) {
         return messages.noInformation;
       }
-      return '${db.round()}';
+      return '${db.toStringAsFixed(2)}';
     }
     return messages.noInformation;
   }
