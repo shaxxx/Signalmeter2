@@ -4,7 +4,7 @@ Ako imate problema sa spajanjem na vaš prijemnik ovo su savjeti koji će vam po
 ## Provjerite jeli prijemnik ima vezu na internet
 Sa daljinskim upravljačem otvorite mrežne postavke prijemnika i provjerite jeli ima pristup na internet. Provjerite svoje mrežne postavke. Provjerite kablove. Kada utvrdite da vaš prijemnik ima pristup internetu spremni ste za idući korak.
 
-## Provjite jeli prijemnik dostupan na lokalnoj mreži
+## Provjerite jeli prijemnik dostupan na lokalnoj mreži
 Ako ste provjerili mrežne postavke u prethodnom koraku, znati ćete koja je trenutna IP adresa vašeg uređaja na lokalnoj mreži. Najlakši način da provjerite jeli prijemnik dostupan na lokalnoj mreži je da u internet pregledniku na vašem računalu ili mobilnom uređaju unesete IP adresu prijemnika (PC/mobitel moraju biti spojeni na lokalnu mrežu ili Wi-Fi, a ne recimo na mobilnoj 3G/4G/5G mreži).
 Ako dobijete prozorčić u koji trebate unijeti lozinku, ili vam se učita stranica - čestitamo vaš prijemnik spreman je za upotrebu. U aplikaciji koristite jednaku IP adresu koju ste upisali u internet preglednik.
 
