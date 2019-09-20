@@ -46,7 +46,7 @@ apply from: "$flutterRoot/packages/flutter_tools/gradle/flutter.gradle"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
 
-    signingConfigs {
+    /*signingConfigs {
        release {
            keyAlias keystoreProperties['keyAlias']
            keyPassword keystoreProperties['keyPassword']
@@ -58,7 +58,7 @@ apply from: "$flutterRoot/packages/flutter_tools/gradle/flutter.gradle"
        release {
            signingConfig signingConfigs.release
        }
-   }
+   }*/
 }
 
 flutter {
