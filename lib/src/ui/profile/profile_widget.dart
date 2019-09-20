@@ -154,7 +154,7 @@ class ProfileWidgetState extends State<ProfileWidget> {
   }
 
   Future<bool> _checkTranscodingPort() async {
-    if (!profile.transcoding) {
+    if (!profile.transcoding || !profile.streaming) {
       return true;
     }
     if (!(await NetworkUtils.isPortOpen(

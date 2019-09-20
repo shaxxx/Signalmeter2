@@ -64,7 +64,9 @@ class ProfileEditView extends StatelessWidget {
                             profileWidget.profile.enigma == EnigmaType.enigma2
                         ? TranscodingRow()
                         : SizedBox.shrink(),
-                    profileWidget.profile.transcoding
+                    profileWidget.profile.streaming &&
+                            profileWidget.profile.transcoding &&
+                            profileWidget.profile.enigma == EnigmaType.enigma2
                         ? TranscodingPortRow()
                         : SizedBox.shrink(),
                     _saveButton(context, profileWidget),

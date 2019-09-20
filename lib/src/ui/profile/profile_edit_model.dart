@@ -27,8 +27,10 @@ class ProfileEditModel {
       streamingPort: this.streaming && this.enigma == EnigmaType.enigma2
           ? int.parse(this.streamingPort)
           : null,
-      transcoding: this.transcoding,
-      transcodingPort: this.transcoding && this.enigma == EnigmaType.enigma2
+      transcoding: this.streaming && this.transcoding,
+      transcodingPort: this.streaming &&
+              this.transcoding &&
+              this.enigma == EnigmaType.enigma2
           ? int.parse(this.transcodingPort)
           : null,
       username: this.username,
