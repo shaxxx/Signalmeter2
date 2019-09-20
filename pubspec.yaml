@@ -57,6 +57,7 @@ dev_dependencies:
     sdk: flutter
   intl_translation: ^0.17.0
   flutter_launcher_icons: "^0.7.3"
+  pedantic: ^1.8.0
 
 flutter_icons:
   image_path_android: "assets/icons/esm_icon_1024_1024_Android.png"
