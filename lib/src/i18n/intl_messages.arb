@@ -1,6 +1,6 @@
 {
   "@@locale": "en",
-  "@@last_modified": "2019-09-09T14:53:05.216572",
+  "@@last_modified": "2019-09-22T19:38:14.531806",
   "appName": "SignalMeter",
   "@appName": {
     "type": "text",
@@ -484,7 +484,7 @@
     "type": "text",
     "placeholders": {}
   },
-  "errServerError": "Web interface returned error 500. Something has crashed on recevier. Maybe invalid characters in settings list?? Try to open \n\n{profileName}\n\n in your web browser to find out more.",
+  "errServerError": "Web interface returned error 500. Something has crashed on recevier. Try to open \n\n{profileName}\n\n in your web browser to find out more.",
   "@errServerError": {
     "type": "text",
     "placeholders": {
@@ -683,6 +683,11 @@
   },
   "likeTheApp": "Like the app?",
   "@likeTheApp": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "questionEmptyUsernamePassword": "Leave username and password empty? This requires you to turn OFF authorization on Web interface.",
+  "@questionEmptyUsernamePassword": {
     "type": "text",
     "placeholders": {}
   }

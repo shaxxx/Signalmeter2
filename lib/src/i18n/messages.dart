@@ -389,7 +389,7 @@ class Messages {
         name: 'errInvalidEnigmaTypeOrNotEnigma',
       );
   String errServerError(String profileName) => Intl.message(
-        'Web interface returned error 500. Something has crashed on recevier. Maybe invalid characters in settings list?? Try to open \n\n$profileName\n\n in your web browser to find out more.',
+        'Web interface returned error 500. Something has crashed on recevier. Try to open \n\n$profileName\n\n in your web browser to find out more.',
         args: [profileName],
         name: 'errServerError',
       );
@@ -546,5 +546,9 @@ class Messages {
   String get likeTheApp => Intl.message(
         "Like the app?",
         name: 'likeTheApp',
+      );
+  String get questionEmptyUsernamePassword => Intl.message(
+        "Leave username and password empty? This requires you to turn OFF authorization on Web interface.",
+        name: 'questionEmptyUsernamePassword',
       );
 }

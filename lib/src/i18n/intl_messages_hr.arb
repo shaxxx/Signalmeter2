@@ -684,5 +684,10 @@
   "@likeTheApp": {
     "type": "text",
     "placeholders": {}
+  },
+  "questionEmptyUsernamePassword": "Želite ostaviti korisničko ime i lozinku praznima? Zahtjeva isključenu autorizaciju na Web poslužitelju prijemnika.",
+  "@questionEmptyUsernamePassword": {
+    "type": "text",
+    "placeholders": {}
   }
 }

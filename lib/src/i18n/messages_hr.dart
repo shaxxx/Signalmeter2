@@ -147,6 +147,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "profileUsername" : MessageLookupByLibrary.simpleMessage("Login"),
     "profileUsernameHint" : MessageLookupByLibrary.simpleMessage("npr. root"),
     "questionDeleteProfile" : m8,
+    "questionEmptyUsernamePassword" : MessageLookupByLibrary.simpleMessage("Želite ostaviti korisničko ime i lozinku praznima? Zahtjeva isključenu autorizaciju na Web poslužitelju prijemnika."),
     "questionIgnoreFurtherTtsError" : MessageLookupByLibrary.simpleMessage("Ignoriraj daljnje greške pretvaranja teksta u govor?"),
     "questionOpenTtsSettings" : MessageLookupByLibrary.simpleMessage("Otvori postavke pretvaranja teksta u govor?"),
     "questionRestartGui" : m9,

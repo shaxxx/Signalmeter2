@@ -25,7 +25,7 @@ class MessageLookup extends MessageLookupByLibrary {
 
   static m2(code) => "HTTP Status code ${code}.";
 
-  static m3(profileName) => "Web interface returned error 500. Something has crashed on recevier. Maybe invalid characters in settings list?? Try to open \n\n${profileName}\n\n in your web browser to find out more.";
+  static m3(profileName) => "Web interface returned error 500. Something has crashed on recevier. Try to open \n\n${profileName}\n\n in your web browser to find out more.";
 
   static m4(profileName) => "Connected to ${profileName}";
 
@@ -147,6 +147,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "profileUsername" : MessageLookupByLibrary.simpleMessage("Username"),
     "profileUsernameHint" : MessageLookupByLibrary.simpleMessage("i.e. root"),
     "questionDeleteProfile" : m8,
+    "questionEmptyUsernamePassword" : MessageLookupByLibrary.simpleMessage("Leave username and password empty? This requires you to turn OFF authorization on Web interface."),
     "questionIgnoreFurtherTtsError" : MessageLookupByLibrary.simpleMessage("Ignore further TextToSpeech errors?"),
     "questionOpenTtsSettings" : MessageLookupByLibrary.simpleMessage("Open TextToSpeech settings now?"),
     "questionRestartGui" : m9,

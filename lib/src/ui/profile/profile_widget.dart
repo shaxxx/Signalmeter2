@@ -166,9 +166,22 @@ class ProfileWidgetState extends State<ProfileWidget> {
     return true;
   }
 
+  Future<bool> _checkUsernamePassword() async {
+    if (StringHelper.stringIsNullOrEmpty(profile.username) &&
+        StringHelper.stringIsNullOrEmpty(profile.password)) {
+      var message = MessageProvider.of(context).questionEmptyUsernamePassword;
+      message += '\n' + MessageProvider.of(context).warnSaveTheProfileAnyway;
+      return await showWarningDialog(message);
+    }
+    return true;
+  }
+
   Future<bool> validateForm() async {
     if (_formKey.currentState.validate()) {
       widget.viewModel.displayCheckingPortsInfoMessage();
+      if (!await _checkUsernamePassword()) {
+        return false;
+      }
       if (!await _checkHttpPort()) {
         return false;
       }
@@ -234,7 +247,10 @@ class ProfileWidgetState extends State<ProfileWidget> {
 
     usernameValidator = (value) {
       if (value == null || value.length == 0) {
-        return MessageProvider.of(context).errInvalidUsername;
+        if (passwordController.text != null &&
+            passwordController.text.isNotEmpty) {
+          return MessageProvider.of(context).errInvalidUsername;
+        }
       }
       return null;
     };
