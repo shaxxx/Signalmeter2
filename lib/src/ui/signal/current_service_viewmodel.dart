@@ -23,7 +23,7 @@ class CurrentServiceViewModel {
     return CurrentServiceViewModel(
         currentService: store.state.bouquetItemsState.selectedService,
         messages: messages,
-        satellites: store.state.bouquetItemsState.satellites);
+        satellites: store.state.globalState.satellites);
   }
 
   @override

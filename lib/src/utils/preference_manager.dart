@@ -1,10 +1,13 @@
 import 'dart:convert';
 
+import 'package:enigma_signal_meter/src/model/application_settings.dart';
 import 'package:enigma_web/enigma_web.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class PreferenceManager {
   static const String _profiles_key = "com.krkadoni.app.signalmeter.Profiles";
+  static const String _appSettings_key =
+      "com.krkadoni.app.signalmeter.ApplicationSettings";
 
   static Future<bool> saveProfiles(List<IProfile> profiles) async {
     var json = jsonEncode(profiles);
@@ -23,5 +26,22 @@ class PreferenceManager {
       }
     }
     return profiles;
+  }
+
+  static Future<bool> saveApplicationSettings(
+      ApplicationSettings settings) async {
+    var json = jsonEncode(settings);
+    var prefs = await SharedPreferences.getInstance();
+    return await prefs.setString(_appSettings_key, json);
+  }
+
+  static Future<ApplicationSettings> loadApplicationSettings() async {
+    var prefs = await SharedPreferences.getInstance();
+    var json = prefs.getString(_appSettings_key);
+    if (json != null) {
+      Map<String, dynamic> settings = jsonDecode(json);
+      return ApplicationSettings.fromJson(settings);
+    }
+    return ApplicationSettings(dbIsPrimaryLevel: false);
   }
 }

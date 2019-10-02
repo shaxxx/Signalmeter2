@@ -1,4 +1,5 @@
 import 'package:enigma_signal_meter/src/redux/bouquets/bouquets_reducer.dart';
+import 'package:enigma_signal_meter/src/redux/global/global_reducer.dart';
 import 'package:enigma_signal_meter/src/redux/messages/messages_reducer.dart';
 import 'package:enigma_signal_meter/src/redux/monitor/connection_state_reducer.dart';
 import 'package:enigma_signal_meter/src/redux/monitor/current_service_monitor_reducer.dart';
@@ -24,5 +25,6 @@ AppState appReducer(AppState state, action) {
     messagesState: messagesReducer(state.messagesState, action),
     ttsState: ttsReducer(state.ttsState, action),
     screenshotState: screenshotReducer(state.screenshotState, action),
+    globalState: globalReducer(state.globalState, action),
   );
 }

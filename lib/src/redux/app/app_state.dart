@@ -1,5 +1,6 @@
 import 'package:enigma_signal_meter/src/model/enums.dart';
 import 'package:enigma_signal_meter/src/redux/bouquets/bouquets_state.dart';
+import 'package:enigma_signal_meter/src/redux/global/global_state.dart';
 import 'package:enigma_signal_meter/src/redux/messages/messages_state.dart';
 import 'package:enigma_signal_meter/src/redux/monitor/current_service_monitor_state.dart';
 import 'package:enigma_signal_meter/src/redux/monitor/signal_monitor_state.dart';
@@ -8,11 +9,9 @@ import 'package:enigma_signal_meter/src/redux/screenshot/screenshot_state.dart';
 import 'package:enigma_signal_meter/src/redux/services/bouquet_items_state.dart';
 import 'package:enigma_signal_meter/src/redux/tabs/tab_state.dart';
 import 'package:enigma_signal_meter/src/redux/tts/tts_state.dart';
-import 'package:enigma_web/enigma_web.dart';
 
 import 'package:flutter/material.dart';
 import 'package:meta/meta.dart';
-import 'package:logging/logging.dart';
 
 @immutable
 class AppState {
@@ -23,11 +22,11 @@ class AppState {
   final BouquetsState bouquetsState;
   final BouquetItemsState bouquetItemsState;
   final TabState tabsState;
-  final WebRequester webRequester;
-  final RouteObserver<PageRoute> routeObserver;
+
   final MessagesState messagesState;
   final TtsState ttsState;
   final ScreenshotState screenshotState;
+  final GlobalState globalState;
 
   factory AppState.inital() {
     return AppState._internal(
@@ -39,14 +38,9 @@ class AppState {
       bouquetItemsState: BouquetItemsState.initial(),
       tabsState: TabState.initial(),
       messagesState: MessagesState.initial(),
-      webRequester: WebRequester(
-        Logger.root,
-        connectTimeOut: 15000,
-        receiveTimeOut: 15000,
-      ),
-      routeObserver: RouteObserver<PageRoute>(),
       ttsState: TtsState.initial(),
       screenshotState: ScreenshotState.initial(),
+      globalState: GlobalState.initial(),
     );
   }
 
@@ -61,6 +55,7 @@ class AppState {
     MessagesState messagesState,
     TtsState ttsState,
     ScreenshotState screenshotState,
+    GlobalState globalState,
   }) {
     return AppState._internal(
       connectionState: connectionState ?? this.connectionState,
@@ -72,10 +67,9 @@ class AppState {
       bouquetItemsState: bouquetItemsState ?? this.bouquetItemsState,
       tabsState: tabsState ?? this.bouquetItemsState,
       messagesState: messagesState ?? this.messagesState,
-      webRequester: this.webRequester,
-      routeObserver: this.routeObserver,
       ttsState: ttsState ?? this.ttsState,
       screenshotState: screenshotState ?? this.screenshotState,
+      globalState: globalState ?? this.globalState,
     );
   }
 
@@ -88,10 +82,9 @@ class AppState {
     this.bouquetItemsState,
     this.tabsState,
     this.messagesState,
-    this.webRequester,
-    this.routeObserver,
     this.ttsState,
     this.screenshotState,
+    this.globalState,
   });
 
   @override
@@ -104,10 +97,9 @@ class AppState {
       bouquetItemsState.hashCode ^
       tabsState.hashCode ^
       messagesState.hashCode ^
-      webRequester.hashCode ^
-      routeObserver.hashCode ^
       ttsState.hashCode ^
-      screenshotState.hashCode;
+      screenshotState.hashCode ^
+      globalState.hashCode;
 
   @override
   bool operator ==(Object other) =>
@@ -122,8 +114,7 @@ class AppState {
           bouquetItemsState == other.bouquetItemsState &&
           tabsState == other.tabsState &&
           messagesState == other.messagesState &&
-          webRequester == other.webRequester &&
-          routeObserver == other.routeObserver &&
           ttsState == other.ttsState &&
-          screenshotState == other.screenshotState;
+          screenshotState == other.screenshotState &&
+          globalState == other.globalState;
 }

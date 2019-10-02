@@ -18,7 +18,7 @@ class SignalCircularProgressView extends StatelessWidget {
       ),
       builder: (context, viewModel) {
         var screenSize =
-            StoreProvider.of<AppState>(context).state.profilesState.screenSize;
+            StoreProvider.of<AppState>(context).state.globalState.screenSize;
         return GestureDetector(
           child: viewModel.hasInfo
               ? _circularProgressView(

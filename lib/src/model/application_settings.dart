@@ -1,15 +1,25 @@
+import 'package:flutter/widgets.dart';
+
 class ApplicationSettings {
-  ApplicationSettings() {
-    this.ttsErrorCount = 0;
-    this.ignoreTtsError = false;
-    this.streamActivated = false;
+  bool dbIsPrimaryLevel;
+
+  ApplicationSettings({
+    @required this.dbIsPrimaryLevel,
+  }) : assert(dbIsPrimaryLevel != null);
+
+  ApplicationSettings copyWith({
+    @required bool dbIsPrimaryLevel,
+  }) {
+    return ApplicationSettings(
+      dbIsPrimaryLevel: dbIsPrimaryLevel ?? this.dbIsPrimaryLevel,
+    );
   }
 
-  DateTime lastAskedForTtsSettings;
+  @override
+  ApplicationSettings.fromJson(Map<String, dynamic> json)
+      : dbIsPrimaryLevel = json['dbIsPrimaryLevel'];
 
-  bool streamActivated;
-
-  bool ignoreTtsError;
-
-  int ttsErrorCount;
+  Map<String, dynamic> toJson() => {
+        'dbIsPrimaryLevel': dbIsPrimaryLevel,
+      };
 }

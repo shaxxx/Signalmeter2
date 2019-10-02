@@ -1,5 +1,3 @@
-import 'dart:ui';
-
 import 'package:enigma_signal_meter/src/model/enums.dart';
 import 'package:enigma_web/enigma_web.dart';
 import 'package:meta/meta.dart';
@@ -47,10 +45,4 @@ class LoadProfilesSuccessEvent {
 class LoadProfilesErrorEvent {
   final dynamic error;
   LoadProfilesErrorEvent({this.error}) : assert(error != null);
-}
-
-@immutable
-class SetScreenSizeEvent {
-  final Size screenSize;
-  SetScreenSizeEvent(this.screenSize);
 }

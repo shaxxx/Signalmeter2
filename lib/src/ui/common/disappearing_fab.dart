@@ -49,7 +49,7 @@ class DisappearingFabState extends State<DisappearingFab>
     if (!didRun) {
       didRun = true;
       await Future.delayed(widget.initalDelay, () {
-        _controller.forward().orCancel;
+        _controller.forward();
       });
     }
   }
@@ -65,10 +65,10 @@ class DisappearingFabState extends State<DisappearingFab>
     final int cycles = 1;
     if (_controller.isCompleted || _controller.isDismissed) {
       if (widget.finalStateVisible && _controller.value < 1.0) {
-        _controller.forward().orCancel;
+        _controller.forward();
       }
       if (widget.finalStateVisible == false && _controller.value > 0.0) {
-        _controller.reverse().orCancel;
+        _controller.reverse();
       }
     }
     return AnimatedBuilder(

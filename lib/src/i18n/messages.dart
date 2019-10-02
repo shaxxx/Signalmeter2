@@ -551,4 +551,16 @@ class Messages {
         "Leave username and password empty? This requires you to turn OFF authorization on Web interface.",
         name: 'questionEmptyUsernamePassword',
       );
+  String get settings => Intl.message(
+        "Settings",
+        name: 'settings',
+      );
+  String get options => Intl.message(
+        "Options",
+        name: 'options',
+      );
+  String get useDbAsPrimaryLevel => Intl.message(
+        "Use dB as primary level",
+        name: 'useDbAsPrimaryLevel',
+      );
 }

@@ -133,7 +133,7 @@ class _MainTabViewState extends State<MainTabView>
         return MainTabViewModel.fromStore(store);
       },
       onInit: (store) {
-        _routeObserver = store.state.routeObserver;
+        _routeObserver = store.state.globalState.routeObserver;
         _routeObserver.subscribe(this, ModalRoute.of(context));
         store.onChange.listen(selectTab);
       },

@@ -8,17 +8,14 @@ class BouquetItemsState {
   final LoadingStatus status;
   final IBouquetItemService selectedService;
   final Map<IBouquetItemBouquet, List<IBouquetItem>> cachedBouquetItems;
-  final Map<int, String> satellites;
   final String searchTerm;
 
   BouquetItemsState({
     @required this.status,
     @required this.selectedService,
     @required this.cachedBouquetItems,
-    @required this.satellites,
     @required this.searchTerm,
   })  : assert(status != null),
-        assert(satellites != null),
         assert(cachedBouquetItems != null);
 
   static BouquetItemsState initial() {
@@ -26,7 +23,6 @@ class BouquetItemsState {
       status: LoadingStatus.idle,
       selectedService: null,
       cachedBouquetItems: Map<IBouquetItemBouquet, List<IBouquetItem>>(),
-      satellites: Map<int, String>(),
       searchTerm: null,
     );
   }
@@ -52,14 +48,12 @@ class BouquetItemsState {
     List<IBouquetItem> bouquetItems,
     Exception loadingError,
     Map<IBouquetItemBouquet, List<IBouquetItem>> cachedBouquetItems,
-    Map<int, String> satellites,
     String searchTerm,
   }) {
     return BouquetItemsState(
       status: status ?? this.status,
       selectedService: selectedService ?? this.selectedService,
       cachedBouquetItems: cachedBouquetItems ?? this.cachedBouquetItems,
-      satellites: satellites ?? this.satellites,
       searchTerm: searchTerm ?? this.searchTerm,
     );
   }
@@ -69,7 +63,6 @@ class BouquetItemsState {
       status.hashCode ^
       selectedService.hashCode ^
       const MapEquality().hash(cachedBouquetItems) ^
-      const MapEquality().hash(satellites) ^
       searchTerm.hashCode;
 
   @override
@@ -81,6 +74,5 @@ class BouquetItemsState {
           selectedService == other.selectedService &&
           const MapEquality()
               .equals(cachedBouquetItems, other.cachedBouquetItems) &&
-          const MapEquality().equals(satellites, other.satellites) &&
           searchTerm == other.searchTerm;
 }

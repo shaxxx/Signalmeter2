@@ -17,8 +17,6 @@ final bouquetsItemsReducer = combineReducers<BouquetItemsState>([
       _bouquetItemsLoadedReducer),
   TypedReducer<BouquetItemsState, GetBouquetItemsErrorEvent>(
       _bouquetItemsLoadingErrorReducer),
-  TypedReducer<BouquetItemsState, SatellitesLoadedEvent>(
-      _satellitesLoadedReducer),
   TypedReducer<BouquetItemsState, BouquetItemsSearchTermChanged>(
       _searchTermChangedReducer),
   TypedReducer<BouquetItemsState, ResetStateEvent>(
@@ -52,12 +50,6 @@ BouquetItemsState _bouquetItemsLoadingErrorReducer(
     BouquetItemsState state, GetBouquetItemsErrorEvent event) {
   Logger.root.shout("Error loading bouquet items. ${event.error.toString()}");
   return state.copyWith(loadingError: event.error);
-}
-
-BouquetItemsState _satellitesLoadedReducer(
-    BouquetItemsState state, SatellitesLoadedEvent event) {
-  Logger.root.fine("Loaded ${event.satellites.length} satellites.");
-  return state.copyWith(satellites: event.satellites);
 }
 
 BouquetItemsState _searchTermChangedReducer(

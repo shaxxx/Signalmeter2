@@ -2,11 +2,8 @@ import 'package:enigma_signal_meter/src/model/enums.dart';
 import 'package:enigma_signal_meter/src/redux/app/app_state.dart';
 import 'package:enigma_signal_meter/src/redux/bouquets/bouquets_events.dart';
 import 'package:enigma_signal_meter/src/redux/enigma/enigma_command_events.dart';
-import 'package:enigma_signal_meter/src/utils/string_utils.dart';
 import 'package:logging/logging.dart';
 import 'package:redux/redux.dart';
-import 'package:flutter/services.dart' show rootBundle;
-import 'package:xml/xml.dart' as xml;
 
 import 'bouquet_items_events.dart';
 
@@ -46,46 +43,7 @@ class BouquetItemsMiddleware extends MiddlewareClass<AppState> {
           switchTabs: false,
         ));
       }
-    } else if (action is LoadSatellitesEvent) {
-      var satellites = await _loadSatellites();
-      store.dispatch(SatellitesLoadedEvent(satellites));
     }
     next(action);
-  }
-
-  Future<Map<int, String>> _loadSatellites() async {
-    var fileContent = await _loadAsset();
-    var fileString = StringUtils.sanitizeXmlString(fileContent);
-    var satellites = Map<int, String>();
-    var document = xml.parse(fileString);
-    var children = document.findAllElements("sat");
-    if (children != null && children.isNotEmpty) {
-      for (final node in children) {
-        final nameNode = node.attributes
-            .where((attribute) => attribute.name.toString() == 'name')
-            .single;
-        final positionNode = node.attributes
-            .where((attribute) => attribute.name.toString() == 'position')
-            .single;
-
-        String satellite = nameNode.value;
-        String position = positionNode.value;
-        if (satellite != null && satellite.isNotEmpty) {
-          satellite = StringUtils.trimAll(satellite);
-        }
-        if (position != null && position.isNotEmpty) {
-          position = StringUtils.trimAll(position);
-        }
-        if (satellite != null && position != null) {
-          satellites.putIfAbsent(int.parse(position), () => satellite);
-        }
-      }
-      return satellites;
-    }
-    return Map<int, String>();
-  }
-
-  Future<String> _loadAsset() async {
-    return await rootBundle.loadString('assets/satellites.xml');
   }
 }

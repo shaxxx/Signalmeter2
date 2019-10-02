@@ -87,7 +87,7 @@ class _SignalChartFullScreenState extends State<SignalChartFullScreen>
         return SignalChartFullScreenViewModel.fromStore(store);
       },
       onInit: (store) {
-        _routeObserver = store.state.routeObserver;
+        _routeObserver = store.state.globalState.routeObserver;
         _routeObserver.subscribe(this, ModalRoute.of(context));
       },
       onInitialBuild: (vm) {

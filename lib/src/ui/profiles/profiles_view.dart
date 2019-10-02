@@ -1,100 +1,25 @@
 import 'dart:io';
 
-import 'package:auto_orientation/auto_orientation.dart';
 import 'package:enigma_signal_meter/src/message_provider.dart';
-import 'package:enigma_signal_meter/src/model/enums.dart';
 import 'package:enigma_signal_meter/src/redux/app/app_state.dart';
-import 'package:enigma_signal_meter/src/redux/profiles/profiles_events.dart';
-import 'package:enigma_signal_meter/src/ui/common/disappearing_fab.dart';
-import 'package:enigma_signal_meter/src/ui/common/scaffold_background.dart';
 import 'package:enigma_signal_meter/src/ui/profiles/profiles_viewmodel.dart';
-import 'package:enigma_signal_meter/src/utils/message_display_handler.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 
-import '../../constants.dart';
 import 'profiles_list_view.dart';
 
-class ProfilesView extends StatefulWidget {
-  @override
-  _ProfilesViewState createState() => _ProfilesViewState();
-}
-
-class _ProfilesViewState extends State<ProfilesView> with RouteAware {
-  ProfilesViewModel _viewModel;
-
-  @override
-  void initState() {
-    super.initState();
-    AutoOrientation.portraitAutoMode();
-  }
-
-  @override
-  void didChangeDependencies() {
-    super.didChangeDependencies();
-    StoreProvider.of<AppState>(context)
-        .state
-        .routeObserver
-        .subscribe(this, ModalRoute.of(context));
-  }
-
-  @override
-  void dispose() {
-    StoreProvider.of<AppState>(context).state.routeObserver.unsubscribe(this);
-    super.dispose();
-  }
-
-  @override
-  void didPopNext() {
-    if (_viewModel != null) {
-      _viewModel.onPop();
-    }
-  }
-
+class ProfilesView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return StoreConnector<AppState, ProfilesViewModel>(
-      distinct: true,
-      converter: (store) {
-        return ProfilesViewModel.fromStore(store);
-      },
-      onInit: (store) {
-        store.dispatch(SetScreenSizeEvent(MediaQuery.of(context).size));
-      },
-      onInitialBuild: (vm) => {
-        _viewModel = vm,
-      },
-      onDidChange: (viewModel) async {
-        _viewModel = viewModel;
-        await MessageDisplayHandler.displayMessages(
-          context: context,
-          viewModel: viewModel,
-        );
-      },
-      builder: (context, viewModel) {
-        var theme = Theme.of(context);
-        return ScaffoldBackground(
-          appBar: AppBar(
-            title: Text(MessageProvider.of(context).appName),
-            backgroundColor: Colors.transparent,
-            actions: <Widget>[
-              IconButton(
-                  icon: Icon(menuIcons[aboutMenuItemKey]),
-                  onPressed: () => viewModel.openAbout()),
-            ],
-          ),
-          floatingActionButton: Platform.isAndroid
-              ? DisappearingFab(
-                  child: FloatingActionButton(
-                    onPressed: viewModel.addProfile,
-                    child: Icon(Icons.add),
-                  ),
-                  finalStateVisible: viewModel.connectionState ==
-                      ConnectionStatusEnum.disconnected,
-                )
-              : null,
-          child: Column(
+        distinct: true,
+        converter: (store) {
+          return ProfilesViewModel.fromStore(store);
+        },
+        builder: (context, viewModel) {
+          var theme = Theme.of(context);
+          return Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisSize: MainAxisSize.max,
             mainAxisAlignment: MainAxisAlignment.end,
@@ -148,9 +73,7 @@ class _ProfilesViewState extends State<ProfilesView> with RouteAware {
                     : SizedBox.shrink(),
               ),
             ],
-          ),
-        );
-      },
-    );
+          );
+        });
   }
 }

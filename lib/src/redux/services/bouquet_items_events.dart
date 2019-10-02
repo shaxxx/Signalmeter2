@@ -20,15 +20,6 @@ class BouquetItemsStatusChangedEvent {
 }
 
 @immutable
-class LoadSatellitesEvent {}
-
-@immutable
-class SatellitesLoadedEvent {
-  final Map<int, String> satellites;
-  SatellitesLoadedEvent(this.satellites);
-}
-
-@immutable
 class BouquetItemsSearchTermChanged {
   final String searchTerm;
   BouquetItemsSearchTermChanged(this.searchTerm);

@@ -1,10 +1,12 @@
 import 'package:enigma_signal_meter/src/app_routes.dart';
 import 'package:enigma_signal_meter/src/redux/enigma/enigma_command_middleware.dart';
+import 'package:enigma_signal_meter/src/redux/global/global_events.dart';
+import 'package:enigma_signal_meter/src/redux/global/global_middleware.dart';
 import 'package:enigma_signal_meter/src/redux/monitor/connection_state_middleware.dart';
 import 'package:enigma_signal_meter/src/redux/monitor/current_service_monitor_middleware.dart';
 import 'package:enigma_signal_meter/src/redux/screenshot/screenshot_middleware.dart';
 import 'package:enigma_signal_meter/src/ui/about/about_view.dart';
-import 'package:enigma_signal_meter/src/ui/profiles/profiles_view.dart';
+import 'package:enigma_signal_meter/src/ui/home/home_view.dart';
 import 'package:enigma_signal_meter/src/ui/screenshot/screenshot_view.dart';
 import 'package:enigma_signal_meter/src/ui/signal/signal_chart_full_screen_view.dart';
 import 'package:flutter/cupertino.dart';
@@ -26,7 +28,6 @@ import 'src/redux/messages/messages_middleware.dart';
 import 'src/redux/monitor/signal_monitor_middleware.dart';
 import 'src/redux/profiles/profiles_events.dart';
 import 'src/redux/profiles/profiles_middleware.dart';
-import 'src/redux/services/bouquet_items_events.dart';
 import 'src/redux/services/bouquet_items_middleware.dart';
 import 'src/redux/tabs/tabs_middleware.dart';
 import 'src/redux/navigation/navigation_middleware.dart' as navigation;
@@ -51,7 +52,7 @@ void main() {
   final store =
       Store<AppState>(appReducer, initialState: AppState.inital(), middleware: [
     EnigmaCommandMiddleware(
-      initialState.webRequester,
+      initialState.globalState.webRequester,
     ),
     ConnectionStateMiddleware(),
     TabsMiddleware(),
@@ -59,7 +60,7 @@ void main() {
     BouquetsMiddleware(),
     BouquetItemsMiddleware(),
     CurrentServiceMonitorMiddleware(
-      initialState.webRequester,
+      initialState.globalState.webRequester,
     ),
     SignalMonitorMiddleware(),
     navigation.NavigationMiddleware(),
@@ -67,6 +68,7 @@ void main() {
     MessagesMiddleware(),
     TtsMiddleware(),
     ScreenshotMiddleware(),
+    GlobalMiddleware(),
     //LoggingMiddleware(logger: Logger.root),
   ]);
 
@@ -96,6 +98,7 @@ class _EnigmaSignalMeterAppState extends State<EnigmaSignalMeterApp>
   @override
   void initState() {
     super.initState();
+    widget.store.dispatch(LoadApplicationSettingsEvent());
     widget.store.dispatch(LoadProfilesEvent());
     widget.store.dispatch(LoadSatellitesEvent());
   }
@@ -106,7 +109,7 @@ class _EnigmaSignalMeterAppState extends State<EnigmaSignalMeterApp>
       store: widget.store,
       child: MaterialApp(
         navigatorKey: NavigatorHolder.navigatorKey,
-        navigatorObservers: [widget.store.state.routeObserver],
+        navigatorObservers: [widget.store.state.globalState.routeObserver],
         theme: ThemeData.dark(),
         localizationsDelegates: [
           SignalMeterLocalizationsDelegate(),
@@ -121,11 +124,11 @@ class _EnigmaSignalMeterAppState extends State<EnigmaSignalMeterApp>
         //debugShowCheckedModeBanner: false,
         initialRoute: AppRoutes.home,
         routes: {
-          AppRoutes.home: (context) => ProfilesView(),
+          AppRoutes.home: (context) => HomeView(),
+          AppRoutes.profile: (context) => ProfileEditView(),
           AppRoutes.mainTabView: (context) => MainTabView(),
           AppRoutes.signalChart: (context) => SignalChartFullScreen(),
           AppRoutes.about: (context) => AboutView(),
-          AppRoutes.profile: (context) => ProfileEditView(),
           AppRoutes.screenshot: (context) => ScreenshotView(),
         },
       ),

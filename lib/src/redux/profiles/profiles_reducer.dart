@@ -12,7 +12,6 @@ final profilesReducer = combineReducers<ProfilesState>([
       _loadProfilesSuccessReducer),
   TypedReducer<ProfilesState, ProfileDeletedEvent>(_profileDeletedReducer),
   TypedReducer<ProfilesState, ProfileSaveEvent>(_profileSaveReducer),
-  TypedReducer<ProfilesState, SetScreenSizeEvent>(_screenSizeEventReducer),
 ]);
 
 ProfilesState _profileSelectedReducer(
@@ -60,9 +59,4 @@ ProfilesState _profileSaveReducer(ProfilesState state, ProfileSaveEvent event) {
     profiles.add(event.profile);
   }
   return state.copyWith(profiles: profiles);
-}
-
-ProfilesState _screenSizeEventReducer(
-    ProfilesState state, SetScreenSizeEvent event) {
-  return state.copyWith(screenSize: event.screenSize);
 }
