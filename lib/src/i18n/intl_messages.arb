@@ -1,6 +1,6 @@
 {
   "@@locale": "en",
-  "@@last_modified": "2019-09-22T19:38:14.531806",
+  "@@last_modified": "2019-10-02T13:50:08.062147",
   "appName": "SignalMeter",
   "@appName": {
     "type": "text",
@@ -688,6 +688,21 @@
   },
   "questionEmptyUsernamePassword": "Leave username and password empty? This requires you to turn OFF authorization on Web interface.",
   "@questionEmptyUsernamePassword": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "settings": "Settings",
+  "@settings": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "options": "Options",
+  "@options": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "useDbAsPrimaryLevel": "Use dB as primary level",
+  "@useDbAsPrimaryLevel": {
     "type": "text",
     "placeholders": {}
   }

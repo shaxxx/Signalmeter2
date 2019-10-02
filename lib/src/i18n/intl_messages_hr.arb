@@ -689,5 +689,20 @@
   "@questionEmptyUsernamePassword": {
     "type": "text",
     "placeholders": {}
+  },
+  "settings": "Postavke",
+  "@settings": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "options": "Opcije",
+  "@options": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "useDbAsPrimaryLevel": "Koristi dB kao primarnu mjeru",
+  "@useDbAsPrimaryLevel": {
+    "type": "text",
+    "placeholders": {}
   }
 }
