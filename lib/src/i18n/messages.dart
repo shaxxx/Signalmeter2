@@ -563,4 +563,12 @@ class Messages {
         "Use dB as primary level",
         name: 'useDbAsPrimaryLevel',
       );
+  String get share => Intl.message(
+        "Share",
+        name: 'share',
+      );
+  String get screenshotSaved => Intl.message(
+        "Screenshot successfully saved to gallery",
+        name: 'screenshotSaved',
+      );
 }

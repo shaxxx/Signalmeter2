@@ -704,5 +704,15 @@
   "@useDbAsPrimaryLevel": {
     "type": "text",
     "placeholders": {}
+  },
+  "share": "Share",
+  "@share": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "screenshotSaved": "Snimka ekrana spremljena u galeriju",
+  "@screenshotSaved": {
+    "type": "text",
+    "placeholders": {}
   }
 }
