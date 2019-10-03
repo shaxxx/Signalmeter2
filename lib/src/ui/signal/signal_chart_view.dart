@@ -68,6 +68,7 @@ class _SignalChartViewState extends State<SignalChartView> {
                                 show: true,
                                 drawHorizontalGrid: false,
                                 drawVerticalGrid: true,
+                                verticalInterval: viewModel.useDb ? 2 : 10,
                                 getDrawingVerticalGridLine: (value) {
                                   return const FlLine(
                                     color: Color(0xff67727d),
@@ -94,15 +95,7 @@ class _SignalChartViewState extends State<SignalChartView> {
                                     fontSize: 15,
                                   ),
                                   getTitles: (value) {
-                                    switch (value.toInt()) {
-                                      case 1:
-                                        return '10%';
-                                      case 5:
-                                        return '50%';
-                                      case 10:
-                                        return '100%';
-                                    }
-                                    return '';
+                                    return _getTitle(value, viewModel);
                                   },
                                   reservedSize: 30,
                                   margin: 12,
@@ -115,7 +108,7 @@ class _SignalChartViewState extends State<SignalChartView> {
                               minX: 0,
                               maxX: signalChartPoints.toDouble() - 1,
                               minY: 0,
-                              maxY: 10,
+                              maxY: viewModel.useDb ? 16 : 100,
                               lineBarsData: [
                                 _getChartData(viewModel),
                               ],
@@ -132,6 +125,28 @@ class _SignalChartViewState extends State<SignalChartView> {
         );
       },
     );
+  }
+
+  String _getTitle(double value, SignalChartViewModel viewModel) {
+    if (viewModel.useDb) {
+      if (value == 1.0) {
+        return '1 db';
+      } else if (value == 8.0) {
+        return '8 db';
+      } else if (value == 16.0) {
+        return '16 dB';
+      }
+      return '';
+    }
+    switch (value.toInt()) {
+      case 10:
+        return '10%';
+      case 50:
+        return '50%';
+      case 100:
+        return '100%';
+    }
+    return '';
   }
 
   LineChartBarData _getChartData(SignalChartViewModel viewModel) {

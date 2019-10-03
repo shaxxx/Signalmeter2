@@ -7,10 +7,15 @@ import 'package:redux/redux.dart';
 class SignalProgressbarViewModel {
   final ISignalResponse signalResponse;
   final Messages messages;
+  final bool dbIsPrimaryLevel;
+
   bool get hasdb => signalResponse?.signal is E2Signal;
 
-  SignalProgressbarViewModel(
-      {@required this.signalResponse, @required this.messages});
+  SignalProgressbarViewModel({
+    @required this.signalResponse,
+    @required this.messages,
+    @required this.dbIsPrimaryLevel,
+  });
 
   String snrString() {
     if (signalResponse == null) {
@@ -19,7 +24,7 @@ class SignalProgressbarViewModel {
     if (signalResponse.signal.snr == -1) {
       return messages.noInformation;
     }
-    return '${signalResponse.signal.snr}%';
+    return 'SNR: ${signalResponse.signal.snr}%';
   }
 
   double snrDouble() {
@@ -119,6 +124,8 @@ class SignalProgressbarViewModel {
           ? store.state.signalMonitorState.responses.last
           : null,
       messages: messages,
+      dbIsPrimaryLevel:
+          store.state.globalState.applicationSettings.dbIsPrimaryLevel,
     );
   }
 
@@ -128,9 +135,11 @@ class SignalProgressbarViewModel {
       other is SignalProgressbarViewModel &&
           runtimeType == other.runtimeType &&
           signalResponse == other.signalResponse &&
-          messages == other.messages;
+          messages == other.messages &&
+          dbIsPrimaryLevel == other.dbIsPrimaryLevel;
 
   @override
-  int get hashCode =>
-      signalResponse == null ? 0 : signalResponse.hashCode ^ messages.hashCode;
+  int get hashCode => signalResponse == null
+      ? 0
+      : signalResponse.hashCode ^ messages.hashCode ^ dbIsPrimaryLevel.hashCode;
 }

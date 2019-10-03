@@ -19,17 +19,30 @@ class SignalViewModel {
     Store<AppState> store,
   ) {
     var signalView = store.state.tabsState.signalView;
+    var useDb = (store.state.profilesState.selectedProfile.enigma ==
+            EnigmaType.enigma2 &&
+        store.state.globalState.applicationSettings.dbIsPrimaryLevel);
+
     if (signalView == SignalViewEnum.Linear) {
-      store.dispatch(ChangeSignalView(SignalViewEnum.CircularSnr));
+      if (useDb) {
+        store.dispatch(ChangeSignalView(SignalViewEnum.CircularDb));
+      } else {
+        store.dispatch(ChangeSignalView(SignalViewEnum.CircularSnr));
+      }
     } else if (signalView == SignalViewEnum.CircularSnr) {
       if (store.state.profilesState.selectedProfile.enigma ==
-          EnigmaType.enigma2) {
+              EnigmaType.enigma2 &&
+          !useDb) {
         store.dispatch(ChangeSignalView(SignalViewEnum.CircularDb));
       } else {
         store.dispatch(ChangeSignalView(SignalViewEnum.CircularAcg));
       }
     } else if (signalView == SignalViewEnum.CircularDb) {
-      store.dispatch(ChangeSignalView(SignalViewEnum.CircularAcg));
+      if (useDb) {
+        store.dispatch(ChangeSignalView(SignalViewEnum.CircularSnr));
+      } else {
+        store.dispatch(ChangeSignalView(SignalViewEnum.CircularAcg));
+      }
     } else if (signalView == SignalViewEnum.CircularAcg) {
       store.dispatch(ChangeSignalView(SignalViewEnum.CircularBer));
     } else if (signalView == SignalViewEnum.CircularBer) {

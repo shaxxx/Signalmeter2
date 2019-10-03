@@ -30,8 +30,12 @@ class SignalProgressbarView extends StatelessWidget {
       builder: (context, viewModel) {
         return Column(
           children: <Widget>[
-            snrProgress(viewModel),
-            dbProgress(viewModel),
+            viewModel.dbIsPrimaryLevel
+                ? dbProgress(viewModel)
+                : snrProgress(viewModel),
+            viewModel.dbIsPrimaryLevel
+                ? snrProgress(viewModel)
+                : dbProgress(viewModel),
             berProgress(viewModel),
             acgProgress(viewModel),
           ],
@@ -42,7 +46,7 @@ class SignalProgressbarView extends StatelessWidget {
 
   Widget snrProgress(SignalProgressbarViewModel viewModel) {
     return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 20, vertical: 15),
+      padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
       child: LinearPercentIndicator(
         animation: false,
         lineHeight: 30.0,
@@ -70,7 +74,7 @@ class SignalProgressbarView extends StatelessWidget {
       return SizedBox.shrink();
     }
     return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 20, vertical: 15),
+      padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
       child: LinearPercentIndicator(
         animation: false,
         lineHeight: 30.0,
@@ -95,7 +99,7 @@ class SignalProgressbarView extends StatelessWidget {
 
   Widget berProgress(SignalProgressbarViewModel viewModel) {
     return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 20, vertical: 15),
+      padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
       child: LinearPercentIndicator(
         animation: false,
         lineHeight: 30.0,
@@ -130,7 +134,7 @@ class SignalProgressbarView extends StatelessWidget {
 
   Widget acgProgress(SignalProgressbarViewModel viewModel) {
     return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 20, vertical: 15),
+      padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
       child: LinearPercentIndicator(
         animation: false,
         lineHeight: 30.0,

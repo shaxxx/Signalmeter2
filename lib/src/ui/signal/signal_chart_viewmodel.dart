@@ -10,6 +10,10 @@ import '../../constants.dart';
 class SignalChartViewModel {
   final List<ISignalResponse> responses;
   final Messages messages;
+  final bool dbIsPrimaryLevel;
+  final IProfile profile;
+
+  bool get useDb => profile.enigma == EnigmaType.enigma2 && dbIsPrimaryLevel;
 
   Map<double, double> get chartPoints {
     var list = Map<double, double>();
@@ -57,19 +61,34 @@ class SignalChartViewModel {
     if (signal.snr < 0) {
       return 0.0;
     }
-    return signal.snr / 10;
+
+    if (useDb) {
+      var db = (signal as IE2Signal).db;
+      if (db > 16.00) {
+        return 16.00;
+      }
+      return db;
+    }
+    return signal.snr.toDouble();
   }
 
   SignalChartViewModel({
     @required this.responses,
     @required this.messages,
-  }) : assert(responses != null);
+    @required this.dbIsPrimaryLevel,
+    @required this.profile,
+  })  : assert(responses != null),
+        assert(dbIsPrimaryLevel != null),
+        assert(profile != null);
 
   static SignalChartViewModel fromStore(
       Store<AppState> store, Messages messages) {
     return SignalChartViewModel(
       responses: store.state.signalMonitorState.responses,
       messages: messages,
+      dbIsPrimaryLevel:
+          store.state.globalState.applicationSettings.dbIsPrimaryLevel,
+      profile: store.state.profilesState.selectedProfile,
     );
   }
 
@@ -79,9 +98,14 @@ class SignalChartViewModel {
       other is SignalChartViewModel &&
           runtimeType == other.runtimeType &&
           messages == other.messages &&
+          profile == other.profile &&
+          dbIsPrimaryLevel == other.dbIsPrimaryLevel &&
           const IterableEquality().equals(responses, other.responses);
 
   @override
   int get hashCode =>
-      const IterableEquality().hash(responses) ^ messages.hashCode;
+      const IterableEquality().hash(responses) ^
+      messages.hashCode ^
+      profile.hashCode ^
+      dbIsPrimaryLevel.hashCode;
 }

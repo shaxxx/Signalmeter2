@@ -5,6 +5,7 @@ import 'package:enigma_signal_meter/src/model/menu_item.dart';
 import 'package:enigma_signal_meter/src/redux/app/app_state.dart';
 import 'package:enigma_signal_meter/src/redux/tabs/tab_events.dart';
 import 'package:enigma_signal_meter/src/redux/tts/tts_events.dart';
+import 'package:enigma_web/enigma_web.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
@@ -129,7 +130,13 @@ class TabsAppBarViewModel {
     } else if (item.key == defaultLookMenuItemKey) {
       store.dispatch(ChangeSignalView(SignalViewEnum.Linear));
     } else if (item.key == alternativeLookMenuItemKey) {
-      store.dispatch(ChangeSignalView(SignalViewEnum.CircularSnr));
+      if (store.state.profilesState.selectedProfile.enigma ==
+              EnigmaType.enigma2 &&
+          store.state.globalState.applicationSettings.dbIsPrimaryLevel) {
+        store.dispatch(ChangeSignalView(SignalViewEnum.CircularDb));
+      } else {
+        store.dispatch(ChangeSignalView(SignalViewEnum.CircularSnr));
+      }
     }
   }
 

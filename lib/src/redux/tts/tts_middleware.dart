@@ -4,6 +4,7 @@ import 'package:enigma_signal_meter/src/redux/app/app_state.dart';
 import 'package:enigma_signal_meter/src/redux/enigma/enigma_command_events.dart';
 import 'package:enigma_signal_meter/src/redux/messages/warning_messages_events.dart';
 import 'package:enigma_signal_meter/src/utils/tts_utils.dart';
+import 'package:enigma_web/enigma_web.dart';
 
 import 'package:redux/redux.dart';
 
@@ -20,10 +21,24 @@ class TtsMiddleware extends MiddlewareClass<AppState> {
       store.dispatch(ChangeTtsStatusEvent(TtsStatus.Error));
       store.dispatch(TtsSpeakFailedMessageEvent(action.error));
     } else if (action is SpeakSignalLevelEvent) {
-      var snr = action.response.signal.snr;
-      if (snr != null && snr >= 0) {
-        store.dispatch(ChangeTtsStatusEvent(TtsStatus.Speaking));
-        await TtsUtils.speak(snr.toString());
+      if (store.state.profilesState.selectedProfile.enigma ==
+              EnigmaType.enigma2 &&
+          store.state.globalState.applicationSettings.dbIsPrimaryLevel) {
+        var db = (action.response.signal as IE2Signal).db;
+        if (db != null && db >= 0) {
+          store.dispatch(ChangeTtsStatusEvent(TtsStatus.Speaking));
+          if (db == db.toInt().toDouble()) {
+            await TtsUtils.speak(db.toInt().toString());
+          } else {
+            await TtsUtils.speak(db.toString());
+          }
+        }
+      } else {
+        var snr = action.response.signal.snr;
+        if (snr != null && snr >= 0) {
+          store.dispatch(ChangeTtsStatusEvent(TtsStatus.Speaking));
+          await TtsUtils.speak(snr.toString());
+        }
       }
     } else if (action is GetSignalLevelSuccessEvent) {
       if (store.state.ttsState.ttsEnabled &&
