@@ -3,7 +3,6 @@ import 'dart:io';
 
 import 'package:android_intent/android_intent.dart';
 import 'package:enigma_signal_meter/src/i18n/messages.dart';
-import 'package:enigma_signal_meter/src/model/enums.dart';
 import 'package:enigma_signal_meter/src/model/menu_item.dart';
 import 'package:enigma_signal_meter/src/redux/app/app_state.dart';
 import 'package:enigma_signal_meter/src/redux/enigma/enigma_command_events.dart';
@@ -27,13 +26,16 @@ class MoreViewModel {
   final Function(MenuItem menuItem) onSelected;
   final Messages messages;
   final String profileName;
+  final bool streamEnabled;
 
   MoreViewModel({
     @required this.menuItems,
     @required this.onSelected,
     @required this.messages,
     @required this.profileName,
-  }) : assert(menuItems != null);
+    @required this.streamEnabled,
+  })  : assert(menuItems != null),
+        assert(streamEnabled != null);
 
   static MoreViewModel fromStore(
     Store<AppState> store,
@@ -46,13 +48,14 @@ class MoreViewModel {
       },
       messages: messages,
       profileName: store.state.profilesState.selectedProfile?.name,
+      streamEnabled: store.state.profilesState.selectedProfile.streaming,
     );
   }
 
   static List<MenuItem> _menuItemsFromStore(
       Store<AppState> store, Messages messages) {
     var menuItems = List<MenuItem>();
-    if (store.state.ttsState.status != TtsStatus.Error) {
+    if (store.state.profilesState.selectedProfile.streaming) {
       menuItems.add(
         MenuItem(
           key: streamMenuItemKey,
@@ -60,36 +63,36 @@ class MoreViewModel {
           title: messages.actionStream,
         ),
       );
-      menuItems.add(
-        MenuItem(
-          key: screenshotMenuItemKey,
-          icon: menuIcons[screenshotMenuItemKey],
-          title: messages.actionScreenshot,
-        ),
-      );
-      menuItems.add(
-        MenuItem(
-          key: sendToSleepMenuItemKey,
-          icon: menuIcons[sendToSleepMenuItemKey],
-          title: messages.actionSleep,
-        ),
-      );
-      menuItems.add(
-        MenuItem(
-          key: restartMenuItemKey,
-          icon: menuIcons[restartMenuItemKey],
-          title: messages.actionRestart,
-        ),
-      );
-
-      menuItems.add(
-        MenuItem(
-          key: aboutMenuItemKey,
-          icon: menuIcons[aboutMenuItemKey],
-          title: messages.actionAbout,
-        ),
-      );
     }
+    menuItems.add(
+      MenuItem(
+        key: screenshotMenuItemKey,
+        icon: menuIcons[screenshotMenuItemKey],
+        title: messages.actionScreenshot,
+      ),
+    );
+    menuItems.add(
+      MenuItem(
+        key: sendToSleepMenuItemKey,
+        icon: menuIcons[sendToSleepMenuItemKey],
+        title: messages.actionSleep,
+      ),
+    );
+    menuItems.add(
+      MenuItem(
+        key: restartMenuItemKey,
+        icon: menuIcons[restartMenuItemKey],
+        title: messages.actionRestart,
+      ),
+    );
+
+    menuItems.add(
+      MenuItem(
+        key: aboutMenuItemKey,
+        icon: menuIcons[aboutMenuItemKey],
+        title: messages.actionAbout,
+      ),
+    );
     return menuItems;
   }
 
@@ -143,15 +146,14 @@ class MoreViewModel {
     } else {
       var iOSUri =
           'vlc-x-callback://x-callback-url/stream?url=' + parameters.streamUri;
-          if (await canLaunch(iOSUri)){
-              await launch(iOSUri);}
-            else {
-              store.dispatch(VlcRequiredMessageEvent());
-            return;
-            }
-          } 
+      if (await canLaunch(iOSUri)) {
+        await launch(iOSUri);
+      } else {
+        store.dispatch(VlcRequiredMessageEvent());
+        return;
+      }
     }
-  
+  }
 
   @override
   bool operator ==(Object other) =>
