@@ -44,6 +44,8 @@ dependencies:
   flutter_tts: ^0.6.0
   shared_preferences: ^0.5.3+4
   photo_view: ^0.5.0
+  wc_flutter_share: ^0.1.1
+  image_gallery_saver: ^1.2.2
   android_intent: 
     git:
       url: git://github.com/shaxxx/plugins.git
@@ -51,6 +53,9 @@ dependencies:
   flutter_redux_navigation: 
     git:
       url: git://github.com/shaxxx/flutter_redux_navigation.git
+  permission_handler: 
+    git:
+      url: git://github.com/shaxxx/flutter-permission-handler.git    
   
 dev_dependencies:
   flutter_test:
@@ -58,7 +63,7 @@ dev_dependencies:
   intl_translation: ^0.17.0
   flutter_launcher_icons: "^0.7.3"
   pedantic: ^1.8.0
-
+ 
 flutter_icons:
   image_path_android: "assets/icons/esm_icon_1024_1024_Android.png"
   image_path_ios: "assets/icons/esm_icon_1024_1024_iOS.png"

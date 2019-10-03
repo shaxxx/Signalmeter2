@@ -32,3 +32,6 @@ class TestInfoMessageEvent extends InfoMessageEvent {}
 
 @immutable
 class CheckingPortsInfoMessageEvent extends InfoMessageEvent {}
+
+@immutable
+class ScreenshotSavedInfoMessageEvent extends InfoMessageEvent {}

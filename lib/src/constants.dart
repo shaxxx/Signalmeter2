@@ -24,6 +24,7 @@ const String sendToSleepMenuItemKey = 'sendToSleepMenuItemKey';
 const String restartMenuItemKey = 'restartMenuItemKey';
 const String aboutMenuItemKey = 'aboutMenuItemKey';
 const String saveMenuItemKey = 'saveMenuItemKey';
+const String shareMenuItemKey = 'shareMenuItemKey';
 const int signalMonitorRetries = 2;
 const int signalMonitorReceiveTimeout = 1000;
 const String satelitskiForumUrl = 'https://satelitskiforum.com';
@@ -40,4 +41,5 @@ const Map<String, IconData> menuIcons = {
   restartMenuItemKey: Icons.loop,
   aboutMenuItemKey: Icons.info,
   saveMenuItemKey: Icons.save,
+  shareMenuItemKey: Icons.share,
 };
