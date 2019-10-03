@@ -3,6 +3,7 @@ import 'package:enigma_signal_meter/src/redux/app/app_state.dart';
 import 'package:enigma_signal_meter/src/utils/enigma_api.dart';
 import 'package:enigma_web/enigma_web.dart';
 import 'package:redux/redux.dart';
+import 'package:logging/logging.dart';
 
 import 'enigma_command_events.dart';
 
@@ -31,6 +32,13 @@ class EnigmaCommandMiddleware extends MiddlewareClass<AppState> {
       await _restart(store, action);
     } else if (action is GetScreenShotOfCurrentServiceEvent) {
       await _getScreenshot(store, action);
+    } else if (action is SendRemoteControlCodeEvent) {
+      await _sendRemoteControlCode(store, action);
+    } else if (action is SendRemoteControlCodeSuccessEvent) {
+      Logger.root.fine(
+          "Dispatching GetCurrentServiceEvent from EnigmaCommandMiddleware as response to SendRemoteControlCodeSuccessEvent");
+      store.dispatch(GetCurrentServiceEvent(
+          profile: store.state.profilesState.selectedProfile));
     }
   }
 
@@ -204,6 +212,26 @@ class EnigmaCommandMiddleware extends MiddlewareClass<AppState> {
           profile: store.state.profilesState.selectedProfile,
         ),
       );
+    }
+  }
+
+  Future _sendRemoteControlCode(
+      Store<AppState> store, SendRemoteControlCodeEvent action) async {
+    try {
+      var response = await EnigmaApi.sendRemoteControlCode(
+        requester: requester,
+        profile: action.profile,
+        code: action.code,
+      );
+      store.dispatch(SendRemoteControlCodeSuccessEvent(
+        responseDuration: response.responseDuration,
+      ));
+    } on EnigmaWebException catch (e) {
+      store.dispatch(SendRemoteControlCodeErrorEvent(
+        error: e,
+        code: action.code,
+        profile: action.profile,
+      ));
     }
   }
 }

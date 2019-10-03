@@ -704,5 +704,10 @@
   "@useDbAsPrimaryLevel": {
     "type": "text",
     "placeholders": {}
+  },
+  "channel": "Kanal",
+  "@channel": {
+    "type": "text",
+    "placeholders": {}
   }
 }

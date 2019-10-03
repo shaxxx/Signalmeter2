@@ -563,4 +563,8 @@ class Messages {
         "Use dB as primary level",
         name: 'useDbAsPrimaryLevel',
       );
+  String get channel => Intl.message(
+        "Channel",
+        name: 'channel',
+      );
 }

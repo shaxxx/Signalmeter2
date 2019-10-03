@@ -223,4 +223,26 @@ class EnigmaApi {
       );
     }
   }
+
+  static Future<UnparsedResponse<RemoteControlCommand>> sendRemoteControlCode({
+    @required IWebRequester requester,
+    @required IProfile profile,
+    @required RemoteControlCode code,
+  }) async {
+    var parser = UnparsedParser<RemoteControlCommand>();
+    var command = RemoteControlCommand(
+      parser,
+      requester,
+      profile,
+      code,
+    );
+    try {
+      return await command.executeAsync();
+    } on KnownException catch (e) {
+      throw EnigmaWebException(
+        command: command,
+        innerException: e,
+      );
+    }
+  }
 }

@@ -69,6 +69,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "bouquets" : MessageLookupByLibrary.simpleMessage("Kategorije"),
     "build" : MessageLookupByLibrary.simpleMessage("Build"),
     "cancel" : MessageLookupByLibrary.simpleMessage("Odustani"),
+    "channel" : MessageLookupByLibrary.simpleMessage("Kanal"),
     "checkingParameters" : MessageLookupByLibrary.simpleMessage("Provjeravam parametre"),
     "checkingPorts" : MessageLookupByLibrary.simpleMessage("Provjeravam portove"),
     "close" : MessageLookupByLibrary.simpleMessage("Zatvori"),

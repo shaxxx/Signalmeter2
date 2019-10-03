@@ -312,3 +312,31 @@ class WakeUpSuccessEvent extends EnigmaCommandSuccessEvent {
     @required Duration responseDuration,
   }) : super(responseDuration: responseDuration);
 }
+
+class SendRemoteControlCodeEvent extends EnigmaCommandEvent {
+  final RemoteControlCode code;
+  SendRemoteControlCodeEvent({
+    @required IProfile profile,
+    @required this.code,
+  }) : super(profile: profile);
+}
+
+@immutable
+class SendRemoteControlCodeSuccessEvent extends EnigmaCommandSuccessEvent {
+  SendRemoteControlCodeSuccessEvent({
+    @required Duration responseDuration,
+  }) : super(responseDuration: responseDuration);
+}
+
+@immutable
+class SendRemoteControlCodeErrorEvent extends EnigmaCommandErrorEvent {
+  final RemoteControlCode code;
+  SendRemoteControlCodeErrorEvent({
+    @required EnigmaWebException error,
+    @required IProfile profile,
+    @required this.code,
+  }) : super(
+          error: error,
+          profile: profile,
+        );
+}

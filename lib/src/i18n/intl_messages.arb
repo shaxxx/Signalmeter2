@@ -1,6 +1,6 @@
 {
   "@@locale": "en",
-  "@@last_modified": "2019-10-02T13:50:08.062147",
+  "@@last_modified": "2019-10-03T10:06:55.049872",
   "appName": "SignalMeter",
   "@appName": {
     "type": "text",
@@ -703,6 +703,11 @@
   },
   "useDbAsPrimaryLevel": "Use dB as primary level",
   "@useDbAsPrimaryLevel": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "channel": "Channel",
+  "@channel": {
     "type": "text",
     "placeholders": {}
   }

@@ -69,6 +69,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "bouquets" : MessageLookupByLibrary.simpleMessage("Bouquets"),
     "build" : MessageLookupByLibrary.simpleMessage("Build"),
     "cancel" : MessageLookupByLibrary.simpleMessage("Cancel"),
+    "channel" : MessageLookupByLibrary.simpleMessage("Channel"),
     "checkingParameters" : MessageLookupByLibrary.simpleMessage("Checking parameters"),
     "checkingPorts" : MessageLookupByLibrary.simpleMessage("Checking ports"),
     "close" : MessageLookupByLibrary.simpleMessage("Close"),

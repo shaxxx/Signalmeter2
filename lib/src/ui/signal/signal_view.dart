@@ -1,5 +1,6 @@
 import 'package:enigma_signal_meter/src/app_routes.dart';
 import 'package:enigma_signal_meter/src/model/enums.dart';
+import 'package:enigma_signal_meter/src/ui/signal/remote_buttons_view.dart';
 import 'package:enigma_signal_meter/src/ui/signal/signal_chart_view.dart';
 import 'package:enigma_signal_meter/src/ui/signal/signal_circular_progress_view.dart';
 import 'package:enigma_signal_meter/src/ui/signal/signal_progressbar_view.dart';
@@ -29,6 +30,7 @@ class _SignalViewState extends State<SignalView> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
               CurrentServiceView(),
+              RemoteButtonsView(),
               InkWell(
                 onTap: viewModel.onCycleView,
                 child: viewModel.signalView == SignalViewEnum.Linear
