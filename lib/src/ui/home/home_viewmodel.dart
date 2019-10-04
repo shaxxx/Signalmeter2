@@ -25,6 +25,7 @@ class HomeViewModel implements MessageDisplayerInterface {
   final Function() addProfile;
   final ConnectionStatusEnum connectionState;
   final Function() openAbout;
+  final bool displayShowcase;
 
   HomeViewModel({
     @required this.onPop,
@@ -35,6 +36,7 @@ class HomeViewModel implements MessageDisplayerInterface {
     this.addProfile,
     this.openAbout,
     @required this.connectionState,
+    @required this.displayShowcase,
   });
 
   static HomeViewModel fromStore(Store<AppState> store) {
@@ -75,6 +77,8 @@ class HomeViewModel implements MessageDisplayerInterface {
         store.dispatch(NavigateToAction(AppRoutes.about));
       },
       connectionState: store.state.connectionState,
+      displayShowcase: store.state.profilesState.profilesLoaded &&
+          store.state.profilesState.profiles.isEmpty,
     );
   }
 
@@ -84,6 +88,7 @@ class HomeViewModel implements MessageDisplayerInterface {
       other is HomeViewModel &&
           runtimeType == other.runtimeType &&
           connectionState == other.connectionState &&
+          displayShowcase == other.displayShowcase &&
           const IterableEquality().equals(errors, other.errors) &&
           const IterableEquality().equals(infos, other.infos) &&
           const IterableEquality().equals(warnings, other.warnings);
@@ -91,6 +96,7 @@ class HomeViewModel implements MessageDisplayerInterface {
   @override
   int get hashCode =>
       connectionState.hashCode ^
+      displayShowcase.hashCode ^
       const IterableEquality().hash(errors) ^
       const IterableEquality().hash(infos) ^
       const IterableEquality().hash(warnings);

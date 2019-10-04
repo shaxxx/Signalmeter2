@@ -34,7 +34,10 @@ ProfilesState _loadProfilesSuccessReducer(
     ProfilesState state, LoadProfilesSuccessEvent event) {
   Logger.root.fine(
       "Loaded ${event.profiles.length} profiles in ${event.responseDuration.inMilliseconds} ms");
-  return state.copyWith(profiles: event.profiles);
+  return state.copyWith(
+    profiles: event.profiles,
+    profilesLoaded: true,
+  );
 }
 
 ProfilesState _profileDeletedReducer(

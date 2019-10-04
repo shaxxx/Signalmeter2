@@ -12,20 +12,24 @@ class ProfilesState {
   final IProfile selectedProfile;
   final List<IProfile> profiles;
   final StreamController<IProfile> profilesStream;
+  final bool profilesLoaded;
 
   ProfilesState({
     @required this.status,
     @required this.selectedProfile,
     @required this.profiles,
+    @required this.profilesLoaded,
   })  : profilesStream = StreamController<IProfile>.broadcast(),
         assert(status != null),
-        assert(profiles != null);
+        assert(profiles != null),
+        assert(profilesLoaded != null);
 
   static ProfilesState initial() {
     return ProfilesState(
       status: LoadingStatus.idle,
       selectedProfile: null,
       profiles: List<IProfile>(),
+      profilesLoaded: false,
     );
   }
 
@@ -34,11 +38,13 @@ class ProfilesState {
     IProfile selectedProfile,
     List<IProfile> profiles,
     Size screenSize,
+    bool profilesLoaded,
   }) {
     return ProfilesState(
       status: status ?? this.status,
       selectedProfile: selectedProfile ?? this.selectedProfile,
       profiles: profiles ?? this.profiles,
+      profilesLoaded: profilesLoaded ?? this.profilesLoaded,
     );
   }
 
@@ -46,6 +52,7 @@ class ProfilesState {
   int get hashCode =>
       status.hashCode ^
       selectedProfile.hashCode ^
+      profilesLoaded.hashCode ^
       const IterableEquality().hash(profiles);
 
   @override
@@ -55,5 +62,6 @@ class ProfilesState {
           runtimeType == other.runtimeType &&
           status == other.status &&
           selectedProfile == other.selectedProfile &&
+          profilesLoaded == other.profilesLoaded &&
           const IterableEquality().equals(profiles, other.profiles);
 }

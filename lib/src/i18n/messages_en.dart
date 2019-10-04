@@ -63,6 +63,8 @@ class MessageLookup extends MessageLookupByLibrary {
     "actionSleep" : MessageLookupByLibrary.simpleMessage("Send to sleep"),
     "actionStream" : MessageLookupByLibrary.simpleMessage("Stream"),
     "actionTakeScreenshot" : MessageLookupByLibrary.simpleMessage("Take screenshot"),
+    "addProfileShowcaseText" : MessageLookupByLibrary.simpleMessage("Enter connection settings to start"),
+    "addProfileShowcaseTitle" : MessageLookupByLibrary.simpleMessage("Add device"),
     "alternativeLook" : MessageLookupByLibrary.simpleMessage("Alternative look"),
     "appName" : MessageLookupByLibrary.simpleMessage("SignalMeter"),
     "average" : MessageLookupByLibrary.simpleMessage("Average"),

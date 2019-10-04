@@ -15,18 +15,34 @@ import 'package:enigma_signal_meter/src/utils/message_display_handler.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_redux/flutter_redux.dart';
+import 'package:showcaseview/showcase.dart';
+import 'package:showcaseview/showcase_widget.dart';
 
 import 'home_viewmodel.dart';
 
 const Duration _kFrontLayerSwitchDuration = Duration(milliseconds: 300);
 
-class HomeView extends StatefulWidget {
+class HomeView extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return ShowCaseWidget(
+      builder: Builder(
+        builder: (context) => _HomeView(),
+      ),
+    );
+  }
+}
+
+class _HomeView extends StatefulWidget {
   @override
   _HomeViewState createState() => _HomeViewState();
 }
 
-class _HomeViewState extends State<HomeView> with RouteAware {
+class _HomeViewState extends State<_HomeView> with RouteAware {
   HomeViewModel _viewModel;
+
+  GlobalKey _fabShowcaseKey = GlobalKey();
+  bool _showcaseSeen = false;
 
   @override
   void initState() {
@@ -76,11 +92,19 @@ class _HomeViewState extends State<HomeView> with RouteAware {
           store.dispatch(ApplicationSettingsChangedEvent(applicationSettings));
         };
       },
-      onInitialBuild: (vm) => {
-        _viewModel = vm,
+      onInitialBuild: (vm) {
+        _viewModel = vm;
       },
       onDidChange: (viewModel) async {
         _viewModel = viewModel;
+        if (_viewModel.displayShowcase && !_showcaseSeen) {
+          _showcaseSeen = true;
+          if (Platform.isAndroid) {
+            ShowCaseWidget.of(context).startShowCase([_fabShowcaseKey]);
+          } else {
+            ShowCaseWidget.of(context).startShowCase([fabIosShowcaseKey]);
+          }
+        }
         await MessageDisplayHandler.displayMessages(
           context: context,
           viewModel: viewModel,
@@ -89,14 +113,26 @@ class _HomeViewState extends State<HomeView> with RouteAware {
       builder: (context, viewModel) {
         return ScaffoldBackground(
           floatingActionButton: Platform.isAndroid
-              ? DisappearingFab(
-                  child: FloatingActionButton(
-                    onPressed: viewModel.addProfile,
-                    child: Icon(Icons.add),
-                  ),
-                  finalStateVisible: viewModel.connectionState ==
-                      ConnectionStatusEnum.disconnected,
-                )
+              ? Showcase(
+                  key: _fabShowcaseKey,
+                  title: MessageProvider.of(context).addProfileShowcaseTitle,
+                  description:
+                      MessageProvider.of(context).addProfileShowcaseText,
+                  shapeBorder: CircleBorder(),
+                  showArrow: true,
+                  animationDuration: Duration(milliseconds: 1500),
+                  overlayColor: Colors.blueGrey,
+                  overlayOpacity: 0,
+                  onTargetClick: () => viewModel.addProfile(),
+                  disposeOnTap: true,
+                  child: DisappearingFab(
+                    child: FloatingActionButton(
+                      onPressed: viewModel.addProfile,
+                      child: Icon(Icons.add),
+                    ),
+                    finalStateVisible: viewModel.connectionState ==
+                        ConnectionStatusEnum.disconnected,
+                  ))
               : null,
           child: Backdrop(
             backTitle: Text(MessageProvider.of(context).options),

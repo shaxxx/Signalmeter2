@@ -719,6 +719,16 @@
   "@screenshotSaved": {
     "type": "text",
     "placeholders": {}
+  },
+  "addProfileShowcaseTitle": "Dodaj uređaj",
+  "@addProfileShowcaseTitle": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "addProfileShowcaseText": "Unesite postavke za spajanje",
+  "@addProfileShowcaseText": {
+    "type": "text",
+    "placeholders": {}
   }
   
 }

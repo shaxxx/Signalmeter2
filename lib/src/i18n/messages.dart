@@ -575,4 +575,12 @@ class Messages {
         "Screenshot successfully saved to gallery",
         name: 'screenshotSaved',
       );
+  String get addProfileShowcaseTitle => Intl.message(
+        "Add device",
+        name: 'addProfileShowcaseTitle',
+      );
+  String get addProfileShowcaseText => Intl.message(
+        "Enter connection settings to start",
+        name: 'addProfileShowcaseText',
+      );
 }

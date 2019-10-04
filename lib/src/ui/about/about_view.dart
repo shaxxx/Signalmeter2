@@ -25,27 +25,27 @@ class _AboutViewState extends State<AboutView> {
     }
   }
 
-  Widget _getVersion(BuildContext context) {
+  Widget _getBuildNumber(BuildContext context) {
     if (_packageInfo == null) {
       return SizedBox.shrink();
     }
     return Padding(
       padding: EdgeInsets.only(bottom: 30),
       child: Text(
-        MessageProvider.of(context).version + ':  ' + _packageInfo.buildNumber,
+        MessageProvider.of(context).build + ':  ' + _packageInfo.buildNumber,
         style: TextStyle(fontSize: 15),
       ),
     );
   }
 
-  Widget _getRelease(BuildContext context) {
+  Widget _getVersion(BuildContext context) {
     if (_packageInfo == null) {
       return SizedBox.shrink();
     }
     return Padding(
       padding: EdgeInsets.all(10),
       child: Text(
-        MessageProvider.of(context).releaseName + ':  ' + _packageInfo.version,
+        MessageProvider.of(context).version + ':  ' + _packageInfo.version,
         style: TextStyle(fontSize: 15),
       ),
     );
@@ -74,8 +74,8 @@ class _AboutViewState extends State<AboutView> {
                 ),
               ),
             ),
-            _getRelease(context),
             _getVersion(context),
+            _getBuildNumber(context),
             Container(
               padding: EdgeInsets.only(top: 20),
               child: Text(MessageProvider.of(context).informationsSupport),

@@ -63,6 +63,8 @@ class MessageLookup extends MessageLookupByLibrary {
     "actionSleep" : MessageLookupByLibrary.simpleMessage("Stanje mirovanja"),
     "actionStream" : MessageLookupByLibrary.simpleMessage("Stream"),
     "actionTakeScreenshot" : MessageLookupByLibrary.simpleMessage("Snimi zaslon"),
+    "addProfileShowcaseText" : MessageLookupByLibrary.simpleMessage("Unesite postavke za spajanje"),
+    "addProfileShowcaseTitle" : MessageLookupByLibrary.simpleMessage("Dodaj uređaj"),
     "alternativeLook" : MessageLookupByLibrary.simpleMessage("Alternativni izgled"),
     "appName" : MessageLookupByLibrary.simpleMessage("SignalMeter"),
     "average" : MessageLookupByLibrary.simpleMessage("Prosječno"),

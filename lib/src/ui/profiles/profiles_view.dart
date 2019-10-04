@@ -6,8 +6,11 @@ import 'package:enigma_signal_meter/src/ui/profiles/profiles_viewmodel.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_redux/flutter_redux.dart';
+import 'package:showcaseview/showcase.dart';
 
 import 'profiles_list_view.dart';
+
+GlobalKey fabIosShowcaseKey = GlobalKey();
 
 class ProfilesView extends StatelessWidget {
   @override
@@ -37,40 +40,54 @@ class ProfilesView extends StatelessWidget {
                   ],
                 ),
               ),
-              Padding(
-                padding: EdgeInsets.all(20),
-                child: Platform.isIOS
-                    ? SizedBox(
-                        width: 160,
-                        child: Container(
-                          decoration: BoxDecoration(
-                            color: theme.accentColor.withOpacity(0.3),
-                            borderRadius: BorderRadius.circular(10),
-                          ),
-                          alignment: Alignment.center,
-                          margin: EdgeInsets.symmetric(vertical: 15),
-                          child: InkWell(
-                            onTap: () async {
-                              await viewModel.addProfile();
-                            },
-                            child: Container(
-                              alignment: Alignment.center,
-                              constraints: BoxConstraints.expand(
-                                height: 40,
-                              ),
-                              child: Text(
-                                MessageProvider.of(context)
-                                    .actionAddProfile
-                                    .toUpperCase(),
-                                style: TextStyle(
-                                    fontSize: 16, fontWeight: FontWeight.w400),
-                                textAlign: TextAlign.center,
+              Showcase(
+                key: fabIosShowcaseKey,
+                title: MessageProvider.of(context).addProfileShowcaseTitle,
+                description: MessageProvider.of(context).addProfileShowcaseText,
+                shapeBorder: CircleBorder(),
+                showArrow: true,
+                animationDuration: Duration(milliseconds: 1500),
+                overlayColor: Colors.blueGrey,
+                overlayOpacity: 0,
+                onTargetClick: () => viewModel.addProfile(),
+                disposeOnTap: true,
+                child: Padding(
+                  padding: EdgeInsets.all(20),
+                  child: Platform.isIOS
+                      ? SizedBox(
+                          width: 160,
+                          child: Container(
+                            decoration: BoxDecoration(
+                              color: theme.accentColor.withOpacity(0.3),
+                              borderRadius: BorderRadius.circular(10),
+                            ),
+                            alignment: Alignment.center,
+                            margin: EdgeInsets.symmetric(vertical: 15),
+                            child: InkWell(
+                              onTap: () async {
+                                await viewModel.addProfile();
+                              },
+                              child: Container(
+                                alignment: Alignment.center,
+                                constraints: BoxConstraints.expand(
+                                  height: 40,
+                                ),
+                                child: Text(
+                                  MessageProvider.of(context)
+                                      .actionAddProfile
+                                      .toUpperCase(),
+                                  style: TextStyle(
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.w400,
+                                  ),
+                                  textAlign: TextAlign.center,
+                                ),
                               ),
                             ),
                           ),
-                        ),
-                      )
-                    : SizedBox.shrink(),
+                        )
+                      : SizedBox.shrink(),
+                ),
               ),
             ],
           );

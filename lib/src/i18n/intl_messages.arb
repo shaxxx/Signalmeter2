@@ -1,6 +1,6 @@
 {
   "@@locale": "en",
-  "@@last_modified": "2019-10-03T13:49:47.855435",
+  "@@last_modified": "2019-10-04T10:09:38.190172",
   "appName": "SignalMeter",
   "@appName": {
     "type": "text",
@@ -718,6 +718,16 @@
   },
   "screenshotSaved": "Screenshot successfully saved to gallery",
   "@screenshotSaved": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "addProfileShowcaseTitle": "Add device",
+  "@addProfileShowcaseTitle": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "addProfileShowcaseText": "Enter connection settings to start",
+  "@addProfileShowcaseText": {
     "type": "text",
     "placeholders": {}
   }
