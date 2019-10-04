@@ -20,6 +20,9 @@ Tested and working on this receivers:
 - Dreambox DM800
 - Dreambox DM800SE
 - Dreambox DM8000
+- Dreambox 900 UHD
+- Dreambox 920 UHD
+- Dreambox One
 - VU+ Uno
 - VU+ Duo
 - AzBox Premium
@@ -30,6 +33,7 @@ Tested and working on this receivers:
 - Amiko Alien
 - Topfield TF 7700HD PVR
 - Gigablue solo
+- Gigablue Quad Plus
 - ClarkeTech ET9000
 - ClarkeTech Xtrend ET5000
 - Edision OS Mio
