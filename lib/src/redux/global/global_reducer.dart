@@ -24,6 +24,6 @@ GlobalState _satellitesLoadedReducer(
 
 GlobalState _appSettingsLoadedReducer(
     GlobalState state, ApplicationSettingsChangedEvent event) {
-  Logger.root.fine("Loaded application settings");
+  Logger.root.fine("Reloaded application settings");
   return state.copyWith(applicationSettings: event.applicationSettings);
 }

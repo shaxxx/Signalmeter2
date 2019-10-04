@@ -15,6 +15,9 @@ class GlobalMiddleware extends MiddlewareClass<AppState> {
     } else if (action is LoadApplicationSettingsEvent) {
       var settings = await PreferenceManager.loadApplicationSettings();
       store.dispatch(ApplicationSettingsChangedEvent(settings));
+    } else if (action is ApplicationSettingsChangedEvent) {
+      await PreferenceManager.saveApplicationSettings(
+          action.applicationSettings);
     }
     next(action);
   }
