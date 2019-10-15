@@ -30,7 +30,7 @@ class RemoteButtonsView extends StatelessWidget {
           onTap: () => store.dispatch(
             SendRemoteControlCodeEvent(
               profile: store.state.profilesState.selectedProfile,
-              code: RemoteControlCode.bouquetDown,
+              code: RemoteControlCode.left,
             ),
           ),
         ),
@@ -48,7 +48,7 @@ class RemoteButtonsView extends StatelessWidget {
           onTap: () => store.dispatch(
             SendRemoteControlCodeEvent(
               profile: store.state.profilesState.selectedProfile,
-              code: RemoteControlCode.bouquetUp,
+              code: RemoteControlCode.right,
             ),
           ),
         )
