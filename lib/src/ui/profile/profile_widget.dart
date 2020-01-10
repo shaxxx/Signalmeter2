@@ -29,8 +29,8 @@ class ProfileWidget extends StatefulWidget {
         assert(child != null);
 
   static ProfileWidgetState of(BuildContext context) {
-    return (context.inheritFromWidgetOfExactType(_InheritedProfileWidget)
-            as _InheritedProfileWidget)
+    return (context
+            .dependOnInheritedWidgetOfExactType<_InheritedProfileWidget>())
         .data;
   }
 
@@ -47,7 +47,7 @@ class ProfileWidgetState extends State<ProfileWidget> {
   void initState() {
     super.initState();
     if (widget.profile != null) {
-      this.profile = ProfileEditModel.fromProfile(widget.profile);
+      profile = ProfileEditModel.fromProfile(widget.profile);
     }
     _setTextFieldValues();
     _setListeners();
@@ -256,7 +256,7 @@ class ProfileWidgetState extends State<ProfileWidget> {
     };
 
     transcodingPortValidator = (value) {
-      if (!this.profile.transcoding) {
+      if (!profile.transcoding) {
         return null;
       }
       if (!NetworkUtils.isStringValidPort(value)) {
@@ -266,8 +266,7 @@ class ProfileWidgetState extends State<ProfileWidget> {
     };
 
     streamingPortValidator = (value) {
-      if (!this.profile.streaming ||
-          this.profile.enigma == EnigmaType.enigma1) {
+      if (!profile.streaming || profile.enigma == EnigmaType.enigma1) {
         return null;
       }
       if (!NetworkUtils.isStringValidPort(value)) {

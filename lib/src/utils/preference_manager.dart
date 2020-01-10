@@ -5,9 +5,9 @@ import 'package:enigma_web/enigma_web.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class PreferenceManager {
-  static const String _profiles_key = "com.krkadoni.app.signalmeter.Profiles";
+  static const String _profiles_key = 'com.krkadoni.app.signalmeter.Profiles';
   static const String _appSettings_key =
-      "com.krkadoni.app.signalmeter.ApplicationSettings";
+      'com.krkadoni.app.signalmeter.ApplicationSettings';
 
   static Future<bool> saveProfiles(List<IProfile> profiles) async {
     var json = jsonEncode(profiles);
@@ -16,7 +16,7 @@ class PreferenceManager {
   }
 
   static Future<List<Profile>> loadProfiles() async {
-    List<Profile> profiles = List<Profile>();
+    var profiles = <Profile>[];
     var prefs = await SharedPreferences.getInstance();
     var json = prefs.getString(_profiles_key);
     if (json != null) {

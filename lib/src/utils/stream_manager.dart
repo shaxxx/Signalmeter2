@@ -75,10 +75,10 @@ class StreamUtils {
     String streamUri;
     if (profile.enigma == EnigmaType.enigma2) {
       //http://example.com:8001/
-      streamUri = "http://${profile.address}:$port/${service.reference}";
+      streamUri = 'http://${profile.address}:$port/${service.reference}';
     } else {
       //http://dm600pvr:31339/0,61,1ff,200
-      streamUri = "http://${profile.address}:$port${extraParametersUri.path}";
+      streamUri = 'http://${profile.address}:$port${extraParametersUri.path}';
     }
     streamUri = Uri.encodeFull(streamUri);
     return StreamParametersResponse(
@@ -164,6 +164,7 @@ class StreamParametersResponse {
     @required this.getStreamParametersError,
   }) : assert(status != null);
 
+  @override
   bool operator ==(Object other) =>
       identical(this, other) ||
       other is StreamParametersResponse &&

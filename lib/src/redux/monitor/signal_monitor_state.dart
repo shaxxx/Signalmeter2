@@ -16,7 +16,7 @@ class SignalMonitorState {
   static SignalMonitorState initial() {
     return SignalMonitorState(
       status: MonitorStatus.stopped,
-      responses: List<ISignalResponse>(),
+      responses: <ISignalResponse>[],
     );
   }
 

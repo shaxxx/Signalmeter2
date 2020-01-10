@@ -77,7 +77,7 @@ class TabsAppBarViewModel {
 
   static List<MenuItem> _menuItemsFromStore(
       Store<AppState> store, Messages messages) {
-    var menuItems = List<MenuItem>();
+    var menuItems = <MenuItem>[];
     if (store.state.connectionState == ConnectionStatusEnum.connected) {
       if (store.state.tabsState.activeTab == TabPagesEnum.Signal) {
         if (store.state.ttsState.status != TtsStatus.Error) {

@@ -56,12 +56,12 @@ class CircularProgressView extends StatelessWidget {
                   colors: colors,
                   stops: stops,
                   strokeWidth: 25.0,
-                  value: this.doubleValue,
+                  value: doubleValue,
                   child: Center(
                     child: Padding(
                       padding: EdgeInsets.only(left: 50, right: 50),
                       child: AutoSizeText(
-                        this.stringValue,
+                        stringValue,
                         maxLines: 1,
                         style: TextStyle(
                           fontSize: 150.0,
@@ -77,7 +77,7 @@ class CircularProgressView extends StatelessWidget {
               child: SizedBox(
                 width: maxSize / 3.6,
                 child: AutoSizeText(
-                  this.footerString,
+                  footerString,
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     fontSize: 50.0,

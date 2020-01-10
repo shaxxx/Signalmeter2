@@ -22,7 +22,7 @@ class BouquetItemsState {
     return BouquetItemsState(
       status: LoadingStatus.idle,
       selectedService: null,
-      cachedBouquetItems: Map<IBouquetItemBouquet, List<IBouquetItem>>(),
+      cachedBouquetItems: <IBouquetItemBouquet, List<IBouquetItem>>{},
       searchTerm: null,
     );
   }
@@ -37,7 +37,7 @@ class BouquetItemsState {
     var results = cachedBouquetItems[bouquet]
         .where((item) =>
             item is BouquetItemService &&
-            item.name.toUpperCase().contains(this.searchTerm.toUpperCase()))
+            item.name.toUpperCase().contains(searchTerm.toUpperCase()))
         .toList();
     return results;
   }

@@ -62,7 +62,7 @@ class DisappearingFabState extends State<DisappearingFab>
 
   @override
   Widget build(BuildContext context) {
-    final int cycles = 1;
+    final cycles = 1;
     if (_controller.isCompleted || _controller.isDismissed) {
       if (widget.finalStateVisible && _controller.value < 1.0) {
         _controller.forward();

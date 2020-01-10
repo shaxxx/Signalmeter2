@@ -41,7 +41,7 @@ class _HomeView extends StatefulWidget {
 class _HomeViewState extends State<_HomeView> with RouteAware {
   HomeViewModel _viewModel;
 
-  GlobalKey _fabShowcaseKey = GlobalKey();
+  final GlobalKey _fabShowcaseKey = GlobalKey();
   bool _showcaseSeen = false;
 
   @override

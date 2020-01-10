@@ -20,9 +20,9 @@ class MessagesState {
 
   static MessagesState initial() {
     return MessagesState(
-      infoMessages: List<InfoMessageEvent>(),
-      errorMessages: List<ErrorMessageEvent>(),
-      warningMessages: List<WarningMessageEvent>(),
+      infoMessages: <InfoMessageEvent>[],
+      errorMessages: <ErrorMessageEvent>[],
+      warningMessages: <WarningMessageEvent>[],
     );
   }
 

@@ -118,6 +118,7 @@ class ChangeServiceSuccessEvent extends EnigmaCommandSuccessEvent {
 
 class GetBouquetItemsEvent extends EnigmaCommandEvent {
   final IBouquetItemBouquet bouquet;
+  @override
   final IProfile profile;
   GetBouquetItemsEvent({
     @required this.profile,

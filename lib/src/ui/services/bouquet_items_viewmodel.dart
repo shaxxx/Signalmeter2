@@ -24,8 +24,7 @@ class BouquetItemsViewModel {
   final String searchTerm;
   final void Function(String) onSearchTermChanged;
 
-  bool get hasSearchTerm =>
-      this.searchTerm != null && this.searchTerm.trim().isNotEmpty;
+  bool get hasSearchTerm => searchTerm != null && searchTerm.trim().isNotEmpty;
 
   static BouquetItemsViewModel fromStore(
     Store<AppState> store,

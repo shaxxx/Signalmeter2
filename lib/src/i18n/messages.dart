@@ -36,7 +36,7 @@ class Messages {
         name: 'actionStream',
       );
   String errFailedConnect(String profileName) => Intl.message(
-        "Failed to connect to $profileName.",
+        'Failed to connect to $profileName.',
         args: [profileName],
         name: 'errFailedConnect',
       );
@@ -455,15 +455,15 @@ class Messages {
         name: 'actionAbout',
       );
   String get close => Intl.message(
-        "Close",
+        'Close',
         name: 'close',
       );
   String get open => Intl.message(
-        "Open",
+        'Open',
         name: 'open',
       );
   String get details => Intl.message(
-        "Details",
+        'Details',
         name: 'details',
       );
   String platformNotSupported(String platform) => Intl.message(
@@ -472,67 +472,67 @@ class Messages {
         name: 'platformNotSupported',
       );
   String get unknownError => Intl.message(
-        "Unknown error.",
+        'Unknown error.',
         name: 'unknownError',
       );
   String get pleaseSubmitDetails => Intl.message(
-        "Please submit details.",
+        'Please submit details.',
         name: 'pleaseSubmitDetails',
       );
   String get confirm => Intl.message(
-        "Confirm",
+        'Confirm',
         name: 'confirm',
       );
   String get yes => Intl.message(
-        "Yes",
+        'Yes',
         name: 'yes',
       );
   String get no => Intl.message(
-        "No",
+        'No',
         name: 'no',
       );
   String get ok => Intl.message(
-        "OK",
+        'OK',
         name: 'ok',
       );
   String get cancel => Intl.message(
-        "Cancel",
+        'Cancel',
         name: 'cancel',
       );
   String get average => Intl.message(
-        "Average",
+        'Average',
         name: 'average',
       );
   String get enableTts => Intl.message(
-        "Enable Tts",
+        'Enable Tts',
         name: 'enableTts',
       );
   String get disableTts => Intl.message(
-        "Disable Tts",
+        'Disable Tts',
         name: 'disableTts',
       );
   String get defaultLook => Intl.message(
-        "Default look",
+        'Default look',
         name: 'defaultLook',
       );
   String get alternativeLook => Intl.message(
-        "Alternative look",
+        'Alternative look',
         name: 'alternativeLook',
       );
   String get searchByName => Intl.message(
-        "Search by name",
+        'Search by name',
         name: 'searchByName',
       );
   String get streamRequiresVlc => Intl.message(
-        "Stream requires VLC player",
+        'Stream requires VLC player',
         name: 'streamRequiresVlc',
       );
   String get formNotValid => Intl.message(
-        "Form is not valid",
+        'Form is not valid',
         name: 'formNotValid',
       );
   String get more => Intl.message(
-        "More",
+        'More',
         name: 'more',
       );
   String get profileStreamingPorthintEnigma1 => Intl.message(
@@ -540,47 +540,47 @@ class Messages {
         name: 'profileStreamingPorthintEnigma1',
       );
   String get considerCoffee => Intl.message(
-        "Consider buying me a coffee.",
+        'Consider buying me a coffee.',
         name: 'considerCoffee',
       );
   String get likeTheApp => Intl.message(
-        "Like the app?",
+        'Like the app?',
         name: 'likeTheApp',
       );
   String get questionEmptyUsernamePassword => Intl.message(
-        "Leave username and password empty? This requires you to turn OFF authorization on Web interface.",
+        'Leave username and password empty? This requires you to turn OFF authorization on Web interface.',
         name: 'questionEmptyUsernamePassword',
       );
   String get settings => Intl.message(
-        "Settings",
+        'Settings',
         name: 'settings',
       );
   String get options => Intl.message(
-        "Options",
+        'Options',
         name: 'options',
       );
   String get useDbAsPrimaryLevel => Intl.message(
-        "Use dB as primary level",
+        'Use dB as primary level',
         name: 'useDbAsPrimaryLevel',
       );
   String get channel => Intl.message(
-        "Channel",
+        'Channel',
         name: 'channel',
       );
   String get share => Intl.message(
-        "Share",
+        'Share',
         name: 'share',
       );
   String get screenshotSaved => Intl.message(
-        "Screenshot successfully saved to gallery",
+        'Screenshot successfully saved to gallery',
         name: 'screenshotSaved',
       );
   String get addProfileShowcaseTitle => Intl.message(
-        "Add device",
+        'Add device',
         name: 'addProfileShowcaseTitle',
       );
   String get addProfileShowcaseText => Intl.message(
-        "Enter connection settings to start",
+        'Enter connection settings to start',
         name: 'addProfileShowcaseText',
       );
 }

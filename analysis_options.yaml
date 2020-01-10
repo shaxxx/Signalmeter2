@@ -7,8 +7,9 @@ include: package:pedantic/analysis_options.yaml
 # Uncomment to specify additional rules.
 # linter:
 #   rules:
-#     - camel_case_types
+#     invalid_use_of_protected_member: false
 
-# analyzer:
-#   exclude:
-#     - path/to/excluded/files/**
+analyzer:
+  exclude:
+    - lib/src/i18n/messages_hr.dart
+    - lib/src/i18n/messages_en.dart

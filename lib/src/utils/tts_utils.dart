@@ -10,9 +10,7 @@ class TtsUtils {
   static String _language;
 
   factory TtsUtils() {
-    if (_instance == null) {
-      _instance = TtsUtils._internal(FlutterTts());
-    }
+    _instance ??= TtsUtils._internal(FlutterTts());
     return _instance;
   }
 

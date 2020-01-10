@@ -18,12 +18,12 @@ GlobalState _screenSizeEventReducer(
 
 GlobalState _satellitesLoadedReducer(
     GlobalState state, SatellitesLoadedEvent event) {
-  Logger.root.fine("Loaded ${event.satellites.length} satellites.");
+  Logger.root.fine('Loaded ${event.satellites.length} satellites.');
   return state.copyWith(satellites: event.satellites);
 }
 
 GlobalState _appSettingsLoadedReducer(
     GlobalState state, ApplicationSettingsChangedEvent event) {
-  Logger.root.fine("Reloaded application settings");
+  Logger.root.fine('Reloaded application settings');
   return state.copyWith(applicationSettings: event.applicationSettings);
 }

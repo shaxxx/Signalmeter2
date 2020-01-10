@@ -56,7 +56,7 @@ class _TappableWhileStatusIsState extends State<_TappableWhileStatusIs> {
   }
 
   void _handleStatusChange(AnimationStatus status) {
-    final bool value = widget.controller.status == widget.status;
+    final value = widget.controller.status == widget.status;
     if (_active != value) {
       setState(() {
         _active = value;
@@ -90,12 +90,12 @@ class _CrossFadeTransition extends AnimatedWidget {
   Widget build(BuildContext context) {
     final Animation<double> progress = listenable;
 
-    final double opacity1 = CurvedAnimation(
+    final opacity1 = CurvedAnimation(
       parent: ReverseAnimation(progress),
       curve: const Interval(0.5, 1.0),
     ).value;
 
-    final double opacity2 = CurvedAnimation(
+    final opacity2 = CurvedAnimation(
       parent: progress,
       curve: const Interval(0.5, 1.0),
     ).value;
@@ -140,7 +140,7 @@ class _BackAppBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final ThemeData theme = Theme.of(context);
+    final theme = Theme.of(context);
     return IconTheme.merge(
       data: theme.primaryIconTheme,
       child: DefaultTextStyle(
@@ -236,8 +236,7 @@ class _BackdropState extends State<Backdrop>
     if (_controller.isAnimating ||
         _controller.status == AnimationStatus.completed) return;
 
-    final double flingVelocity =
-        details.velocity.pixelsPerSecond.dy / _backdropHeight;
+    final flingVelocity = details.velocity.pixelsPerSecond.dy / _backdropHeight;
     if (flingVelocity < 0.0) {
       _controller.fling(velocity: math.max(2.0, -flingVelocity));
     } else if (flingVelocity > 0.0) {
@@ -248,15 +247,14 @@ class _BackdropState extends State<Backdrop>
   }
 
   void _toggleFrontLayer() {
-    final AnimationStatus status = _controller.status;
-    final bool isOpen = status == AnimationStatus.completed ||
+    final status = _controller.status;
+    final isOpen = status == AnimationStatus.completed ||
         status == AnimationStatus.forward;
     _controller.fling(velocity: isOpen ? -2.0 : 2.0);
   }
 
   Widget _buildStack(BuildContext context, BoxConstraints constraints) {
-    final Animation<RelativeRect> frontRelativeRect =
-        _controller.drive(RelativeRectTween(
+    final frontRelativeRect = _controller.drive(RelativeRectTween(
       begin: RelativeRect.fromLTRB(
           0.0, constraints.biggest.height - _kFrontClosedHeight, 0.0, 0.0),
       end: const RelativeRect.fromLTRB(0.0, _kBackAppBarHeight, 0.0, 0.0),

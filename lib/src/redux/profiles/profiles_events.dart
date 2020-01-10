@@ -44,5 +44,5 @@ class LoadProfilesSuccessEvent {
 @immutable
 class LoadProfilesErrorEvent {
   final dynamic error;
-  LoadProfilesErrorEvent({this.error}) : assert(error != null);
+  LoadProfilesErrorEvent({@required this.error}) : assert(error != null);
 }

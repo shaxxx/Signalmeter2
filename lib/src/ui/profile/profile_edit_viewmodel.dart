@@ -30,7 +30,7 @@ class ProfileEditViewModel {
       store.dispatch(ProfileSelectedEvent(profile));
       store.dispatch(
         NavigateToAction.popUntil(
-          ModalRoute.withName(AppRoutes.home),
+          predicate: ModalRoute.withName(AppRoutes.home),
         ),
       );
     });

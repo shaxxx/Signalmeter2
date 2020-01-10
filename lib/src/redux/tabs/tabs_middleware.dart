@@ -12,15 +12,15 @@ class TabsMiddleware extends MiddlewareClass<AppState> {
   void call(Store<AppState> store, action, NextDispatcher next) async {
     if (action is WakeUpSuccessEvent) {
       Logger.root.fine(
-          "Dispatching ActiveTabChangedEvent from TabsMiddleware as response to WakeUpSuccessEvent");
+          'Dispatching ActiveTabChangedEvent from TabsMiddleware as response to WakeUpSuccessEvent');
       store.dispatch(ActiveTabChangedEvent(TabPagesEnum.Bouquets));
     } else if (action is BouquetSelectedEvent && action.switchToServicesTab) {
       Logger.root.fine(
-          "Dispatching ActiveTabChangedEvent from TabsMiddleware as response to BouquetSelectedEvent");
+          'Dispatching ActiveTabChangedEvent from TabsMiddleware as response to BouquetSelectedEvent');
       store.dispatch(ActiveTabChangedEvent(TabPagesEnum.Services));
     } else if (action is BouquetItemSelectedEvent && action.switchTabs) {
       Logger.root.fine(
-          "Dispatching ActiveTabChangedEvent from TabsMiddleware as response to BouquetItemSelectedEvent");
+          'Dispatching ActiveTabChangedEvent from TabsMiddleware as response to BouquetItemSelectedEvent');
       store.dispatch(ActiveTabChangedEvent(TabPagesEnum.Signal));
     }
     next(action);

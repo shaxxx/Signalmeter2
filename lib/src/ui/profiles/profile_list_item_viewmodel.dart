@@ -28,8 +28,8 @@ class ProfileListItemViewModel {
   final VoidCallback onTap;
   final ConnectionStatusEnum connectionStatus;
 
-  String _name;
-  String _address;
+  final String _name;
+  final String _address;
   final bool isClickable;
   final VoidCallback onConnect;
   final VoidCallback onDisconnect;

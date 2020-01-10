@@ -19,8 +19,11 @@ class HomeViewModel implements MessageDisplayerInterface {
 
   @override
   final Function(MessageEvent message) messageShown;
+  @override
   final List<ErrorMessageEvent> errors;
+  @override
   final List<InfoMessageEvent> infos;
+  @override
   final List<WarningMessageEvent> warnings;
   final Function() addProfile;
   final ConnectionStatusEnum connectionState;

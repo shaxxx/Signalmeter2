@@ -18,7 +18,7 @@ class RemoteButtonsView extends StatelessWidget {
         InkWell(
           child: Padding(
             child: Text(
-              messages.channel.toUpperCase() + "-",
+              messages.channel.toUpperCase() + '-',
               style: TextStyle(
                 fontWeight: FontWeight.w500,
                 fontSize: 16,
@@ -37,7 +37,7 @@ class RemoteButtonsView extends StatelessWidget {
         InkWell(
           child: Padding(
             child: Text(
-              messages.channel.toUpperCase() + "+",
+              messages.channel.toUpperCase() + '+',
               style: TextStyle(
                   fontWeight: FontWeight.w500,
                   fontSize: 16,

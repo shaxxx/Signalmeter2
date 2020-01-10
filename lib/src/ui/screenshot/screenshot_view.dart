@@ -117,24 +117,22 @@ class _ScreenshotViewState extends State<ScreenshotView> {
   }
 
   Future<bool> _checkPermissionsIos() async {
-    PermissionStatus permission =
+    var permission =
         await PermissionHandler().checkPermissionStatus(PermissionGroup.photos);
     if (permission != PermissionStatus.granted) {
-      Map<PermissionGroup, PermissionStatus> permissions =
-          await PermissionHandler()
-              .requestPermissions([PermissionGroup.photos]);
+      var permissions = await PermissionHandler()
+          .requestPermissions([PermissionGroup.photos]);
       return (permissions.values.first == PermissionStatus.granted);
     }
     return true;
   }
 
   Future<bool> _checkPermissionsAndroid() async {
-    PermissionStatus permission = await PermissionHandler()
+    var permission = await PermissionHandler()
         .checkPermissionStatus(PermissionGroup.storage);
     if (permission != PermissionStatus.granted) {
-      Map<PermissionGroup, PermissionStatus> permissions =
-          await PermissionHandler()
-              .requestPermissions([PermissionGroup.storage]);
+      var permissions = await PermissionHandler()
+          .requestPermissions([PermissionGroup.storage]);
       return (permissions.values.first == PermissionStatus.granted);
     }
     return true;

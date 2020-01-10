@@ -16,7 +16,7 @@ class SignalChartViewModel {
   bool get useDb => profile.enigma == EnigmaType.enigma2 && dbIsPrimaryLevel;
 
   Map<double, double> get chartPoints {
-    var list = Map<double, double>();
+    var list = <double, double>{};
 
     for (var i = 0; i < signalChartPoints - responses.length; i++) {
       list.putIfAbsent(i.toDouble(), () => 0);
@@ -46,7 +46,7 @@ class SignalChartViewModel {
     if (responses.isEmpty) {
       return '';
     }
-    int averageResponseTime = responses
+    var averageResponseTime = responses
             .map((response) => response.responseDuration.inMilliseconds)
             .reduce((a, b) => a + b) ~/
         responses.length;

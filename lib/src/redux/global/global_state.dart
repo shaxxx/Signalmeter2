@@ -29,7 +29,7 @@ class GlobalState {
   static GlobalState initial() {
     return GlobalState(
       screenSize: null,
-      satellites: Map<int, String>(),
+      satellites: <int, String>{},
       webRequester: WebRequester(
         Logger.root,
         connectTimeOut: 15000,

@@ -25,9 +25,9 @@ class GlobalMiddleware extends MiddlewareClass<AppState> {
   Future<Map<int, String>> _loadSatellites() async {
     var fileContent = await _loadAsset();
     var fileString = StringUtils.sanitizeXmlString(fileContent);
-    var satellites = Map<int, String>();
+    var satellites = <int, String>{};
     var document = xml.parse(fileString);
-    var children = document.findAllElements("sat");
+    var children = document.findAllElements('sat');
     if (children != null && children.isNotEmpty) {
       for (final node in children) {
         final nameNode = node.attributes
@@ -37,8 +37,8 @@ class GlobalMiddleware extends MiddlewareClass<AppState> {
             .where((attribute) => attribute.name.toString() == 'position')
             .single;
 
-        String satellite = nameNode.value;
-        String position = positionNode.value;
+        var satellite = nameNode.value;
+        var position = positionNode.value;
         if (satellite != null && satellite.isNotEmpty) {
           satellite = StringUtils.trimAll(satellite);
         }
@@ -51,7 +51,7 @@ class GlobalMiddleware extends MiddlewareClass<AppState> {
       }
       return satellites;
     }
-    return Map<int, String>();
+    return <int, String>{};
   }
 
   Future<String> _loadAsset() async {

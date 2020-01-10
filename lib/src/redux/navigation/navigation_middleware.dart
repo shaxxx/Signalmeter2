@@ -18,7 +18,7 @@ class NavigationMiddleware extends MiddlewareClass<AppState> {
       } else if (action.status == ConnectionStatusEnum.disconnected) {
         store.dispatch(
           NavigateToAction.popUntil(
-            ModalRoute.withName(AppRoutes.home),
+            predicate: ModalRoute.withName(AppRoutes.home),
           ),
         );
       }

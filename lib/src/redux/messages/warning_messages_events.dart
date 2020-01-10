@@ -32,7 +32,7 @@ class UnsupportedPlatformMessageEvent extends WarningMessageEvent {
   final String platform;
 
   UnsupportedPlatformMessageEvent({
-    this.platform,
+    @required this.platform,
   }) : assert(platform != null);
 
   @override

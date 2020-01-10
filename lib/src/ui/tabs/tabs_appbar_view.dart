@@ -33,7 +33,7 @@ class TabsAppBarView {
   }
 
   static List<Widget> _buildMenu() {
-    List<Widget> _actions = List<Widget>();
+    var _actions = <Widget>[];
     _actions.add(Builder(builder: (context) {
       return StoreConnector<AppState, TabsAppBarViewModel>(
         distinct: true,
@@ -59,7 +59,7 @@ class TabsAppBarView {
   }
 
   static List<Widget> _visibleActions(TabsAppBarViewModel viewModel) {
-    var icons = List<Widget>();
+    var icons = <Widget>[];
     viewModel.menuItems.take(viewModel.visibleItemsCount).forEach((menuItem) {
       icons.add(
         Builder(

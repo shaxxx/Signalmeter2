@@ -13,8 +13,8 @@ class MessageProvider {
   final Messages messages;
 
   static Future<MessageProvider> load(Locale locale) {
-    final String name = locale.languageCode;
-    final String localeName = Intl.canonicalizedLocale(name);
+    final name = locale.languageCode;
+    final localeName = Intl.canonicalizedLocale(name);
 
     return initializeMessages(localeName).then((_) {
       Intl.defaultLocale = localeName;

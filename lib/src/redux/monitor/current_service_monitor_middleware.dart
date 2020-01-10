@@ -25,32 +25,32 @@ class CurrentServiceMonitorMiddleware extends MiddlewareClass<AppState> {
   void call(Store<AppState> store, action, NextDispatcher next) async {
     if (action is GetCurrentServiceErrorEvent) {
       Logger.root.fine(
-          "Dispatching ChangeCurrentServiceMonitorStatusEvent from CurrentServiceMonitorMiddleware as response to GetCurrentServiceErrorEvent");
+          'Dispatching ChangeCurrentServiceMonitorStatusEvent from CurrentServiceMonitorMiddleware as response to GetCurrentServiceErrorEvent');
       store.dispatch(
           ChangeCurrentServiceMonitorStatusEvent(MonitorStatus.stopped));
     } else if (action is ConnectionStatusChangedEvent) {
       if (action.status == ConnectionStatusEnum.disconnected) {
         Logger.root.fine(
-            "Dispatching ChangeCurrentServiceMonitorStatusEvent from CurrentServiceMonitorMiddleware as response to ConnectionStatusChangedEvent");
+            'Dispatching ChangeCurrentServiceMonitorStatusEvent from CurrentServiceMonitorMiddleware as response to ConnectionStatusChangedEvent');
         store.dispatch(
             ChangeCurrentServiceMonitorStatusEvent(MonitorStatus.stopped));
       } else if (action.status == ConnectionStatusEnum.connected &&
           store.state.tabsState.tabPagesActive) {
         Logger.root.fine(
-            "Dispatching ChangeCurrentServiceMonitorStatusEvent from CurrentServiceMonitorMiddleware as response to ConnectionStatusChangedEvent");
+            'Dispatching ChangeCurrentServiceMonitorStatusEvent from CurrentServiceMonitorMiddleware as response to ConnectionStatusChangedEvent');
         store.dispatch(
             ChangeCurrentServiceMonitorStatusEvent(MonitorStatus.running));
       }
     } else if (action is TabPagesActiveChangedEvent) {
       if (!action.active) {
         Logger.root.fine(
-            "Dispatching ChangeCurrentServiceMonitorStatusEvent from CurrentServiceMonitorMiddleware as response to TabPagesActiveChangedEvent");
+            'Dispatching ChangeCurrentServiceMonitorStatusEvent from CurrentServiceMonitorMiddleware as response to TabPagesActiveChangedEvent');
         store.dispatch(
             ChangeCurrentServiceMonitorStatusEvent(MonitorStatus.stopped));
       } else if (action.active &&
           store.state.connectionState == ConnectionStatusEnum.connected) {
         Logger.root.fine(
-            "Dispatching ChangeCurrentServiceMonitorStatusEvent from CurrentServiceMonitorMiddleware as response to TabPagesActiveChangedEvent");
+            'Dispatching ChangeCurrentServiceMonitorStatusEvent from CurrentServiceMonitorMiddleware as response to TabPagesActiveChangedEvent');
         store.dispatch(
             ChangeCurrentServiceMonitorStatusEvent(MonitorStatus.running));
       }
@@ -59,17 +59,17 @@ class CurrentServiceMonitorMiddleware extends MiddlewareClass<AppState> {
         if (store.state.tabsState.tabPagesActive &&
             store.state.tabsState.activeTab == TabPagesEnum.Signal) {
           Logger.root.fine(
-              "NOT Dispatching ChangeCurrentServiceMonitorStatusEvent. Signal tab is visible.");
+              'NOT Dispatching ChangeCurrentServiceMonitorStatusEvent. Signal tab is visible.');
         } else {
           Logger.root.fine(
-              "Dispatching ChangeCurrentServiceMonitorStatusEvent from CurrentServiceMonitorMiddleware as response to SignalChartFullScreenActiveChangedEvent");
+              'Dispatching ChangeCurrentServiceMonitorStatusEvent from CurrentServiceMonitorMiddleware as response to SignalChartFullScreenActiveChangedEvent');
           store.dispatch(
               ChangeCurrentServiceMonitorStatusEvent(MonitorStatus.stopped));
         }
       } else if (action.active &&
           store.state.connectionState == ConnectionStatusEnum.connected) {
         Logger.root.fine(
-            "Dispatching ChangeCurrentServiceMonitorStatusEvent from CurrentServiceMonitorMiddleware as response to SignalChartFullScreenActiveChangedEvent");
+            'Dispatching ChangeCurrentServiceMonitorStatusEvent from CurrentServiceMonitorMiddleware as response to SignalChartFullScreenActiveChangedEvent');
         store.dispatch(
             ChangeCurrentServiceMonitorStatusEvent(MonitorStatus.running));
       }

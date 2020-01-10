@@ -9,11 +9,11 @@ class EnigmaUtils {
     if (service == null ||
         service.reference == null ||
         service.reference.isEmpty) return 0;
-    String mNameSpc = getNamespaceFromReference(service);
+    var mNameSpc = getNamespaceFromReference(service);
     if (mNameSpc.length < 5) return 0;
     mNameSpc = mNameSpc.substring(0, mNameSpc.length - 4);
     try {
-      int decValue = int.parse(mNameSpc, radix: 16);
+      var decValue = int.parse(mNameSpc, radix: 16);
       return decValue;
     } catch (exception) {
       Logger.root.shout(exception);
@@ -27,7 +27,7 @@ class EnigmaUtils {
         service.reference.isEmpty) return '';
     try {
       var sData = StringUtils.trimAll(service.reference).split(':');
-      String mNameSpc = '';
+      var mNameSpc = '';
       if (sData.length >= 10) {
         mNameSpc = StringUtils.trimStart(sData[6], '0'.codeUnitAt(0));
       } else {
@@ -46,15 +46,15 @@ class EnigmaUtils {
         service.reference.isEmpty) {
       return ServiceType.Unknown;
     }
-    List<String> sData = StringUtils.trimAll(service.reference).split(':');
+    var sData = StringUtils.trimAll(service.reference).split(':');
     var nameSpc = getNamespaceFromReference(service);
-    if (nameSpc.toLowerCase().startsWith("eeee")) {
+    if (nameSpc.toLowerCase().startsWith('eeee')) {
       return ServiceType.DVBT;
-    } else if (nameSpc.toLowerCase().startsWith("ffff")) {
+    } else if (nameSpc.toLowerCase().startsWith('ffff')) {
       return ServiceType.DVBC;
     } else if (sData.length >= 10 &&
-        (sData[0] == "4097" ||
-            sData[10].contains("//") ||
+        (sData[0] == '4097' ||
+            sData[10].contains('//') ||
             (sData.length == 12 && sData[11] != null))) {
       return ServiceType.Stream;
     } else {

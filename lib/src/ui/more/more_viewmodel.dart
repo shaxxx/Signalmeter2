@@ -54,7 +54,7 @@ class MoreViewModel {
 
   static List<MenuItem> _menuItemsFromStore(
       Store<AppState> store, Messages messages) {
-    var menuItems = List<MenuItem>();
+    var menuItems = <MenuItem>[];
     if (store.state.profilesState.selectedProfile.streaming) {
       menuItems.add(
         MenuItem(
@@ -137,7 +137,7 @@ class MoreViewModel {
     }
 
     if (Platform.isAndroid) {
-      AndroidIntent intent = AndroidIntent(
+      var intent = AndroidIntent(
         action: 'action_view',
         data: parameters.streamUri,
         type: 'video/*',

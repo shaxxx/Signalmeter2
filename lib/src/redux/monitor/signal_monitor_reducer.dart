@@ -23,13 +23,13 @@ final signalMonitorReducer = combineReducers<SignalMonitorState>([
 SignalMonitorState _changeSignalMonitorStatus(
     SignalMonitorState state, ChangeSignalMonitorStatusEvent event) {
   Logger.root.fine(
-      "Current signal monitor status changed to ${event.status.toString()}");
+      'Current signal monitor status changed to ${event.status.toString()}');
   return state.copyWith(status: event.status);
 }
 
 SignalMonitorState _getSignalLevelSuccessReducer(
     SignalMonitorState state, GetSignalLevelSuccessEvent event) {
-  var responses = List<ISignalResponse>()..addAll(state.responses);
+  var responses = <ISignalResponse>[...state.responses];
   if (responses.length >= signalChartPoints) {
     responses.removeAt(0);
   }
@@ -39,6 +39,6 @@ SignalMonitorState _getSignalLevelSuccessReducer(
 
 SignalMonitorState _signalResetStateEvent(
     SignalMonitorState state, ResetStateEvent event) {
-  Logger.root.fine("Reseting signal state");
+  Logger.root.fine('Reseting signal state');
   return SignalMonitorState.initial();
 }

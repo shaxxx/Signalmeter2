@@ -11,7 +11,7 @@ import 'package:flutter_redux/flutter_redux.dart';
 class MoreView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    Color backgroundColor = Theme.of(context).primaryColor.withOpacity(0.3);
+    var backgroundColor = Theme.of(context).primaryColor.withOpacity(0.3);
     var messages = MessageProvider.of(context);
     return StoreConnector<AppState, MoreViewModel>(
         distinct: true,
@@ -32,7 +32,7 @@ class MoreView extends StatelessWidget {
 
   List<Widget> buildItems(BuildContext context, MoreViewModel viewModel,
       Color backgroundColor, Messages messages) {
-    var items = List<Widget>();
+    var items = <Widget>[];
     for (var item in viewModel.menuItems) {
       items.add(
         buildCard(

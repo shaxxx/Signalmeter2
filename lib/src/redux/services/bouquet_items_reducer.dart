@@ -25,21 +25,21 @@ final bouquetsItemsReducer = combineReducers<BouquetItemsState>([
 
 BouquetItemsState _bouquetItemSelectedReducer(
     BouquetItemsState state, BouquetItemSelectedEvent event) {
-  Logger.root.fine("Selected service " + event.bouquetItem.name);
+  Logger.root.fine('Selected service ' + event.bouquetItem.name);
   return state.copyWith(selectedService: event.bouquetItem);
 }
 
 BouquetItemsState _bouquetItemsStatusChangedReducer(
     BouquetItemsState state, BouquetItemsStatusChangedEvent event) {
-  Logger.root.fine("Bouquet items " + event.status.toString());
+  Logger.root.fine('Bouquet items ' + event.status.toString());
   return state.copyWith(status: event.status);
 }
 
 BouquetItemsState _bouquetItemsLoadedReducer(
     BouquetItemsState state, GetBouquetItemsSuccessEvent event) {
   Logger.root.fine(
-      "Loaded ${event.bouquetItems.length} bouquet items for bouquet ${event.bouquet} in ${event.responseDuration.inMilliseconds} ms");
-  var cachedBouquetItems = Map<IBouquetItemBouquet, List<IBouquetItem>>();
+      'Loaded ${event.bouquetItems.length} bouquet items for bouquet ${event.bouquet} in ${event.responseDuration.inMilliseconds} ms');
+  var cachedBouquetItems = <IBouquetItemBouquet, List<IBouquetItem>>{};
   cachedBouquetItems.addAll(state.cachedBouquetItems);
   cachedBouquetItems.putIfAbsent(event.bouquet, () => event.bouquetItems);
   return state.copyWith(
@@ -48,23 +48,23 @@ BouquetItemsState _bouquetItemsLoadedReducer(
 
 BouquetItemsState _bouquetItemsLoadingErrorReducer(
     BouquetItemsState state, GetBouquetItemsErrorEvent event) {
-  Logger.root.shout("Error loading bouquet items. ${event.error.toString()}");
+  Logger.root.shout('Error loading bouquet items. ${event.error.toString()}');
   return state.copyWith(loadingError: event.error);
 }
 
 BouquetItemsState _searchTermChangedReducer(
     BouquetItemsState state, BouquetItemsSearchTermChanged event) {
-  Logger.root.fine("Search term set to ${event.searchTerm}");
+  Logger.root.fine('Search term set to ${event.searchTerm}');
   return state.copyWith(searchTerm: event.searchTerm);
 }
 
 BouquetItemsState _bouquetItemsStateResetReducer(
     BouquetItemsState state, ResetStateEvent event) {
-  Logger.root.fine("Reseting bouquet items state");
+  Logger.root.fine('Reseting bouquet items state');
   return state.copyWith(
     status: LoadingStatus.idle,
     selectedService: null,
-    cachedBouquetItems: Map<IBouquetItemBouquet, List<IBouquetItem>>(),
+    cachedBouquetItems: <IBouquetItemBouquet, List<IBouquetItem>>{},
     searchTerm: null,
   );
 }

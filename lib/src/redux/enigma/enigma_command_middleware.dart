@@ -36,7 +36,7 @@ class EnigmaCommandMiddleware extends MiddlewareClass<AppState> {
       await _sendRemoteControlCode(store, action);
     } else if (action is SendRemoteControlCodeSuccessEvent) {
       Logger.root.fine(
-          "Dispatching GetCurrentServiceEvent from EnigmaCommandMiddleware as response to SendRemoteControlCodeSuccessEvent");
+          'Dispatching GetCurrentServiceEvent from EnigmaCommandMiddleware as response to SendRemoteControlCodeSuccessEvent');
       store.dispatch(GetCurrentServiceEvent(
           profile: store.state.profilesState.selectedProfile));
     }

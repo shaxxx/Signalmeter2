@@ -17,20 +17,20 @@ final tabsReducer = combineReducers<TabState>([
 ]);
 
 TabState _activeTabChangedReducer(TabState state, ActiveTabChangedEvent event) {
-  Logger.root.fine("Active tab set to " + event.tabPage.toString());
+  Logger.root.fine('Active tab set to ' + event.tabPage.toString());
   return state.copyWith(activeTab: event.tabPage);
 }
 
 TabState _tabPagesActiveChangeReducer(
     TabState state, TabPagesActiveChangedEvent event) {
-  Logger.root.fine("Tab pages activity set to " + event.active.toString());
+  Logger.root.fine('Tab pages activity set to ' + event.active.toString());
   return state.copyWith(tabPagesActive: event.active);
 }
 
 TabState _signalChartFullScreenActiveChangedEvent(
     TabState state, SignalChartFullScreenActiveChangedEvent event) {
   Logger.root
-      .fine("SignalChartFullScreen activity set to " + event.active.toString());
+      .fine('SignalChartFullScreen activity set to ' + event.active.toString());
   return state.copyWith(signalChartFullScreenActive: event.active);
 }
 

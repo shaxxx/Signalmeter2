@@ -61,59 +61,59 @@ class _SignalChartViewState extends State<SignalChartView> {
                       ),
                       Expanded(
                         flex: 1,
-                        child: FlChart(
-                          chart: LineChart(
-                            LineChartData(
-                              gridData: FlGridData(
-                                show: true,
-                                drawHorizontalGrid: false,
-                                drawVerticalGrid: true,
-                                verticalInterval: viewModel.useDb ? 2 : 10,
-                                getDrawingVerticalGridLine: (value) {
-                                  return const FlLine(
-                                    color: Color(0xff67727d),
-                                    strokeWidth: 1,
-                                  );
-                                },
-                                getDrawingHorizontalGridLine: (value) {
-                                  return const FlLine(
-                                    color: Color(0xff67727d),
-                                    strokeWidth: 0,
-                                  );
-                                },
-                              ),
-                              titlesData: FlTitlesData(
-                                show: true,
-                                bottomTitles: SideTitles(
-                                  showTitles: false,
-                                ),
-                                leftTitles: SideTitles(
-                                  showTitles: true,
-                                  textStyle: TextStyle(
-                                    color: Colors.white,
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 15,
-                                  ),
-                                  getTitles: (value) {
-                                    return _getTitle(value, viewModel);
-                                  },
-                                  reservedSize: 30,
-                                  margin: 12,
-                                ),
-                              ),
-                              borderData: FlBorderData(
-                                  show: true,
-                                  border: Border.all(
-                                      color: Color(0xff37434d), width: 1)),
-                              minX: 0,
-                              maxX: signalChartPoints.toDouble() - 1,
-                              minY: 0,
-                              maxY: viewModel.useDb ? 16 : 100,
-                              lineBarsData: [
-                                _getChartData(viewModel),
-                              ],
+                        child: LineChart(
+                          LineChartData(
+                            gridData: FlGridData(
+                              show: true,
+                              drawVerticalLine: false,
+                              drawHorizontalLine: true,
+                              horizontalInterval: viewModel.useDb ? 2 : 10,
+                              getDrawingVerticalLine: (value) {
+                                return const FlLine(
+                                  color: Color(0xff67727d),
+                                  strokeWidth: 1,
+                                );
+                              },
+                              getDrawingHorizontalLine: (value) {
+                                return const FlLine(
+                                  color: Color(0xff67727d),
+                                  strokeWidth: 0,
+                                );
+                              },
                             ),
+                            titlesData: FlTitlesData(
+                              show: true,
+                              bottomTitles: SideTitles(
+                                showTitles: false,
+                              ),
+                              leftTitles: SideTitles(
+                                showTitles: true,
+                                textStyle: TextStyle(
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 15,
+                                ),
+                                getTitles: (value) {
+                                  return _getTitle(value, viewModel);
+                                },
+                                reservedSize: 30,
+                                margin: 12,
+                              ),
+                            ),
+                            borderData: FlBorderData(
+                                show: true,
+                                border: Border.all(
+                                    color: Color(0xff37434d), width: 1)),
+                            minX: 0,
+                            maxX: signalChartPoints.toDouble() - 1,
+                            minY: 0,
+                            maxY: viewModel.useDb ? 16 : 100,
+                            lineBarsData: [
+                              _getChartData(viewModel),
+                            ],
                           ),
+                          swapAnimationDuration:
+                              const Duration(milliseconds: 0),
                         ),
                       ),
                     ],
@@ -150,7 +150,7 @@ class _SignalChartViewState extends State<SignalChartView> {
   }
 
   LineChartBarData _getChartData(SignalChartViewModel viewModel) {
-    var spots = List<FlSpot>();
+    var spots = <FlSpot>[];
     viewModel.chartPoints.forEach((x, y) {
       spots.add(FlSpot(x, y));
     });
@@ -163,7 +163,7 @@ class _SignalChartViewState extends State<SignalChartView> {
       dotData: FlDotData(
         show: false,
       ),
-      belowBarData: BelowBarData(
+      belowBarData: BarAreaData(
         show: true,
         colors: gradientColors.map((color) => color.withOpacity(0.3)).toList(),
       ),

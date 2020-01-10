@@ -26,23 +26,23 @@ class SignalMonitorMiddleware extends MiddlewareClass<AppState> {
   void call(Store<AppState> store, action, NextDispatcher next) async {
     if (action is GetSignalLevelErrorEvent) {
       Logger.root.fine(
-          "Dispatching ChangeSignalMonitorStatusEvent from SignalMonitorMiddleware as response to GetSignalErrorEvent");
+          'Dispatching ChangeSignalMonitorStatusEvent from SignalMonitorMiddleware as response to GetSignalErrorEvent');
       store.dispatch(ChangeSignalMonitorStatusEvent(MonitorStatus.stopped));
     } else if (action is ConnectionStatusChangedEvent) {
       if (action.status == ConnectionStatusEnum.disconnected) {
         Logger.root.fine(
-            "Dispatching ChangeSignalMonitorStatusEvent from SignalMonitorMiddleware as response to ConnectionStatusChangedEvent");
+            'Dispatching ChangeSignalMonitorStatusEvent from SignalMonitorMiddleware as response to ConnectionStatusChangedEvent');
         store.dispatch(ChangeSignalMonitorStatusEvent(MonitorStatus.stopped));
       }
     } else if (action is TabPagesActiveChangedEvent) {
       if (!action.active) {
         Logger.root.fine(
-            "Dispatching ChangeSignalMonitorStatusEvent from SignalMonitorMiddleware as response to TabPagesActiveChangedEvent");
+            'Dispatching ChangeSignalMonitorStatusEvent from SignalMonitorMiddleware as response to TabPagesActiveChangedEvent');
         store.dispatch(ChangeSignalMonitorStatusEvent(MonitorStatus.stopped));
       } else if (action.active &&
           store.state.tabsState.activeTab == TabPagesEnum.Signal) {
         Logger.root.fine(
-            "Dispatching ChangeSignalMonitorStatusEvent from SignalMonitorMiddleware as response to TabPagesActiveChangedEvent");
+            'Dispatching ChangeSignalMonitorStatusEvent from SignalMonitorMiddleware as response to TabPagesActiveChangedEvent');
         store.dispatch(ChangeSignalMonitorStatusEvent(MonitorStatus.running));
       }
     } else if (action is SignalChartFullScreenActiveChangedEvent) {
@@ -50,26 +50,26 @@ class SignalMonitorMiddleware extends MiddlewareClass<AppState> {
         if (store.state.tabsState.tabPagesActive &&
             store.state.tabsState.activeTab == TabPagesEnum.Signal) {
           Logger.root.fine(
-              "NOT Dispatching ChangeSignalMonitorStatusEvent. Signal tab is visible.");
+              'NOT Dispatching ChangeSignalMonitorStatusEvent. Signal tab is visible.');
         } else {
           Logger.root.fine(
-              "Dispatching ChangeSignalMonitorStatusEvent from SignalMonitorMiddleware as response to TabPagesActiveChangedEvent");
+              'Dispatching ChangeSignalMonitorStatusEvent from SignalMonitorMiddleware as response to TabPagesActiveChangedEvent');
           store.dispatch(ChangeSignalMonitorStatusEvent(MonitorStatus.stopped));
         }
       } else if (action.active &&
           store.state.tabsState.activeTab == TabPagesEnum.Signal) {
         Logger.root.fine(
-            "Dispatching ChangeSignalMonitorStatusEvent from SignalMonitorMiddleware as response to TabPagesActiveChangedEvent");
+            'Dispatching ChangeSignalMonitorStatusEvent from SignalMonitorMiddleware as response to TabPagesActiveChangedEvent');
         store.dispatch(ChangeSignalMonitorStatusEvent(MonitorStatus.running));
       }
     } else if (action is ActiveTabChangedEvent) {
       if (action.tabPage != TabPagesEnum.Signal) {
         Logger.root.fine(
-            "Dispatching ChangeSignalMonitorStatusEvent from SignalMonitorMiddleware as response to ActiveTabChangedEvent");
+            'Dispatching ChangeSignalMonitorStatusEvent from SignalMonitorMiddleware as response to ActiveTabChangedEvent');
         store.dispatch(ChangeSignalMonitorStatusEvent(MonitorStatus.stopped));
       } else {
         Logger.root.fine(
-            "Dispatching ChangeSignalMonitorStatusEvent from SignalMonitorMiddleware as response to ActiveTabChangedEvent");
+            'Dispatching ChangeSignalMonitorStatusEvent from SignalMonitorMiddleware as response to ActiveTabChangedEvent');
         store.dispatch(ChangeSignalMonitorStatusEvent(MonitorStatus.running));
       }
     } else if (action is ChangeSignalMonitorStatusEvent) {
@@ -77,8 +77,9 @@ class SignalMonitorMiddleware extends MiddlewareClass<AppState> {
       _status = action.status;
       _requester = WebRequester(
         Logger.root,
-        receiveTimeoutRetries: signalMonitorRetries,
+        timeoutRetries: signalMonitorRetries,
         receiveTimeOut: signalMonitorReceiveTimeout,
+        connectTimeOut: signalMonitorConnectTimeout,
       );
       _monitorHash = store.state.signalMonitorState.hashCode;
       if (action.status == MonitorStatus.running) {

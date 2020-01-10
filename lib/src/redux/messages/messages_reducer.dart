@@ -18,7 +18,7 @@ final messagesReducer = combineReducers<MessagesState>([
 
 MessagesState _errorMessageReducer(
     MessagesState state, ErrorMessageEvent event) {
-  var errors = List<ErrorMessageEvent>()..addAll(state.errorMessages);
+  var errors = <ErrorMessageEvent>[...state.errorMessages];
   errors.add(event);
   return state.copyWith(
     errorMessages: errors,
@@ -27,7 +27,7 @@ MessagesState _errorMessageReducer(
 
 MessagesState _warningMessageReducer(
     MessagesState state, WarningMessageEvent event) {
-  var warnings = List<WarningMessageEvent>()..addAll(state.warningMessages);
+  var warnings = <WarningMessageEvent>[...state.warningMessages];
   warnings.add(event);
   return state.copyWith(
     warningMessages: warnings,
@@ -35,7 +35,7 @@ MessagesState _warningMessageReducer(
 }
 
 MessagesState _infoMessageReducer(MessagesState state, InfoMessageEvent event) {
-  var infos = List<InfoMessageEvent>()..addAll(state.infoMessages);
+  var infos = <InfoMessageEvent>[...state.infoMessages];
   infos.add(event);
   return state.copyWith(
     infoMessages: infos,
@@ -44,7 +44,7 @@ MessagesState _infoMessageReducer(MessagesState state, InfoMessageEvent event) {
 
 MessagesState _infoMessageShownReducer(
     MessagesState state, InfoMessageShownEvent event) {
-  var infos = List<InfoMessageEvent>()..addAll(state.infoMessages);
+  var infos = <InfoMessageEvent>[...state.infoMessages];
   infos.remove(event.infoMessageEvent);
   return state.copyWith(
     infoMessages: infos,
@@ -53,7 +53,7 @@ MessagesState _infoMessageShownReducer(
 
 MessagesState _errorMessageShownReducer(
     MessagesState state, ErrorMessageShownEvent event) {
-  var errors = List<ErrorMessageEvent>()..addAll(state.errorMessages);
+  var errors = <ErrorMessageEvent>[...state.errorMessages];
   errors.remove(event.errorMessageEvent);
   return state.copyWith(
     errorMessages: errors,
@@ -62,7 +62,7 @@ MessagesState _errorMessageShownReducer(
 
 MessagesState _warningMessageShownReducer(
     MessagesState state, WarningMessageShownEvent event) {
-  var warnings = List<WarningMessageEvent>()..addAll(state.warningMessages);
+  var warnings = <WarningMessageEvent>[...state.warningMessages];
   warnings.remove(event.warningMessageEvent);
   return state.copyWith(
     warningMessages: warnings,

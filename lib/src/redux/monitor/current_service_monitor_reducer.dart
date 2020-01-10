@@ -20,12 +20,12 @@ CurrentServiceMonitorState _changeCurrentServiceMonitorStatus(
     CurrentServiceMonitorState state,
     ChangeCurrentServiceMonitorStatusEvent event) {
   Logger.root.fine(
-      "Current service monitor status changed to ${event.status.toString()}");
+      'Current service monitor status changed to ${event.status.toString()}');
   return state.copyWith(status: event.status);
 }
 
 CurrentServiceMonitorState _currentServiceMonitorResetReducer(
     CurrentServiceMonitorState state, ResetStateEvent event) {
-  Logger.root.fine("Reseting current service monitor.");
+  Logger.root.fine('Reseting current service monitor.');
   return CurrentServiceMonitorState.inital();
 }

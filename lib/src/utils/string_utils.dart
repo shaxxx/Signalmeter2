@@ -2,11 +2,11 @@ class StringUtils {
   /// Remove illegal XML characters from a string.
   static String sanitizeXmlString(String xml) {
     if (xml == null) {
-      throw ArgumentError.notNull("xml");
+      throw ArgumentError.notNull('xml');
     }
 
     var buffer = StringBuffer();
-    for (String c in xml.split("")) {
+    for (var c in xml.split('')) {
       if (isLegalXmlChar(c.codeUnitAt(0))) {
         buffer.writeCharCode(c.codeUnitAt(0));
       }
@@ -43,16 +43,16 @@ class StringUtils {
     if (result.isEmpty) {
       return result;
     }
-    if (result.startsWith("\n")) {
+    if (result.startsWith('\n')) {
       return trimAll(result.substring(1));
     }
-    if (result.startsWith("\t")) {
+    if (result.startsWith('\t')) {
       return trimAll(result.substring(1));
     }
-    if (result.endsWith("\n")) {
+    if (result.endsWith('\n')) {
       return trimAll(result.substring(0, result.length - 1));
     }
-    if (result.endsWith("\t")) {
+    if (result.endsWith('\t')) {
       return trimAll(result.substring(0, result.length - 1));
     }
     return result;

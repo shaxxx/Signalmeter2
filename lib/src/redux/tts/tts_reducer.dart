@@ -17,12 +17,12 @@ final ttsReducer = combineReducers<TtsState>([
 ]);
 
 TtsState _statusChangedReducer(TtsState state, ChangeTtsStatusEvent event) {
-  Logger.root.fine("TTS status changed to " + event.status.toString());
+  Logger.root.fine('TTS status changed to ' + event.status.toString());
   return state.copyWith(status: event.status);
 }
 
 TtsState _enabledChangedReducer(TtsState state, ChangeTtsEnabledEvent event) {
-  Logger.root.fine("TTS enabled is now " + event.enable.toString());
+  Logger.root.fine('TTS enabled is now ' + event.enable.toString());
   return state.copyWith(ttsEnabled: event.enable);
 }
 
@@ -36,7 +36,7 @@ TtsState _speakSignalReducer(TtsState state, SpeakSignalLevelEvent event) {
 TtsState _initializationStatusReducer(
     TtsState state, ChangeTtsInitializationStatusEvent event) {
   Logger.root
-      .fine("TTS initialization status changed to " + event.status.toString());
+      .fine('TTS initialization status changed to ' + event.status.toString());
   return state.copyWith(ttsInitializationStatus: event.status);
 }
 

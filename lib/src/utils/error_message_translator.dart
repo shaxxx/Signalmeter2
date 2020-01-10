@@ -141,9 +141,7 @@ class ErrorMessageTranslator {
   static TranslatedErrorMessage _safeEnigmaErrorInfo(
       EnigmaCommandErrorMessageEvent event) {
     var message = event.exception.innerException.message;
-    if (message == null) {
-      message = prettyInstanceTypeString(event.exception.innerException);
-    }
+    message ??= prettyInstanceTypeString(event.exception.innerException);
     return TranslatedErrorMessage(
       message: message,
       details: _getErrorDetails(event),
@@ -168,7 +166,7 @@ class ErrorMessageTranslator {
     Messages messages,
   ) {
     String message;
-    String details = _getErrorDetailsOrEnigmaExceptionMessage(event);
+    var details = _getErrorDetailsOrEnigmaExceptionMessage(event);
 
     var failedEx = event.exception.innerException as FailedStatusCodeException;
     if (failedEx.statusCode == HttpStatus.notFound) {
@@ -214,7 +212,7 @@ class ErrorMessageTranslator {
     Messages messages,
   ) {
     String message;
-    String details = _getErrorDetails(event);
+    var details = _getErrorDetails(event);
     if (event.exception.innerException.message.contains('SocketException')) {
       message = _commandFailedMessage(messages, event.exception.command) +
           '\n' +

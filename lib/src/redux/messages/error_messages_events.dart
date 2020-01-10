@@ -33,6 +33,7 @@ class ErrorMessageShownEvent {
 class EnigmaCommandErrorMessageEvent
     extends ErrorMessageEvent<EnigmaWebException> {
   final EnigmaCommandErrorEvent action;
+  @override
   final EnigmaWebException exception;
 
   EnigmaCommandErrorMessageEvent({
@@ -57,6 +58,7 @@ class EnigmaCommandErrorMessageEvent
 class FailedStreamExtraParametersMessageEvent
     extends ErrorMessageEvent<EnigmaWebException> {
   final StreamParametersResponse response;
+  @override
   final EnigmaWebException exception;
   FailedStreamExtraParametersMessageEvent({
     @required this.response,
@@ -78,6 +80,7 @@ class FailedStreamExtraParametersMessageEvent
 
 @immutable
 class UnhandledErrorMessageEvent extends ErrorMessageEvent<dynamic> {
+  @override
   final dynamic exception;
 
   UnhandledErrorMessageEvent({

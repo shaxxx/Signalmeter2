@@ -18,7 +18,7 @@ class _OptionsItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final double textScaleFactor = MediaQuery.textScaleFactorOf(context);
+    final textScaleFactor = MediaQuery.textScaleFactorOf(context);
 
     return MergeSemantics(
       child: Container(
@@ -110,7 +110,7 @@ class _Heading extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final ThemeData theme = Theme.of(context);
+    final theme = Theme.of(context);
     return _OptionsItem(
       child: DefaultTextStyle(
         style: theme.textTheme.body1.copyWith(
@@ -158,7 +158,7 @@ class SettingsView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final ThemeData theme = Theme.of(context);
+    final theme = Theme.of(context);
     return StoreConnector<AppState, SettingsViewModel>(
         distinct: true,
         converter: (store) {

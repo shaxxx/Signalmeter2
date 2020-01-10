@@ -30,11 +30,11 @@ class ScaffoldBackground extends StatelessWidget {
           ),
         ),
         child: Scaffold(
-          appBar: this.appBar,
-          floatingActionButton: this.floatingActionButton,
-          backgroundColor: this.backgroundColor,
-          bottomNavigationBar: this.bottomNavigationBar,
-          body: this.child,
+          appBar: appBar,
+          floatingActionButton: floatingActionButton,
+          backgroundColor: backgroundColor,
+          bottomNavigationBar: bottomNavigationBar,
+          body: child,
         ),
       ),
     );

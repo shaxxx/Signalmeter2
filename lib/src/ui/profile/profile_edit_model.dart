@@ -17,24 +17,22 @@ class ProfileEditModel {
 
   Profile toProfile() {
     return Profile(
-      address: this.address,
-      enigma: this.enigma,
-      httpPort: int.parse(this.httpPort),
-      id: this.id ?? EnigmaUtils.unixTimeStamp(),
-      name: this.name,
-      password: this.password ?? '',
-      streaming: this.streaming,
-      streamingPort: this.streaming && this.enigma == EnigmaType.enigma2
-          ? int.parse(this.streamingPort)
+      address: address,
+      enigma: enigma,
+      httpPort: int.parse(httpPort),
+      id: id ?? EnigmaUtils.unixTimeStamp(),
+      name: name,
+      password: password ?? '',
+      streaming: streaming,
+      streamingPort: streaming && enigma == EnigmaType.enigma2
+          ? int.parse(streamingPort)
           : null,
-      transcoding: this.streaming && this.transcoding,
-      transcodingPort: this.streaming &&
-              this.transcoding &&
-              this.enigma == EnigmaType.enigma2
-          ? int.parse(this.transcodingPort)
+      transcoding: streaming && transcoding,
+      transcodingPort: streaming && transcoding && enigma == EnigmaType.enigma2
+          ? int.parse(transcodingPort)
           : null,
-      username: this.username,
-      useSsl: this.useSsl,
+      username: username,
+      useSsl: useSsl,
     );
   }
 

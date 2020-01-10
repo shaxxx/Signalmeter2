@@ -52,6 +52,7 @@ class _SignalChartFullScreenState extends State<SignalChartFullScreen>
   }
 
   // Called when the top route has been popped off, and the current route shows up.
+  @override
   void didPopNext() {
     if (_viewModel != null) {
       _viewModel.onActiveChanged(true);
@@ -59,6 +60,7 @@ class _SignalChartFullScreenState extends State<SignalChartFullScreen>
   }
 
   // Called when the current route has been pushed.
+  @override
   void didPush() {
     if (_viewModel != null) {
       _viewModel.onActiveChanged(true);
@@ -66,6 +68,7 @@ class _SignalChartFullScreenState extends State<SignalChartFullScreen>
   }
 
   // Called when the current route has been popped off.
+  @override
   void didPop() {
     if (_viewModel != null) {
       _viewModel.onActiveChanged(false);
@@ -73,6 +76,7 @@ class _SignalChartFullScreenState extends State<SignalChartFullScreen>
   }
 
   // Called when a new route has been pushed, and the current route is no longer visible.
+  @override
   void didPushNext() {
     if (_viewModel != null) {
       _viewModel.onActiveChanged(false);

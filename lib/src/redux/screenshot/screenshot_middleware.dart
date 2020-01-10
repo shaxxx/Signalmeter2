@@ -11,15 +11,15 @@ class ScreenshotMiddleware extends MiddlewareClass<AppState> {
   void call(Store<AppState> store, action, NextDispatcher next) async {
     if (action is GetScreenShotOfCurrentServiceErrorEvent) {
       Logger.root.fine(
-          "Dispatching ScreenshotStatusChangedEvent from ScreenshotMiddleware as response to GetScreenShotOfCurrentServiceErrorEvent");
+          'Dispatching ScreenshotStatusChangedEvent from ScreenshotMiddleware as response to GetScreenShotOfCurrentServiceErrorEvent');
       store.dispatch(ScreenshotStatusChangedEvent(LoadingStatus.error));
     } else if (action is GetScreenShotOfCurrentServiceSuccessEvent) {
       Logger.root.fine(
-          "Dispatching ScreenshotStatusChangedEvent from ScreenshotMiddleware as response to GetScreenShotOfCurrentServiceSuccessEvent");
+          'Dispatching ScreenshotStatusChangedEvent from ScreenshotMiddleware as response to GetScreenShotOfCurrentServiceSuccessEvent');
       store.dispatch(ScreenshotStatusChangedEvent(LoadingStatus.success));
     } else if (action is GetScreenShotOfCurrentServiceEvent) {
       Logger.root.fine(
-          "Dispatching ScreenshotStatusChangedEvent from ScreenshotMiddleware as response to GetScreenShotOfCurrentServiceEvent");
+          'Dispatching ScreenshotStatusChangedEvent from ScreenshotMiddleware as response to GetScreenShotOfCurrentServiceEvent');
       store.dispatch(ScreenshotStatusChangedEvent(LoadingStatus.loading));
     }
 

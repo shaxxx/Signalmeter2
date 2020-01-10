@@ -6,7 +6,7 @@ import 'package:flutter/widgets.dart';
 
 class SnackbarHandler {
   static bool isShowing = false;
-  static List<Flushbar> snackBars = List<Flushbar>();
+  static List<Flushbar> snackBars = <Flushbar>[];
 
   static Future showInfoSnackBar(
     BuildContext context,

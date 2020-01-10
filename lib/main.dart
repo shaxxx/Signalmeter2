@@ -36,10 +36,13 @@ import 'src/ui/profile/profile_edit_view.dart';
 import 'src/ui/tabs/main_tab_view.dart';
 
 void main() {
-  Logger.root.level = Level.FINE;
-  Logger.root.onRecord.listen((LogRecord rec) {
-    print(rec.message);
-  });
+  //log only in debug mode
+  if (!kReleaseMode) {
+    Logger.root.level = Level.FINE;
+    Logger.root.onRecord.listen((LogRecord rec) {
+      print(rec.message);
+    });
+  }
 
   SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
     systemNavigationBarColor: Colors.black,
@@ -72,7 +75,7 @@ void main() {
     //LoggingMiddleware(logger: Logger.root),
   ]);
 
-  Logger.root.info("Starting Signal Meter...");
+  Logger.root.info('Starting Signal Meter...');
   runApp(EnigmaSignalMeterApp(
     title: 'SignalMeter',
     store: store,

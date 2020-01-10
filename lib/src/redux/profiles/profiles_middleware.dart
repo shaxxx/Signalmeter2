@@ -10,20 +10,20 @@ class ProfilesMiddleware extends MiddlewareClass<AppState> {
   void call(Store<AppState> store, action, NextDispatcher next) async {
     if (action is LoadProfilesEvent) {
       Logger.root.fine(
-          "Dispatching ProfilesStatusChangedEvent from ProfilesMiddleware as response to LoadProfilesEvent");
+          'Dispatching ProfilesStatusChangedEvent from ProfilesMiddleware as response to LoadProfilesEvent');
       store.dispatch(ProfilesStatusChangedEvent(LoadingStatus.loading));
       await _loadProfiles(store, action);
     } else if (action is LoadProfilesErrorEvent) {
       Logger.root.fine(
-          "Dispatching ProfilesStatusChangedEvent from ProfilesMiddleware as response to LoadProfilesErrorEvent");
+          'Dispatching ProfilesStatusChangedEvent from ProfilesMiddleware as response to LoadProfilesErrorEvent');
       store.dispatch(ProfilesStatusChangedEvent(LoadingStatus.error));
     } else if (action is LoadProfilesSuccessEvent) {
       Logger.root.fine(
-          "Dispatching ProfilesStatusChangedEvent from ProfilesMiddleware as response to LoadProfilesSuccessEvent");
+          'Dispatching ProfilesStatusChangedEvent from ProfilesMiddleware as response to LoadProfilesSuccessEvent');
       store.dispatch(ProfilesStatusChangedEvent(LoadingStatus.success));
       if (action.profiles.length == 1) {
         Logger.root.fine(
-            "Dispatching ProfileSelectedEvent from ProfilesMiddleware as response to ProfilesStatusChangedEvent");
+            'Dispatching ProfileSelectedEvent from ProfilesMiddleware as response to ProfilesStatusChangedEvent');
         store.dispatch(ProfileSelectedEvent(action.profiles.first));
       }
     }
@@ -34,7 +34,7 @@ class ProfilesMiddleware extends MiddlewareClass<AppState> {
     } else if (action is ProfileDeletedEvent) {
       await PreferenceManager.saveProfiles(store.state.profilesState.profiles);
       Logger.root.fine(
-          "Dispatching ProfileSelectedEvent from ProfilesMiddleware as response to ProfileDeletedEvent");
+          'Dispatching ProfileSelectedEvent from ProfilesMiddleware as response to ProfileDeletedEvent');
       store.dispatch(ProfileSelectedEvent(null));
     }
   }

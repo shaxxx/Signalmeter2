@@ -59,6 +59,7 @@ class _MainTabViewState extends State<MainTabView>
   }
 
   // Called when the top route has been popped off, and the current route shows up.
+  @override
   void didPopNext() {
     if (_viewModel != null) {
       _viewModel.onActiveChanged(true);
@@ -66,6 +67,7 @@ class _MainTabViewState extends State<MainTabView>
   }
 
   // Called when the current route has been pushed.
+  @override
   void didPush() {
     if (_viewModel != null) {
       _viewModel.onActiveChanged(true);
@@ -73,6 +75,7 @@ class _MainTabViewState extends State<MainTabView>
   }
 
   // Called when the current route has been popped off.
+  @override
   void didPop() {
     if (_viewModel != null) {
       _viewModel.onActiveChanged(false);
@@ -80,6 +83,7 @@ class _MainTabViewState extends State<MainTabView>
   }
 
   // Called when a new route has been pushed, and the current route is no longer visible.
+  @override
   void didPushNext() {
     if (_viewModel != null) {
       _viewModel.onActiveChanged(false);
@@ -90,7 +94,7 @@ class _MainTabViewState extends State<MainTabView>
     if (_viewModel == null) return;
     if (!isAnimating) {
       var store = StoreProvider.of<AppState>(context);
-      bool isControllerOnActiveTab =
+      var isControllerOnActiveTab =
           store.state.tabsState.activeTab.index == controller.page.round();
       if (!isControllerOnActiveTab) {
         _viewModel.onTabSelected(TabPagesEnum.values[controller.page.round()]);
@@ -106,6 +110,7 @@ class _MainTabViewState extends State<MainTabView>
   }
 
   Future _animateToPage() async {
+    // ignore: INVALID_USE_OF_PROTECTED_MEMBER
     if (controller.positions == null || controller.positions.isEmpty) {
       return;
     }

@@ -28,7 +28,7 @@ class ProfilesState {
     return ProfilesState(
       status: LoadingStatus.idle,
       selectedProfile: null,
-      profiles: List<IProfile>(),
+      profiles: <IProfile>[],
       profilesLoaded: false,
     );
   }

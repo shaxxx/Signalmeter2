@@ -17,23 +17,23 @@ final profilesReducer = combineReducers<ProfilesState>([
 ProfilesState _profileSelectedReducer(
     ProfilesState state, ProfileSelectedEvent event) {
   if (event.profile != null) {
-    Logger.root.fine("Selected profile " + event.profile.name);
+    Logger.root.fine('Selected profile ' + event.profile.name);
   } else {
-    Logger.root.fine("Deselected profile");
+    Logger.root.fine('Deselected profile');
   }
   return state.copyWith(selectedProfile: event.profile);
 }
 
 ProfilesState _profilesStatusChangedReducer(
     ProfilesState state, ProfilesStatusChangedEvent event) {
-  Logger.root.fine("Profiles status changed to " + event.status.toString());
+  Logger.root.fine('Profiles status changed to ' + event.status.toString());
   return state.copyWith(status: event.status);
 }
 
 ProfilesState _loadProfilesSuccessReducer(
     ProfilesState state, LoadProfilesSuccessEvent event) {
   Logger.root.fine(
-      "Loaded ${event.profiles.length} profiles in ${event.responseDuration.inMilliseconds} ms");
+      'Loaded ${event.profiles.length} profiles in ${event.responseDuration.inMilliseconds} ms');
   return state.copyWith(
     profiles: event.profiles,
     profilesLoaded: true,
@@ -42,7 +42,7 @@ ProfilesState _loadProfilesSuccessReducer(
 
 ProfilesState _profileDeletedReducer(
     ProfilesState state, ProfileDeletedEvent event) {
-  Logger.root.fine("Deleted profile ${event.profile.name}");
+  Logger.root.fine('Deleted profile ${event.profile.name}');
   var profiles = List<IProfile>.from(state.profiles);
   profiles.remove(event.profile);
   return state.copyWith(profiles: profiles);
@@ -53,12 +53,12 @@ ProfilesState _profileSaveReducer(ProfilesState state, ProfileSaveEvent event) {
   var existingProfile =
       profiles.where((profile) => profile.id == event.profile.id).toList();
   if (existingProfile.isNotEmpty) {
-    Logger.root.fine("Updating existing profile ${event.profile.name}");
+    Logger.root.fine('Updating existing profile ${event.profile.name}');
     var index = profiles.indexOf(existingProfile.first);
     profiles.removeAt(index);
     profiles.insert(index, event.profile);
   } else {
-    Logger.root.fine("Added new profile ${event.profile.name}");
+    Logger.root.fine('Added new profile ${event.profile.name}');
     profiles.add(event.profile);
   }
   return state.copyWith(profiles: profiles);

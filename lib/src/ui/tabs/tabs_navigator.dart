@@ -13,7 +13,7 @@ class TabsNavigator extends StatelessWidget {
         distinct: true,
         converter: (store) => TabsNavigatorViewModel.fromStore(store),
         builder: (context, viewModel) {
-          Color iconColor = theme.textTheme.caption.color;
+          var iconColor = theme.textTheme.caption.color;
           return BottomNavigationBar(
             backgroundColor: Colors.transparent,
             selectedItemColor: theme.accentColor,

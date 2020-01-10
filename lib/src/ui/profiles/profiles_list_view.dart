@@ -30,7 +30,7 @@ class _ProfilesListViewState extends State<ProfilesListView>
     ),
   );
 
-  var insertedProfiles = List<IProfile>();
+  var insertedProfiles = <IProfile>[];
 
   @override
   Widget build(BuildContext context) {
@@ -72,7 +72,7 @@ class _ProfilesListViewState extends State<ProfilesListView>
   Future _syncListItems(List<IProfile> profiles1) async {
     var profiles = profiles1.toList();
     var insertedProfilesCount = insertedProfiles.length;
-    List<String> newProfiles = List<String>();
+    var newProfiles = <String>[];
 
     for (var profile in profiles) {
       var existingProfile =

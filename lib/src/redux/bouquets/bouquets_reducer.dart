@@ -18,31 +18,31 @@ final bouquetsReducer = combineReducers<BouquetsState>([
 
 BouquetsState _bouquetSelectedReducer(
     BouquetsState state, BouquetSelectedEvent event) {
-  Logger.root.fine("Selected bouquet " + event.bouquet.name);
+  Logger.root.fine('Selected bouquet ' + event.bouquet.name);
   return state.copyWith(selectedBouquet: event.bouquet);
 }
 
 BouquetsState _bouquetsStatusChangedReducer(
     BouquetsState state, BouquetsStatusChangedEvent event) {
-  Logger.root.fine("Bouquets " + event.status.toString());
+  Logger.root.fine('Bouquets ' + event.status.toString());
   return state.copyWith(status: event.status);
 }
 
 BouquetsState _bouquetsLoadedReducer(
     BouquetsState state, GetBouquetsSuccessEvent event) {
   Logger.root.fine(
-      "Loaded ${event.bouquets.length} bouquets in ${event.responseDuration.inMilliseconds} ms");
+      'Loaded ${event.bouquets.length} bouquets in ${event.responseDuration.inMilliseconds} ms');
   return state.copyWith(bouquets: event.bouquets);
 }
 
 BouquetsState _bouquetsLoadingErrorReducer(
     BouquetsState state, GetBouquetsErrorEvent event) {
-  Logger.root.shout("Error loading bouquets. ${event.error.toString()}");
+  Logger.root.shout('Error loading bouquets. ${event.error.toString()}');
   return state.copyWith(loadingError: event.error);
 }
 
 BouquetsState _bouquetsResetReducer(
     BouquetsState state, ResetStateEvent event) {
-  Logger.root.shout("Reseting bouquets.");
+  Logger.root.shout('Reseting bouquets.');
   return BouquetsState.initial();
 }

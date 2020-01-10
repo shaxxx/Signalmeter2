@@ -16,7 +16,7 @@ class Hyperlink extends StatelessWidget {
   })  : assert(text != null),
         assert(url != null);
 
-  _launchURL() async {
+  Future _launchURL() async {
     if (await canLaunch(url)) {
       await launch(url);
     } else {

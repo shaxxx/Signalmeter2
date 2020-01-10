@@ -11,32 +11,32 @@ class BouquetsMiddleware extends MiddlewareClass<AppState> {
   void call(Store<AppState> store, action, NextDispatcher next) async {
     if (action is GetBouquetsErrorEvent) {
       Logger.root.fine(
-          "Dispatching BouquetsStatusChangedEvent from BouquetsMiddleware as response to GetBouquetsErrorEvent");
+          'Dispatching BouquetsStatusChangedEvent from BouquetsMiddleware as response to GetBouquetsErrorEvent');
       store.dispatch(BouquetsStatusChangedEvent(LoadingStatus.error));
     } else if (action is GetBouquetsSuccessEvent) {
       Logger.root.fine(
-          "Dispatching BouquetsStatusChangedEvent from BouquetsMiddleware as response to GetBouquetsSuccessEvent");
+          'Dispatching BouquetsStatusChangedEvent from BouquetsMiddleware as response to GetBouquetsSuccessEvent');
       store.dispatch(BouquetsStatusChangedEvent(LoadingStatus.success));
       if (store.state.bouquetsState.selectedBouquet == null &&
           action.bouquets != null &&
           action.bouquets.isNotEmpty) {
         Logger.root.fine(
-            "Dispatching BouquetSelectedEvent from BouquetsMiddleware as response to GetBouquetsSuccessEvent");
+            'Dispatching BouquetSelectedEvent from BouquetsMiddleware as response to GetBouquetsSuccessEvent');
         store.dispatch(BouquetSelectedEvent(
             bouquet: action.bouquets.first, switchToServicesTab: false));
       }
     } else if (action is GetBouquetsEvent) {
       Logger.root.fine(
-          "Dispatching BouquetsStatusChangedEvent from BouquetsMiddleware as response to GetBouquetsEvent");
+          'Dispatching BouquetsStatusChangedEvent from BouquetsMiddleware as response to GetBouquetsEvent');
       store.dispatch(BouquetsStatusChangedEvent(LoadingStatus.loading));
     } else if (action is WakeUpSuccessEvent) {
       Logger.root.fine(
-          "Dispatching GetBouquetsEvent from BouquetsMiddleware as response to WakeUpSuccessEvent");
+          'Dispatching GetBouquetsEvent from BouquetsMiddleware as response to WakeUpSuccessEvent');
       store.dispatch(
           GetBouquetsEvent(profile: store.state.profilesState.selectedProfile));
     } else if (action is SentToSleepSuccessEvent) {
       Logger.root.fine(
-          "Dispatching BouquetsStatusChangedEvent from BouquetsMiddleware as response to SentToSleepSuccessEvent");
+          'Dispatching BouquetsStatusChangedEvent from BouquetsMiddleware as response to SentToSleepSuccessEvent');
       store.dispatch(BouquetsStatusChangedEvent(LoadingStatus.idle));
     }
     next(action);
