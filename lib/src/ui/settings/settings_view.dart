@@ -1,5 +1,6 @@
 import 'package:enigma_signal_meter/src/message_provider.dart';
 import 'package:enigma_signal_meter/src/model/application_settings.dart';
+import 'package:enigma_signal_meter/src/model/enums.dart';
 import 'package:enigma_signal_meter/src/redux/app/app_state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
@@ -134,7 +135,7 @@ class _DbPrimaryItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return _BooleanItem(
-      'Use dB as primary level',
+      MessageProvider.of(context).useDbAsPrimaryLevel,
       applicationSettings.dbIsPrimaryLevel,
       (bool value) {
         onSettingsChanged(
@@ -144,6 +145,43 @@ class _DbPrimaryItem extends StatelessWidget {
         );
       },
       switchKey: const Key('dbprimary_item'),
+    );
+  }
+}
+
+class _ChannelUpDownButtons extends StatelessWidget {
+  const _ChannelUpDownButtons(this.applicationSettings, this.onSettingsChanged);
+
+  final ApplicationSettings applicationSettings;
+  final ValueChanged<ApplicationSettings> onSettingsChanged;
+
+  @override
+  Widget build(BuildContext context) {
+    return _OptionsItem(
+      child: DropdownButton<ChannelUpDownButtonsEnum>(
+        value: applicationSettings.channelUpDownButtons,
+        items: [
+          DropdownMenuItem<ChannelUpDownButtonsEnum>(
+            value: ChannelUpDownButtonsEnum.ChannelUpDown,
+            child: Text(MessageProvider.of(context).channelUpDown),
+          ),
+          DropdownMenuItem<ChannelUpDownButtonsEnum>(
+            value: ChannelUpDownButtonsEnum.LeftRightArrows,
+            child: Text(MessageProvider.of(context).leftRigtArrows),
+          ),
+          DropdownMenuItem<ChannelUpDownButtonsEnum>(
+            value: ChannelUpDownButtonsEnum.UpDownArrows,
+            child: Text(MessageProvider.of(context).upDownArrows),
+          ),
+        ],
+        onChanged: (ChannelUpDownButtonsEnum value) {
+          onSettingsChanged(
+            applicationSettings.copyWith(
+              channelUpDownButtons: value,
+            ),
+          );
+        },
+      ),
     );
   }
 }
@@ -172,6 +210,9 @@ class SettingsView extends StatelessWidget {
               children: <Widget>[
                 _Heading(MessageProvider.of(context).signal),
                 _DbPrimaryItem(
+                    viewModel.applicationSettings, onSettingsChanged),
+                _Heading(MessageProvider.of(context).mapChannelUpDownTo),
+                _ChannelUpDownButtons(
                     viewModel.applicationSettings, onSettingsChanged),
                 const _Heading('SignalMeter'),
                 _ActionItem(

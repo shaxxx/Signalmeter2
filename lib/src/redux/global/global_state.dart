@@ -1,6 +1,7 @@
 import 'dart:ui';
 
 import 'package:enigma_signal_meter/src/model/application_settings.dart';
+import 'package:enigma_signal_meter/src/model/enums.dart';
 import 'package:enigma_web/enigma_web.dart';
 import 'package:flutter/widgets.dart';
 import 'package:meta/meta.dart';
@@ -36,7 +37,10 @@ class GlobalState {
         receiveTimeOut: 15000,
       ),
       routeObserver: RouteObserver<PageRoute>(),
-      applicationSettings: ApplicationSettings(dbIsPrimaryLevel: false),
+      applicationSettings: ApplicationSettings(
+        dbIsPrimaryLevel: false,
+        channelUpDownButtons: ChannelUpDownButtonsEnum.ChannelUpDown,
+      ),
     );
   }
 

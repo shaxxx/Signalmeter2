@@ -729,6 +729,25 @@
   "@addProfileShowcaseText": {
     "type": "text",
     "placeholders": {}
+  },
+  "mapChannelUpDownTo": "Tipke za promjenu kanala",
+  "@mapChannelUpDownTo": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "channelUpDown": "Channel (Bouquet) +/-",
+  "@channelUpDown": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "upDownArrows": "Gore / Dolje",
+  "@upDownArrows": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "leftRigtArrows": "Lijevo / Desno",
+  "@leftRigtArrows": {
+    "type": "text",
+    "placeholders": {}
   }
-  
 }

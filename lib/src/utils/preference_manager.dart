@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:enigma_signal_meter/src/model/application_settings.dart';
+import 'package:enigma_signal_meter/src/model/enums.dart';
 import 'package:enigma_web/enigma_web.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -42,6 +43,9 @@ class PreferenceManager {
       Map<String, dynamic> settings = jsonDecode(json);
       return ApplicationSettings.fromJson(settings);
     }
-    return ApplicationSettings(dbIsPrimaryLevel: false);
+    return ApplicationSettings(
+      dbIsPrimaryLevel: false,
+      channelUpDownButtons: ChannelUpDownButtonsEnum.ChannelUpDown,
+    );
   }
 }

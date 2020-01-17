@@ -51,3 +51,9 @@ enum SignalViewEnum {
   CircularAcg,
   CircularBer,
 }
+
+enum ChannelUpDownButtonsEnum {
+  ChannelUpDown,
+  LeftRightArrows,
+  UpDownArrows,
+}

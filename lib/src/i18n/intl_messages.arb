@@ -1,6 +1,6 @@
 {
   "@@locale": "en",
-  "@@last_modified": "2019-10-04T10:09:38.190172",
+  "@@last_modified": "2020-01-17T13:16:00.434304",
   "appName": "SignalMeter",
   "@appName": {
     "type": "text",
@@ -728,6 +728,26 @@
   },
   "addProfileShowcaseText": "Enter connection settings to start",
   "@addProfileShowcaseText": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "mapChannelUpDownTo": "Channel +/- buttons",
+  "@mapChannelUpDownTo": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "channelUpDown": "Channel (Bouquet) +/-",
+  "@channelUpDown": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "upDownArrows": "Up / Down arrows",
+  "@upDownArrows": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "leftRigtArrows": "Left / Right arrows",
+  "@leftRigtArrows": {
     "type": "text",
     "placeholders": {}
   }

@@ -583,4 +583,20 @@ class Messages {
         'Enter connection settings to start',
         name: 'addProfileShowcaseText',
       );
+  String get mapChannelUpDownTo => Intl.message(
+        'Channel +/- buttons',
+        name: 'mapChannelUpDownTo',
+      );
+  String get channelUpDown => Intl.message(
+        'Channel (Bouquet) +/-',
+        name: 'channelUpDown',
+      );
+  String get upDownArrows => Intl.message(
+        'Up / Down arrows',
+        name: 'upDownArrows',
+      );
+  String get leftRigtArrows => Intl.message(
+        'Left / Right arrows',
+        name: 'leftRigtArrows',
+      );
 }
