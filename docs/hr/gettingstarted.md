@@ -3,17 +3,6 @@
 > Kako bi mogli koristiti ovu aplikaciju potreban Vam je Enigma1 ili [Enigma2](https://kodi.wiki/view/Enigma2) satelitski prijemnik.
 
 
-
-## Instalacija
-Aplikacija je dostupna za iOS i Android uređaje.
-
-[![SignalMeter in AppStore](https://raw.githubusercontent.com/shaxxx/Signalmeter2/master/docs/appstore.png)](https://apps.apple.com/us/app/enigma-signal-meter/id1479557163?l=hr&ls=1)
-[![SignalMeter in Play Store](https://raw.githubusercontent.com/shaxxx/Signalmeter2/master/docs/play.png)](https://play.google.com/store/apps/details?id=com.krkadoni.app.signalmeter)
-
->  Apple, Apple logo, iPhone, i iPad su zaštitni znakovi Apple Inc., registriranom u SAD-u i u drugim zemljama i regijama. App Store je servisna marka koja pripada Apple Inc. 
->  
-> Google Play i Google Play logo su zaštićeni znakovi tvrtke Google LLC.
-
 ## Podešavanje prijemnika
 Prije upotrebe aplikacije provjerite da imate pristupne podatke kako bi mogli pristupiti svom prijemniku. Poimenice to su
 
