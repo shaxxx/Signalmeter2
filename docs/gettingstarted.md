@@ -3,6 +3,16 @@
 ?> In order to use this application you'll need satellite receiver with Enigma1 or  [Enigma2](https://kodi.wiki/view/Enigma2) software, and web server running and available on network
 
 
+## Installation
+Application is available for iOS and Android mobile devices.
+
+[![SignalMeter in AppStore](https://raw.githubusercontent.com/shaxxx/Signalmeter2/master/docs/appstore.png)](https://apps.apple.com/us/app/enigma-signal-meter/id1479557163?l=hr&ls=1)
+[![SignalMeter in Play Store](https://raw.githubusercontent.com/shaxxx/Signalmeter2/master/docs/play.png)](https://play.google.com/store/apps/details?id=com.krkadoni.app.signalmeter)
+
+>  Apple, the Apple logo, iPhone, and iPad are trademarks of Apple Inc., registered in the U.S. and other countries and regions. App Store is a service mark of Apple Inc. 
+>  
+> Google Play and the Google Play logo are trademarks of Google LLC.
+
 ## Device setup
 Before using application make sure you have valid credentials and information required to access your device. Namely, those are 
 
@@ -78,7 +88,6 @@ Default streaming port on Enigma2 devices is
 
 Default transcoding port on Enigma2 devices is
 >8002
-
 
 
 
