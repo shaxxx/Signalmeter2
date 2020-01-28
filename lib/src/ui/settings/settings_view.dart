@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:enigma_signal_meter/src/message_provider.dart';
 import 'package:enigma_signal_meter/src/model/application_settings.dart';
 import 'package:enigma_signal_meter/src/model/enums.dart';
@@ -216,9 +218,15 @@ class SettingsView extends StatelessWidget {
                     viewModel.applicationSettings, onSettingsChanged),
                 const _Heading('SignalMeter'),
                 _ActionItem(
-                    MessageProvider.of(context).actionAbout, viewModel.onAbout),
-                _ActionItem(MessageProvider.of(context).informationsSupport,
-                    viewModel.onSupport),
+                  MessageProvider.of(context).actionAbout,
+                  viewModel.onAbout,
+                ),
+                Platform.isIOS
+                    ? SizedBox.shrink()
+                    : _ActionItem(
+                        MessageProvider.of(context).informationsSupport,
+                        viewModel.onSupport,
+                      ),
               ],
             ),
           );
