@@ -182,7 +182,7 @@ class _ProfileListItemState extends State<ProfileListItem>
         Flexible(
           child: Text(
             viewModel.name,
-            style: theme.textTheme.subhead,
+            style: theme.textTheme.subtitle1,
             textAlign: TextAlign.left,
             overflow: TextOverflow.ellipsis,
           ),
@@ -190,7 +190,7 @@ class _ProfileListItemState extends State<ProfileListItem>
         Flexible(
           child: Text(
             viewModel.address,
-            style: theme.textTheme.body1,
+            style: theme.textTheme.bodyText2,
             overflow: TextOverflow.ellipsis,
           ),
         ),

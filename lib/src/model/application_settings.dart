@@ -22,9 +22,9 @@ class ApplicationSettings {
 
   @override
   ApplicationSettings.fromJson(Map<String, dynamic> json) {
-    this.dbIsPrimaryLevel = json['dbIsPrimaryLevel'];
+    dbIsPrimaryLevel = json['dbIsPrimaryLevel'];
     int channelUpDownButtonsIndex = json['channelUpDownButtons'];
-    this.channelUpDownButtons =
+    channelUpDownButtons =
         ChannelUpDownButtonsEnum.values[channelUpDownButtonsIndex ?? 0];
   }
 
