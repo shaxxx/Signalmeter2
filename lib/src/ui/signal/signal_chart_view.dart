@@ -69,13 +69,13 @@ class _SignalChartViewState extends State<SignalChartView> {
                               drawHorizontalLine: true,
                               horizontalInterval: viewModel.useDb ? 2 : 10,
                               getDrawingVerticalLine: (value) {
-                                return const FlLine(
+                                return FlLine(
                                   color: Color(0xff67727d),
                                   strokeWidth: 1,
                                 );
                               },
                               getDrawingHorizontalLine: (value) {
-                                return const FlLine(
+                                return FlLine(
                                   color: Color(0xff67727d),
                                   strokeWidth: 0,
                                 );
