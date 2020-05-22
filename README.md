@@ -1,3 +1,4 @@
+[![Build status](https://shax.visualstudio.com/SignalMeter/_apis/build/status/SignalMeter-CI)](https://shax.visualstudio.com/SignalMeter/_build/latest?definitionId=4)
 # SignalMeter
 Use your phone or tablet to align your satellite dish by reading signal levels from Enigma 1 or Enigma2 satellite receiver.
 
