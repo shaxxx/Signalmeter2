@@ -4,6 +4,11 @@
 <dict>
     <key>method</key>
     <string>app-store</string>
+    <key>provisioningProfiles</key>
+    <dict>
+        <key>com.krkadoni.app.signalmeter</key>
+        <string>SignalMeterDistributionProfile</string>
+    </dict>
     <key>teamID</key>
     <string>GU6W3EN8EF</string>
 </dict>
