@@ -39,6 +39,9 @@ class SignalMeterLocalizationsDelegate
     if (locale.languageCode == 'en') {
       return MessageProvider.load(locale);
     } else if (languages.contains(locale.languageCode)) {
+      if (locale.languageCode == 'fr') {
+        return MessageProvider.load(Locale.fromSubtags(languageCode: 'fr'));
+      }
       return MessageProvider.load(Locale.fromSubtags(languageCode: 'hr'));
     }
     return MessageProvider.load(Locale.fromSubtags(languageCode: 'en'));
