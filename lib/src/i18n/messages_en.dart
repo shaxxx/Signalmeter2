@@ -25,7 +25,7 @@ class MessageLookup extends MessageLookupByLibrary {
 
   static m2(code) => "HTTP Status code ${code}.";
 
-  static m3(profileName) => "Web interface returned error 500. Something has crashed on recevier. Try to open \n\n${profileName}\n\n in your web browser to find out more.";
+  static m3(profileName) => "Web interface returned error 500. Something has crashed on receiver. Try to open \n\n${profileName}\n\n in your web browser to find out more.";
 
   static m4(profileName) => "Connected to ${profileName}";
 

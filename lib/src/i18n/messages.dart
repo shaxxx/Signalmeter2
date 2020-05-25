@@ -4,7 +4,7 @@ import 'package:intl/intl.dart';
 //flutter pub run intl_translation:extract_to_arb --output-dir=lib/src/i18n lib/src/i18n/messages.dart --locale=en
 //step 2: copy (or update changes) from intl_messages.arb to each intl_messages_*.arb file manually
 //step 3: generate dart files for each locale from arb
-//flutter pub pub run intl_translation:generate_from_arb --output-dir=lib/src/i18n  --no-use-deferred-loading lib/src/i18n/messages.dart lib/src/i18n/intl_messages.arb lib/src/i18n/intl_messages_hr.arb
+//flutter pub pub run intl_translation:generate_from_arb --output-dir=lib/src/i18n  --no-use-deferred-loading lib/src/i18n/messages.dart lib/src/i18n/intl_messages.arb lib/src/i18n/intl_messages_hr.arb lib/src/i18n/intl_messages_fr.arb
 
 class Messages {
   String get appName => Intl.message(
