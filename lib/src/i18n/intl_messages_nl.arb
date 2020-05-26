@@ -1,0 +1,754 @@
+{
+  "@@locale": "nl",
+  "@@last_modified": "2020-01-17T13:16:00.434304",
+  "appName": "SignalMeter",
+  "@appName": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "devices": "Apparaten",
+  "@devices": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "bouquets": "Bouquets",
+  "@bouquets": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "services": "Zenders",
+  "@services": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "signal": "Signaal",
+  "@signal": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "actionScreenshot": "Screenshot",
+  "@actionScreenshot": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "actionStream": "Stream",
+  "@actionStream": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "errFailedConnect": "Kon niet verbinden met {profileName}.",
+  "@errFailedConnect": {
+    "type": "text",
+    "placeholders": {
+      "profileName": {}
+    }
+  },
+  "errCheckYourConnection": "Controleer uw verbinding.",
+  "@errCheckYourConnection": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "errCheckYourSettings": "Controleer uw instellingen.",
+  "@errCheckYourSettings": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "errCheckYourCredentials": "Controleer uw toegang.",
+  "@errCheckYourCredentials": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "errOperationTimedOut": "Actie gestopt. Time out.",
+  "@errOperationTimedOut": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "errCommandFailed": "Commando {command} failed.",
+  "@errCommandFailed": {
+    "type": "text",
+    "placeholders": {
+      "command": {}
+    }
+  },
+  "errRequestFailedWithStatusCode": "HTTP Status code {code}.",
+  "@errRequestFailedWithStatusCode": {
+    "type": "text",
+    "placeholders": {
+      "code": {}
+    }
+  },
+  "infConnectingTo": "Verbindt met {profileName}",
+  "@infConnectingTo": {
+    "type": "text",
+    "placeholders": {
+      "profileName": {}
+    }
+  },
+  "infConnectedTo": "Verbonden met {profileName}",
+  "@infConnectedTo": {
+    "type": "text",
+    "placeholders": {
+      "profileName": {}
+    }
+  },
+  "infDisconnected": "Ontkoppeld",
+  "@infDisconnected": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "infInitializingStream": "Start de stream",
+  "@infInitializingStream": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "requestTime": "Verzoek de tijd ",
+  "@requestTime": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "dvbtService": "DVB-T service",
+  "@dvbtService": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "dvbcService": "DVB-C service",
+  "@dvbcService": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "streamService": "Stream service",
+  "@streamService": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "dvbsService": "DVB-S service",
+  "@dvbsService": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "errPortNotAvailable": "Poort is niet beschikbaar!",
+  "@errPortNotAvailable": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "errFailedToInitializeStream": "Starten van de stream is mislukt!",
+  "@errFailedToInitializeStream": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "actionAddProfile": "Voeg een apparaat toe",
+  "@actionAddProfile": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "actionEditProfile": "Pas het apparaat aan",
+  "@actionEditProfile": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "actionDeleteProfile": "Verwijder het apparaat",
+  "@actionDeleteProfile": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "actionConnect": "Verbinden",
+  "@actionConnect": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "actionSave": "Opslaan",
+  "@actionSave": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "actionTakeScreenshot": "Maak een screenshot",
+  "@actionTakeScreenshot": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "actionSleep": "Sluit af",
+  "@actionSleep": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "actionRestart": "Herstart de GUI",
+  "@actionRestart": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "titleQuestion": "Vraag",
+  "@titleQuestion": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "questionDeleteProfile": "Weet u zeker dat u {profileName} wilt verwijderen?",
+  "@questionDeleteProfile": {
+    "type": "text",
+    "placeholders": {
+      "profileName": {}
+    }
+  },
+  "questionRestartGui": "Herstart de gebruikersinterface op {profileName}?",
+  "@questionRestartGui": {
+    "type": "text",
+    "placeholders": {
+      "profileName": {}
+    }
+  },
+  "actionScreenshotAll": "Alles",
+  "@actionScreenshotAll": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "actionScreenshotOsd": "Enkel de OSD",
+  "@actionScreenshotOsd": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "actionScreenshotPicture": "Enkel het beeld",
+  "@actionScreenshotPicture": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "infSavedFilename": "Opgeslagen {fileName}",
+  "@infSavedFilename": {
+    "type": "text",
+    "placeholders": {
+      "fileName": {}
+    }
+  },
+  "errSaveFailed": "Opslaan mislukt",
+  "@errSaveFailed": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "startMonitor": "Start de monitor",
+  "@startMonitor": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "stopMonitor": "Stop de monitor",
+  "@stopMonitor": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "profileName": "Naam",
+  "@profileName": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "profileNameHint": "i.e. MijnBox",
+  "@profileNameHint": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "profileAddress": "Adres",
+  "@profileAddress": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "profileAddressHint": "i.e. 192.168.1.2",
+  "@profileAddressHint": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "profileUsername": "Gebruikersnaam",
+  "@profileUsername": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "profileUsernameHint": "i.e. root",
+  "@profileUsernameHint": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "profilePassword": "Wachtwoord",
+  "@profilePassword": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "profilePasswordHint": "",
+  "@profilePasswordHint": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "profilePort": "Poort",
+  "@profilePort": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "profilePortHint": "meestal 80",
+  "@profilePortHint": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "profileStreamingEnable": "Activeer streaming",
+  "@profileStreamingEnable": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "profileStreamingPort": "Streaming Poort",
+  "@profileStreamingPort": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "profileStreamingPorthint": "meestal 8001",
+  "@profileStreamingPorthint": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "profileTranscodingEnable": "Activeer transcoding",
+  "@profileTranscodingEnable": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "profileTranscodingPort": "Transcoding Poort",
+  "@profileTranscodingPort": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "profileTranscodingPortHint": "meestal 8002",
+  "@profileTranscodingPortHint": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "profileEnigmaVersion": "Versie",
+  "@profileEnigmaVersion": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "profileUseSsl": "Gebruik SSL",
+  "@profileUseSsl": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "warnUsingAlternativePort": "Gebruik een afwijkende poort {port}",
+  "@warnUsingAlternativePort": {
+    "type": "text",
+    "placeholders": {
+      "port": {}
+    }
+  },
+  "profileTranscodingLocalLan": "Transcoding via het locale netwerk",
+  "@profileTranscodingLocalLan": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "checkingParameters": "Controleer de parameters",
+  "@checkingParameters": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "questionSaveChanges": "Sla de wijzigingen op?",
+  "@questionSaveChanges": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "errInvalidProfileName": "Onjuiste apparaatnaam",
+  "@errInvalidProfileName": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "errInvalidAddress": "Onjuist adres",
+  "@errInvalidAddress": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "errInvalidUsername": "Onjuiste gebruikersnaam",
+  "@errInvalidUsername": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "errInvalidHttpPort": "Onjuiste http poort",
+  "@errInvalidHttpPort": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "errInvalidEnigmaType": "Onjuist enigma type",
+  "@errInvalidEnigmaType": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "errInvalidStreamingPort": "Onjuiste streaming poort",
+  "@errInvalidStreamingPort": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "errInvalidTranscodingPort": "Onjuiste transcoding poort",
+  "@errInvalidTranscodingPort": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "errFailedToInitializeTtsEngine": "De texttospeech applicatie start niet!",
+  "@errFailedToInitializeTtsEngine": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "questionOpenTtsSettings": "Open nu de TextToSpeech instellingen ?",
+  "@questionOpenTtsSettings": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "errNoTtsLanguageAvailable": "TextToSpeech taal is niet beschikbaar.",
+  "@errNoTtsLanguageAvailable": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "infSignalLevelsWillNotBeSpoken": "Signaalwaardes worden niet uitgesproken.",
+  "@infSignalLevelsWillNotBeSpoken": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "questionIgnoreFurtherTtsError": "Negeer alle verdere TextToSpeech fouten?",
+  "@questionIgnoreFurtherTtsError": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "titleError": "Fout",
+  "@titleError": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "titleWarning": "Waarschuwing",
+  "@titleWarning": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "titleDownloading": "Downloading",
+  "@titleDownloading": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "questionTryTtsLanguageDownload": "Moet ik proberen om talen te downloaden?",
+  "@questionTryTtsLanguageDownload": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "pleaseWait": "Een ogenblik aub",
+  "@pleaseWait": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "errDownloadFailed": "De download mislukte",
+  "@errDownloadFailed": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "errInstallFailed": "Installatie mislukte",
+  "@errInstallFailed": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "version": "Versie",
+  "@version": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "releaseName": "Release naam",
+  "@releaseName": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "build": "Build",
+  "@build": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "manufacturer": "Fabrikant",
+  "@manufacturer": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "informationsSupport": "Informatie & Support",
+  "@informationsSupport": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "aboutRightsReserved": "Alle rechten voorbehouden",
+  "@aboutRightsReserved": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "specialThanksGoesTo": "Speciale dank voor de ondersteuning naar",
+  "@specialThanksGoesTo": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "thanksForTestingTo": "Bedankt voor het testen",
+  "@thanksForTestingTo": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "errInvalidEnigmaTypeOrNotEnigma": "Incorrect Enigma type of geen Enigma Web interface.",
+  "@errInvalidEnigmaTypeOrNotEnigma": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "errServerError": "Webinterface heeft fout 500 aangegeven. Er is iets vastgelopen op de ontvanger. Probeer \n\n{profileName}\n\n te openen in uw webbrowser om nader te onderzoeken.",
+  "@errServerError": {
+    "type": "text",
+    "placeholders": {
+      "profileName": {}
+    }
+  },
+  "warnHttpPortClosed": "{address}:{port} lijkt onbereikbaar.",
+  "@warnHttpPortClosed": {
+    "type": "text",
+    "placeholders": {
+      "address": {},
+      "port": {}
+    }
+  },
+  "warnTranscodingPortClosed": "Transcoding poort lijkt gesloten.",
+  "@warnTranscodingPortClosed": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "warnStreamingPortClosed": "Streaming poort lijkt gesloten.",
+  "@warnStreamingPortClosed": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "warnSaveTheProfileAnyway": "Moet het apparaat toch opgeslagen worden?",
+  "@warnSaveTheProfileAnyway": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "voice": "Stem",
+  "@voice": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "checkingPorts": "Controleer de poorten",
+  "@checkingPorts": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "contentNotAvailable": "De inhoud is momenteel onbereikbaar",
+  "@contentNotAvailable": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "failedToParseResponse": "Onjuiste reactie.",
+  "@failedToParseResponse": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "tryAgain": "Probeer het nogmaals",
+  "@tryAgain": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "oops": "Oops",
+  "@oops": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "actionDisconnect": "Verbreek",
+  "@actionDisconnect": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "actionEdit": "Aanpassen",
+  "@actionEdit": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "actionDelete": "Verwijder",
+  "@actionDelete": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "noInformation": "Geen informatie",
+  "@noInformation": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "actionAbout": "Over",
+  "@actionAbout": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "close": "Sluiten",
+  "@close": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "open": "Open",
+  "@open": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "details": "Details",
+  "@details": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "platformNotSupported": "{platform} platform is niet ondersteund",
+  "@platformNotSupported": {
+    "type": "text",
+    "placeholders": {
+      "platform": {}
+    }
+  },
+  "unknownError": "Onbekende fout.",
+  "@unknownError": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "pleaseSubmitDetails": "Geef de details door.",
+  "@pleaseSubmitDetails": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "confirm": "Bevestig",
+  "@confirm": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "yes": "Ja",
+  "@yes": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "no": "Nee",
+  "@no": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "ok": "Ok",
+  "@ok": {
+    "type": "tekst",
+    "placeholders": {}
+  },
+  "cancel": "Annuleren",
+  "@cancel": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "average": "Gemiddeld",
+  "@average": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "enableTts": "Activeer Tts",
+  "@enableTts": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "disableTts": "Déactiveer Tts",
+  "@disableTts": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "defaultLook": "Standaard uiterlijk",
+  "@defaultLook": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "alternativeLook": "Alternatief uiterlijk",
+  "@alternativeLook": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "searchByName": "Zoek op naam",
+  "@searchByName": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "streamRequiresVlc": "Stream vereist VLC player",
+  "@streamRequiresVlc": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "formNotValid": "De vorm is onjuist",
+  "@formNotValid": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "more": "Meer",
+  "@more": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "profileStreamingPorthintEnigma1": "meestal 31339",
+  "@profileStreamingPorthintEnigma1": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "considerCoffee": "U zou een mij een kop koffie kunnen aanbieden.",
+  "@considerCoffee": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "likeTheApp": "Wat vindt je van de app?",
+  "@likeTheApp": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "questionEmptyUsernamePassword": "Vul geen gebruikersnaam of wachtwoord in? Dit vereist dat u de autorisatie op de webinterface uitschakelt.",
+  "@questionEmptyUsernamePassword": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "settings": "Instellingen",
+  "@settings": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "options": "Opties",
+  "@options": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "useDbAsPrimaryLevel": "Gebruik dB als eerste nivo",
+  "@useDbAsPrimaryLevel": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "channel": "Kanaal",
+  "@channel": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "share": "Deel",
+  "@share": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "screenshotSaved": "Het screenshot is met succes in de gally opgeslagen",
+  "@screenshotSaved": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "addProfileShowcaseTitle": "Voeg een apparaat toe",
+  "@addProfileShowcaseTitle": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "addProfileShowcaseText": "Voer verbindingsinstellingen in om te starten",
+  "@addProfileShowcaseText": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "mapChannelUpDownTo": "Zender +/- knoppen",
+  "@mapChannelUpDownTo": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "channelUpDown": "Zender (Bouquet) +/-",
+  "@channelUpDown": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "upDownArrows": "Up / Down pijlen",
+  "@upDownArrows": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "leftRigtArrows": "Left / Right pijlen",
+  "@leftRigtArrows": {
+    "type": "text",
+    "placeholders": {}
+  }
+}

@@ -1,2 +1,2 @@
-- improved performance
-- support for x86 64 bit devices
+- French translation (thnx to @pr2 from OpenPli forum)
+- Dutch translation (thnx to Voorzitter from OpenPli)

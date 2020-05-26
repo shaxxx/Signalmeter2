@@ -36,13 +36,15 @@ class SignalMeterLocalizationsDelegate
 
   @override
   Future<MessageProvider> load(Locale locale) {
+    var hrLanguage = ['hr', 'bs', 'sr', 'sl'];
     if (locale.languageCode == 'en') {
       return MessageProvider.load(locale);
     } else if (languages.contains(locale.languageCode)) {
-      if (locale.languageCode == 'fr') {
-        return MessageProvider.load(Locale.fromSubtags(languageCode: 'fr'));
+      if (hrLanguage.contains(locale.languageCode)) {
+        return MessageProvider.load(Locale.fromSubtags(languageCode: 'hr'));
       }
-      return MessageProvider.load(Locale.fromSubtags(languageCode: 'hr'));
+      return MessageProvider.load(
+          Locale.fromSubtags(languageCode: locale.languageCode));
     }
     return MessageProvider.load(Locale.fromSubtags(languageCode: 'en'));
   }
