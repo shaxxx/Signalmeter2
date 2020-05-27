@@ -1,4 +1,4 @@
-- [Como Empezar](gettingstarted.md)
-- [Uso](using.md)
-- [Problemas](troubleshooting.md)
-- [FAQ](faq.md)
+- [Como Empezar](es/gettingstarted.md)
+- [Uso](es/using.md)
+- [Problemas](es/troubleshooting.md)
+- [FAQ](es/faq.md)
