@@ -1,0 +1,4 @@
+- [Como Empezar](gettingstarted.md)
+- [Uso](using.md)
+- [Problemas](troubleshooting.md)
+- [FAQ](faq.md)
