@@ -474,7 +474,7 @@
     "type": "text",
     "placeholders": {}
   },
-  "thanksForTestingTo": "Agradecimiento por probar a",
+  "thanksForTestingTo": "Agradecimiento por las pruebas a",
   "@thanksForTestingTo": {
     "type": "text",
     "placeholders": {}
@@ -584,7 +584,7 @@
     "type": "text",
     "placeholders": {}
   },
-  "platformNotSupported": "{platform} platforma no soportada",
+  "platformNotSupported": "{platform} plataforma no soportada",
   "@platformNotSupported": {
     "type": "text",
     "placeholders": {
@@ -716,7 +716,7 @@
     "type": "text",
     "placeholders": {}
   },
-  "screenshotSaved": "Captura de Pantalla guardada en galeria correctamente",
+  "screenshotSaved": "Captura de Pantalla guardada en galería correctamente",
   "@screenshotSaved": {
     "type": "text",
     "placeholders": {}
