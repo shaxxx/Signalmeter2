@@ -1,0 +1,754 @@
+{
+  "@@locale": "es",
+  "@@last_modified": "2020-01-27T13:16:00.434304",
+  "appName": "SignalMeter",
+  "@appName": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "devices": "Dispositivos",
+  "@devices": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "bouquets": "Bouquets",
+  "@bouquets": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "services": "Servicios",
+  "@services": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "signal": "Señal",
+  "@signal": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "actionScreenshot": "Captura de Pantalla",
+  "@actionScreenshot": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "actionStream": "Stream",
+  "@actionStream": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "errFailedConnect": "Fallo al conectar a {profileName}.",
+  "@errFailedConnect": {
+    "type": "text",
+    "placeholders": {
+      "profileName": {}
+    }
+  },
+  "errCheckYourConnection": "Comprueba tu conexión.",
+  "@errCheckYourConnection": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "errCheckYourSettings": "Comprueba tus ajustes.",
+  "@errCheckYourSettings": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "errCheckYourCredentials": "Comprueba tus credenciales.",
+  "@errCheckYourCredentials": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "errOperationTimedOut": "Operación fuera de tiempo.",
+  "@errOperationTimedOut": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "errCommandFailed": "Fallo de Commando {command}.",
+  "@errCommandFailed": {
+    "type": "text",
+    "placeholders": {
+      "command": {}
+    }
+  },
+  "errRequestFailedWithStatusCode": "Código de estado HTTP {code}.",
+  "@errRequestFailedWithStatusCode": {
+    "type": "text",
+    "placeholders": {
+      "code": {}
+    }
+  },
+  "infConnectingTo": "Conectando a {profileName}",
+  "@infConnectingTo": {
+    "type": "text",
+    "placeholders": {
+      "profileName": {}
+    }
+  },
+  "infConnectedTo": "Conectado a {profileName}",
+  "@infConnectedTo": {
+    "type": "text",
+    "placeholders": {
+      "profileName": {}
+    }
+  },
+  "infDisconnected": "Desconectado",
+  "@infDisconnected": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "infInitializingStream": "Iniciando stream",
+  "@infInitializingStream": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "requestTime": "Tempo requerido",
+  "@requestTime": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "dvbtService": "Servicio DVB-T",
+  "@dvbtService": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "dvbcService": "Servicio DVB-C",
+  "@dvbcService": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "streamService": "Servicio de Stream",
+  "@streamService": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "dvbsService": "Servicio DVB-S",
+  "@dvbsService": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "errPortNotAvailable": "¡Puerto no disponible!",
+  "@errPortNotAvailable": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "errFailedToInitializeStream": "¡Fallo al iniciar el stream!",
+  "@errFailedToInitializeStream": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "actionAddProfile": "Añadir dispositivo",
+  "@actionAddProfile": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "actionEditProfile": "Editar dispositivo",
+  "@actionEditProfile": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "actionDeleteProfile": "Borrar dispositivo",
+  "@actionDeleteProfile": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "actionConnect": "Conectar",
+  "@actionConnect": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "actionSave": "Guardar",
+  "@actionSave": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "actionTakeScreenshot": "Capturar Pantalla",
+  "@actionTakeScreenshot": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "actionSleep": "Poner en StandBy",
+  "@actionSleep": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "actionRestart": "Reiniciar Enigma (GUI)",
+  "@actionRestart": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "titleQuestion": "Pregunta",
+  "@titleQuestion": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "questionDeleteProfile": "¿Estás seguro que quieres borrar {profileName}?",
+  "@questionDeleteProfile": {
+    "type": "text",
+    "placeholders": {
+      "profileName": {}
+    }
+  },
+  "questionRestartGui": "Reiniciar interfaz de usuario en {profileName}?",
+  "@questionRestartGui": {
+    "type": "text",
+    "placeholders": {
+      "profileName": {}
+    }
+  },
+  "actionScreenshotAll": "Todo",
+  "@actionScreenshotAll": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "actionScreenshotOsd": "Sólo OSD",
+  "@actionScreenshotOsd": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "actionScreenshotPicture": "Sólo Imagen",
+  "@actionScreenshotPicture": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "infSavedFilename": "Guardado: {fileName}",
+  "@infSavedFilename": {
+    "type": "text",
+    "placeholders": {
+      "fileName": {}
+    }
+  },
+  "errSaveFailed": "Fallo al guardar",
+  "@errSaveFailed": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "startMonitor": "Activar monitorización",
+  "@startMonitor": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "stopMonitor": "Detener monitorización",
+  "@stopMonitor": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "profileName": "Nombre Perfil",
+  "@profileName": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "profileNameHint": "p.ej. Mi_Receptor",
+  "@profileNameHint": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "profileAddress": "Dirección",
+  "@profileAddress": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "profileAddressHint": "p.ej. 192.168.1.2",
+  "@profileAddressHint": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "profileUsername": "Nombre de Usuario",
+  "@profileUsername": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "profileUsernameHint": "p.ej. root",
+  "@profileUsernameHint": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "profilePassword": "Contraseña",
+  "@profilePassword": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "profilePasswordHint": "",
+  "@profilePasswordHint": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "profilePort": "Puerto",
+  "@profilePort": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "profilePortHint": "normalmente 80",
+  "@profilePortHint": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "profileStreamingEnable": "Activar streaming",
+  "@profileStreamingEnable": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "profileStreamingPort": "Puerto de Streaming",
+  "@profileStreamingPort": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "profileStreamingPorthint": "normalmente 8001",
+  "@profileStreamingPorthint": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "profileTranscodingEnable": "Activar transcodificación",
+  "@profileTranscodingEnable": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "profileTranscodingPort": "Puerto de Transcodificación",
+  "@profileTranscodingPort": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "profileTranscodingPortHint": "normalmente 8002",
+  "@profileTranscodingPortHint": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "profileEnigmaVersion": "Versión",
+  "@profileEnigmaVersion": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "profileUseSsl": "Usar SSL",
+  "@profileUseSsl": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "warnUsingAlternativePort": "Usar puerto alternativo {port}",
+  "@warnUsingAlternativePort": {
+    "type": "text",
+    "placeholders": {
+      "port": {}
+    }
+  },
+  "profileTranscodingLocalLan": "Transcodificar en red local",
+  "@profileTranscodingLocalLan": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "checkingParameters": "Comprobando parámetros",
+  "@checkingParameters": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "questionSaveChanges": "¿Guardar cambios?",
+  "@questionSaveChanges": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "errInvalidProfileName": "Nombre de dispositivo inválido",
+  "@errInvalidProfileName": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "errInvalidAddress": "Dirección inválida",
+  "@errInvalidAddress": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "errInvalidUsername": "Nombre de Usuario inválido",
+  "@errInvalidUsername": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "errInvalidHttpPort": "Puerto http inválido",
+  "@errInvalidHttpPort": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "errInvalidEnigmaType": "Tipo de Enigma inválido",
+  "@errInvalidEnigmaType": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "errInvalidStreamingPort": "Puerto de Stream inválido",
+  "@errInvalidStreamingPort": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "errInvalidTranscodingPort": "Puerto de Transcodificación inválido",
+  "@errInvalidTranscodingPort": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "errFailedToInitializeTtsEngine": "Fallo al iniciar el Texto a Voz",
+  "@errFailedToInitializeTtsEngine": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "questionOpenTtsSettings": "¿Abrir ajustes de Texto a Voz?",
+  "@questionOpenTtsSettings": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "errNoTtsLanguageAvailable": "Idioma de Texto a Voz no disponible.",
+  "@errNoTtsLanguageAvailable": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "infSignalLevelsWillNotBeSpoken": "Los niveles de señal no se darán por voz.",
+  "@infSignalLevelsWillNotBeSpoken": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "questionIgnoreFurtherTtsError": "¿Ignorar futuros errores de Texto a Voz?",
+  "@questionIgnoreFurtherTtsError": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "titleError": "Error",
+  "@titleError": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "titleWarning": "Aviso",
+  "@titleWarning": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "titleDownloading": "Descargando",
+  "@titleDownloading": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "questionTryTtsLanguageDownload": "¿Intentar descargar e Instalar idiomas?",
+  "@questionTryTtsLanguageDownload": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "pleaseWait": "Por favor espera",
+  "@pleaseWait": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "errDownloadFailed": "Fallo al descargar",
+  "@errDownloadFailed": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "errInstallFailed": "Fallo al instalar",
+  "@errInstallFailed": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "version": "Versión",
+  "@version": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "releaseName": "Nombre lanzamiento",
+  "@releaseName": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "build": "Compilación",
+  "@build": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "manufacturer": "Fabricante",
+  "@manufacturer": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "informationsSupport": "Informaciones y Soporte",
+  "@informationsSupport": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "aboutRightsReserved": "Todos los derechos reservados",
+  "@aboutRightsReserved": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "specialThanksGoesTo": "Agradecimiento especial de soporte a",
+  "@specialThanksGoesTo": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "thanksForTestingTo": "Agradecimiento por las pruebas a",
+  "@thanksForTestingTo": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "errInvalidEnigmaTypeOrNotEnigma": "Tipo inválido de Enigma, o no hay Web interface.",
+  "@errInvalidEnigmaTypeOrNotEnigma": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "errServerError": "El Web interface devuelve error 500. Algo ha fallado en el receptor. Intenta abrir \n\n{profileName}\n\n en tu navegador para ver algo más.",
+  "@errServerError": {
+    "type": "text",
+    "placeholders": {
+      "profileName": {}
+    }
+  },
+  "warnHttpPortClosed": "{address}:{port} parece inalcanzable.",
+  "@warnHttpPortClosed": {
+    "type": "text",
+    "placeholders": {
+      "address": {},
+      "port": {}
+    }
+  },
+  "warnTranscodingPortClosed": "El puerto de Transcodificación parece cerrado.",
+  "@warnTranscodingPortClosed": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "warnStreamingPortClosed": "El puerto de Streaming parece cerrado.",
+  "@warnStreamingPortClosed": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "warnSaveTheProfileAnyway": "¿Guardar este perfil igualmente?",
+  "@warnSaveTheProfileAnyway": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "voice": "Voz",
+  "@voice": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "checkingPorts": "Comprobando puertos",
+  "@checkingPorts": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "contentNotAvailable": "El contenido no está disponible",
+  "@contentNotAvailable": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "failedToParseResponse": "Respuesta inválida",
+  "@failedToParseResponse": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "tryAgain": "Intentar otra vez",
+  "@tryAgain": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "oops": "Ufffff",
+  "@oops": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "actionDisconnect": "Desconectar",
+  "@actionDisconnect": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "actionEdit": "Editar",
+  "@actionEdit": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "actionDelete": "Borrar",
+  "@actionDelete": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "noInformation": "No hay información",
+  "@noInformation": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "actionAbout": "Acerca de",
+  "@actionAbout": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "close": "Cerrar",
+  "@close": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "open": "Abrir",
+  "@open": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "details": "Detalles",
+  "@details": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "platformNotSupported": "{platform} plataforma no soportada",
+  "@platformNotSupported": {
+    "type": "text",
+    "placeholders": {
+      "platform": {}
+    }
+  },
+  "unknownError": "Error desconocido.",
+  "@unknownError": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "pleaseSubmitDetails": "Por favor, envía detalles.",
+  "@pleaseSubmitDetails": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "confirm": "Confirmar",
+  "@confirm": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "yes": "Si",
+  "@yes": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "no": "No",
+  "@no": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "ok": "OK",
+  "@ok": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "cancel": "Cancelar",
+  "@cancel": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "average": "Media",
+  "@average": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "enableTts": "Activar TaV",
+  "@enableTts": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "disableTts": "Disable TaV",
+  "@disableTts": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "defaultLook": "Vista por defecto",
+  "@defaultLook": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "alternativeLook": "Vista alternativa",
+  "@alternativeLook": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "searchByName": "Buscar por nombre",
+  "@searchByName": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "streamRequiresVlc": "Para stream se requiere Reproductor VLC",
+  "@streamRequiresVlc": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "formNotValid": "Formulario no válido",
+  "@formNotValid": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "more": "Más",
+  "@more": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "profileStreamingPorthintEnigma1": "normalmente 31339",
+  "@profileStreamingPorthintEnigma1": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "considerCoffee": "Invítame a un café.",
+  "@considerCoffee": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "likeTheApp": "¿Te gusta la app?",
+  "@likeTheApp": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "questionEmptyUsernamePassword": "¿Sin nombre de usuario y contraseña? Esto requiere que desactives la autenticación en el Web Interface.",
+  "@questionEmptyUsernamePassword": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "settings": "Ajustes",
+  "@settings": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "options": "Opciones",
+  "@options": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "useDbAsPrimaryLevel": "Usar dB como nivel primario",
+  "@useDbAsPrimaryLevel": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "channel": "Canal",
+  "@channel": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "share": "Compartir",
+  "@share": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "screenshotSaved": "Captura de Pantalla guardada en galería correctamente",
+  "@screenshotSaved": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "addProfileShowcaseTitle": "Añadir dispositivo",
+  "@addProfileShowcaseTitle": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "addProfileShowcaseText": "Entra los ajustes de conexión para empezar",
+  "@addProfileShowcaseText": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "mapChannelUpDownTo": "Función Botones Canal +/-",
+  "@mapChannelUpDownTo": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "channelUpDown": "Canal (Bouquet) +/-",
+  "@channelUpDown": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "upDownArrows": "Flechas Arriba / Abajo",
+  "@upDownArrows": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "leftRigtArrows": "Flechas Izquierda / Derecha",
+  "@leftRigtArrows": {
+    "type": "text",
+    "placeholders": {}
+  }
+}

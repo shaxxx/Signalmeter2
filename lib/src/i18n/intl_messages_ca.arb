@@ -1,0 +1,754 @@
+{
+  "@@locale": "ca",
+  "@@last_modified": "2020-01-27T13:16:00.434304",
+  "appName": "SignalMeter",
+  "@appName": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "devices": "Dispositius",
+  "@devices": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "bouquets": "Bouquets",
+  "@bouquets": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "services": "Serveis",
+  "@services": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "signal": "Senyal",
+  "@signal": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "actionScreenshot": "Captura de Pantalla",
+  "@actionScreenshot": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "actionStream": "Stream",
+  "@actionStream": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "errFailedConnect": "Error en connectar a {profileName}.",
+  "@errFailedConnect": {
+    "type": "text",
+    "placeholders": {
+      "profileName": {}
+    }
+  },
+  "errCheckYourConnection": "Comprova la connexió.",
+  "@errCheckYourConnection": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "errCheckYourSettings": "Comprova els ajustos.",
+  "@errCheckYourSettings": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "errCheckYourCredentials": "Comprova les credencials.",
+  "@errCheckYourCredentials": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "errOperationTimedOut": "Operació fora de temps.",
+  "@errOperationTimedOut": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "errCommandFailed": "Error de Commanda {command}.",
+  "@errCommandFailed": {
+    "type": "text",
+    "placeholders": {
+      "command": {}
+    }
+  },
+  "errRequestFailedWithStatusCode": "Còdig d'estat HTTP {code}.",
+  "@errRequestFailedWithStatusCode": {
+    "type": "text",
+    "placeholders": {
+      "code": {}
+    }
+  },
+  "infConnectingTo": "Connectant a {profileName}",
+  "@infConnectingTo": {
+    "type": "text",
+    "placeholders": {
+      "profileName": {}
+    }
+  },
+  "infConnectedTo": "Connectat a {profileName}",
+  "@infConnectedTo": {
+    "type": "text",
+    "placeholders": {
+      "profileName": {}
+    }
+  },
+  "infDisconnected": "Desconnectat",
+  "@infDisconnected": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "infInitializingStream": "Iniciant stream",
+  "@infInitializingStream": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "requestTime": "Temps requerit",
+  "@requestTime": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "dvbtService": "Servei DVB-T",
+  "@dvbtService": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "dvbcService": "Servei DVB-C",
+  "@dvbcService": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "streamService": "Servei de Stream",
+  "@streamService": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "dvbsService": "Servei DVB-S",
+  "@dvbsService": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "errPortNotAvailable": "Port no disponible!",
+  "@errPortNotAvailable": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "errFailedToInitializeStream": "Error en iniciar el Stream!",
+  "@errFailedToInitializeStream": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "actionAddProfile": "Afegir dispositiu",
+  "@actionAddProfile": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "actionEditProfile": "Editar dispositiu",
+  "@actionEditProfile": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "actionDeleteProfile": "Esborrar dispositiu",
+  "@actionDeleteProfile": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "actionConnect": "Connectar",
+  "@actionConnect": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "actionSave": "Guardar",
+  "@actionSave": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "actionTakeScreenshot": "Capturar Pantalla",
+  "@actionTakeScreenshot": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "actionSleep": "Posar en StandBy",
+  "@actionSleep": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "actionRestart": "Reiniciar Enigma (GUI)",
+  "@actionRestart": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "titleQuestion": "Pregunta",
+  "@titleQuestion": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "questionDeleteProfile": "Estàs seguro que vols esborrar {profileName}?",
+  "@questionDeleteProfile": {
+    "type": "text",
+    "placeholders": {
+      "profileName": {}
+    }
+  },
+  "questionRestartGui": "Reiniciar interfaç d'usuari a {profileName}?",
+  "@questionRestartGui": {
+    "type": "text",
+    "placeholders": {
+      "profileName": {}
+    }
+  },
+  "actionScreenshotAll": "Tot",
+  "@actionScreenshotAll": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "actionScreenshotOsd": "Només OSD",
+  "@actionScreenshotOsd": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "actionScreenshotPicture": "Només Imagen",
+  "@actionScreenshotPicture": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "infSavedFilename": "Guardat: {fileName}",
+  "@infSavedFilename": {
+    "type": "text",
+    "placeholders": {
+      "fileName": {}
+    }
+  },
+  "errSaveFailed": "Error al guardar",
+  "@errSaveFailed": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "startMonitor": "Activar monitorització",
+  "@startMonitor": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "stopMonitor": "Detener monitorització",
+  "@stopMonitor": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "profileName": "Nom Perfil",
+  "@profileName": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "profileNameHint": "p.ex. El_Meu_Receptor",
+  "@profileNameHint": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "profileAddress": "Direcció",
+  "@profileAddress": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "profileAddressHint": "p.ex. 192.168.1.2",
+  "@profileAddressHint": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "profileUsername": "Nom d'Usuari",
+  "@profileUsername": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "profileUsernameHint": "p.ex. root",
+  "@profileUsernameHint": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "profilePassword": "Contrasenya",
+  "@profilePassword": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "profilePasswordHint": "",
+  "@profilePasswordHint": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "profilePort": "Port",
+  "@profilePort": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "profilePortHint": "normalment 80",
+  "@profilePortHint": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "profileStreamingEnable": "Activar streaming",
+  "@profileStreamingEnable": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "profileStreamingPort": "Port de Streaming",
+  "@profileStreamingPort": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "profileStreamingPorthint": "normalment 8001",
+  "@profileStreamingPorthint": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "profileTranscodingEnable": "Activar transcodificació",
+  "@profileTranscodingEnable": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "profileTranscodingPort": "Port de Transcodificació",
+  "@profileTranscodingPort": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "profileTranscodingPortHint": "normalment 8002",
+  "@profileTranscodingPortHint": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "profileEnigmaVersion": "Versió",
+  "@profileEnigmaVersion": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "profileUseSsl": "Utilitzar SSL",
+  "@profileUseSsl": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "warnUsingAlternativePort": "Utilitzar port alternatiu {port}",
+  "@warnUsingAlternativePort": {
+    "type": "text",
+    "placeholders": {
+      "port": {}
+    }
+  },
+  "profileTranscodingLocalLan": "Transcodificar en xarxa local",
+  "@profileTranscodingLocalLan": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "checkingParameters": "Comprovant paràmetres",
+  "@checkingParameters": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "questionSaveChanges": "Guardar canvia?",
+  "@questionSaveChanges": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "errInvalidProfileName": "Nom de dispositiu invàlid",
+  "@errInvalidProfileName": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "errInvalidAddress": "Direcció invàlida",
+  "@errInvalidAddress": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "errInvalidUsername": "Nom d'Usuari invàlid",
+  "@errInvalidUsername": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "errInvalidHttpPort": "Port http invàlid",
+  "@errInvalidHttpPort": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "errInvalidEnigmaType": "Tipus d'Enigma invàlid",
+  "@errInvalidEnigmaType": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "errInvalidStreamingPort": "Port de Stream invàlid",
+  "@errInvalidStreamingPort": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "errInvalidTranscodingPort": "Port de Transcodificació invàlid",
+  "@errInvalidTranscodingPort": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "errFailedToInitializeTtsEngine": "Error a l'iniciar el Texte a Veu",
+  "@errFailedToInitializeTtsEngine": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "questionOpenTtsSettings": "Obrir ajustos de Texte a Veu?",
+  "@questionOpenTtsSettings": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "errNoTtsLanguageAvailable": "Idioma de Texte a Veu no disponible.",
+  "@errNoTtsLanguageAvailable": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "infSignalLevelsWillNotBeSpoken": "Els nivells de senyal no se diran per veu.",
+  "@infSignalLevelsWillNotBeSpoken": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "questionIgnoreFurtherTtsError": "Ignorar futurs errors de Texte a Veu?",
+  "@questionIgnoreFurtherTtsError": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "titleError": "Error",
+  "@titleError": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "titleWarning": "Avis",
+  "@titleWarning": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "titleDownloading": "Descarregant",
+  "@titleDownloading": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "questionTryTtsLanguageDownload": "Intentar descarregar i Instal·lar idiomes?",
+  "@questionTryTtsLanguageDownload": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "pleaseWait": "Si us plau espera",
+  "@pleaseWait": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "errDownloadFailed": "Error al descarregar",
+  "@errDownloadFailed": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "errInstallFailed": "Error a l'instal·lar",
+  "@errInstallFailed": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "version": "Versión",
+  "@version": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "releaseName": "Nom llançament",
+  "@releaseName": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "build": "Compilació",
+  "@build": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "manufacturer": "Fabricant",
+  "@manufacturer": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "informationsSupport": "Informacions i Suport",
+  "@informationsSupport": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "aboutRightsReserved": "Tots els drets reservats",
+  "@aboutRightsReserved": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "specialThanksGoesTo": "Agraïment especial de suport a",
+  "@specialThanksGoesTo": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "thanksForTestingTo": "Agraïment per les proves a",
+  "@thanksForTestingTo": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "errInvalidEnigmaTypeOrNotEnigma": "Tipus invàlid d'Enigma, o no hi ha Web interface.",
+  "@errInvalidEnigmaTypeOrNotEnigma": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "errServerError": "El Web interface dóna error 500. Alguna cosa falla al receptor. Intenta obrir \n\n{profileName}\n\n en el teu navegador per intentar veure alguna cosa més.",
+  "@errServerError": {
+    "type": "text",
+    "placeholders": {
+      "profileName": {}
+    }
+  },
+  "warnHttpPortClosed": "{address}:{port} no sembla funcionar.",
+  "@warnHttpPortClosed": {
+    "type": "text",
+    "placeholders": {
+      "address": {},
+      "port": {}
+    }
+  },
+  "warnTranscodingPortClosed": "El port de Transcodificació sembla tancat.",
+  "@warnTranscodingPortClosed": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "warnStreamingPortClosed": "El port de Streaming sembla tancat.",
+  "@warnStreamingPortClosed": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "warnSaveTheProfileAnyway": "Guardar aquest perfil igualment?",
+  "@warnSaveTheProfileAnyway": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "voice": "Voz",
+  "@voice": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "checkingPorts": "Comprovant ports",
+  "@checkingPorts": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "contentNotAvailable": "El contingut no està disponible",
+  "@contentNotAvailable": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "failedToParseResponse": "Resposta invàlida",
+  "@failedToParseResponse": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "tryAgain": "Intentar una altra vegada",
+  "@tryAgain": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "oops": "Ufffff",
+  "@oops": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "actionDisconnect": "Desconnectar",
+  "@actionDisconnect": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "actionEdit": "Editar",
+  "@actionEdit": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "actionDelete": "Esborrar",
+  "@actionDelete": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "noInformation": "No hi ha informació",
+  "@noInformation": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "actionAbout": "En quant a",
+  "@actionAbout": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "close": "Tancar",
+  "@close": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "open": "Obrir",
+  "@open": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "details": "Detalls",
+  "@details": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "platformNotSupported": "{platform} plataforma no soportada",
+  "@platformNotSupported": {
+    "type": "text",
+    "placeholders": {
+      "platform": {}
+    }
+  },
+  "unknownError": "Error desconegut.",
+  "@unknownError": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "pleaseSubmitDetails": "Si us plau, envia detalls.",
+  "@pleaseSubmitDetails": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "confirm": "Confirmar",
+  "@confirm": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "yes": "Si",
+  "@yes": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "no": "No",
+  "@no": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "ok": "OK",
+  "@ok": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "cancel": "Cancel·lar",
+  "@cancel": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "average": "Mitja",
+  "@average": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "enableTts": "Activar TaV",
+  "@enableTts": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "disableTts": "Desactivar TaV",
+  "@disableTts": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "defaultLook": "Vista per defecte",
+  "@defaultLook": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "alternativeLook": "Vista alternativa",
+  "@alternativeLook": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "searchByName": "Buscar per nom",
+  "@searchByName": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "streamRequiresVlc": "Per a fer stream es necessita el reproductor VLC",
+  "@streamRequiresVlc": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "formNotValid": "Formulari no vàlid",
+  "@formNotValid": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "more": "Més",
+  "@more": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "profileStreamingPorthintEnigma1": "normalment 31339",
+  "@profileStreamingPorthintEnigma1": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "considerCoffee": "Convída'm a un cafè.",
+  "@considerCoffee": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "likeTheApp": "¿T'agrada l'app?",
+  "@likeTheApp": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "questionEmptyUsernamePassword": "Sense nom d'usuari i contrasenya? Això requereix que desactivis l'autenticació al Web Interface.",
+  "@questionEmptyUsernamePassword": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "settings": "Ajustos",
+  "@settings": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "options": "Opcions",
+  "@options": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "useDbAsPrimaryLevel": "Utilitzar dB como nivell primari",
+  "@useDbAsPrimaryLevel": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "channel": "Canal",
+  "@channel": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "share": "Compartir",
+  "@share": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "screenshotSaved": "Captura de Pantalla guardada a la galeria correctament",
+  "@screenshotSaved": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "addProfileShowcaseTitle": "Afegir dispositiu",
+  "@addProfileShowcaseTitle": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "addProfileShowcaseText": "Entra els ajustos de connexió per a començar",
+  "@addProfileShowcaseText": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "mapChannelUpDownTo": "Funció Botons Canal +/-",
+  "@mapChannelUpDownTo": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "channelUpDown": "Canal (Bouquet) +/-",
+  "@channelUpDown": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "upDownArrows": "Fletxes Amunt / Avall",
+  "@upDownArrows": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "leftRigtArrows": "Fletxes Esquerra / Dreta",
+  "@leftRigtArrows": {
+    "type": "text",
+    "placeholders": {}
+  }
+}
