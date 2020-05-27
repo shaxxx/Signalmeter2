@@ -54,35 +54,27 @@ class ProfilesView extends StatelessWidget {
                 child: Padding(
                   padding: EdgeInsets.all(20),
                   child: Platform.isIOS
-                      ? SizedBox(
-                          width: 160,
-                          child: Container(
-                            decoration: BoxDecoration(
-                              color: theme.accentColor.withOpacity(0.3),
-                              borderRadius: BorderRadius.circular(10),
-                            ),
-                            alignment: Alignment.center,
-                            margin: EdgeInsets.symmetric(vertical: 15),
-                            child: InkWell(
-                              onTap: () async {
-                                await viewModel.addProfile();
-                              },
-                              child: Container(
-                                alignment: Alignment.center,
-                                constraints: BoxConstraints.expand(
-                                  height: 40,
-                                ),
-                                child: Text(
-                                  MessageProvider.of(context)
-                                      .actionAddProfile
-                                      .toUpperCase(),
-                                  style: TextStyle(
-                                    fontSize: 16,
-                                    fontWeight: FontWeight.w400,
-                                  ),
-                                  textAlign: TextAlign.center,
-                                ),
+                      ? Container(
+                          decoration: BoxDecoration(
+                            color: theme.accentColor.withOpacity(0.3),
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                          //alignment: Alignment.center,
+                          margin: EdgeInsets.symmetric(vertical: 15),
+                          child: FlatButton(
+                            onPressed: () async {
+                              await viewModel.addProfile();
+                            },
+                            child: Text(
+                              MessageProvider.of(context)
+                                  .actionAddProfile
+                                  .toUpperCase(),
+                              style: TextStyle(
+                                color: theme.textTheme.subtitle1.color,
+                                fontSize: 16,
+                                fontWeight: FontWeight.w400,
                               ),
+                              textAlign: TextAlign.center,
                             ),
                           ),
                         )
