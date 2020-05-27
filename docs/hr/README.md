@@ -1,3 +1,4 @@
+[![Build status](https://shax.visualstudio.com/SignalMeter/_apis/build/status/SignalMeter-CI)](https://shax.visualstudio.com/SignalMeter/_build/latest?definitionId=4)
 # SignalMeter
 Podesite svoje satelitski tanjur do savršenstva uz pomoć vašeg mobilnog uređaja i Enigma1 ili Enigma2 satelitskog prijemnika.
 
