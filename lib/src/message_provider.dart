@@ -49,7 +49,9 @@ class SignalMeterLocalizationsDelegate
 
   static String getWebLanguageCode(Locale locale) {
     var translatedLocale = getTranslatedLocale(locale);
-    if (translatedLocale.languageCode == 'nl') return 'en';
+    if (['en', 'nl'].contains(locale.languageCode)) {
+      return '';
+    }
     return translatedLocale.languageCode;
   }
 

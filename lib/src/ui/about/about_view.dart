@@ -55,8 +55,11 @@ class _AboutViewState extends State<AboutView> {
     var locale = Localizations.localeOf(context);
     var languageCode =
         SignalMeterLocalizationsDelegate.getWebLanguageCode(locale);
+    if (languageCode.isNotEmpty) {
+      languageCode += '/';
+    }
     return Hyperlink(
-      url: krkadoniUrl + '/#/' + languageCode + '/using',
+      url: krkadoniUrl + '/#/' + languageCode + 'using',
       text: krkadoniUrl,
       fontSize: 20,
       color: Theme.of(context).accentColor.withOpacity(0.7),
