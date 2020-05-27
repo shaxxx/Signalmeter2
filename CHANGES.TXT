@@ -1,2 +1,4 @@
 - French translation (thnx to @pr2 from OpenPli forum)
 - Dutch translation (thnx to Voorzitter from OpenPli)
+- Spanish translation (thnx to @jpuigs from OpenPli forum)
+- Catalan translation (thnx to @jpuigs from OpenPli forum)
