@@ -34,19 +34,29 @@ class SignalMeterLocalizationsDelegate
   @override
   bool isSupported(Locale locale) => languages.contains(locale.languageCode);
 
-  @override
-  Future<MessageProvider> load(Locale locale) {
+  static Locale getTranslatedLocale(Locale locale) {
     var hrLanguage = ['hr', 'bs', 'sr', 'sl'];
     if (locale.languageCode == 'en') {
-      return MessageProvider.load(locale);
+      return locale;
     } else if (languages.contains(locale.languageCode)) {
       if (hrLanguage.contains(locale.languageCode)) {
-        return MessageProvider.load(Locale.fromSubtags(languageCode: 'hr'));
+        return Locale.fromSubtags(languageCode: 'hr');
       }
-      return MessageProvider.load(
-          Locale.fromSubtags(languageCode: locale.languageCode));
+      return locale;
     }
-    return MessageProvider.load(Locale.fromSubtags(languageCode: 'en'));
+    return Locale.fromSubtags(languageCode: 'en');
+  }
+
+  static String getWebLanguageCode(Locale locale) {
+    var translatedLocale = getTranslatedLocale(locale);
+    if (translatedLocale.languageCode == 'nl') return 'en';
+    return translatedLocale.languageCode;
+  }
+
+  @override
+  Future<MessageProvider> load(Locale locale) {
+    var translatedLocale = getTranslatedLocale(locale);
+    return MessageProvider.load(translatedLocale);
   }
 
   @override

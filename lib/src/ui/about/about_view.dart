@@ -1,5 +1,3 @@
-import 'dart:io';
-
 import 'package:enigma_signal_meter/src/constants.dart';
 import 'package:enigma_signal_meter/src/ui/common/hyperlink.dart';
 import 'package:enigma_signal_meter/src/ui/common/scaffold_background.dart';
@@ -53,18 +51,12 @@ class _AboutViewState extends State<AboutView> {
     );
   }
 
-  Widget _krkadoniUrlText() {
-    if (Platform.isIOS) {
-      return Text(
-        krkadoniUrl,
-        style: TextStyle(
-          color: Theme.of(context).accentColor.withOpacity(0.7),
-          fontSize: 20,
-        ),
-      );
-    }
+  Widget _krkadoniUrlText(BuildContext context) {
+    var locale = Localizations.localeOf(context);
+    var languageCode =
+        SignalMeterLocalizationsDelegate.getWebLanguageCode(locale);
     return Hyperlink(
-      url: krkadoniUrl,
+      url: krkadoniUrl + '/#/' + languageCode + '/using',
       text: krkadoniUrl,
       fontSize: 20,
       color: Theme.of(context).accentColor.withOpacity(0.7),
@@ -100,7 +92,7 @@ class _AboutViewState extends State<AboutView> {
               padding: EdgeInsets.only(top: 20),
               child: Text(MessageProvider.of(context).informationsSupport),
             ),
-            _krkadoniUrlText(),
+            _krkadoniUrlText(context),
             Container(
               padding: EdgeInsets.only(top: 18, bottom: 5),
               child: Text(
