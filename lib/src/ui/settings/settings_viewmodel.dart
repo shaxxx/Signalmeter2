@@ -11,7 +11,7 @@ import '../../app_routes.dart';
 class SettingsViewModel {
   final ApplicationSettings applicationSettings;
   final VoidCallback onAbout;
-  final VoidCallback onSupport;
+  void Function(String url) onSupport;
 
   SettingsViewModel({
     @required this.applicationSettings,
@@ -23,7 +23,7 @@ class SettingsViewModel {
     return SettingsViewModel(
       applicationSettings: store.state.globalState.applicationSettings,
       onAbout: () => store.dispatch(NavigateToAction.push(AppRoutes.about)),
-      onSupport: () => launch('http://www.krkadoni.com'),
+      onSupport: (url) => launch(url),
     );
   }
 

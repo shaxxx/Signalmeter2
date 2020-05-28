@@ -8,6 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 
+import '../../constants.dart';
 import 'settings_viewmodel.dart';
 
 const double _kItemHeight = 48.0;
@@ -199,6 +200,13 @@ class SettingsView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
+    var locale = Localizations.localeOf(context);
+    var languageCode =
+        SignalMeterLocalizationsDelegate.getWebLanguageCode(locale);
+    if (languageCode.isNotEmpty) {
+      languageCode += '/';
+    }
+    var url = krkadoniUrl + '/#/' + languageCode;
     return StoreConnector<AppState, SettingsViewModel>(
         distinct: true,
         converter: (store) {
@@ -225,8 +233,7 @@ class SettingsView extends StatelessWidget {
                     ? SizedBox.shrink()
                     : _ActionItem(
                         MessageProvider.of(context).informationsSupport,
-                        viewModel.onSupport,
-                      ),
+                        () => viewModel.onSupport(url)),
               ],
             ),
           );
