@@ -1,7 +1,7 @@
 {
   "@@locale": "nl",
-  "@@last_modified": "2020-01-17T13:16:00.434304",
-  "appName": "SignalMeter",
+  "@@last_modified": "2020-05-28T13:16:00.434304",
+  "appName": "SignaalMeter",
   "@appName": {
     "type": "text",
     "placeholders": {}
@@ -267,7 +267,7 @@
     "type": "text",
     "placeholders": {}
   },
-  "profilePasswordHint": "",
+  "profilePasswordHint": "i.e. meestal leeg laten",
   "@profilePasswordHint": {
     "type": "text",
     "placeholders": {}
@@ -292,7 +292,7 @@
     "type": "text",
     "placeholders": {}
   },
-  "profileStreamingPorthint": "meestal 8001",
+  "profileStreamingPorthint": "meestal poort 8001",
   "@profileStreamingPorthint": {
     "type": "text",
     "placeholders": {}
@@ -307,7 +307,7 @@
     "type": "text",
     "placeholders": {}
   },
-  "profileTranscodingPortHint": "meestal 8002",
+  "profileTranscodingPortHint": "meestal poort 8002",
   "@profileTranscodingPortHint": {
     "type": "text",
     "placeholders": {}
@@ -334,7 +334,7 @@
     "type": "text",
     "placeholders": {}
   },
-  "checkingParameters": "Controleer de parameters",
+  "checkingParameters": "Controleer uw parameters",
   "@checkingParameters": {
     "type": "text",
     "placeholders": {}
@@ -384,7 +384,7 @@
     "type": "text",
     "placeholders": {}
   },
-  "questionOpenTtsSettings": "Open nu de TextToSpeech instellingen ?",
+  "questionOpenTtsSettings": "Open nu de TextToSpeech instellingen?",
   "@questionOpenTtsSettings": {
     "type": "text",
     "placeholders": {}
@@ -394,7 +394,7 @@
     "type": "text",
     "placeholders": {}
   },
-  "infSignalLevelsWillNotBeSpoken": "Signaalwaardes worden niet uitgesproken.",
+  "infSignalLevelsWillNotBeSpoken": "De signaalwaardes worden niet uitgesproken.",
   "@infSignalLevelsWillNotBeSpoken": {
     "type": "text",
     "placeholders": {}
@@ -434,7 +434,7 @@
     "type": "text",
     "placeholders": {}
   },
-  "errInstallFailed": "Installatie mislukte",
+  "errInstallFailed": "De installatie mislukte",
   "@errInstallFailed": {
     "type": "text",
     "placeholders": {}
@@ -469,12 +469,12 @@
     "type": "text",
     "placeholders": {}
   },
-  "specialThanksGoesTo": "Speciale dank voor de ondersteuning naar",
+  "specialThanksGoesTo": "Speciale dank voor de ondersteuning gaat naar",
   "@specialThanksGoesTo": {
     "type": "text",
     "placeholders": {}
   },
-  "thanksForTestingTo": "Bedankt voor het testen",
+  "thanksForTestingTo": "Onze dank voor het testen gaat naar",
   "@thanksForTestingTo": {
     "type": "text",
     "placeholders": {}
@@ -656,7 +656,7 @@
     "type": "text",
     "placeholders": {}
   },
-  "streamRequiresVlc": "Stream vereist VLC player",
+  "streamRequiresVlc": "De stream vereist VLC player",
   "@streamRequiresVlc": {
     "type": "text",
     "placeholders": {}
@@ -701,7 +701,7 @@
     "type": "text",
     "placeholders": {}
   },
-  "useDbAsPrimaryLevel": "Gebruik dB als eerste nivo",
+  "useDbAsPrimaryLevel": "Gebruik dB als standaardnivo",
   "@useDbAsPrimaryLevel": {
     "type": "text",
     "placeholders": {}
@@ -716,7 +716,7 @@
     "type": "text",
     "placeholders": {}
   },
-  "screenshotSaved": "Het screenshot is met succes in de gally opgeslagen",
+  "screenshotSaved": "Het screenshot is met succes in de galerij opgeslagen",
   "@screenshotSaved": {
     "type": "text",
     "placeholders": {}
