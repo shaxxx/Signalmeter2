@@ -27,7 +27,8 @@ Abans d'utilitzar l'aplicació assegura't de tenir les dades i informació neces
 
 Si accediràs al teu dispositiu Enigma només des de la teva xarxa local (LAN) has de saber l'adreça IP o el nom de host del dispositiu.
 
-Si accediràs al teu dispositiu enigma des d'Internet necessitaràs tenir un domini públic, o una IP fixa. Hi ha molts serveis de domini com p.ex. [GRATIS] (http://freedns.afraid.org/) i [de pagament] (https://www.noip.com/) que poden proporcionar-te una adreça de domini públic .
+Si accediràs al teu dispositiu enigma des d'Internet necessitaràs tenir un domini públic, o una IP fixa. Hi ha molts serveis de domini com p.ex. [GRATIS] (http://freedns.afraid.org/) i [de pagament] (https://www.noip.com/) que poden proporcionar-te una adreça de domini públic.
+
 ?> **RECOMANEM PROVAR PRIMER L'APP EN LA XARXA LOCAL**
 
 ### Nom d'usuari
