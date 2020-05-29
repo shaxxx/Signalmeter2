@@ -389,7 +389,7 @@ class Messages {
         name: 'errInvalidEnigmaTypeOrNotEnigma',
       );
   String errServerError(String profileName) => Intl.message(
-        'Web interface returned error 500. Something has crashed on recevier. Try to open \n\n$profileName\n\n in your web browser to find out more.',
+        'Web interface returned error 500. Something has crashed on receiver. Try to open \n\n$profileName\n\n in your web browser to find out more.',
         args: [profileName],
         name: 'errServerError',
       );
@@ -598,5 +598,13 @@ class Messages {
   String get leftRigtArrows => Intl.message(
         'Left / Right arrows',
         name: 'leftRigtArrows',
+      );
+  String get message => Intl.message(
+        'Message',
+        name: 'message',
+      );
+  String get time => Intl.message(
+        'Time',
+        name: 'time',
       );
 }

@@ -245,4 +245,24 @@ class EnigmaApi {
       );
     }
   }
+
+  static Future<UnparsedResponse<MessageCommand>> sendMessage({
+    @required IWebRequester requester,
+    @required IProfile profile,
+    @required String message,
+    @required Duration timeout,
+    @required MessageType type,
+  }) async {
+    var parser = UnparsedParser<MessageCommand>();
+    var command = MessageCommand(
+        parser, requester, profile, message, timeout.inSeconds, type);
+    try {
+      return await command.executeAsync();
+    } on KnownException catch (e) {
+      throw EnigmaWebException(
+        command: command,
+        innerException: e,
+      );
+    }
+  }
 }

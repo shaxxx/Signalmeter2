@@ -1,6 +1,6 @@
 {
   "@@locale": "en",
-  "@@last_modified": "2020-01-17T13:16:00.434304",
+  "@@last_modified": "2020-05-28T10:22:34.932220",
   "appName": "SignalMeter",
   "@appName": {
     "type": "text",
@@ -484,7 +484,7 @@
     "type": "text",
     "placeholders": {}
   },
-  "errServerError": "Web interface returned error 500. Something has crashed on receiver. Try to open \n\n{profileName}\n\n in your web browser to find out more.",
+  "errServerError": "Web interface returned error 500. Something has crashed on recevier. Try to open \n\n{profileName}\n\n in your web browser to find out more.",
   "@errServerError": {
     "type": "text",
     "placeholders": {
@@ -748,6 +748,16 @@
   },
   "leftRigtArrows": "Left / Right arrows",
   "@leftRigtArrows": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "message": "Message",
+  "@message": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "time": "Time",
+  "@time": {
     "type": "text",
     "placeholders": {}
   }

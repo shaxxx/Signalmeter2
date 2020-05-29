@@ -5,4 +5,5 @@ class AppRoutes {
   static const about = '/about';
   static const screenshot = '/screenshot';
   static const profile = '/profile';
+  static const message = '/message';
 }

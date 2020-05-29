@@ -341,3 +341,30 @@ class SendRemoteControlCodeErrorEvent extends EnigmaCommandErrorEvent {
           profile: profile,
         );
 }
+
+class SendMessageEvent extends EnigmaCommandEvent {
+  final String message;
+  final Duration timeout;
+  final MessageType messageType;
+  SendMessageEvent({
+    @required IProfile profile,
+    @required this.message,
+    @required this.timeout,
+    @required this.messageType,
+  }) : super(profile: profile);
+}
+
+@immutable
+class SendMessageErrorEvent extends EnigmaCommandErrorEvent {
+  SendMessageErrorEvent({
+    @required EnigmaWebException error,
+    @required IProfile profile,
+  }) : super(error: error, profile: profile);
+}
+
+@immutable
+class SendMessageSuccessEvent extends EnigmaCommandSuccessEvent {
+  SendMessageSuccessEvent({
+    @required Duration responseDuration,
+  }) : super(responseDuration: responseDuration);
+}

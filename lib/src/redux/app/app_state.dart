@@ -1,6 +1,7 @@
 import 'package:enigma_signal_meter/src/model/enums.dart';
 import 'package:enigma_signal_meter/src/redux/bouquets/bouquets_state.dart';
 import 'package:enigma_signal_meter/src/redux/global/global_state.dart';
+import 'package:enigma_signal_meter/src/redux/message/message_state.dart';
 import 'package:enigma_signal_meter/src/redux/messages/messages_state.dart';
 import 'package:enigma_signal_meter/src/redux/monitor/current_service_monitor_state.dart';
 import 'package:enigma_signal_meter/src/redux/monitor/signal_monitor_state.dart';
@@ -26,6 +27,7 @@ class AppState {
   final MessagesState messagesState;
   final TtsState ttsState;
   final ScreenshotState screenshotState;
+  final MessageState messageState;
   final GlobalState globalState;
 
   factory AppState.inital() {
@@ -40,6 +42,7 @@ class AppState {
       messagesState: MessagesState.initial(),
       ttsState: TtsState.initial(),
       screenshotState: ScreenshotState.initial(),
+      messageState: MessageState.initial(),
       globalState: GlobalState.initial(),
     );
   }
@@ -55,6 +58,7 @@ class AppState {
     MessagesState messagesState,
     TtsState ttsState,
     ScreenshotState screenshotState,
+    MessageState messageState,
     GlobalState globalState,
   }) {
     return AppState._internal(
@@ -69,6 +73,7 @@ class AppState {
       messagesState: messagesState ?? this.messagesState,
       ttsState: ttsState ?? this.ttsState,
       screenshotState: screenshotState ?? this.screenshotState,
+      messageState: messageState ?? this.messageState,
       globalState: globalState ?? this.globalState,
     );
   }
@@ -84,6 +89,7 @@ class AppState {
     this.messagesState,
     this.ttsState,
     this.screenshotState,
+    this.messageState,
     this.globalState,
   });
 
@@ -99,6 +105,7 @@ class AppState {
       messagesState.hashCode ^
       ttsState.hashCode ^
       screenshotState.hashCode ^
+      messageState.hashCode ^
       globalState.hashCode;
 
   @override
@@ -116,5 +123,6 @@ class AppState {
           messagesState == other.messagesState &&
           ttsState == other.ttsState &&
           screenshotState == other.screenshotState &&
+          messageState == other.messageState &&
           globalState == other.globalState;
 }

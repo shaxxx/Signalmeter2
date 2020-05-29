@@ -25,6 +25,7 @@ const String restartMenuItemKey = 'restartMenuItemKey';
 const String aboutMenuItemKey = 'aboutMenuItemKey';
 const String saveMenuItemKey = 'saveMenuItemKey';
 const String shareMenuItemKey = 'shareMenuItemKey';
+const String messageMenuItemKey = 'messageMenuItemKey';
 const int signalMonitorRetries = 2;
 const int signalMonitorReceiveTimeout = 1000;
 const int signalMonitorConnectTimeout = 1000;
@@ -43,4 +44,5 @@ const Map<String, IconData> menuIcons = {
   aboutMenuItemKey: Icons.info,
   saveMenuItemKey: Icons.save,
   shareMenuItemKey: Icons.share,
+  messageMenuItemKey: Icons.message
 };

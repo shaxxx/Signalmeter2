@@ -749,5 +749,15 @@
   "@leftRigtArrows": {
     "type": "text",
     "placeholders": {}
+  },
+  "message": "Poruka",
+  "@message": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "time": "Vrijeme",
+  "@time": {
+    "type": "text",
+    "placeholders": {}
   }
 }

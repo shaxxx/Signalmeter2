@@ -39,6 +39,8 @@ class EnigmaCommandMiddleware extends MiddlewareClass<AppState> {
           'Dispatching GetCurrentServiceEvent from EnigmaCommandMiddleware as response to SendRemoteControlCodeSuccessEvent');
       store.dispatch(GetCurrentServiceEvent(
           profile: store.state.profilesState.selectedProfile));
+    } else if (action is SendMessageEvent) {
+      await _sendMessage(store, action);
     }
   }
 
@@ -230,6 +232,26 @@ class EnigmaCommandMiddleware extends MiddlewareClass<AppState> {
       store.dispatch(SendRemoteControlCodeErrorEvent(
         error: e,
         code: action.code,
+        profile: action.profile,
+      ));
+    }
+  }
+
+  Future _sendMessage(Store<AppState> store, SendMessageEvent action) async {
+    try {
+      var response = await EnigmaApi.sendMessage(
+        requester: requester,
+        profile: action.profile,
+        message: action.message,
+        timeout: action.timeout,
+        type: action.messageType,
+      );
+      store.dispatch(SendMessageSuccessEvent(
+        responseDuration: response.responseDuration,
+      ));
+    } on EnigmaWebException catch (e) {
+      store.dispatch(SendMessageErrorEvent(
+        error: e,
         profile: action.profile,
       ));
     }

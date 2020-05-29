@@ -750,5 +750,15 @@
   "@leftRigtArrows": {
     "type": "text",
     "placeholders": {}
+  },
+  "message": "Bericht",
+  "@message": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "time": "Tijd",
+  "@time": {
+    "type": "text",
+    "placeholders": {}
   }
 }

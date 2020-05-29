@@ -2,11 +2,13 @@ import 'package:enigma_signal_meter/src/app_routes.dart';
 import 'package:enigma_signal_meter/src/redux/enigma/enigma_command_middleware.dart';
 import 'package:enigma_signal_meter/src/redux/global/global_events.dart';
 import 'package:enigma_signal_meter/src/redux/global/global_middleware.dart';
+import 'package:enigma_signal_meter/src/redux/message/message_middleware.dart';
 import 'package:enigma_signal_meter/src/redux/monitor/connection_state_middleware.dart';
 import 'package:enigma_signal_meter/src/redux/monitor/current_service_monitor_middleware.dart';
 import 'package:enigma_signal_meter/src/redux/screenshot/screenshot_middleware.dart';
 import 'package:enigma_signal_meter/src/ui/about/about_view.dart';
 import 'package:enigma_signal_meter/src/ui/home/home_view.dart';
+import 'package:enigma_signal_meter/src/ui/message/message_view.dart';
 import 'package:enigma_signal_meter/src/ui/screenshot/screenshot_view.dart';
 import 'package:enigma_signal_meter/src/ui/signal/signal_chart_full_screen_view.dart';
 import 'package:flutter/cupertino.dart';
@@ -71,6 +73,7 @@ void main() {
     MessagesMiddleware(),
     TtsMiddleware(),
     ScreenshotMiddleware(),
+    MessageMiddleware(),
     GlobalMiddleware(),
     //LoggingMiddleware(logger: Logger.root),
   ]);
@@ -133,6 +136,7 @@ class _EnigmaSignalMeterAppState extends State<EnigmaSignalMeterApp>
           AppRoutes.signalChart: (context) => SignalChartFullScreen(),
           AppRoutes.about: (context) => AboutView(),
           AppRoutes.screenshot: (context) => ScreenshotView(),
+          AppRoutes.message: (context) => MessageView(),
         },
       ),
     );

@@ -750,5 +750,15 @@
   "@leftRigtArrows": {
     "type": "text",
     "placeholders": {}
+  },
+  "message": "Missatge",
+  "@message": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "time": "Temps",
+  "@time": {
+    "type": "text",
+    "placeholders": {}
   }
 }

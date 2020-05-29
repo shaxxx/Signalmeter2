@@ -85,7 +85,13 @@ class MoreViewModel {
         title: messages.actionRestart,
       ),
     );
-
+    menuItems.add(
+      MenuItem(
+        key: messageMenuItemKey,
+        icon: menuIcons[messageMenuItemKey],
+        title: messages.message,
+      ),
+    );
     menuItems.add(
       MenuItem(
         key: aboutMenuItemKey,
@@ -109,6 +115,8 @@ class MoreViewModel {
       store.dispatch(NavigateToAction.push(AppRoutes.about));
     } else if (item.key == screenshotMenuItemKey) {
       store.dispatch(NavigateToAction.push(AppRoutes.screenshot));
+    } else if (item.key == messageMenuItemKey) {
+      store.dispatch(NavigateToAction.push(AppRoutes.message));
     }
   }
 
