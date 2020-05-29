@@ -1,0 +1,5 @@
+- [English](gettingstarted.md)
+- [Hrvatski](hr/gettingstarted.md)
+- [Français](fr/gettingstarted.md)
+- [Español](es/gettingstarted.md)
+- [Català](ca/gettingstarted.md)
