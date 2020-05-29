@@ -1,5 +1,3 @@
-import 'dart:io';
-
 import 'package:enigma_signal_meter/src/message_provider.dart';
 import 'package:enigma_signal_meter/src/model/application_settings.dart';
 import 'package:enigma_signal_meter/src/model/enums.dart';
@@ -206,7 +204,7 @@ class SettingsView extends StatelessWidget {
     if (languageCode.isNotEmpty) {
       languageCode += '/';
     }
-    var url = krkadoniUrl + '/#/' + languageCode;
+    var url = krkadoniUrl + '/#/' + languageCode + 'using';
     return StoreConnector<AppState, SettingsViewModel>(
         distinct: true,
         converter: (store) {
@@ -229,11 +227,10 @@ class SettingsView extends StatelessWidget {
                   MessageProvider.of(context).actionAbout,
                   viewModel.onAbout,
                 ),
-                Platform.isIOS
-                    ? SizedBox.shrink()
-                    : _ActionItem(
-                        MessageProvider.of(context).informationsSupport,
-                        () => viewModel.onSupport(url)),
+                _ActionItem(
+                  MessageProvider.of(context).informationsSupport,
+                  () => viewModel.onSupport(url),
+                ),
               ],
             ),
           );
