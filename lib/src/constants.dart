@@ -1,7 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
-List<String> languages = ['en', 'hr', 'bs', 'sr', 'sl', 'fr', 'nl', 'es', 'ca'];
+List<String> languages = [
+  'en',
+  'hr',
+  'bs',
+  'sr',
+  'sl',
+  'fr',
+  'nl',
+  'es',
+  'ca',
+  'it'
+];
 const double listItemHeight = 50;
 const Duration currentServiceMonitorDelay = Duration(seconds: 15);
 const int signalChartPoints = 30;

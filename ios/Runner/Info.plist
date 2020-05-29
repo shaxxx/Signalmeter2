@@ -12,6 +12,7 @@
 		<string>nl</string>
 		<string>es</string>
 		<string>ca</string>
+		<string>it</string>
 	</array>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>

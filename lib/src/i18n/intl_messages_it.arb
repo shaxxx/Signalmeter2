@@ -1,0 +1,219 @@
+{
+  "@@locale" : "it",
+  "aboutRightsReserved" : "Tutti i diritti riservati",
+  "actionAbout" : "Informazioni",
+  "actionAddProfile" : "Aggiungi dispositivo",
+  "actionConnect" : "Collega",
+  "actionDelete" : "Elimina",
+  "actionDeleteProfile" : "Elimina dispositivo",
+  "actionDisconnect" : "Disconnetti",
+  "actionEdit" : "Modifica",
+  "actionEditProfile" : "Modifica dispositivo",
+  "actionRestart" : "Riavvia la GUI",
+  "actionSave" : "Salva",
+  "actionScreenshot" : "Immagine dello schermo",
+  "actionScreenshotAll" : "Qualunque cosa",
+  "actionScreenshotOsd" : "Solo OSD",
+  "actionScreenshotPicture" : "Solo immagine",
+  "actionSleep" : "Manda a dormire",
+  "actionStream" : "Streaming",
+  "actionTakeScreenshot" : "Fai uno screenshot",
+  "addProfileShowcaseText" : "Inserisci le impostazioni di connessione per iniziare",
+  "addProfileShowcaseTitle" : "Aggiungi dispositivo",
+  "alternativeLook" : "Aspetto alternativo",
+  "appName" : "SignalMeter",
+  "average" : "Media",
+  "bouquets" : "Mazzi",
+  "build" : "Costruisci",
+  "cancel" : "Annulla",
+  "channel" : "Canale",
+  "channelUpDown" : "Canale (Bouquet) +/-",
+  "checkingParameters" : "Verifica dei parametri",
+  "checkingPorts" : "Verifica delle porte",
+  "close" : "Chiudi",
+  "confirm" : "Conferma",
+  "considerCoffee" : "Valuta di comprarmi un caffè.",
+  "contentNotAvailable" : "Il contenuto non è al momento disponibile",
+  "defaultLook" : "Aspetto predefinito",
+  "details" : "Dettagli",
+  "devices" : "dispositivi",
+  "disableTts" : "Disabilita Tts",
+  "dvbcService" : "Servizio DVB-C",
+  "dvbsService" : "Servizio DVB-S",
+  "dvbtService" : "Servizio DVB-T",
+  "enableTts" : "Abilita Tts",
+  "errCheckYourConnection" : "Controlla la tua connessione.",
+  "errCheckYourCredentials" : "Controlla le tue credenziali.",
+  "errCheckYourSettings" : "Controlla le tue impostazioni.",
+  "errCommandFailed" : "Comando {command} non riuscito.",
+  "@errCommandFailed" : {
+    "placeholders" : {
+      "command" : { }
+    }
+  },
+  "errDownloadFailed" : "Scaricamento non riuscito",
+  "errFailedConnect" : "Impossibile connettersi a {profileName}.",
+  "@errFailedConnect" : {
+    "placeholders" : {
+      "profileName" : { }
+    }
+  },
+  "errFailedToInitializeStream" : "Impossibile inizializzare lo streaming!",
+  "errFailedToInitializeTtsEngine" : "Impossibile inizializzare il motore di sintesi vocale!",
+  "errInstallFailed" : "Installazione non riuscita",
+  "errInvalidAddress" : "Indirizzo non valido",
+  "errInvalidEnigmaType" : "Tipo di enigma non valido",
+  "errInvalidEnigmaTypeOrNotEnigma" : "Tipo di Enigma non valido o interfaccia Web Enigma non valida.",
+  "errInvalidHttpPort" : "Porta http non valida",
+  "errInvalidProfileName" : "Nome dispositivo non valido",
+  "errInvalidStreamingPort" : "Porta streaming non valida",
+  "errInvalidTranscodingPort" : "Porta di transcodifica non valida",
+  "errInvalidUsername" : "Nome utente non valido",
+  "errNoTtsLanguageAvailable" : "La lingua di sintesi vocale non è disponibile.",
+  "errOperationTimedOut" : "Operazione scaduta.",
+  "errPortNotAvailable" : "La porta non è disponibile!",
+  "errRequestFailedWithStatusCode" : "Codice di stato HTTP {code}.",
+  "@errRequestFailedWithStatusCode" : {
+    "placeholders" : {
+      "code" : { }
+    }
+  },
+  "errSaveFailed" : "Salvataggio non riuscito",
+  "errServerError" : "L'interfaccia Web ha restituito l'errore 500. Qualcosa si è schiantato su Ricevitore. Prova ad aprire \n\n {profileName} \n\n nel tuo browser web per saperne di più.",
+  "@errServerError" : {
+    "placeholders" : {
+      "profileName" : { }
+    }
+  },
+  "failedToParseResponse" : "Risposta non valida.",
+  "formNotValid" : "Il modulo non è valido",
+  "infConnectedTo" : "Connesso a {profileName}",
+  "@infConnectedTo" : {
+    "placeholders" : {
+      "profileName" : { }
+    }
+  },
+  "infConnectingTo" : "Connessione a {profileName}",
+  "@infConnectingTo" : {
+    "placeholders" : {
+      "profileName" : { }
+    }
+  },
+  "infDisconnected" : "Disconnesso",
+  "infInitializingStream" : "Inizializzazione del flusso",
+  "informationsSupport" : "Informazioni e supporto",
+  "infSavedFilename" : "Salvato {fileName}",
+  "@infSavedFilename" : {
+    "placeholders" : {
+      "fileName" : { }
+    }
+  },
+  "infSignalLevelsWillNotBeSpoken" : "I livelli del segnale non verranno pronunciati.",
+  "leftRigtArrows" : "Frecce a sinistra / destra",
+  "likeTheApp" : "Ti piace l'app?",
+  "manufacturer" : "Produttore",
+  "mapChannelUpDownTo" : "Pulsanti canale +/-",
+  "more" : "Altro",
+  "no" : "No",
+  "noInformation" : "Nessuna informazione",
+  "ok" : "OK",
+  "oops" : "Ooops",
+  "open" : "Apri",
+  "options" : "Opzioni",
+  "platformNotSupported" : "La piattaforma {platform} non è supportata",
+  "@platformNotSupported" : {
+    "placeholders" : {
+      "platform" : { }
+    }
+  },
+  "pleaseSubmitDetails" : "Si prega di inviare i dettagli.",
+  "pleaseWait" : "Attendere prego",
+  "profileAddress" : "Indirizzo",
+  "profileAddressHint" : "cioè 192.168.1.2",
+  "profileEnigmaVersion" : "Versione",
+  "profileName" : "Nome",
+  "profileNameHint" : "cioè MyBox",
+  "profilePassword" : "Parola d'ordine",
+  "profilePasswordHint" : "",
+  "profilePort" : "Porta",
+  "profilePortHint" : "di solito 80",
+  "profileStreamingEnable" : "Abilita streaming",
+  "profileStreamingPort" : "Porta streaming",
+  "profileStreamingPorthint" : "di solito 8001",
+  "profileStreamingPorthintEnigma1" : "di solito 31339",
+  "profileTranscodingEnable" : "Abilita transcodifica",
+  "profileTranscodingLocalLan" : "Transcodifica su rete locale",
+  "profileTranscodingPort" : "Porta di transcodifica",
+  "profileTranscodingPortHint" : "di solito 8002",
+  "profileUsername" : "Nome utente",
+  "profileUsernameHint" : "cioè radice",
+  "profileUseSsl" : "Usa SSL",
+  "questionDeleteProfile" : "Sei sicuro di voler eliminare {profileName}?",
+  "@questionDeleteProfile" : {
+    "placeholders" : {
+      "profileName" : { }
+    }
+  },
+  "questionEmptyUsernamePassword" : "Lasciare il nome utente e la password vuoti? Ciò richiede la disattivazione dell'autorizzazione sull'interfaccia Web.",
+  "questionIgnoreFurtherTtsError" : "Ignorare ulteriori errori di sintesi vocale?",
+  "questionOpenTtsSettings" : "Apri ora le impostazioni di sintesi vocale?",
+  "questionRestartGui" : "Riavviare l'interfaccia utente su {profileName}?",
+  "@questionRestartGui" : {
+    "placeholders" : {
+      "profileName" : { }
+    }
+  },
+  "questionSaveChanges" : "Salvare le modifiche?",
+  "questionTryTtsLanguageDownload" : "Provare a scaricare e installare le lingue?",
+  "releaseName" : "Nome della liberatoria",
+  "requestTime" : "Richiedi il tempo",
+  "screenshotSaved" : "Schermata salvata correttamente nella galleria",
+  "searchByName" : "Ricerca per nome",
+  "services" : "Servizi",
+  "settings" : "Impostazioni",
+  "share" : "Condividi",
+  "signal" : "Segnale",
+  "specialThanksGoesTo" : "Un ringraziamento speciale per il supporto va a",
+  "startMonitor" : "Avvia il monitor",
+  "stopMonitor" : "Ferma il monitor",
+  "streamRequiresVlc" : "Lo streaming richiede un lettore VLC",
+  "streamService" : "Servizio di streaming",
+  "thanksForTestingTo" : "Grazie per il test a",
+  "titleDownloading" : "Download",
+  "titleError" : "Errore",
+  "titleQuestion" : "Domanda",
+  "titleWarning" : "Avvertimento",
+  "tryAgain" : "Riprova",
+  "unknownError" : "Errore sconosciuto.",
+  "upDownArrows" : "Frecce in su / giù",
+  "useDbAsPrimaryLevel" : "Usa dB come livello primario",
+  "version" : "Versione",
+  "voice" : "Voce",
+  "warnHttpPortClosed" : "{address}:{port} sembra essere irraggiungibile.",
+  "@warnHttpPortClosed" : {
+    "placeholders" : {
+      "address" : { },
+      "port" : { }
+    }
+  },
+  "warnSaveTheProfileAnyway" : "Salvare il dispositivo comunque?",
+  "warnStreamingPortClosed" : "La porta di streaming sembra essere chiusa.",
+  "warnTranscodingPortClosed" : "La porta di transcodifica sembra essere chiusa.",
+  "warnUsingAlternativePort" : "Utilizzo della porta alternativa {port}",
+  "@warnUsingAlternativePort" : {
+    "placeholders" : {
+      "port" : { }
+    }
+  },
+  "yes" : "Sì",
+  "message": "Messaggio",
+  "@message": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "time": "Tempo",
+  "@time": {
+    "type": "text",
+    "placeholders": {}
+  }
+}

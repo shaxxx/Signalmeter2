@@ -484,7 +484,7 @@
     "type": "text",
     "placeholders": {}
   },
-  "errServerError": "Web interface returned error 500. Something has crashed on recevier. Try to open \n\n{profileName}\n\n in your web browser to find out more.",
+  "errServerError": "Web interface returned error 500. Something has crashed on receiver. Try to open \n\n{profileName}\n\n in your web browser to find out more.",
   "@errServerError": {
     "type": "text",
     "placeholders": {
