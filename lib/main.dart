@@ -125,7 +125,7 @@ class _EnigmaSignalMeterAppState extends State<EnigmaSignalMeterApp>
         supportedLocales: languages.map((language) => Locale.fromSubtags(
               languageCode: language,
             )),
-        locale: Locale('it', ''),
+        //locale: Locale('hr', ''),
         title: 'SignalMeter',
         //debugShowCheckedModeBanner: false,
         initialRoute: AppRoutes.home,
