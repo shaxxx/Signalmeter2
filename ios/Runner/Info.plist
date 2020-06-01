@@ -13,6 +13,9 @@
 		<string>es</string>
 		<string>ca</string>
 		<string>it</string>
+		<string>de</string>
+		<string>zh</string>
+		<string>ru</string>
 	</array>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
