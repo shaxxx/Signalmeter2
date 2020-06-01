@@ -1,0 +1,211 @@
+{
+  "@@locale": "ru",
+  "aboutRightsReserved": "Все права защищены",
+  "actionAbout": "Инфо",
+  "actionAddProfile": "Добавить устройство",
+  "actionConnect": "Подключиться",
+  "actionDelete": "Удалить",
+  "actionDeleteProfile": "Удалить устройство",
+  "actionDisconnect": "Отключить",
+  "actionEdit": "Редактировать",
+  "actionEditProfile": "Изменить устройство",
+  "actionRestart": "Перезапустить графический интерфейс",
+  "actionSave": "Сохранить",
+  "actionScreenshot": "Скриншот",
+  "actionScreenshotAll": "Все",
+  "actionScreenshotOsd": "Только OSD",
+  "actionScreenshotPicture": "Только изображение",
+  "actionSleep": "Перевести в спящий режим",
+  "actionStream": "Поток",
+  "actionTakeScreenshot": "Сделать скриншот",
+  "addProfileShowcaseText": "Чтобы начать, введите настройки подключения",
+  "addProfileShowcaseTitle": "Добавить устройство",
+  "alternativeLook": "Альтернативный вид",
+  "appName": "SignalMeter",
+  "average": "Средний",
+  "bouquets": "Пакеты",
+  "build": "Сборка",
+  "cancel": "Отмена",
+  "channel": "Канал",
+  "channelUpDown": "Канал (пакет) +/-",
+  "checkingParameters": "Проверка параметров",
+  "checkingPorts": "Проверка портов",
+  "close": "Закрыть",
+  "confirm": "Подтвердить",
+  "considerCoffee": "Подумайте о том, чтобы купить мне кофе.",
+  "contentNotAvailable": "Контент в настоящее время недоступен",
+  "defaultLook": "Вид по умолчанию",
+  "details": "Подробно",
+  "devices": "Устройства",
+  "disableTts": "Отключить Tts",
+  "dvbcService": "Служба DVB-C",
+  "dvbsService": "Служба DVB-S",
+  "dvbtService": "Служба DVB-T",
+  "enableTts": "Включить Tts",
+  "errCheckYourConnection": "Проверьте ваше подключение.",
+  "errCheckYourCredentials": "Проверьте свои учетные данные.",
+  "errCheckYourSettings": "Проверьте ваши настройки.",
+  "errCommandFailed": "Команда {command} не выполнена.",
+  "@errCommandFailed": {
+    "placeholders": {
+      "command": {}
+    }
+  },
+  "errDownloadFailed": "Ошибка загрузки",
+  "errFailedConnect": "Не удалось подключиться к {profileName}.",
+  "@errFailedConnect": {
+    "placeholders": {
+      "profileName": {}
+    }
+  },
+  "errFailedToInitializeStream": "Не удалось инициализировать поток!",
+  "errFailedToInitializeTtsEngine": "Не удалось инициализировать модуль TextToSpeech!",
+  "errInstallFailed": "Установка не выполнена",
+  "errInvalidAddress": "Недействительный адрес",
+  "errInvalidEnigmaType": "Недействительный тип Enigma",
+  "errInvalidEnigmaTypeOrNotEnigma": "Недействительный тип Enigma или веб-интерфейс, не связанный с Enigma.",
+  "errInvalidHttpPort": "Недействительный http-порт",
+  "errInvalidProfileName": "Недействительное имя устройства",
+  "errInvalidStreamingPort": "Недействительный порт потоковой передачи",
+  "errInvalidTranscodingPort": "Недействительный порт перекодировки",
+  "errInvalidUsername": "Недопустимое имя пользователя",
+  "errNoTtsLanguageAvailable": "Язык TextToSpeech недоступен.",
+  "errOperationTimedOut": "Время операции истекло.",
+  "errPortNotAvailable": "Порт недоступен!",
+  "errRequestFailedWithStatusCode": "Код состояния HTTP {код}.",
+  "@errRequestFailedWithStatusCode": {
+    "placeholders": {
+      "code": {}
+    }
+  },
+  "errSaveFailed": "Сохранено не выполнено",
+  "errServerError": "Веб-интерфейс вернул ошибку 500. В ресивере произошла ошибка. Попробуйте открыть \n\n {profileName} \n\n в своем веб-браузере, чтобы узнать больше.",
+  "@errServerError": {
+    "placeholders": {
+      "profileName": {}
+    }
+  },
+  "failedToParseResponse": "Недействительный ответ.",
+  "formNotValid": "Форма не действительна",
+  "infConnectedTo": "Подключено к {profileName}",
+  "@infConnectedTo": {
+    "placeholders": {
+      "profileName": {}
+    }
+  },
+  "infConnectingTo": "Подключение к {profileName}",
+  "@infConnectingTo": {
+    "placeholders": {
+      "profileName": {}
+    }
+  },
+  "infDisconnected": "Отключено",
+  "infInitializingStream": "Инициализация потока",
+  "informationsSupport": "Информация и поддержка",
+  "infSavedFilename": "Сохранено {fileName}",
+  "@infSavedFilename": {
+    "placeholders": {
+      "fileName": {}
+    }
+  },
+  "infSignalLevelsWillNotBeSpoken": "Уровни сигналов не будут произноситься.",
+  "leftRigtArrows": "Стрелки влево/вправо",
+  "likeTheApp": "Понравилось приложение?",
+  "manufacturer": "Производитель",
+  "mapChannelUpDownTo": "Канал +/- кнопки",
+  "message": "Cообщение",
+  "more": "Дополнительно",
+  "no": "Нет",
+  "noInformation": "Нет данных",
+  "ok": "OK",
+  "oops": "Ой",
+  "open": "Открыть",
+  "options": "Параметры",
+  "platformNotSupported": "Платформа {platform} не поддерживается",
+  "@platformNotSupported": {
+    "placeholders": {
+      "platform": {}
+    }
+  },
+  "pleaseSubmitDetails": "Пожалуйста, отправьте подробные сведения.",
+  "pleaseWait": "Пожалуйста, подождите",
+  "profileAddress": "Адрес",
+  "profileAddressHint": "т. е. 192.168.1.2",
+  "profileEnigmaVersion": "Версия",
+  "profileName": "Имя",
+  "profileNameHint": "т.е. MyBox",
+  "profilePassword": "Пароль",
+  "profilePasswordHint": "",
+  "profilePort": "Порт",
+  "profilePortHint": "обычно 80",
+  "profileStreamingEnable": "Включить потоковую передачу",
+  "profileStreamingPort": "Потоковый порт",
+  "profileStreamingPorthint": "обычно 8001",
+  "profileStreamingPorthintEnigma1": "обычно 31339",
+  "profileTranscodingEnable": "Включить перекодировку",
+  "profileTranscodingLocalLan": "Перекодировка в локальной сети",
+  "profileTranscodingPort": "Порт перекодировки",
+  "profileTranscodingPortHint": "обычно 8002",
+  "profileUsername": "Имя пользователя",
+  "profileUsernameHint": "т. е. корневая папка",
+  "profileUseSsl": "Использовать SSL",
+  "questionDeleteProfile": "Вы уверены, что хотите удалить {profileName}?",
+  "@questionDeleteProfile": {
+    "placeholders": {
+      "profileName": {}
+    }
+  },
+  "questionEmptyUsernamePassword": "Оставить имя пользователя и пароль пустыми? Для этого необходимо отключить авторизацию в веб-интерфейсе.",
+  "questionIgnoreFurtherTtsError": "Игнорировать дальнейшие ошибки TextToSpeech?",
+  "questionOpenTtsSettings": "Открыть настройки TextToSpeech сейчас?",
+  "questionRestartGui": "Перезапустить пользовательский интерфейс в {profileName}?",
+  "@questionRestartGui": {
+    "placeholders": {
+      "profileName": {}
+    }
+  },
+  "questionSaveChanges": "Сохранить изменения?",
+  "questionTryTtsLanguageDownload": "Попробовать скачать и установить языки?",
+  "releaseName": "Имя выпуска",
+  "requestTime": "Время запроса",
+  "screenshotSaved": "Скриншот успешно сохранен в галерее",
+  "searchByName": "Поиск по имени",
+  "services": "Службы",
+  "settings": "Настройки",
+  "share": "Поделиться",
+  "signal": "Сигнал",
+  "specialThanksGoesTo": "Отдельное спасибо за поддержку",
+  "startMonitor": "Запустить монитор",
+  "stopMonitor": "Остановить монитор",
+  "streamRequiresVlc": "Для потока требуется проигрыватель VLC",
+  "streamService": "Служба потока",
+  "thanksForTestingTo": "Спасибо за тестирование",
+  "time": "Время",
+  "titleDownloading": "Загрузка",
+  "titleError": "Ошибка",
+  "titleQuestion": "Вопрос",
+  "titleWarning": "Предупреждение",
+  "tryAgain": "Попробовать еще раз",
+  "unknownError": "Неизвестная ошибка.",
+  "upDownArrows": "Стрелки вверх/вниз",
+  "useDbAsPrimaryLevel": "Использовать дБ в качестве основного уровня",
+  "version": "Версия",
+  "voice": "Голос",
+  "warnHttpPortClosed": "Похоже, {address}:{port} недоступен.",
+  "@warnHttpPortClosed": {
+    "placeholders": {
+      "address": {},
+      "port": {}
+    }
+  },
+  "warnSaveTheProfileAnyway": "Сохранить устройство в любом случае?",
+  "warnStreamingPortClosed": "Похоже, порт потоковой передачи закрыт.",
+  "warnTranscodingPortClosed": "Похоже, порт перекодировки закрыт.",
+  "warnUsingAlternativePort": "Использование альтернативного порта {port}",
+  "@warnUsingAlternativePort": {
+    "placeholders": {
+      "port": {}
+    }
+  },
+  "yes": "Да"
+}
