@@ -49,7 +49,7 @@ class SignalMeterLocalizationsDelegate
 
   static String getWebLanguageCode(Locale locale) {
     var translatedLocale = getTranslatedLocale(locale);
-    if (['en', 'nl', 'it'].contains(locale.languageCode)) {
+    if (['en', 'nl', 'it', 'zh', 'de', 'ru'].contains(locale.languageCode)) {
       return '';
     }
     return translatedLocale.languageCode;

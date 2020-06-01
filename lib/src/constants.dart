@@ -11,7 +11,10 @@ List<String> languages = [
   'nl',
   'es',
   'ca',
-  'it'
+  'it',
+  'zh',
+  'de',
+  'ru'
 ];
 const double listItemHeight = 50;
 const Duration currentServiceMonitorDelay = Duration(seconds: 15);

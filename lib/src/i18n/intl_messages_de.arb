@@ -1,0 +1,211 @@
+{
+  "@@locale": "de",
+  "aboutRightsReserved": "Alle Rechte vorbehalten.",
+  "actionAbout": "Über die App",
+  "actionAddProfile": "Gerät hinzufügen",
+  "actionConnect": "Verbinden",
+  "actionDelete": "Löschen",
+  "actionDeleteProfile": "Gerät löschen",
+  "actionDisconnect": "Trennen",
+  "actionEdit": "Bearbeiten",
+  "actionEditProfile": "Gerät bearbeiten",
+  "actionRestart": "GUI neu starten",
+  "actionSave": "Speichern",
+  "actionScreenshot": "Screenshot",
+  "actionScreenshotAll": "Alles",
+  "actionScreenshotOsd": "Nur OSD",
+  "actionScreenshotPicture": "Nur Bild",
+  "actionSleep": "Ruhemodus aktivieren",
+  "actionStream": "Stream",
+  "actionTakeScreenshot": "Screenshot aufnehmen",
+  "addProfileShowcaseText": "Verbindungseinstellungen eingeben, um zu starten",
+  "addProfileShowcaseTitle": "Gerät hinzufügen",
+  "alternativeLook": "Alternatives Design",
+  "appName": "Signalmessgerät",
+  "average": "Durchschnittlich",
+  "bouquets": "Bouquets",
+  "build": "Build",
+  "cancel": "Abbrechen",
+  "channel": "Kanal",
+  "channelUpDown": "Kanal (Bouquet) +/-",
+  "checkingParameters": "Überprüfung der Parameter",
+  "checkingPorts": "Überprüfung der Ports",
+  "close": "Schließen",
+  "confirm": "Bestätigen",
+  "considerCoffee": "Vielleicht spendieren Sie mir einen Kaffee.",
+  "contentNotAvailable": "Die Inhalte sind derzeit nicht verfügbar.",
+  "defaultLook": "Standarddesign",
+  "details": "Details",
+  "devices": "Geräte",
+  "disableTts": "TTS deaktivieren",
+  "dvbcService": "DVB-C-Dienst",
+  "dvbsService": "DVB-S-Dienst",
+  "dvbtService": "DVB-T-Dienst",
+  "enableTts": "TTS aktivieren",
+  "errCheckYourConnection": "Überprüfen Sie Ihre Verbindung.",
+  "errCheckYourCredentials": "Überprüfen Sie Ihre Anmeldeinformationen.",
+  "errCheckYourSettings": "Überprüfen Sie Ihre Einstellungen.",
+  "errCommandFailed": "Befehl {command} fehlgeschlagen.",
+  "@errCommandFailed": {
+    "placeholders": {
+      "command": {}
+    }
+  },
+  "errDownloadFailed": "Herunterladen fehlgeschlagen",
+  "errFailedConnect": "Verbindung zu {profileName} fehlgeschlagen.",
+  "@errFailedConnect": {
+    "placeholders": {
+      "profileName": {}
+    }
+  },
+  "errFailedToInitializeStream": "Stream konnte nicht initialisiert werden!",
+  "errFailedToInitializeTtsEngine": "Die TextToSpeech-Engine konnte nicht initialisiert werden!",
+  "errInstallFailed": "Installation fehlgeschlagen",
+  "errInvalidAddress": "Ungültige Adresse",
+  "errInvalidEnigmaType": "Ungültiger Enigma-Typ",
+  "errInvalidEnigmaTypeOrNotEnigma": "Ungültiger Enigma-Typ oder keine Enigma-Weboberfläche.",
+  "errInvalidHttpPort": "Ungültiger http-Port",
+  "errInvalidProfileName": "Ungültiger Gerätename",
+  "errInvalidStreamingPort": "Ungültiger Streaming-Port",
+  "errInvalidTranscodingPort": "Ungültiger Transcodierungsport",
+  "errInvalidUsername": "Ungültiger Benutzername",
+  "errNoTtsLanguageAvailable": "Die TextToSpeech-Sprache ist nicht verfügbar.",
+  "errOperationTimedOut": "Zeitüberschreitung.",
+  "errPortNotAvailable": "Der Port ist nicht verfügbar!",
+  "errRequestFailedWithStatusCode": "HTTP-Statuscode {code}.",
+  "@errRequestFailedWithStatusCode": {
+    "placeholders": {
+      "code": {}
+    }
+  },
+  "errSaveFailed": "Gespeichert fehlgeschlagen",
+  "errServerError": "Die Webschnittstelle hat den Fehler 500 zurückgegeben. Prozess auf dem Empfänger ausgefallen. Versuchen Sie, \n\n {profileName} \n\n in Ihrem Webbrowser zu öffnen, um mehr zu erfahren.",
+  "@errServerError": {
+    "placeholders": {
+      "profileName": {}
+    }
+  },
+  "failedToParseResponse": "Ungültige Antwort.",
+  "formNotValid": "Ungültiges Formular",
+  "infConnectedTo": "Verbunden mit {profileName}",
+  "@infConnectedTo": {
+    "placeholders": {
+      "profileName": {}
+    }
+  },
+  "infConnectingTo": "Verbindung zu {profileName} herstellen",
+  "@infConnectingTo": {
+    "placeholders": {
+      "profileName": {}
+    }
+  },
+  "infDisconnected": "Getrennt",
+  "infInitializingStream": "Initialisieren des Streams",
+  "informationsSupport": "Info und Support",
+  "infSavedFilename": "{fileName} gespeichert",
+  "@infSavedFilename": {
+    "placeholders": {
+      "fileName": {}
+    }
+  },
+  "infSignalLevelsWillNotBeSpoken": "Signalpegel werden nicht gesprochen.",
+  "leftRigtArrows": "Pfeile nach links/rechts",
+  "likeTheApp": "Wie gefällt Ihnen die App?",
+  "manufacturer": "Hersteller",
+  "mapChannelUpDownTo": "Kanal +/- Tasten",
+  "message": "Nachricht",
+  "more": "Mehr",
+  "no": "Nein",
+  "noInformation": "Keine Infos",
+  "ok": "OK",
+  "oops": "Hoppla",
+  "open": "Öffnen",
+  "options": "Optionen",
+  "platformNotSupported": "Die Plattform {platform} wird nicht unterstützt",
+  "@platformNotSupported": {
+    "placeholders": {
+      "platform": {}
+    }
+  },
+  "pleaseSubmitDetails": "Bitte senden Sie die Details.",
+  "pleaseWait": "Bitte warten",
+  "profileAddress": "Adresse",
+  "profileAddressHint": "d. h. 192.168.1.2",
+  "profileEnigmaVersion": "Version",
+  "profileName": "Name",
+  "profileNameHint": "d. h. MyBox",
+  "profilePassword": "Passwort",
+  "profilePasswordHint": "",
+  "profilePort": "Port",
+  "profilePortHint": "normalerweise 80",
+  "profileStreamingEnable": "Streaming aktivieren",
+  "profileStreamingPort": "Streaming-Port",
+  "profileStreamingPorthint": "normalerweise 8001",
+  "profileStreamingPorthintEnigma1": "normalerweise 31339",
+  "profileTranscodingEnable": "Transcodierung aktivieren",
+  "profileTranscodingLocalLan": "Transcodierung im lokalen Netzwerk",
+  "profileTranscodingPort": "Transcodierungsport",
+  "profileTranscodingPortHint": "normalerweise 8002",
+  "profileUsername": "Benutzername",
+  "profileUsernameHint": "d. h. root",
+  "profileUseSsl": "SSL verwenden",
+  "questionDeleteProfile": "Möchten Sie {profileName} wirklich löschen?",
+  "@questionDeleteProfile": {
+    "placeholders": {
+      "profileName": {}
+    }
+  },
+  "questionEmptyUsernamePassword": "Benutzername und Passwort leer lassen? Deaktivieren Sie dazu die Autorisierung auf der Weboberfläche.",
+  "questionIgnoreFurtherTtsError": "Weitere TextToSpeech-Fehler ignorieren?",
+  "questionOpenTtsSettings": "TextToSpeech-Einstellungen jetzt öffnen?",
+  "questionRestartGui": "Benutzeroberfläche für {profileName} neu starten?",
+  "@questionRestartGui": {
+    "placeholders": {
+      "profileName": {}
+    }
+  },
+  "questionSaveChanges": "Änderungen speichern?",
+  "questionTryTtsLanguageDownload": "Versuchen Sie, Sprachen herunterzuladen und zu installieren?",
+  "releaseName": "Name des Release",
+  "requestTime": "Zeit anfordern",
+  "screenshotSaved": "Der Screenshot wurde erfolgreich in der Galerie gespeichert.",
+  "searchByName": "Nach Name suchen",
+  "services": "Dienste",
+  "settings": "Einstellungen",
+  "share": "Teilen",
+  "signal": "Signal",
+  "specialThanksGoesTo": "Besonderer Dank für die Unterstützung geht an",
+  "startMonitor": "Monitor starten",
+  "stopMonitor": "Monitor stoppen",
+  "streamRequiresVlc": "Für den Stream ist VLC Player erforderlich",
+  "streamService": "Streaming-Dienst",
+  "thanksForTestingTo": "Danke fürs Testen",
+  "time": "Zeit",
+  "titleDownloading": "Wird heruntergeladen",
+  "titleError": "Fehler",
+  "titleQuestion": "Frage",
+  "titleWarning": "Warnung",
+  "tryAgain": "Erneut versuchen",
+  "unknownError": "Unbekannter Fehler.",
+  "upDownArrows": "Aufwärts-/Abwärtspfeile",
+  "useDbAsPrimaryLevel": "dB als Primärpegel verwenden",
+  "version": "Version",
+  "voice": "Sprache",
+  "warnHttpPortClosed": "{address}:{port} scheint nicht erreichbar zu sein.",
+  "@warnHttpPortClosed": {
+    "placeholders": {
+      "address": {},
+      "port": {}
+    }
+  },
+  "warnSaveTheProfileAnyway": "Gerät trotzdem speichern?",
+  "warnStreamingPortClosed": "Der Streaming-Port scheint geschlossen zu sein.",
+  "warnTranscodingPortClosed": "Der Transcodierungsport scheint geschlossen zu sein.",
+  "warnUsingAlternativePort": "Alternativen Port {port} verwenden",
+  "@warnUsingAlternativePort": {
+    "placeholders": {
+      "port": {}
+    }
+  },
+  "yes": "Ja"
+}

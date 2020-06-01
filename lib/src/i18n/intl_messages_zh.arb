@@ -1,0 +1,211 @@
+{
+  "@@locale": "zh",
+  "aboutRightsReserved": "版权所有",
+  "actionAbout": "关于",
+  "actionAddProfile": "添加设备",
+  "actionConnect": "连接",
+  "actionDelete": "删除",
+  "actionDeleteProfile": "删除设备",
+  "actionDisconnect": "断开",
+  "actionEdit": "编辑",
+  "actionEditProfile": "编辑设备",
+  "actionRestart": "重新启动GUI",
+  "actionSave": "保存",
+  "actionScreenshot": "屏幕截图",
+  "actionScreenshotAll": "所有",
+  "actionScreenshotOsd": "仅OSD",
+  "actionScreenshotPicture": "仅图片",
+  "actionSleep": "进入睡眠",
+  "actionStream": "流",
+  "actionTakeScreenshot": "截屏",
+  "addProfileShowcaseText": "输入连接设置以开始",
+  "addProfileShowcaseTitle": "添加设备",
+  "alternativeLook": "备选外观",
+  "appName": "信号仪",
+  "average": "平均",
+  "bouquets": "分组",
+  "build": "建立",
+  "cancel": "取消",
+  "channel": "频道",
+  "channelUpDown": "频道（分组）+/-",
+  "checkingParameters": "检查参数",
+  "checkingPorts": "检查端口",
+  "close": "关闭",
+  "confirm": "确认",
+  "considerCoffee": "考虑给我买杯咖啡。",
+  "contentNotAvailable": "内容当前不可用",
+  "defaultLook": "默认外观",
+  "details": "详情",
+  "devices": "设备",
+  "disableTts": "禁用Tts",
+  "dvbcService": "DVB-C服务",
+  "dvbsService": "DVB-S服务",
+  "dvbtService": "DVB-T服务",
+  "enableTts": "启用Tts",
+  "errCheckYourConnection": "检查您的连接。",
+  "errCheckYourCredentials": "检查您的凭证。",
+  "errCheckYourSettings": "检查您的设置。",
+  "errCommandFailed": "命令{command}失败。",
+  "@errCommandFailed": {
+    "placeholders": {
+      "command": {}
+    }
+  },
+  "errDownloadFailed": "下载失败",
+  "errFailedConnect": "连接到{profileName}失败。",
+  "@errFailedConnect": {
+    "placeholders": {
+      "profileName": {}
+    }
+  },
+  "errFailedToInitializeStream": "初始化流失败！",
+  "errFailedToInitializeTtsEngine": "TextToSpeech引擎初始化失败！",
+  "errInstallFailed": "安装失败",
+  "errInvalidAddress": "无效地址",
+  "errInvalidEnigmaType": "无效Enigma类型",
+  "errInvalidEnigmaTypeOrNotEnigma": "无效Enigma类型或非Enigma网络接口。",
+  "errInvalidHttpPort": "无效http端口",
+  "errInvalidProfileName": "无效设备名称",
+  "errInvalidStreamingPort": "无效流端口",
+  "errInvalidTranscodingPort": "无效转码端口",
+  "errInvalidUsername": "无效用户名",
+  "errNoTtsLanguageAvailable": "TextToSpeech语言不可用。",
+  "errOperationTimedOut": "操作超时。",
+  "errPortNotAvailable": "端口不可用！",
+  "errRequestFailedWithStatusCode": "HTTP状态代码{code}。",
+  "@errRequestFailedWithStatusCode": {
+    "placeholders": {
+      "code": {}
+    }
+  },
+  "errSaveFailed": "保存失败",
+  "errServerError": "网络接口返回错误500。接收器上发生崩溃。尝试在网络浏览器中打开\n\n{profileName}\n\n以了解更多。",
+  "@errServerError": {
+    "placeholders": {
+      "profileName": {}
+    }
+  },
+  "failedToParseResponse": "无效回应。",
+  "formNotValid": "形式无效",
+  "infConnectedTo": "已连接到{profileName}",
+  "@infConnectedTo": {
+    "placeholders": {
+      "profileName": {}
+    }
+  },
+  "infConnectingTo": "正在连接到{profileName}",
+  "@infConnectingTo": {
+    "placeholders": {
+      "profileName": {}
+    }
+  },
+  "infDisconnected": "断开",
+  "infInitializingStream": "初始化流",
+  "informationsSupport": "信息和支持",
+  "infSavedFilename": "已保存{fileName}",
+  "@infSavedFilename": {
+    "placeholders": {
+      "fileName": {}
+    }
+  },
+  "infSignalLevelsWillNotBeSpoken": "信号电平不会读出。",
+  "leftRigtArrows": "左/右箭头",
+  "likeTheApp": "喜欢这个App吗？",
+  "manufacturer": "制造商",
+  "mapChannelUpDownTo": "频道+/-按钮",
+  "message": "信息",
+  "more": "更多",
+  "no": "没有",
+  "noInformation": "没有信息",
+  "ok": "确定",
+  "oops": "哎呀",
+  "open": "打开",
+  "options": "选项",
+  "platformNotSupported": "{platform}平台不支持",
+  "@platformNotSupported": {
+    "placeholders": {
+      "platform": {}
+    }
+  },
+  "pleaseSubmitDetails": "请提交详细信息。",
+  "pleaseWait": "请稍候",
+  "profileAddress": "地址",
+  "profileAddressHint": "即192.168.1.2",
+  "profileEnigmaVersion": "版本",
+  "profileName": "名称",
+  "profileNameHint": "即MyBox",
+  "profilePassword": "密码",
+  "profilePasswordHint": "",
+  "profilePort": "端口",
+  "profilePortHint": "通常为80",
+  "profileStreamingEnable": "启用流",
+  "profileStreamingPort": "流端口",
+  "profileStreamingPorthint": "通常为8001",
+  "profileStreamingPorthintEnigma1": "通常为31339",
+  "profileTranscodingEnable": "启用转码",
+  "profileTranscodingLocalLan": "在本地网络上进行转码",
+  "profileTranscodingPort": "转码端口",
+  "profileTranscodingPortHint": "通常为8002",
+  "profileUsername": "用户名",
+  "profileUsernameHint": "即root",
+  "profileUseSsl": "使用SSL",
+  "questionDeleteProfile": "您确定要删除{profileName}吗？",
+  "@questionDeleteProfile": {
+    "placeholders": {
+      "profileName": {}
+    }
+  },
+  "questionEmptyUsernamePassword": "将用户名和密码留空？这要求您在网络接口上关闭授权。",
+  "questionIgnoreFurtherTtsError": "忽略其他TextToSpeech错误？",
+  "questionOpenTtsSettings": "立即打开TextToSpeech设置？",
+  "questionRestartGui": "在{profileName}上重新启动用户接口？",
+  "@questionRestartGui": {
+    "placeholders": {
+      "profileName": {}
+    }
+  },
+  "questionSaveChanges": "保存更改？",
+  "questionTryTtsLanguageDownload": "尝试下载并安装语言？",
+  "releaseName": "发布名称",
+  "requestTime": "请求时间",
+  "screenshotSaved": "屏幕截图成功保存到图库",
+  "searchByName": "按名称搜索",
+  "services": "服务",
+  "settings": "设置",
+  "share": "分享",
+  "signal": "信号",
+  "specialThanksGoesTo": "特别感谢支持",
+  "startMonitor": "启动监视器",
+  "stopMonitor": "停止监视器",
+  "streamRequiresVlc": "流需要VLC播放器",
+  "streamService": "流服务",
+  "thanksForTestingTo": "感谢测试",
+  "time": "时间",
+  "titleDownloading": "正在下载",
+  "titleError": "错误",
+  "titleQuestion": "问题",
+  "titleWarning": "警告",
+  "tryAgain": "重试",
+  "unknownError": "未知错误。",
+  "upDownArrows": "上/下箭头",
+  "useDbAsPrimaryLevel": "使用dB作为主要电平",
+  "version": "版本",
+  "voice": "语音",
+  "warnHttpPortClosed": "{address}:{port}似乎无法访问。",
+  "@warnHttpPortClosed": {
+    "placeholders": {
+      "address": {},
+      "port": {}
+    }
+  },
+  "warnSaveTheProfileAnyway": "仍然保存设备吗？",
+  "warnStreamingPortClosed": "流端口似乎已关闭。",
+  "warnTranscodingPortClosed": "转码端口似乎已关闭。",
+  "warnUsingAlternativePort": "使用备用端口{port}",
+  "@warnUsingAlternativePort": {
+    "placeholders": {
+      "port": {}
+    }
+  },
+  "yes": "是"
+}
