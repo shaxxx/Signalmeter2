@@ -1,5 +1,4 @@
 import 'dart:async';
-import 'dart:ui';
 
 import 'package:enigma_signal_meter/src/i18n/messages.dart';
 import 'package:enigma_signal_meter/src/i18n/messages_all.dart';
@@ -23,7 +22,7 @@ class MessageProvider {
   }
 
   static Messages of(BuildContext context) {
-    return Localizations.of<MessageProvider>(context, MessageProvider).messages;
+    return Localizations.of<MessageProvider>(context, MessageProvider)!.messages;
   }
 }
 

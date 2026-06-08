@@ -4,28 +4,24 @@ import 'package:enigma_signal_meter/src/model/application_settings.dart';
 import 'package:enigma_signal_meter/src/model/enums.dart';
 import 'package:enigma_web/enigma_web.dart';
 import 'package:flutter/widgets.dart';
-import 'package:meta/meta.dart';
 import 'package:collection/collection.dart';
 import 'package:logging/logging.dart';
 
 @immutable
 class GlobalState {
-  final Size screenSize;
+  final Size? screenSize;
   final Map<int, String> satellites;
   final WebRequester webRequester;
   final RouteObserver<PageRoute> routeObserver;
   final ApplicationSettings applicationSettings;
 
   GlobalState({
-    @required this.screenSize,
-    @required this.satellites,
-    @required this.webRequester,
-    @required this.routeObserver,
-    @required this.applicationSettings,
-  })  : assert(satellites != null),
-        assert(webRequester != null),
-        assert(routeObserver != null),
-        assert(applicationSettings != null);
+    required this.screenSize,
+    required this.satellites,
+    required this.webRequester,
+    required this.routeObserver,
+    required this.applicationSettings,
+  });
 
   static GlobalState initial() {
     return GlobalState(
@@ -45,11 +41,11 @@ class GlobalState {
   }
 
   GlobalState copyWith({
-    Size screenSize,
-    Map<int, String> satellites,
-    WebRequester webRequester,
-    RouteObserver<PageRoute> routeObserver,
-    ApplicationSettings applicationSettings,
+    Size? screenSize,
+    Map<int, String>? satellites,
+    WebRequester? webRequester,
+    RouteObserver<PageRoute>? routeObserver,
+    ApplicationSettings? applicationSettings,
   }) {
     return GlobalState(
       screenSize: screenSize ?? this.screenSize,

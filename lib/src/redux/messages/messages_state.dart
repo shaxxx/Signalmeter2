@@ -1,4 +1,3 @@
-import 'package:flutter/widgets.dart';
 import 'package:collection/collection.dart';
 
 import 'error_messages_events.dart';
@@ -11,12 +10,10 @@ class MessagesState {
   final List<WarningMessageEvent> warningMessages;
 
   MessagesState({
-    @required this.infoMessages,
-    @required this.errorMessages,
-    @required this.warningMessages,
-  })  : assert(infoMessages != null),
-        assert(errorMessages != null),
-        assert(warningMessages != null);
+    required this.infoMessages,
+    required this.errorMessages,
+    required this.warningMessages,
+  });
 
   static MessagesState initial() {
     return MessagesState(
@@ -27,9 +24,9 @@ class MessagesState {
   }
 
   MessagesState copyWith({
-    List<InfoMessageEvent> infoMessages,
-    List<ErrorMessageEvent> errorMessages,
-    List<WarningMessageEvent> warningMessages,
+    List<InfoMessageEvent>? infoMessages,
+    List<ErrorMessageEvent>? errorMessages,
+    List<WarningMessageEvent>? warningMessages,
   }) {
     return MessagesState(
       errorMessages: errorMessages ?? this.errorMessages,
