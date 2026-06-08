@@ -5,8 +5,8 @@ import 'package:url_launcher/url_launcher.dart';
 class Hyperlink extends StatelessWidget {
   final String url;
   final String text;
-  final double fontSize;
-  final Color color;
+  final double? fontSize;
+  final Color? color;
 
   Hyperlink({
     required this.url,
@@ -16,8 +16,9 @@ class Hyperlink extends StatelessWidget {
   });
 
   Future _launchURL() async {
-    if (await canLaunch(url)) {
-      await launch(url);
+    final uri = Uri.parse(url);
+    if (await canLaunchUrl(uri)) {
+      await launchUrl(uri);
     } else {
       throw 'Could not launch $url';
     }

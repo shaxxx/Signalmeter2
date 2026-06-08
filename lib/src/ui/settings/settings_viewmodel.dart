@@ -22,7 +22,7 @@ class SettingsViewModel {
     return SettingsViewModel(
       applicationSettings: store.state.globalState.applicationSettings,
       onAbout: () => store.dispatch(NavigateToAction.push(AppRoutes.about)),
-      onSupport: (url) => launch(url),
+      onSupport: (url) => launchUrl(Uri.parse(url)),
     );
   }
 

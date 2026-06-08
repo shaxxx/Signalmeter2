@@ -2,7 +2,7 @@ import 'package:enigma_signal_meter/src/constants.dart';
 import 'package:enigma_signal_meter/src/ui/common/hyperlink.dart';
 import 'package:enigma_signal_meter/src/ui/common/scaffold_background.dart';
 import 'package:flutter/material.dart';
-import 'package:package_info/package_info.dart';
+import 'package:package_info_plus/package_info_plus.dart';
 
 import '../../message_provider.dart';
 
@@ -12,7 +12,7 @@ class AboutView extends StatefulWidget {
 }
 
 class _AboutViewState extends State<AboutView> {
-  PackageInfo _packageInfo;
+  PackageInfo? _packageInfo;
 
   @override
   void didChangeDependencies() async {
@@ -32,7 +32,7 @@ class _AboutViewState extends State<AboutView> {
     return Padding(
       padding: EdgeInsets.only(bottom: 30),
       child: Text(
-        MessageProvider.of(context).build + ':  ' + _packageInfo.buildNumber,
+        MessageProvider.of(context).build + ':  ' + _packageInfo!.buildNumber,
         style: TextStyle(fontSize: 15),
       ),
     );
@@ -45,7 +45,7 @@ class _AboutViewState extends State<AboutView> {
     return Padding(
       padding: EdgeInsets.all(10),
       child: Text(
-        MessageProvider.of(context).version + ':  ' + _packageInfo.version,
+        MessageProvider.of(context).version + ':  ' + _packageInfo!.version,
         style: TextStyle(fontSize: 15),
       ),
     );

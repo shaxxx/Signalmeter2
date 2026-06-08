@@ -1,7 +1,7 @@
 import 'dart:core';
 import 'dart:io';
 
-import 'package:android_intent/android_intent.dart';
+import 'package:android_intent_plus/android_intent.dart';
 import 'package:enigma_signal_meter/src/i18n/messages.dart';
 import 'package:enigma_signal_meter/src/model/menu_item.dart';
 import 'package:enigma_signal_meter/src/redux/app/app_state.dart';
@@ -141,18 +141,18 @@ class MoreViewModel {
       return;
     }
 
+    final streamUri = parameters.streamUri!;
     if (Platform.isAndroid) {
       var intent = AndroidIntent(
         action: 'action_view',
-        data: parameters.streamUri,
+        data: streamUri,
         type: 'video/*',
       );
       await intent.launch();
     } else {
-      var iOSUri =
-          'vlc-x-callback://x-callback-url/stream?url=' + parameters.streamUri;
-      if (await canLaunch(iOSUri)) {
-        await launch(iOSUri);
+      var iOSUri = 'vlc-x-callback://x-callback-url/stream?url=' + streamUri;
+      if (await canLaunchUrl(Uri.parse(iOSUri))) {
+        await launchUrl(Uri.parse(iOSUri));
       } else {
         store.dispatch(VlcRequiredMessageEvent());
         return;

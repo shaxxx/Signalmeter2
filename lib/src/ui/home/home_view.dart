@@ -1,6 +1,5 @@
 import 'dart:io';
 
-import 'package:auto_orientation/auto_orientation.dart';
 import 'package:enigma_signal_meter/src/message_provider.dart';
 import 'package:enigma_signal_meter/src/model/application_settings.dart';
 import 'package:enigma_signal_meter/src/model/enums.dart';
@@ -13,10 +12,10 @@ import 'package:enigma_signal_meter/src/ui/profiles/profiles_view.dart';
 import 'package:enigma_signal_meter/src/ui/settings/settings_view.dart';
 import 'package:enigma_signal_meter/src/utils/message_display_handler.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_redux/flutter_redux.dart';
-import 'package:showcaseview/showcase.dart';
-import 'package:showcaseview/showcase_widget.dart';
+import 'package:showcaseview/showcaseview.dart';
 
 import 'home_viewmodel.dart';
 
@@ -26,9 +25,7 @@ class HomeView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ShowCaseWidget(
-      builder: Builder(
-        builder: (context) => _HomeView(),
-      ),
+      builder: (context) => _HomeView(),
     );
   }
 }
@@ -39,7 +36,7 @@ class _HomeView extends StatefulWidget {
 }
 
 class _HomeViewState extends State<_HomeView> with RouteAware {
-  HomeViewModel _viewModel;
+  late HomeViewModel _viewModel;
 
   final GlobalKey _fabShowcaseKey = GlobalKey();
   bool _showcaseSeen = false;
@@ -47,7 +44,10 @@ class _HomeViewState extends State<_HomeView> with RouteAware {
   @override
   void initState() {
     super.initState();
-    AutoOrientation.portraitAutoMode();
+    SystemChrome.setPreferredOrientations([
+      DeviceOrientation.portraitUp,
+      DeviceOrientation.portraitDown,
+    ]);
   }
 
   @override
@@ -75,7 +75,7 @@ class _HomeViewState extends State<_HomeView> with RouteAware {
     _viewModel.onPop();
     }
 
-  ValueChanged<ApplicationSettings> onSettingsChanged;
+  late ValueChanged<ApplicationSettings> onSettingsChanged;
 
   @override
   Widget build(BuildContext context) {
@@ -116,9 +116,9 @@ class _HomeViewState extends State<_HomeView> with RouteAware {
                   title: MessageProvider.of(context).addProfileShowcaseTitle,
                   description:
                       MessageProvider.of(context).addProfileShowcaseText,
-                  shapeBorder: CircleBorder(),
+                  targetShapeBorder: CircleBorder(),
                   showArrow: true,
-                  animationDuration: Duration(milliseconds: 1500),
+                  movingAnimationDuration: Duration(milliseconds: 1500),
                   overlayColor: Colors.blueGrey,
                   overlayOpacity: 0,
                   onTargetClick: () => viewModel.addProfile(),

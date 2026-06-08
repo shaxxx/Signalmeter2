@@ -1,7 +1,7 @@
-import 'package:auto_orientation/auto_orientation.dart';
 import 'package:enigma_signal_meter/src/redux/app/app_state.dart';
 import 'package:enigma_signal_meter/src/ui/signal/signal_chart_full_screen_view_model.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
 import 'package:enigma_signal_meter/src/ui/signal/signal_chart_view.dart';
 import 'package:flutter_redux/flutter_redux.dart';
@@ -15,29 +15,25 @@ class SignalChartFullScreen extends StatefulWidget {
 
 class _SignalChartFullScreenState extends State<SignalChartFullScreen>
     with WidgetsBindingObserver, RouteAware {
-  SignalChartFullScreenViewModel _viewModel;
-  RouteObserver<PageRoute> _routeObserver;
+  late SignalChartFullScreenViewModel _viewModel;
+  late RouteObserver<PageRoute> _routeObserver;
 
   @override
   void initState() {
     WidgetsBinding.instance.addObserver(this);
     super.initState();
-    // SystemChrome.setPreferredOrientations([
-    //   DeviceOrientation.landscapeRight,
-    //   DeviceOrientation.landscapeLeft,
-    // ]);
-    AutoOrientation.landscapeAutoMode();
+    SystemChrome.setPreferredOrientations([
+      DeviceOrientation.landscapeLeft,
+      DeviceOrientation.landscapeRight,
+    ]);
   }
 
   @override
   void dispose() {
-    // SystemChrome.setPreferredOrientations([
-    //   DeviceOrientation.landscapeRight,
-    //   DeviceOrientation.landscapeLeft,
-    //   DeviceOrientation.portraitUp,
-    //   DeviceOrientation.portraitDown,
-    // ]);
-    AutoOrientation.portraitAutoMode();
+    SystemChrome.setPreferredOrientations([
+      DeviceOrientation.portraitUp,
+      DeviceOrientation.portraitDown,
+    ]);
     _viewModel.onActiveChanged(false);
     WidgetsBinding.instance.removeObserver(this);
     _routeObserver.unsubscribe(this);
