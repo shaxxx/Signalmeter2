@@ -66,7 +66,10 @@ class _ProfileListItemState extends State<ProfileListItem>
         builder: (context, viewModel) {
           return AnimatedContainer(
             duration: Duration(milliseconds: 300),
-            height: viewModel.selected ? 121 : 90,
+            // 130 (not 121): the expanded card's content already fills ~121 px,
+            // so when connecting/disconnecting the extra LinearProgressIndicator
+            // row overflowed the bottom by a few px. 130 leaves room for it.
+            height: viewModel.selected ? 130 : 90,
             alignment: Alignment.topLeft,
             child: Card(
               elevation: 2,
