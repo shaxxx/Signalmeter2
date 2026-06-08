@@ -20,9 +20,13 @@ class ProfileEditModel {
       address: address,
       enigma: enigma,
       httpPort: int.parse(httpPort),
-      id: id ?? EnigmaUtils.unixTimeStamp(),
+      // `id` is non-nullable and defaults to '' for new profiles, so the old
+      // `id ?? unixTimeStamp()` fallback never fired (every new profile got an
+      // empty id and collided with the first one). Generate a unique id when
+      // empty; keep the existing id when editing.
+      id: id.isEmpty ? EnigmaUtils.unixTimeStamp() : id,
       name: name,
-      password: password ?? '',
+      password: password,
       streaming: streaming,
       streamingPort: streaming && enigma == EnigmaType.enigma2
           ? int.parse(streamingPort)
