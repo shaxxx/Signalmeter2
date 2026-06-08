@@ -16,7 +16,10 @@ class SignalChartFullScreen extends StatefulWidget {
 
 class _SignalChartFullScreenState extends State<SignalChartFullScreen>
     with WidgetsBindingObserver, RouteAware {
-  late SignalChartFullScreenViewModel _viewModel;
+  // Nullable, not late: RouteObserver.subscribe() (in onInit) immediately
+  // calls didPush() before onInitialBuild assigns the view model, so the
+  // RouteAware/lifecycle callbacks must null-guard.
+  SignalChartFullScreenViewModel? _viewModel;
   late RouteObserver<PageRoute> _routeObserver;
 
   @override
@@ -35,7 +38,7 @@ class _SignalChartFullScreenState extends State<SignalChartFullScreen>
       DeviceOrientation.portraitUp,
       DeviceOrientation.portraitDown,
     ]);
-    _viewModel.onActiveChanged(false);
+    _viewModel?.onActiveChanged(false);
     WidgetsBinding.instance.removeObserver(this);
     _routeObserver.unsubscribe(this);
     super.dispose();
@@ -43,31 +46,31 @@ class _SignalChartFullScreenState extends State<SignalChartFullScreen>
 
   @override
   void didChangeAppLifecycleState(AppLifecycleState state) {
-    _viewModel.onActiveChanged(state == AppLifecycleState.resumed);
+    _viewModel?.onActiveChanged(state == AppLifecycleState.resumed);
     }
 
   // Called when the top route has been popped off, and the current route shows up.
   @override
   void didPopNext() {
-    _viewModel.onActiveChanged(true);
+    _viewModel?.onActiveChanged(true);
     }
 
   // Called when the current route has been pushed.
   @override
   void didPush() {
-    _viewModel.onActiveChanged(true);
+    _viewModel?.onActiveChanged(true);
     }
 
   // Called when the current route has been popped off.
   @override
   void didPop() {
-    _viewModel.onActiveChanged(false);
+    _viewModel?.onActiveChanged(false);
     }
 
   // Called when a new route has been pushed, and the current route is no longer visible.
   @override
   void didPushNext() {
-    _viewModel.onActiveChanged(false);
+    _viewModel?.onActiveChanged(false);
     }
 
   @override
@@ -83,7 +86,7 @@ class _SignalChartFullScreenState extends State<SignalChartFullScreen>
       },
       onInitialBuild: (vm) {
         _viewModel = vm;
-        _viewModel.onActiveChanged(true);
+        _viewModel?.onActiveChanged(true);
       },
       onDidChange: (prev, vm) {
         _viewModel = vm;
