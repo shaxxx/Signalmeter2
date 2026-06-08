@@ -31,10 +31,10 @@ class ProfileListItemViewModel {
   final String _name;
   final String _address;
   final bool isClickable;
-  final VoidCallback onConnect;
-  final VoidCallback onDisconnect;
-  final VoidCallback onEdit;
-  final VoidCallback onDelete;
+  final VoidCallback? onConnect;
+  final VoidCallback? onDisconnect;
+  final VoidCallback? onEdit;
+  final VoidCallback? onDelete;
 
   ProfileListItemViewModel({
     required this.selected,
@@ -44,10 +44,10 @@ class ProfileListItemViewModel {
     this.onDisconnect,
     this.onEdit,
     this.onDelete,
-    String name,
-    String address,
-  })  : _name = name,
-        _address = address,
+    String? name,
+    String? address,
+  })  : _name = name ?? '',
+        _address = address ?? '',
         isClickable = _isDisconnected(connectionStatus);
 
   static bool _isDisconnected(ConnectionStatusEnum connectionStatus) {
@@ -106,7 +106,7 @@ class ProfileListItemViewModel {
       onDelete: _isDisconnected(store.state.connectionState)
           ? () {
               store.dispatch(
-                ProfileDeletedEvent(profile),
+                ProfileDeletedEvent(profile as Profile),
               );
             }
           : null,

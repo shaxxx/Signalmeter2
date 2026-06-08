@@ -12,9 +12,9 @@ class ProfileListItem extends StatefulWidget {
   final IProfile profile;
 
   const ProfileListItem({
-    Key key,
+    super.key,
     required this.profile,
-  }) : super(key: key);
+  });
 
   @override
   _ProfileListItemState createState() => _ProfileListItemState();
@@ -22,9 +22,9 @@ class ProfileListItem extends StatefulWidget {
 
 class _ProfileListItemState extends State<ProfileListItem>
     with SingleTickerProviderStateMixin {
-  AnimationController _animationController;
-  Animation<double> _curvedAnimation;
-  bool visibleCardA;
+  late AnimationController _animationController;
+  late Animation<double> _curvedAnimation;
+  late bool visibleCardA;
 
   @override
   void initState() {
@@ -71,8 +71,8 @@ class _ProfileListItemState extends State<ProfileListItem>
             child: Card(
               elevation: 2,
               color: viewModel.selected
-                  ? theme.colorScheme.secondary.withOpacity(0.3)
-                  : theme.primaryColor.withOpacity(0.3),
+                  ? theme.colorScheme.secondary.withValues(alpha: 0.3)
+                  : theme.primaryColor.withValues(alpha: 0.3),
               child: _buildRow(context, viewModel),
             ),
           );
@@ -220,7 +220,7 @@ class _ProfileListItemState extends State<ProfileListItem>
             fontWeight: FontWeight.w500,
           ),
         ),
-        onPressed: viewModel.onConnect,
+        onPressed: viewModel.onConnect!, // non-null when connectButtonEnabled
       );
     }
     return SizedBox.shrink();
@@ -235,13 +235,16 @@ class _ProfileListItemState extends State<ProfileListItem>
             fontWeight: FontWeight.w500,
           ),
         ),
-        onPressed: viewModel.onDisconnect,
+        onPressed: viewModel.onDisconnect!, // non-null when disconnectButtonEnabled
       );
     }
     return SizedBox.shrink();
   }
 
   Widget _editButton(ProfileListItemViewModel viewModel) {
+    if (viewModel.onEdit == null) {
+      return SizedBox.shrink();
+    }
     return CustomFlatButton(
       child: Text(
         MessageProvider.of(context).actionEdit.toUpperCase(),
@@ -249,7 +252,7 @@ class _ProfileListItemState extends State<ProfileListItem>
           fontWeight: FontWeight.w500,
         ),
       ),
-      onPressed: viewModel.onEdit,
+      onPressed: viewModel.onEdit!, // non-null after guard above
     );
   }
 
@@ -265,7 +268,7 @@ class _ProfileListItemState extends State<ProfileListItem>
                   text,
                 ),
                 actions: <Widget>[
-                  FlatButton(
+                  TextButton(
                     onPressed: () {
                       Navigator.pop(context, true);
                     },
@@ -280,6 +283,10 @@ class _ProfileListItemState extends State<ProfileListItem>
   }
 
   Widget _deleteButton(ProfileListItemViewModel viewModel) {
+    final onDelete = viewModel.onDelete;
+    if (!viewModel.deleteButtonEnabled || onDelete == null) {
+      return SizedBox.shrink();
+    }
     return CustomFlatButton(
       child: Text(
         MessageProvider.of(context).actionDelete.toUpperCase(),
@@ -287,16 +294,15 @@ class _ProfileListItemState extends State<ProfileListItem>
           fontWeight: FontWeight.w500,
         ),
       ),
-      onPressed: viewModel.deleteButtonEnabled
-          ? () async {
-              var dialogResult = await _showQuestionDialog(
-                  MessageProvider.of(context)
-                      .questionDeleteProfile(viewModel.name));
-              if (dialogResult) {
-                viewModel.onDelete();
-              }
-            }
-          : null,
+      onPressed: () {
+        _showQuestionDialog(
+          MessageProvider.of(context).questionDeleteProfile(viewModel.name),
+        ).then((dialogResult) {
+          if (dialogResult) {
+            onDelete(); // non-null after guard above
+          }
+        });
+      },
     );
   }
 

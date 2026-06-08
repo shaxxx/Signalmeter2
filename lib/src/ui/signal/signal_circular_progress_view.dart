@@ -21,7 +21,7 @@ class SignalCircularProgressView extends StatelessWidget {
         return GestureDetector(
           child: viewModel.hasInfo
               ? _circularProgressView(
-                  viewModel, viewModel.isBerView, screenSize)
+                  viewModel, viewModel.isBerView, screenSize!)
               : _noSignalView(context),
         );
       },

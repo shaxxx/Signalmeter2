@@ -10,7 +10,7 @@ import 'package:flutter_redux/flutter_redux.dart';
 class MoreView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    var backgroundColor = Theme.of(context).primaryColor.withOpacity(0.3);
+    var backgroundColor = Theme.of(context).primaryColor.withValues(alpha: 0.3);
     var messages = MessageProvider.of(context);
     return StoreConnector<AppState, MoreViewModel>(
         distinct: true,
@@ -90,7 +90,7 @@ class MoreView extends StatelessWidget {
             messages.questionRestartGui(viewModel.profileName),
           ),
           actions: <Widget>[
-            FlatButton(
+            TextButton(
               onPressed: () {
                 viewModel.onSelected(menuItem);
                 Navigator.pop(context, true);

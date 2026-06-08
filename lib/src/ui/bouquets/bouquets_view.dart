@@ -9,8 +9,8 @@ import 'bouquets_viewmodel.dart';
 
 class BouquetsView extends StatefulWidget {
   const BouquetsView({
-    Key key,
-  }) : super(key: key);
+    super.key,
+  });
 
   @override
   _BouquetsViewState createState() => _BouquetsViewState();

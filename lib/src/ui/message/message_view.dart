@@ -27,10 +27,10 @@ class _MessageViewState extends State<MessageView> {
   Widget build(BuildContext context) {
     var theme = Theme.of(context);
     return ScaffoldBackground(
-      backgroundColor: theme.primaryColor.withOpacity(0.3),
+      backgroundColor: theme.primaryColor.withValues(alpha: 0.3),
       appBar: AppBar(
         title: Text(MessageProvider.of(context).message),
-        backgroundColor: theme.primaryColor.withOpacity(0.6),
+        backgroundColor: theme.primaryColor.withValues(alpha: 0.6),
       ),
       child: StoreConnector<AppState, MessageViewModel>(
         distinct: true,
@@ -59,7 +59,7 @@ class _MessageViewState extends State<MessageView> {
                       keyboardType: TextInputType.text,
                       cursorRadius: Radius.circular(20),
                       validator: (value) {
-                        if (value.isEmpty) {
+                        if (value == null || value.isEmpty) {
                           return ' ';
                         }
                         return null;
@@ -95,13 +95,13 @@ class _MessageViewState extends State<MessageView> {
                             keyboardType: TextInputType.number,
                             cursorRadius: Radius.circular(20),
                             validator: (value) {
-                              if (value.isEmpty) {
+                              if (value == null || value.isEmpty) {
                                 return ' ';
                               }
                               return null;
                             },
                             inputFormatters: <TextInputFormatter>[
-                              WhitelistingTextInputFormatter.digitsOnly
+                              FilteringTextInputFormatter.digitsOnly
                             ],
                             decoration: InputDecoration(
                               hintText: MessageProvider.of(context).time,
@@ -125,7 +125,7 @@ class _MessageViewState extends State<MessageView> {
                                   onPressed: viewModel.status !=
                                           LoadingStatus.loading
                                       ? () {
-                                          if (_formKey.currentState
+                                          if (_formKey.currentState!
                                               .validate()) {
                                             viewModel.onSendMessage(
                                               messageController.text,
@@ -180,7 +180,7 @@ class _MessageTypeSelection extends StatelessWidget {
           borderRadius: BorderRadius.all(
             const Radius.circular(10.0),
           ),
-          color: Theme.of(context).primaryColor.withOpacity(0.3),
+          color: Theme.of(context).primaryColor.withValues(alpha: 0.3),
           border: Border.all(color: Theme.of(context).focusColor),
         ),
         child: Padding(
@@ -204,8 +204,8 @@ class _MessageTypeSelection extends StatelessWidget {
                     child: Text(MessageProvider.of(context).titleError),
                   ),
                 ],
-                onChanged: (MessageType value) {
-                  onMessageTypeChanged(value);
+                onChanged: (MessageType? value) {
+                  if (value != null) onMessageTypeChanged(value);
                 },
               ),
             ),

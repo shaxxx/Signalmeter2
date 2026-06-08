@@ -21,11 +21,11 @@ class MainTabView extends StatefulWidget {
 
 class _MainTabViewState extends State<MainTabView>
     with SingleTickerProviderStateMixin, WidgetsBindingObserver, RouteAware {
-  PageController controller;
+  late PageController controller;
   int goToPage = -1;
   bool isAnimating = false;
-  MainTabViewModel _viewModel;
-  RouteObserver<PageRoute> _routeObserver;
+  late MainTabViewModel _viewModel;
+  late RouteObserver<PageRoute> _routeObserver;
 
   @override
   void initState() {
@@ -81,10 +81,12 @@ class _MainTabViewState extends State<MainTabView>
   void _handleTabSelection() {
     if (!isAnimating) {
       var store = StoreProvider.of<AppState>(context);
+      final page = controller.page;
+      if (page == null) return;
       var isControllerOnActiveTab =
-          store.state.tabsState.activeTab.index == controller.page.round();
+          store.state.tabsState.activeTab.index == page.round();
       if (!isControllerOnActiveTab) {
-        _viewModel.onTabSelected(TabPagesEnum.values[controller.page.round()]);
+        _viewModel.onTabSelected(TabPagesEnum.values[page.round()]);
       }
     }
   }
@@ -126,13 +128,13 @@ class _MainTabViewState extends State<MainTabView>
       },
       onInit: (store) {
         _routeObserver = store.state.globalState.routeObserver;
-        _routeObserver.subscribe(this, ModalRoute.of(context));
+        _routeObserver.subscribe(this, ModalRoute.of(context)! as PageRoute);
         store.onChange.listen(selectTab);
       },
       onInitialBuild: (vm) {
         vm.onActiveChanged(true);
       },
-      onDidChange: (vm) {
+      onDidChange: (_, vm) {
         _viewModel = vm;
         if (vm.shouldInitializeTts && !ttsInitCalled) {
           ttsInitCalled = true;
@@ -147,7 +149,7 @@ class _MainTabViewState extends State<MainTabView>
       builder: (context, viewModel) {
         return ScaffoldBackground(
           appBar: TabsAppBarView.buildAppBar(
-              Theme.of(context).primaryColor.withOpacity(0.6)),
+              Theme.of(context).primaryColor.withValues(alpha: 0.6)),
           bottomNavigationBar: viewModel.showNavigator ? TabsNavigator() : null,
           child: PageView(
             controller: controller,

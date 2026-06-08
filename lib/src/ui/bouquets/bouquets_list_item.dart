@@ -10,9 +10,9 @@ class BouquetsListItem extends StatelessWidget {
   final IBouquetItemBouquet bouquet;
 
   const BouquetsListItem({
-    Key key,
+    super.key,
     required this.bouquet,
-  })  : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -35,10 +35,10 @@ class BouquetsListItem extends StatelessWidget {
                       const Radius.circular(10.0),
                     ),
                     color: viewModel.selected
-                        ? theme.colorScheme.secondary.withOpacity(0.3)
-                        : theme.primaryColor.withOpacity(0.3),
+                        ? theme.colorScheme.secondary.withValues(alpha: 0.3)
+                        : theme.primaryColor.withValues(alpha: 0.3),
                     border:
-                        Border.all(color: theme.colorScheme.secondary.withOpacity(0.3)),
+                        Border.all(color: theme.colorScheme.secondary.withValues(alpha: 0.3)),
                   ),
                   child: Container(
                     alignment: Alignment.centerLeft,

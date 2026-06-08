@@ -89,10 +89,10 @@ class EnigmaSignalMeterApp extends StatefulWidget {
   final String title;
 
   const EnigmaSignalMeterApp({
-    Key key,
+    super.key,
     required this.store,
     required this.title,
-  }) : super(key: key);
+  });
 
   @override
   _EnigmaSignalMeterAppState createState() => _EnigmaSignalMeterAppState();

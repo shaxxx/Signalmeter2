@@ -181,10 +181,20 @@ class SignalCircularProgressViewModel {
 
   static SignalCircularProgressViewModel fromStore(
       Store<AppState> store, Messages messages) {
-    var signalResponse = store.state.signalMonitorState.responses.isNotEmpty
+    final signalResponse = store.state.signalMonitorState.responses.isNotEmpty
         ? store.state.signalMonitorState.responses.last
         : null;
     var signalView = store.state.tabsState.signalView;
+    if (signalResponse == null) {
+      return SignalCircularProgressViewModel(
+        stringValue: messages.noInformation,
+        footerValue: _getFooterValue(signalView),
+        doubleValue: 0,
+        hasdb: false,
+        hasInfo: false,
+        isBerView: signalView == SignalViewEnum.CircularBer,
+      );
+    }
     return SignalCircularProgressViewModel(
       stringValue: _getStringValue(signalResponse, signalView, messages),
       footerValue: _getFooterValue(signalView),

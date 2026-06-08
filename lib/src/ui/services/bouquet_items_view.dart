@@ -9,9 +9,7 @@ import 'bouquet_items_list_item.dart';
 import 'bouquet_items_viewmodel.dart';
 
 class BouquetItemsView extends StatefulWidget {
-  const BouquetItemsView({
-    Key key,
-  }) : super(key: key);
+  const BouquetItemsView({super.key});
 
   @override
   _BouquetItemsViewState createState() => _BouquetItemsViewState();
@@ -96,7 +94,7 @@ class _BouquetItemsViewState extends State<BouquetItemsView>
 
           index -= 1;
           return BouquetItemsListItem(
-              key: Key(viewModel.bouquetItems[index].reference),
+              key: Key(viewModel.bouquetItems[index].reference ?? ''),
               bouquetItem: viewModel.bouquetItems[index]);
         },
       ),

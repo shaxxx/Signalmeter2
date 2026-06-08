@@ -30,12 +30,12 @@ class CurrentServiceView extends StatelessWidget {
     if (serviceType == ServiceType.DVBS) {
       var satellite =
           _findSatellite(viewModel.satellites, viewModel.currentService);
-      return satellite.value;
-        }
+      if (satellite != null) return satellite.value;
+    }
     return getServiceType(viewModel.currentService, messages);
   }
 
-  static MapEntry<int, String> _findSatellite(
+  static MapEntry<int, String>? _findSatellite(
       Map<int, String> satellites, IBouquetItemService service) {
     var position = EnigmaUtils.getSatellitePosition(service);
     if (position == 0) {

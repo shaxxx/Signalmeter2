@@ -6,7 +6,7 @@ import 'package:redux/redux.dart';
 import '../../app_routes.dart';
 
 class ProfilesViewModel {
-  final Function() addProfile;
+  final Function()? addProfile;
   final ConnectionStatusEnum connectionState;
 
   ProfilesViewModel({this.addProfile, required this.connectionState});

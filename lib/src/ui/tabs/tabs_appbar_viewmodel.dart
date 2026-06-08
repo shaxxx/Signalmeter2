@@ -47,7 +47,7 @@ class TabsAppBarViewModel {
         _setItemSelectedEvent(store, item);
       },
       messages: messages,
-      profileName: store.state.profilesState.selectedProfile.name,
+      profileName: store.state.profilesState.selectedProfile?.name ?? '',
       activeTab: store.state.tabsState.activeTab,
       signalView: store.state.tabsState.signalView,
     );
@@ -82,7 +82,7 @@ class TabsAppBarViewModel {
             menuItems.add(
               MenuItem(
                 key: disableTtsMenuItemKey,
-                icon: menuIcons[disableTtsMenuItemKey],
+                icon: menuIcons[disableTtsMenuItemKey]!, // key always present in map
                 title: messages.disableTts,
               ),
             );
@@ -90,7 +90,7 @@ class TabsAppBarViewModel {
             menuItems.add(
               MenuItem(
                 key: enableTtsMenuItemKey,
-                icon: menuIcons[enableTtsMenuItemKey],
+                icon: menuIcons[enableTtsMenuItemKey]!, // key always present in map
                 title: messages.enableTts,
               ),
             );
@@ -100,7 +100,7 @@ class TabsAppBarViewModel {
           menuItems.add(
             MenuItem(
               key: defaultLookMenuItemKey,
-              icon: menuIcons[defaultLookMenuItemKey],
+              icon: menuIcons[defaultLookMenuItemKey]!, // key always present in map
               title: messages.defaultLook,
             ),
           );
@@ -108,7 +108,7 @@ class TabsAppBarViewModel {
           menuItems.add(
             MenuItem(
               key: alternativeLookMenuItemKey,
-              icon: menuIcons[alternativeLookMenuItemKey],
+              icon: menuIcons[alternativeLookMenuItemKey]!, // key always present in map
               title: messages.alternativeLook,
             ),
           );
@@ -127,7 +127,7 @@ class TabsAppBarViewModel {
     } else if (item.key == defaultLookMenuItemKey) {
       store.dispatch(ChangeSignalView(SignalViewEnum.Linear));
     } else if (item.key == alternativeLookMenuItemKey) {
-      if (store.state.profilesState.selectedProfile.enigma ==
+      if (store.state.profilesState.selectedProfile?.enigma ==
               EnigmaType.enigma2 &&
           store.state.globalState.applicationSettings.dbIsPrimaryLevel) {
         store.dispatch(ChangeSignalView(SignalViewEnum.CircularDb));

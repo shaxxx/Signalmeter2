@@ -22,7 +22,7 @@ class ProfileEditView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var theme = Theme.of(context);
-    var profile = ModalRoute.of(context).settings.arguments;
+    var profile = ModalRoute.of(context)?.settings.arguments as IProfile?;
     return ScaffoldBackground(
       backgroundColor: theme.primaryColor.withOpacity(0.3),
       appBar: AppBar(
@@ -85,10 +85,12 @@ class ProfileEditView extends StatelessWidget {
     return Container(
       padding: EdgeInsets.only(top: 20, right: 20, left: 20),
       alignment: Alignment.center,
-      child: RaisedButton(
-        shape:
-            RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.0)),
-        color: theme.primaryColor.withOpacity(0.6),
+      child: ElevatedButton(
+        style: ElevatedButton.styleFrom(
+          shape:
+              RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.0)),
+          backgroundColor: theme.primaryColor.withValues(alpha: 0.6),
+        ),
         onPressed: () async {
           var formValid = await profileWidget.validateForm();
           if (formValid) {

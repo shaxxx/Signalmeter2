@@ -7,6 +7,7 @@ import 'package:enigma_signal_meter/src/redux/app/app_state.dart';
 import 'package:enigma_signal_meter/src/redux/messages/info_messages_events.dart';
 import 'package:enigma_signal_meter/src/ui/common/platform_adaptive_progress_indicator.dart';
 import 'package:enigma_signal_meter/src/utils/enigma_utils.dart';
+import 'package:enigma_web/enigma_web.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_redux/flutter_redux.dart';

@@ -2,18 +2,18 @@ import 'package:enigma_signal_meter/src/utils/enigma_utils.dart';
 import 'package:enigma_web/enigma_web.dart';
 
 class ProfileEditModel {
-  String address;
+  String address = '';
   EnigmaType enigma = EnigmaType.enigma2;
-  String httpPort;
-  String name;
-  String password;
+  String httpPort = '';
+  String name = '';
+  String password = '';
   bool useSsl = false;
-  String username;
-  String streamingPort;
+  String username = '';
+  String streamingPort = '';
   bool transcoding = false;
-  String transcodingPort;
+  String transcodingPort = '';
   bool streaming = false;
-  String id;
+  String id = '';
 
   Profile toProfile() {
     return Profile(

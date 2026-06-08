@@ -19,7 +19,7 @@ class BouquetItemsViewModel {
   final LoadingStatus status;
   final List<IBouquetItem> bouquetItems;
   final Function refreshBouquetItems;
-  final IBouquetItemBouquet bouquet;
+  final IBouquetItemBouquet? bouquet;
   final String searchTerm;
   final void Function(String) onSearchTermChanged;
 
@@ -31,15 +31,18 @@ class BouquetItemsViewModel {
     return BouquetItemsViewModel(
       status: store.state.bouquetItemsState.status,
       bouquet: store.state.bouquetsState.selectedBouquet,
-      bouquetItems: store.state.bouquetItemsState
-          .bouquetItems(store.state.bouquetsState.selectedBouquet),
+      bouquetItems: store.state.bouquetsState.selectedBouquet != null
+          ? store.state.bouquetItemsState
+                  .bouquetItems(store.state.bouquetsState.selectedBouquet!) ??
+              []
+          : [],
       refreshBouquetItems: () => store.dispatch(
         GetBouquetItemsEvent(
-          profile: store.state.profilesState.selectedProfile,
-          bouquet: store.state.bouquetsState.selectedBouquet,
+          profile: store.state.profilesState.selectedProfile!,
+          bouquet: store.state.bouquetsState.selectedBouquet!,
         ),
       ),
-      searchTerm: store.state.bouquetItemsState.searchTerm,
+      searchTerm: store.state.bouquetItemsState.searchTerm ?? '',
       onSearchTermChanged: (searchTerm) => store.dispatch(
         BouquetItemsSearchTermChanged(searchTerm),
       ),

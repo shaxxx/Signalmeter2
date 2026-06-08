@@ -27,7 +27,9 @@ class TranscodingRow extends StatelessWidget {
             Checkbox(
               value: ProfileWidget.of(context).profile.transcoding,
               onChanged: (value) {
-                ProfileWidget.of(context).setTranscoding(value);
+                if (value != null) {
+                  ProfileWidget.of(context).setTranscoding(value);
+                }
               },
             )
           ],

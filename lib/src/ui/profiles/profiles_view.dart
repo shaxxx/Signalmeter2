@@ -48,7 +48,7 @@ class ProfilesView extends StatelessWidget {
                 movingAnimationDuration: Duration(milliseconds: 1500),
                 overlayColor: Colors.blueGrey,
                 overlayOpacity: 0,
-                onTargetClick: () => viewModel.addProfile(),
+                onTargetClick: () => viewModel.addProfile?.call(),
                 disposeOnTap: true,
                 child: Padding(
                   padding: EdgeInsets.all(20),
@@ -63,7 +63,7 @@ class ProfilesView extends StatelessWidget {
                           margin: EdgeInsets.symmetric(vertical: 15),
                           child: TextButton(
                             onPressed: () async {
-                              await viewModel.addProfile();
+                              await viewModel.addProfile?.call();
                             },
                             child: Text(
                               MessageProvider.of(context)

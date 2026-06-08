@@ -10,9 +10,7 @@ import 'profile_list_item.dart';
 import 'profiles_list_viewmodel.dart';
 
 class ProfilesListView extends StatefulWidget {
-  const ProfilesListView({
-    Key key,
-  }) : super(key: key);
+  const ProfilesListView({super.key});
 
   @override
   _ProfilesListViewState createState() => _ProfilesListViewState();
@@ -47,7 +45,7 @@ class _ProfilesListViewState extends State<ProfilesListView>
             return ProfilesListViewModel.fromStore(store);
           },
           onInitialBuild: (viewModel) => _syncListItems(viewModel.profiles),
-          onDidChange: (viewModel) => _syncListItems(viewModel.profiles),
+          onDidChange: (_, viewModel) => _syncListItems(viewModel.profiles),
           builder: (context, viewModel) {
             return AnimatedList(
               key: animatedListKey,
@@ -87,7 +85,7 @@ class _ProfilesListViewState extends State<ProfilesListView>
           profiles.where((p) => p.id == insertedProfiles[i].id).toList();
       if (existingProfile.isEmpty) {
         setState(() {
-          animatedListKey.currentState.removeItem(
+          animatedListKey.currentState!.removeItem(
               i, (context, animation) => SizedBox.shrink(),
               duration: Duration(microseconds: 1));
           insertedProfiles.removeAt(i);
@@ -95,12 +93,12 @@ class _ProfilesListViewState extends State<ProfilesListView>
       } else if (existingProfile.single.hashCode !=
           insertedProfiles[i].hashCode) {
         setState(() {
-          animatedListKey.currentState.removeItem(
+          animatedListKey.currentState!.removeItem(
               i, (context, animation) => SizedBox.shrink(),
               duration: Duration(microseconds: 1));
           insertedProfiles.removeAt(i);
           insertedProfiles.insert(i, existingProfile.single);
-          animatedListKey.currentState
+          animatedListKey.currentState!
               .insertItem(i, duration: Duration(microseconds: 1));
         });
       }
@@ -121,7 +119,7 @@ class _ProfilesListViewState extends State<ProfilesListView>
             setState(() {
               insertedProfiles
                   .add(profiles.singleWhere((p) => p.id == newProfiles[i]));
-              animatedListKey.currentState
+              animatedListKey.currentState!
                   .insertItem(insertedProfiles.length - 1);
             });
           }

@@ -56,7 +56,7 @@ class _HomeViewState extends State<_HomeView> with RouteAware {
         .state
         .globalState
         .routeObserver
-        .subscribe(this, ModalRoute.of(context));
+        .subscribe(this, ModalRoute.of(context) as PageRoute);
   }
 
   @override
@@ -92,7 +92,7 @@ class _HomeViewState extends State<_HomeView> with RouteAware {
       onInitialBuild: (vm) {
         _viewModel = vm;
       },
-      onDidChange: (viewModel) async {
+      onDidChange: (previousViewModel, viewModel) async {
         _viewModel = viewModel;
         if (_viewModel.displayShowcase && !_showcaseSeen) {
           _showcaseSeen = true;
@@ -120,7 +120,7 @@ class _HomeViewState extends State<_HomeView> with RouteAware {
                   movingAnimationDuration: Duration(milliseconds: 1500),
                   overlayColor: Colors.blueGrey,
                   overlayOpacity: 0,
-                  onTargetClick: () => viewModel.addProfile(),
+                  onTargetClick: () => viewModel.addProfile?.call(),
                   disposeOnTap: true,
                   child: DisappearingFab(
                     child: FloatingActionButton(

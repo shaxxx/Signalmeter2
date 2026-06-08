@@ -2,13 +2,14 @@ import 'package:enigma_signal_meter/src/redux/app/app_state.dart';
 import 'package:enigma_signal_meter/src/redux/enigma/enigma_command_events.dart';
 import 'package:enigma_signal_meter/src/redux/services/bouquet_items_events.dart';
 import 'package:enigma_web/enigma_web.dart';
+import 'package:flutter/foundation.dart';
 import 'package:redux/redux.dart';
 
 class BouquetItemsListItemViewModel {
   final bool selected;
-  final Function onTap;
+  final VoidCallback onTap;
   final IBouquetItem bouquetItem;
-  String get name => bouquetItem.name;
+  String get name => bouquetItem.name ?? '';
   bool get isMarker => bouquetItem is IBouquetItemMarker;
 
   const BouquetItemsListItemViewModel({
@@ -33,7 +34,7 @@ class BouquetItemsListItemViewModel {
           store.dispatch(
             ChangeServiceEvent(
               service: bouquetItem,
-              profile: store.state.profilesState.selectedProfile,
+              profile: store.state.profilesState.selectedProfile!,
             ),
           );
         }

@@ -20,11 +20,11 @@ class ToggleConnectionViewModel {
         toggleStatus: () async {
           if (store.state.connectionState != ConnectionStatusEnum.connected) {
             store.dispatch(WakeUpEvent(
-              profile: store.state.profilesState.selectedProfile,
+              profile: store.state.profilesState.selectedProfile!, // active profile guaranteed in this flow
             ));
           } else {
             store.dispatch(SentToSleepEvent(
-              profile: store.state.profilesState.selectedProfile,
+              profile: store.state.profilesState.selectedProfile!, // active profile guaranteed in this flow
             ));
           }
         });

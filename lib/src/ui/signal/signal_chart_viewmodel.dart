@@ -76,7 +76,7 @@ class SignalChartViewModel {
       messages: messages,
       dbIsPrimaryLevel:
           store.state.globalState.applicationSettings.dbIsPrimaryLevel,
-      profile: store.state.profilesState.selectedProfile,
+      profile: store.state.profilesState.selectedProfile!,
     );
   }
 

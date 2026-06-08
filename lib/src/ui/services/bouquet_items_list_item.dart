@@ -10,9 +10,9 @@ class BouquetItemsListItem extends StatelessWidget {
   final IBouquetItem bouquetItem;
 
   const BouquetItemsListItem({
-    Key key,
+    super.key,
     required this.bouquetItem,
-  })  : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

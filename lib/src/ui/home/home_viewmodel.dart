@@ -23,19 +23,19 @@ class HomeViewModel implements MessageDisplayerInterface {
   final List<InfoMessageEvent> infos;
   @override
   final List<WarningMessageEvent> warnings;
-  final Function() addProfile;
+  final Function()? addProfile;
   final ConnectionStatusEnum connectionState;
   final Function() openAbout;
   final bool displayShowcase;
 
   HomeViewModel({
     required this.onPop,
-    this.errors,
-    this.warnings,
-    this.infos,
-    this.messageShown,
+    required this.errors,
+    required this.warnings,
+    required this.infos,
+    required this.messageShown,
     this.addProfile,
-    this.openAbout,
+    required this.openAbout,
     required this.connectionState,
     required this.displayShowcase,
   });

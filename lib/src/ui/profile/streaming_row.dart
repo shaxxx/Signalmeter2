@@ -28,7 +28,9 @@ class StreamingRow extends StatelessWidget {
             Checkbox(
               value: ProfileWidget.of(context).profile.streaming,
               onChanged: (value) {
-                ProfileWidget.of(context).setStreaming(value);
+                if (value != null) {
+                  ProfileWidget.of(context).setStreaming(value);
+                }
               },
             )
           ],

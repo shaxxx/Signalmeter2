@@ -19,7 +19,7 @@ class SignalViewModel {
     Store<AppState> store,
   ) {
     var signalView = store.state.tabsState.signalView;
-    var useDb = (store.state.profilesState.selectedProfile.enigma ==
+    var useDb = (store.state.profilesState.selectedProfile?.enigma ==
             EnigmaType.enigma2 &&
         store.state.globalState.applicationSettings.dbIsPrimaryLevel);
 
@@ -30,7 +30,7 @@ class SignalViewModel {
         store.dispatch(ChangeSignalView(SignalViewEnum.CircularSnr));
       }
     } else if (signalView == SignalViewEnum.CircularSnr) {
-      if (store.state.profilesState.selectedProfile.enigma ==
+      if (store.state.profilesState.selectedProfile?.enigma ==
               EnigmaType.enigma2 &&
           !useDb) {
         store.dispatch(ChangeSignalView(SignalViewEnum.CircularDb));

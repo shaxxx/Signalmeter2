@@ -94,13 +94,25 @@ class SignalProgressbarViewModel {
 
   static SignalProgressbarViewModel fromStore(
       Store<AppState> store, Messages messages) {
+    final responses = store.state.signalMonitorState.responses;
+    final dbIsPrimaryLevel =
+        store.state.globalState.applicationSettings.dbIsPrimaryLevel;
+    if (responses.isEmpty) {
+      return _empty(messages, dbIsPrimaryLevel);
+    }
     return SignalProgressbarViewModel(
-      signalResponse: store.state.signalMonitorState.responses.isNotEmpty
-          ? store.state.signalMonitorState.responses.last
-          : null,
+      signalResponse: responses.last,
       messages: messages,
-      dbIsPrimaryLevel:
-          store.state.globalState.applicationSettings.dbIsPrimaryLevel,
+      dbIsPrimaryLevel: dbIsPrimaryLevel,
+    );
+  }
+
+  static SignalProgressbarViewModel _empty(
+      Messages messages, bool dbIsPrimaryLevel) {
+    return SignalProgressbarViewModel(
+      signalResponse: SignalResponse(E2Signal(), Duration.zero),
+      messages: messages,
+      dbIsPrimaryLevel: dbIsPrimaryLevel,
     );
   }
 

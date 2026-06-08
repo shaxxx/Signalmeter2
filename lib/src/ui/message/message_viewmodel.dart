@@ -27,7 +27,7 @@ class MessageViewModel {
         onSendMessage: (message, timeout, messageType) {
           store.dispatch(
             SendMessageEvent(
-              profile: store.state.profilesState.selectedProfile,
+              profile: store.state.profilesState.selectedProfile!,
               message: message,
               timeout: timeout,
               messageType: messageType,

@@ -20,7 +20,7 @@ class CurrentServiceViewModel {
     Messages messages,
   ) {
     return CurrentServiceViewModel(
-        currentService: store.state.bouquetItemsState.selectedService,
+        currentService: store.state.bouquetItemsState.selectedService!,
         messages: messages,
         satellites: store.state.globalState.satellites);
   }

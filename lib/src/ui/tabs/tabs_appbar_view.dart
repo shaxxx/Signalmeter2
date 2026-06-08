@@ -124,7 +124,7 @@ class TabsAppBarView {
                       .questionRestartGui(viewmodel.profileName),
                 ),
                 actions: <Widget>[
-                  FlatButton(
+                  TextButton(
                     onPressed: () {
                       viewmodel.onSelected(menuItem);
                       Navigator.pop(context, true);

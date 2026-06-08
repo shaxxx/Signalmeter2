@@ -30,7 +30,9 @@ class UseSslRow extends StatelessWidget {
                   Checkbox(
                     value: ProfileWidget.of(context).profile.useSsl,
                     onChanged: (value) {
-                      ProfileWidget.of(context).setUseSsl(value);
+                      if (value != null) {
+                        ProfileWidget.of(context).setUseSsl(value);
+                      }
                     },
                   )
                 ],

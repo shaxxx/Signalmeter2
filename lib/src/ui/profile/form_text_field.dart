@@ -9,18 +9,18 @@ class FormTextField extends StatelessWidget {
   final bool isPassword;
   final bool isNumeric;
   final String labelText;
-  final String Function(String) validator;
-  final int maxLength;
+  final FormFieldValidator<String>? validator;
+  final int? maxLength;
   const FormTextField({
-    Key key,
+    super.key,
     required this.controller,
     required this.hintText,
     required this.labelText,
-    required this.validator,
+    this.validator,
     this.maxLength,
     this.isPassword = false,
     this.isNumeric = false,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -34,7 +34,7 @@ class FormTextField extends StatelessWidget {
       validator: validator,
       maxLength: maxLength,
       inputFormatters: isNumeric
-          ? <TextInputFormatter>[WhitelistingTextInputFormatter.digitsOnly]
+          ? <TextInputFormatter>[FilteringTextInputFormatter.digitsOnly]
           : null,
       decoration: InputDecoration(
         hintText: hintText,

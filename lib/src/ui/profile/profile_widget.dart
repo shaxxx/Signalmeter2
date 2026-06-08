@@ -8,10 +8,10 @@ import 'package:flutter/material.dart';
 class _InheritedProfileWidget extends InheritedWidget {
   final ProfileWidgetState data;
   _InheritedProfileWidget({
-    Key key,
+    super.key,
     required this.data,
-    required Widget child,
-  }) : super(key: key, child: child);
+    required super.child,
+  });
 
   @override
   bool updateShouldNotify(_InheritedProfileWidget old) => true;
@@ -19,15 +19,15 @@ class _InheritedProfileWidget extends InheritedWidget {
 
 class ProfileWidget extends StatefulWidget {
   final Widget child;
-  final IProfile profile;
+  final IProfile? profile;
   final ProfileEditViewModel viewModel;
 
   ProfileWidget(
-      {required this.child, required this.profile, required this.viewModel});
+      {required this.child, this.profile, required this.viewModel});
 
   static ProfileWidgetState of(BuildContext context) {
     return (context
-            .dependOnInheritedWidgetOfExactType<_InheritedProfileWidget>())
+            .dependOnInheritedWidgetOfExactType<_InheritedProfileWidget>())!
         .data;
   }
 
@@ -43,8 +43,11 @@ class ProfileWidgetState extends State<ProfileWidget> {
   @override
   void initState() {
     super.initState();
-    profile = ProfileEditModel.fromProfile(widget.profile);
-      _setTextFieldValues();
+    final existing = widget.profile;
+    if (existing != null) {
+      profile = ProfileEditModel.fromProfile(existing as Profile);
+    }
+    _setTextFieldValues();
     _setListeners();
   }
 
@@ -74,13 +77,13 @@ class ProfileWidgetState extends State<ProfileWidget> {
   final streamingPortController = TextEditingController();
   final httpPortController = TextEditingController();
 
-  FormFieldValidator nameValidator;
-  FormFieldValidator addressValidator;
-  FormFieldValidator usernameValidator;
-  FormFieldValidator passwordValidator;
-  FormFieldValidator transcodingPortValidator;
-  FormFieldValidator streamingPortValidator;
-  FormFieldValidator httpPortValidator;
+  late FormFieldValidator<String?> nameValidator;
+  late FormFieldValidator<String?> addressValidator;
+  late FormFieldValidator<String?> usernameValidator;
+  late FormFieldValidator<String?> passwordValidator;
+  late FormFieldValidator<String?> transcodingPortValidator;
+  late FormFieldValidator<String?> streamingPortValidator;
+  late FormFieldValidator<String?> httpPortValidator;
 
   void _setTextFieldValues() {
     nameController.value = nameController.value.copyWith(text: profile.name);
@@ -110,7 +113,7 @@ class ProfileWidgetState extends State<ProfileWidget> {
                   text,
                 ),
                 actions: <Widget>[
-                  FlatButton(
+                  TextButton(
                     onPressed: () {
                       Navigator.pop(context, true);
                     },
@@ -172,7 +175,7 @@ class ProfileWidgetState extends State<ProfileWidget> {
   }
 
   Future<bool> validateForm() async {
-    if (_formKey.currentState.validate()) {
+    if (_formKey.currentState!.validate()) {
       widget.viewModel.displayCheckingPortsInfoMessage();
       if (!await _checkUsernamePassword()) {
         return false;
@@ -234,7 +237,7 @@ class ProfileWidgetState extends State<ProfileWidget> {
     };
 
     httpPortValidator = (value) {
-      if (!NetworkUtils.isStringValidPort(value)) {
+      if (!NetworkUtils.isStringValidPort(value ?? '')) {
         return MessageProvider.of(context).errInvalidHttpPort;
       }
       return null;
@@ -253,7 +256,7 @@ class ProfileWidgetState extends State<ProfileWidget> {
       if (!profile.transcoding) {
         return null;
       }
-      if (!NetworkUtils.isStringValidPort(value)) {
+      if (!NetworkUtils.isStringValidPort(value ?? '')) {
         return MessageProvider.of(context).errInvalidTranscodingPort;
       }
       return null;
@@ -263,7 +266,7 @@ class ProfileWidgetState extends State<ProfileWidget> {
       if (!profile.streaming || profile.enigma == EnigmaType.enigma1) {
         return null;
       }
-      if (!NetworkUtils.isStringValidPort(value)) {
+      if (!NetworkUtils.isStringValidPort(value ?? '')) {
         return MessageProvider.of(context).errInvalidStreamingPort;
       }
       return null;
@@ -310,7 +313,9 @@ class ProfileWidgetState extends State<ProfileWidget> {
       node: focusNode,
       child: Form(
         key: _formKey,
-        autovalidate: widget.profile != null,
+        autovalidateMode: widget.profile != null
+            ? AutovalidateMode.always
+            : AutovalidateMode.disabled,
         child: _InheritedProfileWidget(
           data: this,
           child: widget.child,

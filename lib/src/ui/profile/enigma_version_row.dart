@@ -20,11 +20,13 @@ class EnigmaVersionRow extends StatelessWidget {
               child: Row(
                 mainAxisSize: MainAxisSize.max,
                 children: <Widget>[
-                  Radio(
+                  Radio<EnigmaType>(
                     groupValue: ProfileWidget.of(context).profile.enigma,
                     value: EnigmaType.enigma1,
                     onChanged: (value) {
-                      ProfileWidget.of(context).setEnigmaType(value);
+                      if (value != null) {
+                        ProfileWidget.of(context).setEnigmaType(value);
+                      }
                     },
                   ),
                   Text(
@@ -32,11 +34,13 @@ class EnigmaVersionRow extends StatelessWidget {
                     textAlign: TextAlign.left,
                     style: TextStyle(color: theme.hintColor),
                   ),
-                  Radio(
+                  Radio<EnigmaType>(
                     groupValue: ProfileWidget.of(context).profile.enigma,
                     value: EnigmaType.enigma2,
                     onChanged: (value) {
-                      ProfileWidget.of(context).setEnigmaType(value);
+                      if (value != null) {
+                        ProfileWidget.of(context).setEnigmaType(value);
+                      }
                     },
                   ),
                   Text(
