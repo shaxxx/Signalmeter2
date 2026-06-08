@@ -214,13 +214,14 @@ class _ProfileListItemState extends State<ProfileListItem>
   Widget _connectButton(ProfileListItemViewModel viewModel) {
     if (viewModel.connectButtonEnabled) {
       return CustomFlatButton(
-        onPressed: viewModel.onConnect!,
+        // May be null while connecting; null disables the button (no crash).
+        onPressed: viewModel.onConnect,
         child: Text(
           MessageProvider.of(context).actionConnect.toUpperCase(),
           style: TextStyle(
             fontWeight: FontWeight.w500,
           ),
-        ), // non-null when connectButtonEnabled
+        ),
       );
     }
     return SizedBox.shrink();
@@ -229,13 +230,14 @@ class _ProfileListItemState extends State<ProfileListItem>
   Widget _disconnectButton(ProfileListItemViewModel viewModel) {
     if (viewModel.disconnectButtonEnabled) {
       return CustomFlatButton(
-        onPressed: viewModel.onDisconnect!,
+        // May be null while disconnecting; null disables the button (no crash).
+        onPressed: viewModel.onDisconnect,
         child: Text(
           MessageProvider.of(context).actionDisconnect.toUpperCase(),
           style: TextStyle(
             fontWeight: FontWeight.w500,
           ),
-        ), // non-null when disconnectButtonEnabled
+        ),
       );
     }
     return SizedBox.shrink();

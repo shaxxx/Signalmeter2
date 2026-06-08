@@ -2,12 +2,16 @@ import 'package:flutter/material.dart';
 
 class CustomFlatButton extends StatelessWidget {
   final Widget child;
-  final VoidCallback onPressed;
+  // Nullable: a null callback renders the button disabled (InkWell.onTap null),
+  // matching the original pre-null-safety behavior. Required-non-null forced
+  // call sites to use `!`, which crashed in transient states (e.g. connecting,
+  // where the connect button is shown but its callback is null).
+  final VoidCallback? onPressed;
 
   const CustomFlatButton({
     super.key,
     required this.child,
-    required this.onPressed,
+    this.onPressed,
   });
 
   @override
