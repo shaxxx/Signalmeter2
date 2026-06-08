@@ -284,13 +284,23 @@ class _BackdropState extends State<Backdrop>
               ),
             ),
             Expanded(
-              child: Visibility(
-                visible: _controller.status != AnimationStatus.completed,
-                maintainState: true,
-                child: Opacity(
-                  opacity: (_controller.value * -1) + 1,
-                  child: widget.backLayer,
-                ),
+              // Drive the back layer off the controller so its visibility and
+              // opacity track the open/close animation. Without this, _buildStack
+              // does not rebuild as the front layer animates and the back layer
+              // (settings) stays frozen at its initial opacity 0 / invisible.
+              child: AnimatedBuilder(
+                animation: _controller,
+                child: widget.backLayer,
+                builder: (context, child) {
+                  return Visibility(
+                    visible: _controller.status != AnimationStatus.completed,
+                    maintainState: true,
+                    child: Opacity(
+                      opacity: (_controller.value * -1) + 1,
+                      child: child,
+                    ),
+                  );
+                },
               ),
             ),
           ],
