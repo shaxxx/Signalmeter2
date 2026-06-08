@@ -2,7 +2,6 @@ import 'package:enigma_signal_meter/src/model/application_settings.dart';
 import 'package:enigma_signal_meter/src/redux/app/app_state.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_redux_navigation/flutter_redux_navigation.dart';
-import 'package:meta/meta.dart';
 import 'package:redux/redux.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -17,7 +16,7 @@ class SettingsViewModel {
     @required this.applicationSettings,
     @required this.onAbout,
     @required this.onSupport,
-  }) : assert(applicationSettings != null);
+  });
 
   static SettingsViewModel fromStore(Store<AppState> store) {
     return SettingsViewModel(

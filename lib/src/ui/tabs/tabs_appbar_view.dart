@@ -2,7 +2,6 @@ import 'package:enigma_signal_meter/src/constants.dart';
 import 'package:enigma_signal_meter/src/model/menu_item.dart';
 import 'package:enigma_signal_meter/src/redux/app/app_state.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 
 import '../../message_provider.dart';
@@ -42,7 +41,7 @@ class TabsAppBarView {
               store, MessageProvider.of(context));
         },
         builder: (context, viewModel) {
-          if (viewModel.menuItems == null || viewModel.menuItems.isEmpty) {
+          if (viewModel.menuItems.isEmpty) {
             return SizedBox.shrink();
           }
           var actions = _visibleActions(viewModel);

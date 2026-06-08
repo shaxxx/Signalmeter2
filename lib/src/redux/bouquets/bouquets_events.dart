@@ -9,12 +9,11 @@ class BouquetSelectedEvent {
   BouquetSelectedEvent({
     @required this.bouquet,
     @required this.switchToServicesTab,
-  })  : assert(bouquet != null),
-        assert(switchToServicesTab != null);
+  });
 }
 
 @immutable
 class BouquetsStatusChangedEvent {
   final LoadingStatus status;
-  BouquetsStatusChangedEvent(this.status) : assert(status != null);
+  BouquetsStatusChangedEvent(this.status);
 }

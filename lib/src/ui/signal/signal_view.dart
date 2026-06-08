@@ -6,7 +6,6 @@ import 'package:enigma_signal_meter/src/ui/signal/signal_circular_progress_view.
 import 'package:enigma_signal_meter/src/ui/signal/signal_progressbar_view.dart';
 import 'package:enigma_signal_meter/src/ui/signal/signal_viewmodel.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:enigma_signal_meter/src/redux/app/app_state.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 

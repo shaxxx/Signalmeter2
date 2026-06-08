@@ -11,21 +11,21 @@ const String PrivateIpAddressRegex =
 
 class NetworkUtils {
   static bool isValidAddress(String address) {
-    if (address == null || address.isEmpty) {
+    if (address.isEmpty) {
       return false;
     }
     return RegExp(ValidHostnameRegex).hasMatch(address);
   }
 
   static bool isLocalIp(String address) {
-    if (address == null || address.isEmpty) {
+    if (address.isEmpty) {
       return false;
     }
     return RegExp(PrivateIpAddressRegex).hasMatch(address);
   }
 
   static bool isStringValidPort(String port) {
-    if (port == null || port.length < 2 || port.length > 5) {
+    if (port.length < 2 || port.length > 5) {
       return false;
     }
     var intValue = int.tryParse(port);

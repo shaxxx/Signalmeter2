@@ -1,4 +1,3 @@
-import 'dart:ui';
 
 import 'package:enigma_signal_meter/src/model/enums.dart';
 import 'package:enigma_signal_meter/src/redux/app/app_state.dart';
@@ -10,7 +9,6 @@ import 'package:enigma_signal_meter/src/ui/signal/signal_view.dart';
 import 'package:enigma_signal_meter/src/ui/tabs/tabs_navigator.dart';
 import 'package:enigma_signal_meter/src/utils/tts_utils.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 
 import 'main_tab_viewmodel.dart';
@@ -44,7 +42,7 @@ class _MainTabViewState extends State<MainTabView>
 
   @override
   void dispose() {
-    _viewModel?.onActiveChanged(false);
+    _viewModel.onActiveChanged(false);
     WidgetsBinding.instance.removeObserver(this);
     _routeObserver.unsubscribe(this);
     controller.dispose();
@@ -53,45 +51,34 @@ class _MainTabViewState extends State<MainTabView>
 
   @override
   void didChangeAppLifecycleState(AppLifecycleState state) {
-    if (_viewModel != null) {
-      _viewModel.onActiveChanged(state == AppLifecycleState.resumed);
+    _viewModel.onActiveChanged(state == AppLifecycleState.resumed);
     }
-  }
 
   // Called when the top route has been popped off, and the current route shows up.
   @override
   void didPopNext() {
-    if (_viewModel != null) {
-      _viewModel.onActiveChanged(true);
+    _viewModel.onActiveChanged(true);
     }
-  }
 
   // Called when the current route has been pushed.
   @override
   void didPush() {
-    if (_viewModel != null) {
-      _viewModel.onActiveChanged(true);
+    _viewModel.onActiveChanged(true);
     }
-  }
 
   // Called when the current route has been popped off.
   @override
   void didPop() {
-    if (_viewModel != null) {
-      _viewModel.onActiveChanged(false);
+    _viewModel.onActiveChanged(false);
     }
-  }
 
   // Called when a new route has been pushed, and the current route is no longer visible.
   @override
   void didPushNext() {
-    if (_viewModel != null) {
-      _viewModel.onActiveChanged(false);
+    _viewModel.onActiveChanged(false);
     }
-  }
 
   void _handleTabSelection() {
-    if (_viewModel == null) return;
     if (!isAnimating) {
       var store = StoreProvider.of<AppState>(context);
       var isControllerOnActiveTab =
@@ -111,7 +98,7 @@ class _MainTabViewState extends State<MainTabView>
 
   Future _animateToPage() async {
     // ignore: INVALID_USE_OF_PROTECTED_MEMBER
-    if (controller.positions == null || controller.positions.isEmpty) {
+    if (controller.positions.isEmpty) {
       return;
     }
     //uncoment to have pageview animate to page

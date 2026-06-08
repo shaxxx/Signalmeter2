@@ -15,8 +15,7 @@ class BouquetItemsState {
     @required this.selectedService,
     @required this.cachedBouquetItems,
     @required this.searchTerm,
-  })  : assert(status != null),
-        assert(cachedBouquetItems != null);
+  });
 
   static BouquetItemsState initial() {
     return BouquetItemsState(
@@ -28,7 +27,7 @@ class BouquetItemsState {
   }
 
   List<IBouquetItem> bouquetItems(IBouquetItemBouquet bouquet) {
-    if (searchTerm == null || searchTerm.trim().isEmpty) {
+    if (searchTerm.trim().isEmpty) {
       return cachedBouquetItems[bouquet];
     }
     if (cachedBouquetItems[bouquet] == null) {

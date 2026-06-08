@@ -13,10 +13,7 @@ class TabState {
     @required this.tabPagesActive,
     @required this.signalChartFullScreenActive,
     @required this.signalView,
-  })  : assert(activeTab != null),
-        assert(signalView != null),
-        assert(tabPagesActive != null),
-        assert(signalChartFullScreenActive != null);
+  });
 
   static TabState initial() {
     return TabState(

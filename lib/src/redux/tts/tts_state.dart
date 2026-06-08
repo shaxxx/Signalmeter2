@@ -14,9 +14,7 @@ class TtsState {
     @required this.response,
     @required this.ttsEnabled,
     @required this.ttsInitializationStatus,
-  })  : assert(status != null),
-        assert(ttsEnabled != null),
-        assert(ttsInitializationStatus != null);
+  });
 
   static TtsState initial() {
     return TtsState(

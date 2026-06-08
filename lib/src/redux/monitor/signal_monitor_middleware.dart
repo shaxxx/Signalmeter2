@@ -73,7 +73,7 @@ class SignalMonitorMiddleware extends MiddlewareClass<AppState> {
         store.dispatch(ChangeSignalMonitorStatusEvent(MonitorStatus.running));
       }
     } else if (action is ChangeSignalMonitorStatusEvent) {
-      await _operation?.cancel();
+      await _operation.cancel();
       _status = action.status;
       _requester = WebRequester(
         Logger.root,

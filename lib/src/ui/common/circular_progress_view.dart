@@ -25,12 +25,7 @@ class CircularProgressView extends StatelessWidget {
       Colors.green,
     ],
     this.stops = const [0.2, 0.3, 0.5, 0.75],
-  })  : assert(stringValue != null),
-        assert(doubleValue != null),
-        assert(footerString != null),
-        assert(screenSize != null),
-        assert(screenSize != null),
-        super(key: key);
+  })  : super(key: key);
 
   @override
   Widget build(BuildContext context) {

@@ -7,7 +7,7 @@ abstract class EnigmaCommandEvent {
   DateTime startTime;
   EnigmaCommandEvent({
     @required this.profile,
-  }) : assert(profile != null) {
+  }) {
     startTime = DateTime.now();
   }
 }
@@ -27,10 +27,7 @@ abstract class EnigmaCommandErrorEvent {
   EnigmaCommandErrorEvent({
     @required this.error,
     @required this.profile,
-  })  : assert(error != null),
-        assert(
-          profile != null,
-        );
+  });
 }
 
 class GetCurrentServiceEvent extends EnigmaCommandEvent {
@@ -82,8 +79,7 @@ class GetSignalLevelSuccessEvent extends EnigmaCommandSuccessEvent {
   GetSignalLevelSuccessEvent({
     @required Duration responseDuration,
     @required this.response,
-  })  : assert(response != null),
-        super(responseDuration: responseDuration);
+  })  : super(responseDuration: responseDuration);
 }
 
 class ChangeServiceEvent extends EnigmaCommandEvent {
@@ -123,9 +119,7 @@ class GetBouquetItemsEvent extends EnigmaCommandEvent {
   GetBouquetItemsEvent({
     @required this.profile,
     @required this.bouquet,
-  })  : assert(bouquet != null),
-        assert(profile != null),
-        super(profile: profile);
+  })  : super(profile: profile);
 }
 
 @immutable
@@ -134,8 +128,7 @@ class GetBouquetItemsErrorEvent extends EnigmaCommandErrorEvent {
     @required IBouquetItemBouquet bouquet,
     @required EnigmaWebException error,
     @required IProfile profile,
-  })  : assert(bouquet != null),
-        super(
+  })  : super(
           error: error,
           profile: profile,
         );
@@ -149,9 +142,7 @@ class GetBouquetItemsSuccessEvent extends EnigmaCommandSuccessEvent {
     @required this.bouquet,
     @required this.bouquetItems,
     @required Duration responseDuration,
-  })  : assert(bouquet != null),
-        assert(bouquetItems != null),
-        super(responseDuration: responseDuration);
+  })  : super(responseDuration: responseDuration);
 }
 
 class GetBouquetsEvent extends EnigmaCommandEvent {
@@ -177,8 +168,7 @@ class GetBouquetsSuccessEvent extends EnigmaCommandSuccessEvent {
   GetBouquetsSuccessEvent({
     @required this.bouquets,
     @required Duration responseDuration,
-  })  : assert(bouquets != null),
-        super(responseDuration: responseDuration);
+  })  : super(responseDuration: responseDuration);
 }
 
 class GetStreamParametersEvent extends EnigmaCommandEvent {
@@ -186,9 +176,7 @@ class GetStreamParametersEvent extends EnigmaCommandEvent {
   GetStreamParametersEvent({
     @required IProfile profile,
     @required this.service,
-  })  : assert(profile != null),
-        assert(service != null),
-        super(profile: profile);
+  })  : super(profile: profile);
 }
 
 @immutable
@@ -198,9 +186,7 @@ class GetStreamParametersErrorEvent extends EnigmaCommandErrorEvent {
     @required EnigmaWebException error,
     @required this.service,
     @required IProfile profile,
-  })  : assert(error != null),
-        assert(service != null),
-        super(
+  })  : super(
           error: error,
           profile: profile,
         );
@@ -212,8 +198,7 @@ class GetStreamParametersSuccessEvent extends EnigmaCommandSuccessEvent {
   GetStreamParametersSuccessEvent({
     @required Duration responseDuration,
     @required this.service,
-  })  : assert(service != null),
-        super(responseDuration: responseDuration);
+  })  : super(responseDuration: responseDuration);
 }
 
 class GetScreenShotOfCurrentServiceEvent extends EnigmaCommandEvent {

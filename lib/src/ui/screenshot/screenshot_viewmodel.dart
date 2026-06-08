@@ -16,9 +16,7 @@ class ScreenshotViewModel {
     @required this.response,
     @required this.profile,
     @required this.takeScreenshot,
-  })  : assert(status != null),
-        assert(profile != null),
-        assert(takeScreenshot != null);
+  });
 
   static ScreenshotViewModel fromStore(Store<AppState> store) {
     return ScreenshotViewModel(

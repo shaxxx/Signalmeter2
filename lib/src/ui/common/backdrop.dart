@@ -4,7 +4,6 @@
 
 import 'dart:math' as math;
 
-import 'package:flutter/rendering.dart';
 import 'package:flutter/material.dart';
 
 const double _kFrontHeadingHeight = 32.0; // front layer beveled rectangle
@@ -130,9 +129,7 @@ class _BackAppBar extends StatelessWidget {
     this.leading = const SizedBox(width: 56.0),
     @required this.title,
     this.trailing,
-  })  : assert(leading != null),
-        assert(title != null),
-        super(key: key);
+  })  : super(key: key);
 
   final Widget leading;
   final Widget title;
@@ -157,12 +154,11 @@ class _BackAppBar extends StatelessWidget {
               Expanded(
                 child: title,
               ),
-              if (trailing != null)
-                Container(
-                  alignment: Alignment.center,
-                  width: 56.0,
-                  child: trailing,
-                ),
+              Container(
+                alignment: Alignment.center,
+                width: 56.0,
+                child: trailing,
+              ),
             ],
           ),
         ),
@@ -328,22 +324,21 @@ class _BackdropState extends State<Backdrop>
         // top of, and at the top of, the front layer. It adds support for dragging
         // the front layer up and down and for opening and closing the front layer
         // with a tap. It may obscure part of the front layer's topmost child.
-        if (widget.frontHeading != null)
-          PositionedTransition(
-            rect: frontRelativeRect,
-            child: ExcludeSemantics(
-              child: Container(
-                alignment: Alignment.topLeft,
-                child: GestureDetector(
-                  behavior: HitTestBehavior.opaque,
-                  onTap: _toggleFrontLayer,
-                  onVerticalDragUpdate: _handleDragUpdate,
-                  onVerticalDragEnd: _handleDragEnd,
-                  child: widget.frontHeading,
-                ),
+        PositionedTransition(
+          rect: frontRelativeRect,
+          child: ExcludeSemantics(
+            child: Container(
+              alignment: Alignment.topLeft,
+              child: GestureDetector(
+                behavior: HitTestBehavior.opaque,
+                onTap: _toggleFrontLayer,
+                onVerticalDragUpdate: _handleDragUpdate,
+                onVerticalDragEnd: _handleDragEnd,
+                child: widget.frontHeading,
               ),
             ),
           ),
+        ),
       ],
     );
   }

@@ -5,7 +5,6 @@ import 'package:enigma_signal_meter/src/ui/common/title_panel_view.dart';
 import 'package:enigma_signal_meter/src/utils/enigma_utils.dart';
 import 'package:enigma_web/enigma_web.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 import '../../message_provider.dart';
 import 'current_service_viewmodel.dart';
@@ -31,10 +30,8 @@ class CurrentServiceView extends StatelessWidget {
     if (serviceType == ServiceType.DVBS) {
       var satellite =
           _findSatellite(viewModel.satellites, viewModel.currentService);
-      if (satellite != null) {
-        return satellite.value;
-      }
-    }
+      return satellite.value;
+        }
     return getServiceType(viewModel.currentService, messages);
   }
 
@@ -64,7 +61,7 @@ class CurrentServiceView extends StatelessWidget {
                 margin: EdgeInsets.only(top: 10),
                 alignment: Alignment.center,
                 child: Text(
-                  '${viewModel.currentService == null ? '' : viewModel.currentService.name}',
+                  '${viewModel.currentService.name}',
                   style: const TextStyle(fontSize: 20.0, color: Colors.white),
                   overflow: TextOverflow.ellipsis,
                 ),

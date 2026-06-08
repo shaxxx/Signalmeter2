@@ -25,7 +25,7 @@ class TtsMiddleware extends MiddlewareClass<AppState> {
               EnigmaType.enigma2 &&
           store.state.globalState.applicationSettings.dbIsPrimaryLevel) {
         var db = (action.response.signal as IE2Signal).db;
-        if (db != null && db >= 0) {
+        if (db >= 0) {
           store.dispatch(ChangeTtsStatusEvent(TtsStatus.Speaking));
           if (db == db.toInt().toDouble()) {
             await TtsUtils.speak(db.toInt().toString());
@@ -35,7 +35,7 @@ class TtsMiddleware extends MiddlewareClass<AppState> {
         }
       } else {
         var snr = action.response.signal.snr;
-        if (snr != null && snr >= 0) {
+        if (snr >= 0) {
           store.dispatch(ChangeTtsStatusEvent(TtsStatus.Speaking));
           await TtsUtils.speak(snr.toString());
         }

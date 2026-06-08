@@ -136,7 +136,7 @@ class StreamUtils {
       profile: profile,
       service: service,
     );
-    if (extraParameters == null || extraParameters.streamUrl.isEmpty) {
+    if (extraParameters.streamUrl.isEmpty) {
       return null;
     }
     return Uri.parse(extraParameters.streamUrl);

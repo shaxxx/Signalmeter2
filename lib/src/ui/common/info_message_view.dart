@@ -5,7 +5,6 @@
 import 'package:enigma_signal_meter/src/i18n/messages.dart';
 import 'package:flutter/material.dart';
 
-import 'package:meta/meta.dart';
 
 import '../../message_provider.dart';
 
@@ -66,13 +65,11 @@ class InfoMessageView extends StatelessWidget {
     final messages = MessageProvider.of(context);
     final content = _buildContent(messages);
 
-    if (onActionButtonTapped != null) {
-      content.add(_ActionButton(
-        actionButtonKey,
-        onActionButtonTapped,
-      ));
-    }
-
+    content.add(_ActionButton(
+      actionButtonKey,
+      onActionButtonTapped,
+    ));
+  
     return SingleChildScrollView(
       child: Container(
         padding: const EdgeInsets.symmetric(vertical: 16.0),

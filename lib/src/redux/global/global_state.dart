@@ -1,4 +1,3 @@
-import 'dart:ui';
 
 import 'package:enigma_signal_meter/src/model/application_settings.dart';
 import 'package:enigma_signal_meter/src/model/enums.dart';

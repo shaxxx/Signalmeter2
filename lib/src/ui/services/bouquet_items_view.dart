@@ -2,7 +2,6 @@ import 'package:enigma_signal_meter/src/model/enums.dart';
 import 'package:enigma_signal_meter/src/redux/app/app_state.dart';
 import 'package:enigma_signal_meter/src/ui/common/platform_adaptive_progress_indicator.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 
 import '../../message_provider.dart';
@@ -58,9 +57,7 @@ class _BouquetItemsViewState extends State<BouquetItemsView>
   Widget _successContent(BouquetItemsViewModel viewModel) {
     return Scrollbar(
       child: ListView.builder(
-        itemCount: viewModel.bouquetItems != null
-            ? viewModel.bouquetItems.length + 1
-            : 1,
+        itemCount: viewModel.bouquetItems.length + 1,
         itemBuilder: (BuildContext context, int index) {
           if (index == 0) {
             return Padding(

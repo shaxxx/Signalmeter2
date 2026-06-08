@@ -69,7 +69,7 @@ class ProfileListItemViewModel {
     return ProfileListItemViewModel(
       name: profile.name,
       address: _addressWithPort(profile),
-      selected: store.state.profilesState?.selectedProfile == profile,
+      selected: store.state.profilesState.selectedProfile == profile,
       connectionStatus: store.state.connectionState,
       onConnect: !_isDisconnected(store.state.connectionState)
           ? null

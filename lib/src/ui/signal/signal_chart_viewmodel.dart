@@ -29,9 +29,6 @@ class SignalChartViewModel {
   }
 
   String requestTimeString() {
-    if (responses == null) {
-      return '';
-    }
     if (responses.isEmpty) {
       return '';
     }
@@ -40,9 +37,6 @@ class SignalChartViewModel {
   }
 
   String averageTimeString() {
-    if (responses == null) {
-      return '';
-    }
     if (responses.isEmpty) {
       return '';
     }
@@ -55,9 +49,6 @@ class SignalChartViewModel {
 
   double _convertedSignal(int index) {
     var signal = responses[index].signal;
-    if (signal == null) {
-      return 0.0;
-    }
     if (signal.snr < 0) {
       return 0.0;
     }
@@ -77,9 +68,7 @@ class SignalChartViewModel {
     @required this.messages,
     @required this.dbIsPrimaryLevel,
     @required this.profile,
-  })  : assert(responses != null),
-        assert(dbIsPrimaryLevel != null),
-        assert(profile != null);
+  });
 
   static SignalChartViewModel fromStore(
       Store<AppState> store, Messages messages) {

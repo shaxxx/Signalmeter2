@@ -2,7 +2,6 @@ import 'package:enigma_signal_meter/src/model/enums.dart';
 import 'package:enigma_signal_meter/src/redux/app/app_state.dart';
 import 'package:enigma_signal_meter/src/ui/common/platform_adaptive_progress_indicator.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 
 import 'bouquets_list_item.dart';
@@ -31,9 +30,7 @@ class _BouquetsViewState extends State<BouquetsView>
               ? const PlatformAdaptiveProgressIndicator()
               : Scrollbar(
                   child: ListView.builder(
-                    itemCount: viewModel.bouquets != null
-                        ? viewModel.bouquets.length
-                        : 0,
+                    itemCount: viewModel.bouquets.length,
                     itemBuilder: (BuildContext context, int index) {
                       return BouquetsListItem(
                           bouquet: viewModel.bouquets[index]);

@@ -5,5 +5,5 @@ import 'package:flutter/widgets.dart';
 @immutable
 class SendMessageStatusChangedEvent {
   final LoadingStatus status;
-  SendMessageStatusChangedEvent(this.status) : assert(status != null);
+  SendMessageStatusChangedEvent(this.status);
 }

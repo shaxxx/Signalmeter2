@@ -5,7 +5,6 @@ import 'package:enigma_signal_meter/src/model/menu_item.dart';
 import 'package:enigma_signal_meter/src/redux/app/app_state.dart';
 import 'package:enigma_signal_meter/src/ui/more/more_viewmodel.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 
 class MoreView extends StatelessWidget {

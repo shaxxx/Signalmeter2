@@ -34,8 +34,7 @@ class TabsAppBarViewModel {
     @required this.profileName,
     @required this.activeTab,
     @required this.signalView,
-  })  : assert(isVisible != null),
-        assert(menuItems != null);
+  });
 
   static TabsAppBarViewModel fromStore(
     Store<AppState> store,
@@ -50,7 +49,7 @@ class TabsAppBarViewModel {
         _setItemSelectedEvent(store, item);
       },
       messages: messages,
-      profileName: store.state.profilesState.selectedProfile?.name,
+      profileName: store.state.profilesState.selectedProfile.name,
       activeTab: store.state.tabsState.activeTab,
       signalView: store.state.tabsState.signalView,
     );

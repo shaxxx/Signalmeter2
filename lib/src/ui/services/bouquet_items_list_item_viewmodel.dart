@@ -9,7 +9,7 @@ class BouquetItemsListItemViewModel {
   final bool selected;
   final Function onTap;
   final IBouquetItem bouquetItem;
-  String get name => bouquetItem?.name;
+  String get name => bouquetItem.name;
   bool get isMarker => bouquetItem is IBouquetItemMarker;
 
   const BouquetItemsListItemViewModel({

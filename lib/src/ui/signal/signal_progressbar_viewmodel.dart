@@ -9,7 +9,7 @@ class SignalProgressbarViewModel {
   final Messages messages;
   final bool dbIsPrimaryLevel;
 
-  bool get hasdb => signalResponse?.signal is E2Signal;
+  bool get hasdb => signalResponse.signal is E2Signal;
 
   SignalProgressbarViewModel({
     @required this.signalResponse,
@@ -18,9 +18,6 @@ class SignalProgressbarViewModel {
   });
 
   String snrString() {
-    if (signalResponse == null) {
-      return messages.noInformation;
-    }
     if (signalResponse.signal.snr == -1) {
       return messages.noInformation;
     }
@@ -28,9 +25,6 @@ class SignalProgressbarViewModel {
   }
 
   double snrDouble() {
-    if (signalResponse == null) {
-      return 0;
-    }
     if (signalResponse.signal.snr == -1) {
       return 0;
     }
@@ -38,9 +32,6 @@ class SignalProgressbarViewModel {
   }
 
   String dbString() {
-    if (signalResponse == null) {
-      return messages.noInformation;
-    }
     if (signalResponse.signal is E2Signal) {
       var db = (signalResponse.signal as E2Signal).db;
       if (db == -1) {
@@ -52,9 +43,6 @@ class SignalProgressbarViewModel {
   }
 
   double dbDouble() {
-    if (signalResponse == null) {
-      return 0;
-    }
     if (signalResponse.signal is E2Signal) {
       var db = (signalResponse.signal as E2Signal).db;
       if (db < 0) {
@@ -70,9 +58,6 @@ class SignalProgressbarViewModel {
   }
 
   String acgString() {
-    if (signalResponse == null) {
-      return messages.noInformation;
-    }
     if (signalResponse.signal.acg == -1) {
       return messages.noInformation;
     }
@@ -80,9 +65,6 @@ class SignalProgressbarViewModel {
   }
 
   double acgDouble() {
-    if (signalResponse == null) {
-      return 0;
-    }
     if (signalResponse.signal.acg == -1) {
       return 0;
     }
@@ -90,9 +72,6 @@ class SignalProgressbarViewModel {
   }
 
   String berString() {
-    if (signalResponse == null) {
-      return messages.noInformation;
-    }
     if (signalResponse.signal.ber == -1) {
       return messages.noInformation;
     }
@@ -100,9 +79,6 @@ class SignalProgressbarViewModel {
   }
 
   double berDouble() {
-    if (signalResponse == null) {
-      return 0;
-    }
     if (signalResponse.signal.ber == -1) {
       return 0;
     }
@@ -139,7 +115,5 @@ class SignalProgressbarViewModel {
           dbIsPrimaryLevel == other.dbIsPrimaryLevel;
 
   @override
-  int get hashCode => signalResponse == null
-      ? 0
-      : signalResponse.hashCode ^ messages.hashCode ^ dbIsPrimaryLevel.hashCode;
+  int get hashCode => signalResponse.hashCode ^ messages.hashCode ^ dbIsPrimaryLevel.hashCode;
 }

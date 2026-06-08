@@ -2,7 +2,6 @@ import 'package:enigma_signal_meter/src/model/enums.dart';
 import 'package:enigma_signal_meter/src/redux/app/app_state.dart';
 import 'package:enigma_signal_meter/src/redux/tabs/tab_events.dart';
 import 'package:flutter/widgets.dart';
-import 'package:meta/meta.dart';
 import 'package:redux/redux.dart';
 
 class TabsNavigatorViewModel {
@@ -14,8 +13,7 @@ class TabsNavigatorViewModel {
     @required this.connectionStatus,
     @required this.onTap,
     @required this.currentIndex,
-  })  : assert(connectionStatus != null),
-        assert(currentIndex != null);
+  });
 
   bool get connected => connectionStatus == ConnectionStatusEnum.connected;
 

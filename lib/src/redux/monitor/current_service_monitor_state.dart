@@ -7,7 +7,7 @@ class CurrentServiceMonitorState {
 
   CurrentServiceMonitorState({
     @required this.status,
-  }) : assert(status != null);
+  });
 
   static CurrentServiceMonitorState inital() {
     return CurrentServiceMonitorState(

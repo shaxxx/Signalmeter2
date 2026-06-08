@@ -4,7 +4,6 @@ import 'package:enigma_signal_meter/src/redux/app/app_state.dart';
 import 'package:enigma_signal_meter/src/redux/enigma/enigma_command_events.dart';
 import 'package:enigma_web/enigma_web.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 
 class RemoteButtonsView extends StatelessWidget {

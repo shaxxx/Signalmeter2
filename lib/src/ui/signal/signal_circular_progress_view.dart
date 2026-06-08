@@ -2,7 +2,6 @@ import 'package:enigma_signal_meter/src/redux/app/app_state.dart';
 import 'package:enigma_signal_meter/src/ui/common/circular_progress_view.dart';
 import 'package:enigma_signal_meter/src/ui/common/subtitle_panel_view.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 import '../../message_provider.dart';
 import 'signal_circular_progress_viewmodel.dart';

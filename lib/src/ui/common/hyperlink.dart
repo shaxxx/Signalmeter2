@@ -13,8 +13,7 @@ class Hyperlink extends StatelessWidget {
     @required this.text,
     this.fontSize,
     this.color,
-  })  : assert(text != null),
-        assert(url != null);
+  });
 
   Future _launchURL() async {
     if (await canLaunch(url)) {

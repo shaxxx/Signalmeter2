@@ -11,19 +11,19 @@ class ProfileSelectedEvent {
 @immutable
 class ProfileDeletedEvent {
   final Profile profile;
-  ProfileDeletedEvent(this.profile) : assert(profile != null);
+  ProfileDeletedEvent(this.profile);
 }
 
 @immutable
 class ProfilesStatusChangedEvent {
   final LoadingStatus status;
-  ProfilesStatusChangedEvent(this.status) : assert(status != null);
+  ProfilesStatusChangedEvent(this.status);
 }
 
 @immutable
 class ProfileSaveEvent {
   final IProfile profile;
-  ProfileSaveEvent(this.profile) : assert(profile != null);
+  ProfileSaveEvent(this.profile);
 }
 
 @immutable
@@ -37,8 +37,7 @@ class LoadProfilesSuccessEvent {
   LoadProfilesSuccessEvent({
     @required this.responseDuration,
     @required this.profiles,
-  })  : assert(responseDuration != null),
-        assert(profiles != null);
+  });
 }
 
 @immutable

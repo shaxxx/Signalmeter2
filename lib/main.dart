@@ -11,7 +11,6 @@ import 'package:enigma_signal_meter/src/ui/home/home_view.dart';
 import 'package:enigma_signal_meter/src/ui/message/message_view.dart';
 import 'package:enigma_signal_meter/src/ui/screenshot/screenshot_view.dart';
 import 'package:enigma_signal_meter/src/ui/signal/signal_chart_full_screen_view.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';

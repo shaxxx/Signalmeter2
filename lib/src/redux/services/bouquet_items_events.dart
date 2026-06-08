@@ -9,14 +9,13 @@ class BouquetItemSelectedEvent {
   BouquetItemSelectedEvent({
     @required this.bouquetItem,
     @required this.switchTabs,
-  })  : assert(bouquetItem != null),
-        assert(switchTabs != null);
+  });
 }
 
 @immutable
 class BouquetItemsStatusChangedEvent {
   final LoadingStatus status;
-  BouquetItemsStatusChangedEvent(this.status) : assert(status != null);
+  BouquetItemsStatusChangedEvent(this.status);
 }
 
 @immutable

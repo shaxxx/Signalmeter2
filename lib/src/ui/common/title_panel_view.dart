@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 
 class TitlePanelView extends StatelessWidget {
   final Widget child;
@@ -7,8 +6,7 @@ class TitlePanelView extends StatelessWidget {
   const TitlePanelView({
     Key key,
     @required this.child,
-  })  : assert(child != null),
-        super(key: key);
+  })  : super(key: key);
 
   @override
   Widget build(BuildContext context) {

@@ -12,7 +12,7 @@ class BouquetsState {
     @required this.status,
     @required this.selectedBouquet,
     @required this.bouquets,
-  }) : assert(status != null);
+  });
 
   static BouquetsState initial() {
     return BouquetsState(

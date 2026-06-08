@@ -1,7 +1,6 @@
 import 'package:enigma_signal_meter/src/redux/app/app_state.dart';
 import 'package:enigma_web/enigma_web.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 
 import '../../constants.dart';
@@ -13,8 +12,7 @@ class BouquetItemsListItem extends StatelessWidget {
   const BouquetItemsListItem({
     Key key,
     @required this.bouquetItem,
-  })  : assert(bouquetItem != null),
-        super(key: key);
+  })  : super(key: key);
 
   @override
   Widget build(BuildContext context) {

@@ -8,7 +8,7 @@ class BouquetsListItemViewModel {
   final bool selected;
   final Function onTap;
   final IBouquetItemBouquet bouquet;
-  String get name => bouquet?.name;
+  String get name => bouquet.name;
 
   const BouquetsListItemViewModel({
     @required this.selected,

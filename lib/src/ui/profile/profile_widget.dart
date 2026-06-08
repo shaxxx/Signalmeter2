@@ -4,7 +4,6 @@ import 'package:enigma_signal_meter/src/ui/profile/profile_edit_viewmodel.dart';
 import 'package:enigma_signal_meter/src/utils/network_utils.dart';
 import 'package:enigma_web/enigma_web.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 
 class _InheritedProfileWidget extends InheritedWidget {
   final ProfileWidgetState data;
@@ -24,9 +23,7 @@ class ProfileWidget extends StatefulWidget {
   final ProfileEditViewModel viewModel;
 
   ProfileWidget(
-      {@required this.child, @required this.profile, @required this.viewModel})
-      : assert(viewModel != null),
-        assert(child != null);
+      {@required this.child, @required this.profile, @required this.viewModel});
 
   static ProfileWidgetState of(BuildContext context) {
     return (context
@@ -46,10 +43,8 @@ class ProfileWidgetState extends State<ProfileWidget> {
   @override
   void initState() {
     super.initState();
-    if (widget.profile != null) {
-      profile = ProfileEditModel.fromProfile(widget.profile);
-    }
-    _setTextFieldValues();
+    profile = ProfileEditModel.fromProfile(widget.profile);
+      _setTextFieldValues();
     _setListeners();
   }
 
@@ -96,11 +91,11 @@ class ProfileWidgetState extends State<ProfileWidget> {
     passwordController.value =
         passwordController.value.copyWith(text: profile.password);
     transcodingPortController.value = transcodingPortController.value
-        .copyWith(text: profile.transcodingPort?.toString() ?? '');
+        .copyWith(text: profile.transcodingPort.toString() ?? '');
     streamingPortController.value = streamingPortController.value
-        .copyWith(text: profile.streamingPort?.toString() ?? '');
+        .copyWith(text: profile.streamingPort.toString() ?? '');
     httpPortController.value = httpPortController.value
-        .copyWith(text: profile.httpPort?.toString() ?? '');
+        .copyWith(text: profile.httpPort.toString() ?? '');
   }
 
   Future<bool> showWarningDialog(String text) async {
@@ -247,8 +242,7 @@ class ProfileWidgetState extends State<ProfileWidget> {
 
     usernameValidator = (value) {
       if (value == null || value.length == 0) {
-        if (passwordController.text != null &&
-            passwordController.text.isNotEmpty) {
+        if (passwordController.text.isNotEmpty) {
           return MessageProvider.of(context).errInvalidUsername;
         }
       }

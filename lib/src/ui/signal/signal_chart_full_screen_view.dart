@@ -46,42 +46,32 @@ class _SignalChartFullScreenState extends State<SignalChartFullScreen>
 
   @override
   void didChangeAppLifecycleState(AppLifecycleState state) {
-    if (_viewModel != null) {
-      _viewModel.onActiveChanged(state == AppLifecycleState.resumed);
+    _viewModel.onActiveChanged(state == AppLifecycleState.resumed);
     }
-  }
 
   // Called when the top route has been popped off, and the current route shows up.
   @override
   void didPopNext() {
-    if (_viewModel != null) {
-      _viewModel.onActiveChanged(true);
+    _viewModel.onActiveChanged(true);
     }
-  }
 
   // Called when the current route has been pushed.
   @override
   void didPush() {
-    if (_viewModel != null) {
-      _viewModel.onActiveChanged(true);
+    _viewModel.onActiveChanged(true);
     }
-  }
 
   // Called when the current route has been popped off.
   @override
   void didPop() {
-    if (_viewModel != null) {
-      _viewModel.onActiveChanged(false);
+    _viewModel.onActiveChanged(false);
     }
-  }
 
   // Called when a new route has been pushed, and the current route is no longer visible.
   @override
   void didPushNext() {
-    if (_viewModel != null) {
-      _viewModel.onActiveChanged(false);
+    _viewModel.onActiveChanged(false);
     }
-  }
 
   @override
   Widget build(BuildContext context) {

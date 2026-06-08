@@ -61,37 +61,33 @@ class _ScreenshotViewState extends State<ScreenshotView> {
                 IconButton(
                     icon: Icon(menuIcons[shareMenuItemKey]),
                     onPressed: () async {
-                      if (viewModel.response?.screenshot != null) {
-                        await WcFlutterShare.share(
-                          sharePopupTitle: MessageProvider.of(context).share,
-                          fileName: fileName + '.jpg',
-                          mimeType: 'image/jpeg',
-                          bytesOfFile: viewModel.response?.screenshot,
-                        );
-                      }
-                    }),
+                      await WcFlutterShare.share(
+                        sharePopupTitle: MessageProvider.of(context).share,
+                        fileName: fileName + '.jpg',
+                        mimeType: 'image/jpeg',
+                        bytesOfFile: viewModel.response.screenshot,
+                      );
+                                        }),
                 IconButton(
                     icon: Icon(menuIcons[saveMenuItemKey]),
                     onPressed: () async {
                       if (!await _checkPermissions()) {
                         return;
                       }
-                      if (viewModel.response?.screenshot != null) {
-                        final result = await ImageGallerySaver.saveImage(
-                            Uint8List.fromList(viewModel.response?.screenshot));
-                        if (Platform.isIOS) {
-                          if (result) {
-                            StoreProvider.of<AppState>(context)
-                                .dispatch(ScreenshotSavedInfoMessageEvent());
-                          }
-                        } else {
-                          if (result != null) {
-                            StoreProvider.of<AppState>(context)
-                                .dispatch(ScreenshotSavedInfoMessageEvent());
-                          }
+                      final result = await ImageGallerySaver.saveImage(
+                          Uint8List.fromList(viewModel.response.screenshot));
+                      if (Platform.isIOS) {
+                        if (result) {
+                          StoreProvider.of<AppState>(context)
+                              .dispatch(ScreenshotSavedInfoMessageEvent());
+                        }
+                      } else {
+                        if (result != null) {
+                          StoreProvider.of<AppState>(context)
+                              .dispatch(ScreenshotSavedInfoMessageEvent());
                         }
                       }
-                    }),
+                                        }),
               ],
             ),
             body: viewModel.status == LoadingStatus.loading ||
@@ -102,7 +98,7 @@ class _ScreenshotViewState extends State<ScreenshotView> {
                     child: PhotoView(
                       minScale: PhotoViewComputedScale.contained * 0.8,
                       imageProvider: MemoryImage(
-                        Uint8List.fromList(viewModel.response?.screenshot),
+                        Uint8List.fromList(viewModel.response.screenshot),
                       ),
                     )),
           );

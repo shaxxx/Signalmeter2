@@ -13,7 +13,7 @@ class SignalViewModel {
   SignalViewModel({
     @required this.signalView,
     @required this.onCycleView,
-  }) : assert(signalView != null);
+  });
 
   static void _onCycleView(
     Store<AppState> store,

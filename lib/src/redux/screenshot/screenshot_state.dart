@@ -10,7 +10,7 @@ class ScreenshotState {
   ScreenshotState({
     @required this.status,
     @required this.response,
-  }) : assert(status != null);
+  });
 
   static ScreenshotState initial() {
     return ScreenshotState(

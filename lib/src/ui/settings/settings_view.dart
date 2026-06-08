@@ -3,7 +3,6 @@ import 'package:enigma_signal_meter/src/model/application_settings.dart';
 import 'package:enigma_signal_meter/src/model/enums.dart';
 import 'package:enigma_signal_meter/src/redux/app/app_state.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 
 import '../../constants.dart';

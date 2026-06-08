@@ -14,7 +14,7 @@ class ProfilesListViewModel {
     @required this.status,
     @required this.connectionStatus,
     @required this.profiles,
-  }) : assert(profiles != null);
+  });
 
   static ProfilesListViewModel fromStore(Store<AppState> store) {
     return ProfilesListViewModel(

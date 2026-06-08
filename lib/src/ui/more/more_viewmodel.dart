@@ -34,8 +34,7 @@ class MoreViewModel {
     @required this.messages,
     @required this.profileName,
     @required this.streamEnabled,
-  })  : assert(menuItems != null),
-        assert(streamEnabled != null);
+  });
 
   static MoreViewModel fromStore(
     Store<AppState> store,
@@ -47,7 +46,7 @@ class MoreViewModel {
         _setItemSelectedEvent(store, item);
       },
       messages: messages,
-      profileName: store.state.profilesState.selectedProfile?.name,
+      profileName: store.state.profilesState.selectedProfile.name,
       streamEnabled: store.state.profilesState.selectedProfile.streaming,
     );
   }

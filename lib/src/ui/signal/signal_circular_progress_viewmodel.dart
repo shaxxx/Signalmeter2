@@ -14,11 +14,6 @@ class SignalCircularProgressViewModel {
   final bool hasInfo;
 
   static bool _hasInfo(ISignalResponse signalResponse) {
-    if (signalResponse == null ||
-        signalResponse.signal == null ||
-        signalResponse.signal.snr == null) {
-      return false;
-    }
     return signalResponse.signal.snr >= 0;
   }
 
@@ -29,20 +24,12 @@ class SignalCircularProgressViewModel {
     @required this.hasdb,
     @required this.hasInfo,
     @required this.isBerView,
-  })  : assert(stringValue != null),
-        assert(doubleValue != null && doubleValue >= 0 && doubleValue <= 1),
-        assert(footerValue != null),
-        assert(hasdb != null),
-        assert(hasInfo != null),
-        assert(isBerView != null);
+  })  : assert(doubleValue >= 0 && doubleValue <= 1);
 
   static String _snrString(
     ISignalResponse signalResponse,
     Messages messages,
   ) {
-    if (signalResponse == null) {
-      return messages.noInformation;
-    }
     if (signalResponse.signal.snr == -1) {
       return messages.noInformation;
     }
@@ -50,9 +37,6 @@ class SignalCircularProgressViewModel {
   }
 
   static double _snrDouble(ISignalResponse signalResponse) {
-    if (signalResponse == null) {
-      return 0;
-    }
     if (signalResponse.signal.snr == -1) {
       return 0;
     }
@@ -63,9 +47,6 @@ class SignalCircularProgressViewModel {
     ISignalResponse signalResponse,
     Messages messages,
   ) {
-    if (signalResponse == null) {
-      return messages.noInformation;
-    }
     if (signalResponse.signal is E2Signal) {
       var db = (signalResponse.signal as E2Signal).db;
       if (db == -1) {
@@ -77,9 +58,6 @@ class SignalCircularProgressViewModel {
   }
 
   static double _dbDouble(ISignalResponse signalResponse) {
-    if (signalResponse == null) {
-      return 0;
-    }
     if (signalResponse.signal is E2Signal) {
       var db = (signalResponse.signal as E2Signal).db;
       if (db < 0) {
@@ -98,9 +76,6 @@ class SignalCircularProgressViewModel {
     ISignalResponse signalResponse,
     Messages messages,
   ) {
-    if (signalResponse == null) {
-      return messages.noInformation;
-    }
     if (signalResponse.signal.acg == -1) {
       return messages.noInformation;
     }
@@ -108,9 +83,6 @@ class SignalCircularProgressViewModel {
   }
 
   static double _acgDouble(ISignalResponse signalResponse) {
-    if (signalResponse == null) {
-      return 0;
-    }
     if (signalResponse.signal.acg == -1) {
       return 0;
     }
@@ -121,9 +93,6 @@ class SignalCircularProgressViewModel {
     ISignalResponse signalResponse,
     Messages messages,
   ) {
-    if (signalResponse == null) {
-      return messages.noInformation;
-    }
     if (signalResponse.signal.ber == -1) {
       return messages.noInformation;
     }
@@ -133,9 +102,6 @@ class SignalCircularProgressViewModel {
   static double _berDouble(
     ISignalResponse signalResponse,
   ) {
-    if (signalResponse == null) {
-      return 0;
-    }
     if (signalResponse.signal.ber == -1) {
       return 0;
     }

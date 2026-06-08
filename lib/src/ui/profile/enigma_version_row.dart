@@ -1,6 +1,5 @@
 import 'package:enigma_web/enigma_web.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 
 import 'profile_widget.dart';
 

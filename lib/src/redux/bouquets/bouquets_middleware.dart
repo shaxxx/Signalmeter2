@@ -18,7 +18,6 @@ class BouquetsMiddleware extends MiddlewareClass<AppState> {
           'Dispatching BouquetsStatusChangedEvent from BouquetsMiddleware as response to GetBouquetsSuccessEvent');
       store.dispatch(BouquetsStatusChangedEvent(LoadingStatus.success));
       if (store.state.bouquetsState.selectedBouquet == null &&
-          action.bouquets != null &&
           action.bouquets.isNotEmpty) {
         Logger.root.fine(
             'Dispatching BouquetSelectedEvent from BouquetsMiddleware as response to GetBouquetsSuccessEvent');

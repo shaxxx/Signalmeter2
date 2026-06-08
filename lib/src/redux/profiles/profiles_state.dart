@@ -19,10 +19,7 @@ class ProfilesState {
     @required this.selectedProfile,
     @required this.profiles,
     @required this.profilesLoaded,
-  })  : profilesStream = StreamController<IProfile>.broadcast(),
-        assert(status != null),
-        assert(profiles != null),
-        assert(profilesLoaded != null);
+  })  : profilesStream = StreamController<IProfile>.broadcast();
 
   static ProfilesState initial() {
     return ProfilesState(

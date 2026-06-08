@@ -68,9 +68,7 @@ class GradientArcPainter extends CustomPainter {
     @required this.colors,
     @required this.stops,
     @required this.strokeWidth,
-  })  : assert(progress != null),
-        assert(strokeWidth != null),
-        super();
+  })  : super();
 
   final double progress;
   final List<Color> colors;

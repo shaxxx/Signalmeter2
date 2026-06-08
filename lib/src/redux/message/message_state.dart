@@ -7,7 +7,7 @@ class MessageState {
 
   MessageState({
     @required this.status,
-  }) : assert(status != null);
+  });
 
   static MessageState initial() {
     return MessageState(

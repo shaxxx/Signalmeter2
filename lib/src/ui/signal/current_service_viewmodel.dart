@@ -14,7 +14,7 @@ class CurrentServiceViewModel {
     @required this.currentService,
     @required this.satellites,
     @required this.messages,
-  }) : assert(messages != null);
+  });
 
   static CurrentServiceViewModel fromStore(
     Store<AppState> store,

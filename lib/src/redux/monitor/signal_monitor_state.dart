@@ -11,7 +11,7 @@ class SignalMonitorState {
   SignalMonitorState({
     @required this.status,
     @required this.responses,
-  }) : assert(status != null);
+  });
 
   static SignalMonitorState initial() {
     return SignalMonitorState(

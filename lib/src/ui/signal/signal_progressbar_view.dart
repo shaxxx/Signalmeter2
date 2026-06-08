@@ -1,6 +1,5 @@
 import 'package:enigma_signal_meter/src/redux/app/app_state.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 import 'package:percent_indicator/linear_percent_indicator.dart';
 import '../../message_provider.dart';

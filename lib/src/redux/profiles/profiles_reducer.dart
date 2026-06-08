@@ -16,11 +16,7 @@ final profilesReducer = combineReducers<ProfilesState>([
 
 ProfilesState _profileSelectedReducer(
     ProfilesState state, ProfileSelectedEvent event) {
-  if (event.profile != null) {
-    Logger.root.fine('Selected profile ' + event.profile.name);
-  } else {
-    Logger.root.fine('Deselected profile');
-  }
+  Logger.root.fine('Selected profile ' + event.profile.name);
   return state.copyWith(selectedProfile: event.profile);
 }
 

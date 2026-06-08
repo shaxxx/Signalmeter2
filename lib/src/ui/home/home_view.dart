@@ -72,10 +72,8 @@ class _HomeViewState extends State<_HomeView> with RouteAware {
 
   @override
   void didPopNext() {
-    if (_viewModel != null) {
-      _viewModel.onPop();
+    _viewModel.onPop();
     }
-  }
 
   ValueChanged<ApplicationSettings> onSettingsChanged;
 

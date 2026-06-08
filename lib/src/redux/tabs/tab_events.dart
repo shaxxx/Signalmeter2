@@ -4,23 +4,23 @@ import 'package:meta/meta.dart';
 @immutable
 class ActiveTabChangedEvent {
   final TabPagesEnum tabPage;
-  ActiveTabChangedEvent(this.tabPage) : assert(tabPage != null);
+  ActiveTabChangedEvent(this.tabPage);
 }
 
 @immutable
 class TabPagesActiveChangedEvent {
   final bool active;
-  TabPagesActiveChangedEvent(this.active) : assert(active != null);
+  TabPagesActiveChangedEvent(this.active);
 }
 
 @immutable
 class SignalChartFullScreenActiveChangedEvent {
   final bool active;
-  SignalChartFullScreenActiveChangedEvent(this.active) : assert(active != null);
+  SignalChartFullScreenActiveChangedEvent(this.active);
 }
 
 @immutable
 class ChangeSignalView {
   final SignalViewEnum view;
-  ChangeSignalView(this.view) : assert(view != null);
+  ChangeSignalView(this.view);
 }
