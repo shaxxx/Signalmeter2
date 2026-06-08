@@ -37,7 +37,9 @@ class _HomeView extends StatefulWidget {
 }
 
 class _HomeViewState extends State<_HomeView> with RouteAware {
-  late HomeViewModel _viewModel;
+  // Nullable, not late: didPopNext (RouteAware) can fire before the
+  // StoreConnector assigns the view model, so the callback must null-guard.
+  HomeViewModel? _viewModel;
 
   final GlobalKey _fabShowcaseKey = GlobalKey();
   bool _showcaseSeen = false;
@@ -73,7 +75,7 @@ class _HomeViewState extends State<_HomeView> with RouteAware {
 
   @override
   void didPopNext() {
-    _viewModel.onPop();
+    _viewModel?.onPop();
     }
 
   late ValueChanged<ApplicationSettings> onSettingsChanged;
@@ -96,7 +98,7 @@ class _HomeViewState extends State<_HomeView> with RouteAware {
       },
       onDidChange: (previousViewModel, viewModel) async {
         _viewModel = viewModel;
-        if (_viewModel.displayShowcase && !_showcaseSeen) {
+        if (viewModel.displayShowcase && !_showcaseSeen) {
           _showcaseSeen = true;
           if (Platform.isAndroid) {
             ShowCaseWidget.of(context).startShowCase([_fabShowcaseKey]);
