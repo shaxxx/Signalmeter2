@@ -14,7 +14,8 @@
 
 Files created or substantially rewritten by this plan:
 
-- `pubspec.yaml` — dependency versions, SDK bump, path dep (modify)
+- `../flutter_flip_view/pubspec.yaml` + `../flutter_flip_view/lib/flutter_flip_view.dart` — null-safety migrate the fork (no null-safe release exists on pub.dev) (modify, separate repo)
+- `pubspec.yaml` — dependency versions, SDK bump, path deps for enigma_web + flutter_flip_view (modify)
 - `analysis_options.yaml` — pedantic → flutter_lints (modify)
 - `android/build.gradle`, `android/settings.gradle`, `android/gradle.properties` — AGP 8 / Gradle 8 / plugins DSL, drop jcenter (rewrite)
 - `android/gradle/wrapper/gradle-wrapper.properties` — Gradle 8 distribution (modify)
@@ -90,6 +91,65 @@ git add pubspec.yaml
 git commit -m "chore: bump Dart SDK to 3.0 and point enigma_web at local path dep"
 ```
 
+### Task 0.3: Null-safety migrate the `flutter_flip_view` fork
+
+`flutter_flip_view 1.0.3` has **no null-safe release on pub.dev**, so on Dart 3 it blocks `pub get` entirely. The fork at `C:\Users\isako\source\repos\flutter_flip_view` (`shaxxx/flutter_flip_view`, `master`) is a single Dart file and migrates trivially. This must be done **before** Phase 1's `flutter pub get`.
+
+**Files (in the fork repo `../flutter_flip_view`):**
+- Modify: `pubspec.yaml`, `lib/flutter_flip_view.dart`
+
+- [ ] **Step 1: Bump the fork's SDK constraint**
+
+In `../flutter_flip_view/pubspec.yaml` change:
+```yaml
+environment:
+  sdk: ">=2.0.0-dev.68.0 <3.0.0"
+```
+to:
+```yaml
+environment:
+  sdk: ">=3.0.0 <4.0.0"
+  flutter: ">=1.17.0"
+```
+(Optionally bump `version: 1.0.3` → `2.0.0` and drop the deprecated `author:` field.)
+
+- [ ] **Step 2: Migrate `lib/flutter_flip_view.dart` to null safety**
+
+Apply these exact changes:
+- Constructor: `Key key,` → `Key? key,`; `@required this.front,` → `required this.front,`; `@required this.back,` → `required this.back,`; `@required this.animationController,` → `required this.animationController,`.
+- Defaulted named params: `AxisDirection goBackDirection,` → `AxisDirection? goBackDirection,` and `AxisDirection goFrontDirection,` → `AxisDirection? goFrontDirection,` (the `?? AxisDirection.left` initializers already handle null).
+- Fields: `Animation<double> _animation;` → `late Animation<double> _animation;`; `AnimationStatus _lastStatus;` → `AnimationStatus? _lastStatus;`.
+- `AnimatedBuilder` builder signature: `builder: (BuildContext context, Widget child) {` → `builder: (BuildContext context, Widget? child) {`.
+
+Resulting constructor for reference:
+```dart
+const FlipView({
+  Key? key,
+  required this.front,
+  required this.back,
+  required this.animationController,
+  AxisDirection? goBackDirection,
+  AxisDirection? goFrontDirection,
+})  : goBackDirection = goBackDirection ?? AxisDirection.left,
+      goFrontDirection = goFrontDirection ?? AxisDirection.left,
+      super(key: key);
+```
+
+- [ ] **Step 3: Verify the fork analyzes cleanly**
+
+Run: `cd ../flutter_flip_view && dart pub get && flutter analyze`
+Expected: `No issues found!`
+
+- [ ] **Step 4: Commit the fork**
+
+```bash
+cd ../flutter_flip_view
+git add pubspec.yaml lib/flutter_flip_view.dart
+git commit -m "feat: migrate to null safety (Dart 3)"
+cd ../Signalmeter2
+```
+(The main app already references it via the `path:` dep added in Task 1.1. Publishing the fork or switching to a git/hosted ref is a later, optional step.)
+
 ---
 
 ## Phase 1 — Dependency Resolution
@@ -113,10 +173,11 @@ dependencies:
 
   enigma_web:
     path: ../EnigmaWeb.Dart
+  flutter_flip_view:
+    path: ../flutter_flip_view
   flutter_redux: ^0.10.0
   flutter_redux_navigation: ^0.8.0
   percent_indicator: ^4.2.3
-  flutter_flip_view: ^1.0.3
   xml: ^6.5.0
   fl_chart: ^1.0.0
   wakelock_plus: ^1.2.8
@@ -1060,4 +1121,5 @@ git commit -m "docs: record manual verification results"
 - **Spec coverage:** every spec section maps to tasks — null safety (Phase 2), Android-first build incl. embedding v2 (Phase 3), iOS lockstep (Task 3.4), plugin inventory incl. all higher-risk swaps (Phase 2 tasks 2.3/2.5), permission_handler fork dropped (Task 1.1), light mod lints/cleanup (Phase 4), gen-l10n deferred with rationale (Task 4.2 note), test safety net (Phase 5), enigma_web path dep (Task 0.2). ✓
 - **Big-bang reality:** documented that the project won't analyze/build until Phase 2/3 complete. ✓
 - **Type consistency:** `WakelockPlus`, `launchUrl(Uri.parse(...))`, `Share.shareXFiles`/`XFile.fromData`, `Gal.putImageBytes`, `getTitlesWidget`, `gradient:` used consistently across tasks. ✓
+- **Null-safety availability audit:** every dependency was checked for a null-safe release. The only holdout is `flutter_flip_view` (no null-safe version on pub.dev) — handled via the local fork migration in Task 0.3 + path dep. All others (flutter_redux 0.10, flutter_redux_navigation 0.8, percent_indicator 4, photo_view 0.15, etc.) have null-safe releases. ✓
 - **Known gaps (intentional):** exact per-file null-safety edits are analyzer-driven (cannot be pre-scripted for ~162 files); plugin version numbers are pinned-at-resolve (`flutter pub get` may adjust a line). Both are called out where they occur.
