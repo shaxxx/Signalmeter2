@@ -20,7 +20,7 @@ class ApplicationSettings {
   }
 
   ApplicationSettings.fromJson(Map<String, dynamic> json)
-      : dbIsPrimaryLevel = json['dbIsPrimaryLevel'] as bool,
+      : dbIsPrimaryLevel = json['dbIsPrimaryLevel'] as bool? ?? false,
         channelUpDownButtons = ChannelUpDownButtonsEnum
             .values[(json['channelUpDownButtons'] as int? ?? 0)];
 
