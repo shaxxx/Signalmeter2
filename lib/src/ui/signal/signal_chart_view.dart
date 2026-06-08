@@ -128,7 +128,7 @@ class _SignalChartViewState extends State<SignalChartView> {
     const style = TextStyle(
       color: Colors.white,
       fontWeight: FontWeight.bold,
-      fontSize: 15,
+      fontSize: 12,
     );
     var text = '';
     if (viewModel.useDb) {
