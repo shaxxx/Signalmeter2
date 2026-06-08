@@ -23,7 +23,7 @@ if (keystorePropertiesFile.exists()) {
 
 android {
     namespace = "com.krkadoni.app.signalmeter"
-    compileSdk = 34
+    compileSdk = 35
 
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_17
@@ -36,7 +36,7 @@ android {
 
     defaultConfig {
         applicationId = "com.krkadoni.app.signalmeter"
-        minSdk = 23
+        minSdkVersion = flutter.minSdkVersion
         targetSdk = 34
         versionCode = flutterVersionCode.toInteger()
         versionName = flutterVersionName
