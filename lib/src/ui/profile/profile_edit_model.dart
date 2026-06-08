@@ -44,7 +44,7 @@ class ProfileEditModel {
     var model = ProfileEditModel();
     model.address = profile.address;
     model.enigma = profile.enigma;
-    model.httpPort = profile.httpPort.toString() ?? '';
+    model.httpPort = profile.httpPort.toString();
     model.id = profile.id;
     model.name = profile.name;
     model.password = profile.password;
