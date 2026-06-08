@@ -115,7 +115,10 @@ class _EnigmaSignalMeterAppState extends State<EnigmaSignalMeterApp>
       child: MaterialApp(
         navigatorKey: NavigatorHolder.navigatorKey,
         navigatorObservers: [widget.store.state.globalState.routeObserver],
-        theme: ThemeData.dark(),
+        // Use Material 2 to preserve the original pre-migration look.
+        // Flutter 3.x defaults to Material 3, which changes text metrics,
+        // component sizes and colors and regresses several fixed layouts.
+        theme: ThemeData.dark(useMaterial3: false),
         localizationsDelegates: [
           SignalMeterLocalizationsDelegate(),
           GlobalMaterialLocalizations.delegate,
