@@ -338,21 +338,27 @@ class _BackdropState extends State<Backdrop>
         // top of, and at the top of, the front layer. It adds support for dragging
         // the front layer up and down and for opening and closing the front layer
         // with a tap. It may obscure part of the front layer's topmost child.
-        PositionedTransition(
-          rect: frontRelativeRect,
-          child: ExcludeSemantics(
-            child: Container(
-              alignment: Alignment.topLeft,
-              child: GestureDetector(
-                behavior: HitTestBehavior.opaque,
-                onTap: _toggleFrontLayer,
-                onVerticalDragUpdate: _handleDragUpdate,
-                onVerticalDragEnd: _handleDragEnd,
-                child: widget.frontHeading,
+        //
+        // Only build it when a frontHeading is provided. Otherwise this opaque
+        // GestureDetector covers the whole front layer and swallows taps meant
+        // for the front layer's content (e.g. tapping a profile would toggle the
+        // backdrop instead of selecting the profile).
+        if (widget.frontHeading != null)
+          PositionedTransition(
+            rect: frontRelativeRect,
+            child: ExcludeSemantics(
+              child: Container(
+                alignment: Alignment.topLeft,
+                child: GestureDetector(
+                  behavior: HitTestBehavior.opaque,
+                  onTap: _toggleFrontLayer,
+                  onVerticalDragUpdate: _handleDragUpdate,
+                  onVerticalDragEnd: _handleDragEnd,
+                  child: widget.frontHeading,
+                ),
               ),
             ),
           ),
-        ),
       ],
     );
   }
