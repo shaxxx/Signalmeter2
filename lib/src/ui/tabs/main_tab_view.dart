@@ -26,7 +26,9 @@ class _MainTabViewState extends State<MainTabView>
   late PageController controller;
   int goToPage = -1;
   bool isAnimating = false;
-  late MainTabViewModel _viewModel;
+  // Nullable, not late: the RouteAware/lifecycle callbacks (didPush, etc.) can
+  // fire before onDidChange assigns the view model, so they must null-guard.
+  MainTabViewModel? _viewModel;
   late RouteObserver<PageRoute> _routeObserver;
 
   @override
@@ -44,7 +46,7 @@ class _MainTabViewState extends State<MainTabView>
 
   @override
   void dispose() {
-    _viewModel.onActiveChanged(false);
+    _viewModel?.onActiveChanged(false);
     WidgetsBinding.instance.removeObserver(this);
     _routeObserver.unsubscribe(this);
     controller.dispose();
@@ -53,31 +55,31 @@ class _MainTabViewState extends State<MainTabView>
 
   @override
   void didChangeAppLifecycleState(AppLifecycleState state) {
-    _viewModel.onActiveChanged(state == AppLifecycleState.resumed);
+    _viewModel?.onActiveChanged(state == AppLifecycleState.resumed);
     }
 
   // Called when the top route has been popped off, and the current route shows up.
   @override
   void didPopNext() {
-    _viewModel.onActiveChanged(true);
+    _viewModel?.onActiveChanged(true);
     }
 
   // Called when the current route has been pushed.
   @override
   void didPush() {
-    _viewModel.onActiveChanged(true);
+    _viewModel?.onActiveChanged(true);
     }
 
   // Called when the current route has been popped off.
   @override
   void didPop() {
-    _viewModel.onActiveChanged(false);
+    _viewModel?.onActiveChanged(false);
     }
 
   // Called when a new route has been pushed, and the current route is no longer visible.
   @override
   void didPushNext() {
-    _viewModel.onActiveChanged(false);
+    _viewModel?.onActiveChanged(false);
     }
 
   void _handleTabSelection() {
@@ -88,7 +90,7 @@ class _MainTabViewState extends State<MainTabView>
       var isControllerOnActiveTab =
           store.state.tabsState.activeTab.index == page.round();
       if (!isControllerOnActiveTab) {
-        _viewModel.onTabSelected(TabPagesEnum.values[page.round()]);
+        _viewModel?.onTabSelected(TabPagesEnum.values[page.round()]);
       }
     }
   }
