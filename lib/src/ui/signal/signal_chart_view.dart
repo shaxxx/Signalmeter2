@@ -91,7 +91,7 @@ class _SignalChartViewState extends State<SignalChartView> {
                               leftTitles: AxisTitles(
                                 sideTitles: SideTitles(
                                   showTitles: true,
-                                  reservedSize: 30,
+                                  reservedSize: 50,
                                   interval: viewModel.useDb ? 1 : 10,
                                   getTitlesWidget: (value, meta) =>
                                       _getTitleWidget(value, viewModel),
@@ -154,7 +154,9 @@ class _SignalChartViewState extends State<SignalChartView> {
     }
     return Padding(
       padding: const EdgeInsets.only(right: 12),
-      child: Text(text, style: style),
+      // maxLines/softWrap guard against the label wrapping to one character per
+      // line in the reserved axis width (fl_chart renders it as a widget now).
+      child: Text(text, style: style, maxLines: 1, softWrap: false),
     );
   }
 
