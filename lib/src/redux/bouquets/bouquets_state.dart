@@ -8,7 +8,7 @@ class BouquetsState {
   final LoadingStatus status;
   final IBouquetItemBouquet? selectedBouquet;
   final List<IBouquetItemBouquet>? bouquets;
-  BouquetsState({
+  const BouquetsState({
     required this.status,
     required this.selectedBouquet,
     required this.bouquets,

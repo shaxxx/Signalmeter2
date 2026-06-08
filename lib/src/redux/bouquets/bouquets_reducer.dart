@@ -7,24 +7,24 @@ import 'bouquets_events.dart';
 import 'bouquets_state.dart';
 
 final bouquetsReducer = combineReducers<BouquetsState>([
-  TypedReducer<BouquetsState, BouquetSelectedEvent>(_bouquetSelectedReducer),
+  TypedReducer<BouquetsState, BouquetSelectedEvent>(_bouquetSelectedReducer).call,
   TypedReducer<BouquetsState, BouquetsStatusChangedEvent>(
-      _bouquetsStatusChangedReducer),
-  TypedReducer<BouquetsState, GetBouquetsSuccessEvent>(_bouquetsLoadedReducer),
+      _bouquetsStatusChangedReducer).call,
+  TypedReducer<BouquetsState, GetBouquetsSuccessEvent>(_bouquetsLoadedReducer).call,
   TypedReducer<BouquetsState, GetBouquetsErrorEvent>(
-      _bouquetsLoadingErrorReducer),
-  TypedReducer<BouquetsState, ResetStateEvent>(_bouquetsResetReducer),
+      _bouquetsLoadingErrorReducer).call,
+  TypedReducer<BouquetsState, ResetStateEvent>(_bouquetsResetReducer).call,
 ]);
 
 BouquetsState _bouquetSelectedReducer(
     BouquetsState state, BouquetSelectedEvent event) {
-  Logger.root.fine('Selected bouquet ' + (event.bouquet.name ?? ''));
+  Logger.root.fine('Selected bouquet ${event.bouquet.name ?? ''}');
   return state.copyWith(selectedBouquet: event.bouquet);
 }
 
 BouquetsState _bouquetsStatusChangedReducer(
     BouquetsState state, BouquetsStatusChangedEvent event) {
-  Logger.root.fine('Bouquets ' + event.status.toString());
+  Logger.root.fine('Bouquets ${event.status}');
   return state.copyWith(status: event.status);
 }
 

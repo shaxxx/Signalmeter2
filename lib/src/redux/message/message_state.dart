@@ -5,7 +5,7 @@ import 'package:meta/meta.dart';
 class MessageState {
   final LoadingStatus status;
 
-  MessageState({
+  const MessageState({
     required this.status,
   });
 

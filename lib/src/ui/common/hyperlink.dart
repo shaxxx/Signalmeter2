@@ -8,7 +8,7 @@ class Hyperlink extends StatelessWidget {
   final double? fontSize;
   final Color? color;
 
-  Hyperlink({
+  const Hyperlink({super.key, 
     required this.url,
     required this.text,
     this.fontSize,
@@ -27,6 +27,7 @@ class Hyperlink extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
+      onTap: _launchURL,
       child: Text(
         text,
         style: TextStyle(
@@ -35,7 +36,6 @@ class Hyperlink extends StatelessWidget {
           color: color,
         ),
       ),
-      onTap: _launchURL,
     );
   }
 }

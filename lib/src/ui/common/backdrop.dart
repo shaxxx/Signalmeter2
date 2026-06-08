@@ -25,7 +25,6 @@ final Animatable<BorderRadius?> _kFrontHeadingBevelRadius = BorderRadiusTween(
 class _TappableWhileStatusIs extends StatefulWidget {
   const _TappableWhileStatusIs(
     this.status, {
-    super.key,
     required this.controller,
     required this.child,
   });
@@ -74,7 +73,6 @@ class _TappableWhileStatusIsState extends State<_TappableWhileStatusIs> {
 
 class _CrossFadeTransition extends AnimatedWidget {
   const _CrossFadeTransition({
-    super.key,
     this.alignment = Alignment.center,
     required Animation<double> progress,
     required this.child0,
@@ -125,7 +123,6 @@ class _CrossFadeTransition extends AnimatedWidget {
 
 class _BackAppBar extends StatelessWidget {
   const _BackAppBar({
-    super.key,
     this.leading = const SizedBox(width: 56.0),
     required this.title,
     this.trailing,
@@ -235,7 +232,9 @@ class _BackdropState extends State<Backdrop>
 
   void _handleDragEnd(DragEndDetails details) {
     if (_controller.isAnimating ||
-        _controller.status == AnimationStatus.completed) return;
+        _controller.status == AnimationStatus.completed) {
+      return;
+    }
 
     final flingVelocity = details.velocity.pixelsPerSecond.dy / _backdropHeight;
     if (flingVelocity < 0.0) {

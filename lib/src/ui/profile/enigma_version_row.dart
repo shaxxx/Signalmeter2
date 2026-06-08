@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'profile_widget.dart';
 
 class EnigmaVersionRow extends StatelessWidget {
+  const EnigmaVersionRow({super.key});
+
   @override
   Widget build(BuildContext context) {
     var theme = Theme.of(context);

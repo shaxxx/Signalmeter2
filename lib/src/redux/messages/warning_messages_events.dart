@@ -8,7 +8,7 @@ abstract class WarningMessageEvent extends MessageEvent {}
 @immutable
 class WarningMessageShownEvent {
   final WarningMessageEvent warningMessageEvent;
-  WarningMessageShownEvent(this.warningMessageEvent);
+  const WarningMessageShownEvent(this.warningMessageEvent);
 
   @override
   bool operator ==(Object other) =>

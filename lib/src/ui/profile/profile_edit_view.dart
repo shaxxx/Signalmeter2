@@ -19,6 +19,8 @@ import 'transcoding_row.dart';
 import 'username_row.dart';
 
 class ProfileEditView extends StatelessWidget {
+  const ProfileEditView({super.key});
+
   @override
   Widget build(BuildContext context) {
     var theme = Theme.of(context);

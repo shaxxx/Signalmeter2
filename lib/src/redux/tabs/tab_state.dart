@@ -8,7 +8,7 @@ class TabState {
   final bool signalChartFullScreenActive;
   final SignalViewEnum signalView;
 
-  TabState({
+  const TabState({
     required this.activeTab,
     required this.tabPagesActive,
     required this.signalChartFullScreenActive,

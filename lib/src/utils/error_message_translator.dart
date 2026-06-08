@@ -24,7 +24,7 @@ class ErrorMessageTranslator {
       return _translateEnigmaCommandErrorMessage(event, messages);
     }
     return TranslatedErrorMessage(
-        message: messages.unknownError + '\n' + messages.pleaseSubmitDetails,
+        message: '${messages.unknownError}\n${messages.pleaseSubmitDetails}',
         details: _getDynamicErrorMessage(event.exception));
   }
 
@@ -98,12 +98,10 @@ class ErrorMessageTranslator {
     FailedStreamExtraParametersMessageEvent event,
     Messages messages,
   ) {
-    var message = messages.errFailedToInitializeStream +
-        '\n' +
-        _commandFailedMessage(
+    var message = '${messages.errFailedToInitializeStream}\n${_commandFailedMessage(
           messages,
           event.exception.command,
-        );
+        )}';
     var details = _getDynamicErrorMessage(
       event.exception.innerException,
     );
@@ -151,9 +149,7 @@ class ErrorMessageTranslator {
     EnigmaCommandErrorMessageEvent event,
     Messages messages,
   ) {
-    var message = messages.errFailedConnect(event.action.profile.name) +
-        '\n' +
-        messages.errCheckYourSettings;
+    var message = '${messages.errFailedConnect(event.action.profile.name)}\n${messages.errCheckYourSettings}';
     return TranslatedErrorMessage(
       message: message,
       details: _getErrorDetails(event),
@@ -169,22 +165,14 @@ class ErrorMessageTranslator {
 
     var failedEx = event.exception.innerException as FailedStatusCodeException;
     if (failedEx.statusCode == HttpStatus.notFound) {
-      message = messages.errFailedConnect(event.action.profile.name) +
-          '\n' +
-          messages.errInvalidEnigmaTypeOrNotEnigma;
+      message = '${messages.errFailedConnect(event.action.profile.name)}\n${messages.errInvalidEnigmaTypeOrNotEnigma}';
     } else if (failedEx.statusCode == HttpStatus.internalServerError) {
-      message = _commandFailedMessage(messages, event.exception.command) +
-          '\n' +
-          messages.errServerError(event.action.profile.address);
+      message = '${_commandFailedMessage(messages, event.exception.command)}\n${messages.errServerError(event.action.profile.address)}';
     } else if (failedEx.statusCode == HttpStatus.unauthorized ||
         failedEx.statusCode == HttpStatus.forbidden) {
-      message = _commandFailedMessage(messages, event.exception.command) +
-          '\n' +
-          messages.errCheckYourCredentials;
+      message = '${_commandFailedMessage(messages, event.exception.command)}\n${messages.errCheckYourCredentials}';
     } else {
-      message = _commandFailedMessage(messages, event.exception.command) +
-          '\n' +
-          messages.errRequestFailedWithStatusCode(failedEx.statusCode);
+      message = '${_commandFailedMessage(messages, event.exception.command)}\n${messages.errRequestFailedWithStatusCode(failedEx.statusCode)}';
     }
 
     return TranslatedErrorMessage(
@@ -197,9 +185,7 @@ class ErrorMessageTranslator {
     EnigmaCommandErrorMessageEvent event,
     Messages messages,
   ) {
-    var message = _commandFailedMessage(messages, event.exception.command) +
-        '\n' +
-        messages.errOperationTimedOut;
+    var message = '${_commandFailedMessage(messages, event.exception.command)}\n${messages.errOperationTimedOut}';
     return TranslatedErrorMessage(
       message: message,
       details: _getErrorDetails(event),
@@ -213,9 +199,7 @@ class ErrorMessageTranslator {
     String message;
     var details = _getErrorDetails(event);
     if (event.exception.innerException.message.contains('SocketException')) {
-      message = _commandFailedMessage(messages, event.exception.command) +
-          '\n' +
-          messages.errCheckYourConnection;
+      message = '${_commandFailedMessage(messages, event.exception.command)}\n${messages.errCheckYourConnection}';
     } else {
       message = _commandFailedMessage(messages, event.exception.command);
     }
@@ -229,9 +213,7 @@ class ErrorMessageTranslator {
     EnigmaCommandErrorMessageEvent event,
     Messages messages,
   ) {
-    var message = _commandFailedMessage(messages, event.exception.command) +
-        '\n' +
-        messages.failedToParseResponse;
+    var message = '${_commandFailedMessage(messages, event.exception.command)}\n${messages.failedToParseResponse}';
     return TranslatedErrorMessage(
       message: message,
       details: _getErrorDetailsOrEnigmaExceptionMessage(event),
@@ -245,13 +227,9 @@ class ErrorMessageTranslator {
     String message;
     var failedEx = event.exception.innerException as FailedStatusCodeException;
     if (failedEx.statusCode == HttpStatus.internalServerError) {
-      message = _commandFailedMessage(messages, event.exception.command) +
-          '\n' +
-          messages.errServerError(event.action.profile.address);
+      message = '${_commandFailedMessage(messages, event.exception.command)}\n${messages.errServerError(event.action.profile.address)}';
     } else {
-      message = _commandFailedMessage(messages, event.exception.command) +
-          '\n' +
-          messages.errRequestFailedWithStatusCode(failedEx.statusCode);
+      message = '${_commandFailedMessage(messages, event.exception.command)}\n${messages.errRequestFailedWithStatusCode(failedEx.statusCode)}';
     }
     return TranslatedErrorMessage(
       message: message,

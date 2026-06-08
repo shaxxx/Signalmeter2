@@ -32,8 +32,8 @@ class TabsAppBarView {
   }
 
   static List<Widget> _buildMenu() {
-    var _actions = <Widget>[];
-    _actions.add(Builder(builder: (context) {
+    var actions0 = <Widget>[];
+    actions0.add(Builder(builder: (context) {
       return StoreConnector<AppState, TabsAppBarViewModel>(
         distinct: true,
         converter: (store) {
@@ -54,7 +54,7 @@ class TabsAppBarView {
         },
       );
     }));
-    return _actions;
+    return actions0;
   }
 
   static List<Widget> _visibleActions(TabsAppBarViewModel viewModel) {

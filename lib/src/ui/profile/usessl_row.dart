@@ -4,6 +4,8 @@ import '../../message_provider.dart';
 import 'profile_widget.dart';
 
 class UseSslRow extends StatelessWidget {
+  const UseSslRow({super.key});
+
   @override
   Widget build(BuildContext context) {
     var theme = Theme.of(context);

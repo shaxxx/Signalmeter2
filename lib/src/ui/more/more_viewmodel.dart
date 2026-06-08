@@ -150,7 +150,7 @@ class MoreViewModel {
       );
       await intent.launch();
     } else {
-      var iOSUri = 'vlc-x-callback://x-callback-url/stream?url=' + streamUri;
+      var iOSUri = 'vlc-x-callback://x-callback-url/stream?url=$streamUri';
       if (await canLaunchUrl(Uri.parse(iOSUri))) {
         await launchUrl(Uri.parse(iOSUri));
       } else {

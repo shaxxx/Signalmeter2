@@ -57,7 +57,7 @@ class ProfileListItemViewModel {
 
   static String _addressWithPort(IProfile profile) {
     if (profile.httpPort != 80 && profile.httpPort != 443) {
-      return profile.address + ':' + profile.httpPort.toString();
+      return '${profile.address}:${profile.httpPort}';
     }
     return profile.address;
   }

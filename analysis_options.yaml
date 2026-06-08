@@ -1,14 +1,15 @@
-# Defines a default set of lint rules enforced for
-# projects at Google. For details and rationale,
-# see https://github.com/dart-lang/pedantic#enabled-lints.
-include: package:pedantic/analysis_options.yaml
-
-# For lint rules and documentation, see http://dart-lang.github.io/linter/lints.
-# Uncomment to specify additional rules.
-# linter:
-#   rules:
-#     invalid_use_of_protected_member: false
+# For lint rules and documentation, see https://dart.dev/lints and
+# https://pub.dev/packages/flutter_lints.
+include: package:flutter_lints/flutter.yaml
 
 analyzer:
   exclude:
     - lib/src/i18n/**
+
+linter:
+  rules:
+    # Codebase intentionally uses PascalCase enum members (e.g. EnigmaType.enigma2)
+    # and SCREAMING_CASE top-level constants; not renaming as part of this migration.
+    constant_identifier_names: false
+    # Idiomatic Flutter State<T> createState() returning a private _State type.
+    library_private_types_in_public_api: false

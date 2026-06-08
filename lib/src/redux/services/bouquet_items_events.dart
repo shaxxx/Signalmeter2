@@ -6,7 +6,7 @@ import 'package:meta/meta.dart';
 class BouquetItemSelectedEvent {
   final bool switchTabs;
   final IBouquetItemService bouquetItem;
-  BouquetItemSelectedEvent({
+  const BouquetItemSelectedEvent({
     required this.bouquetItem,
     required this.switchTabs,
   });
@@ -15,11 +15,11 @@ class BouquetItemSelectedEvent {
 @immutable
 class BouquetItemsStatusChangedEvent {
   final LoadingStatus status;
-  BouquetItemsStatusChangedEvent(this.status);
+  const BouquetItemsStatusChangedEvent(this.status);
 }
 
 @immutable
 class BouquetItemsSearchTermChanged {
   final String searchTerm;
-  BouquetItemsSearchTermChanged(this.searchTerm);
+  const BouquetItemsSearchTermChanged(this.searchTerm);
 }

@@ -8,6 +8,8 @@ import 'package:flutter_redux/flutter_redux.dart';
 import '../../constants.dart';
 
 class SignalChartFullScreen extends StatefulWidget {
+  const SignalChartFullScreen({super.key});
+
   @override
   _SignalChartFullScreenState createState() => _SignalChartFullScreenState();
 }

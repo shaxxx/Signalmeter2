@@ -78,7 +78,7 @@ class AppState {
     );
   }
 
-  AppState._internal({
+  const AppState._internal({
     required this.connectionState,
     required this.currentServiceMonitorState,
     required this.signalMonitorState,

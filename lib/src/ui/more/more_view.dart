@@ -8,6 +8,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 
 class MoreView extends StatelessWidget {
+  const MoreView({super.key});
+
   @override
   Widget build(BuildContext context) {
     var backgroundColor = Theme.of(context).primaryColor.withValues(alpha: 0.3);

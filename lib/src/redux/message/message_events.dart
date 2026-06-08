@@ -5,5 +5,5 @@ import 'package:flutter/widgets.dart';
 @immutable
 class SendMessageStatusChangedEvent {
   final LoadingStatus status;
-  SendMessageStatusChangedEvent(this.status);
+  const SendMessageStatusChangedEvent(this.status);
 }

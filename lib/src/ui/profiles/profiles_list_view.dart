@@ -52,11 +52,11 @@ class _ProfilesListViewState extends State<ProfilesListView>
               initialItemCount: insertedProfiles.length,
               itemBuilder: (context, index, animation) {
                 return SlideTransition(
+                  position: animation.drive(offsetTween),
                   child: ProfileListItem(
                     key: UniqueKey(),
                     profile: insertedProfiles[index],
                   ),
-                  position: animation.drive(offsetTween),
                 );
               },
             );

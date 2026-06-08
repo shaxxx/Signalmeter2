@@ -8,7 +8,7 @@ class SignalMonitorState {
   final MonitorStatus status;
   final List<ISignalResponse> responses;
 
-  SignalMonitorState({
+  const SignalMonitorState({
     required this.status,
     required this.responses,
   });

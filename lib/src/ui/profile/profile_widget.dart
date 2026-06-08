@@ -7,8 +7,7 @@ import 'package:flutter/material.dart';
 
 class _InheritedProfileWidget extends InheritedWidget {
   final ProfileWidgetState data;
-  _InheritedProfileWidget({
-    super.key,
+  const _InheritedProfileWidget({
     required this.data,
     required super.child,
   });
@@ -22,8 +21,8 @@ class ProfileWidget extends StatefulWidget {
   final IProfile? profile;
   final ProfileEditViewModel viewModel;
 
-  ProfileWidget(
-      {required this.child, this.profile, required this.viewModel});
+  const ProfileWidget(
+      {super.key, required this.child, this.profile, required this.viewModel});
 
   static ProfileWidgetState of(BuildContext context) {
     return (context
@@ -132,7 +131,7 @@ class ProfileWidgetState extends State<ProfileWidget> {
         profile.address, int.parse(profile.httpPort)))) {
       var message = MessageProvider.of(context)
           .warnHttpPortClosed(profile.address, profile.httpPort);
-      message += '\n' + MessageProvider.of(context).warnSaveTheProfileAnyway;
+      message += '\n${MessageProvider.of(context).warnSaveTheProfileAnyway}';
       return await showWarningDialog(message);
     }
     return true;
@@ -145,7 +144,7 @@ class ProfileWidgetState extends State<ProfileWidget> {
     if (!(await NetworkUtils.isPortOpen(
         profile.address, int.parse(profile.streamingPort)))) {
       var message = MessageProvider.of(context).warnStreamingPortClosed;
-      message += '\n' + MessageProvider.of(context).warnSaveTheProfileAnyway;
+      message += '\n${MessageProvider.of(context).warnSaveTheProfileAnyway}';
       return await showWarningDialog(message);
     }
     return true;
@@ -158,7 +157,7 @@ class ProfileWidgetState extends State<ProfileWidget> {
     if (!(await NetworkUtils.isPortOpen(
         profile.address, int.parse(profile.transcodingPort)))) {
       var message = MessageProvider.of(context).warnTranscodingPortClosed;
-      message += '\n' + MessageProvider.of(context).warnSaveTheProfileAnyway;
+      message += '\n${MessageProvider.of(context).warnSaveTheProfileAnyway}';
       return await showWarningDialog(message);
     }
     return true;
@@ -168,7 +167,7 @@ class ProfileWidgetState extends State<ProfileWidget> {
     if (StringHelper.stringIsNullOrEmpty(profile.username) &&
         StringHelper.stringIsNullOrEmpty(profile.password)) {
       var message = MessageProvider.of(context).questionEmptyUsernamePassword;
-      message += '\n' + MessageProvider.of(context).warnSaveTheProfileAnyway;
+      message += '\n${MessageProvider.of(context).warnSaveTheProfileAnyway}';
       return await showWarningDialog(message);
     }
     return true;
@@ -220,14 +219,14 @@ class ProfileWidgetState extends State<ProfileWidget> {
 
   void _setValidators() {
     nameValidator = (value) {
-      if (value == null || value.length == 0) {
+      if (value == null || value.isEmpty) {
         return MessageProvider.of(context).errInvalidProfileName;
       }
       return null;
     };
 
     addressValidator = (value) {
-      if (value == null || value.length == 0) {
+      if (value == null || value.isEmpty) {
         return MessageProvider.of(context).errInvalidAddress;
       }
       if (!NetworkUtils.isValidAddress(value)) {
@@ -244,7 +243,7 @@ class ProfileWidgetState extends State<ProfileWidget> {
     };
 
     usernameValidator = (value) {
-      if (value == null || value.length == 0) {
+      if (value == null || value.isEmpty) {
         if (passwordController.text.isNotEmpty) {
           return MessageProvider.of(context).errInvalidUsername;
         }

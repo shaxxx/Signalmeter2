@@ -10,7 +10,7 @@ class BouquetItemsState {
   final Map<IBouquetItemBouquet, List<IBouquetItem>> cachedBouquetItems;
   final String? searchTerm;
 
-  BouquetItemsState({
+  const BouquetItemsState({
     required this.status,
     required this.selectedService,
     required this.cachedBouquetItems,

@@ -5,5 +5,5 @@ import 'package:flutter/widgets.dart';
 @immutable
 class ScreenshotStatusChangedEvent {
   final LoadingStatus status;
-  ScreenshotStatusChangedEvent(this.status);
+  const ScreenshotStatusChangedEvent(this.status);
 }

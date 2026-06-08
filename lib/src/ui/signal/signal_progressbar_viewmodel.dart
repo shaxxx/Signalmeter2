@@ -36,7 +36,7 @@ class SignalProgressbarViewModel {
       if (db == -1) {
         return messages.noInformation;
       }
-      return 'dB: ${db}';
+      return 'dB: $db';
     }
     return messages.noInformation;
   }

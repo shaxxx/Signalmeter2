@@ -15,11 +15,11 @@ class CustomFlatButton extends StatelessWidget {
     return ButtonTheme(
       padding: EdgeInsets.symmetric(vertical: 10),
       child: InkWell(
-        child: Padding(
-          child: child,
-          padding: EdgeInsets.all(5),
-        ),
         onTap: onPressed,
+        child: Padding(
+          padding: EdgeInsets.all(5),
+          child: child,
+        ),
         //materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
       ),
     );

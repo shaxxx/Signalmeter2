@@ -11,14 +11,12 @@ import '../../message_provider.dart';
 class ErrorView extends InfoMessageView {
   static const Key tryAgainButtonKey = Key('tryAgainButton');
 
-  const ErrorView({
-    String? title,
-    String? description,
+  const ErrorView({super.key, 
+    super.title,
+    super.description,
     required VoidCallback onRetry,
   }) : super(
           actionButtonKey: tryAgainButtonKey,
-          title: title,
-          description: description,
           onActionButtonTapped: onRetry,
         );
 }

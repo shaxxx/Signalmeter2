@@ -15,6 +15,8 @@ import 'main_tab_viewmodel.dart';
 import 'tabs_appbar_view.dart';
 
 class MainTabView extends StatefulWidget {
+  const MainTabView({super.key});
+
   @override
   _MainTabViewState createState() => _MainTabViewState();
 }

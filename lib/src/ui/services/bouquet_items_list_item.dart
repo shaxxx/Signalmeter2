@@ -53,7 +53,7 @@ class BouquetItemsListItem extends StatelessWidget {
               alignment: Alignment.centerLeft,
               padding: EdgeInsets.only(left: 20),
               child: Text(
-                '${viewModel.name}',
+                viewModel.name,
                 style: const TextStyle(fontSize: 20.0, color: Colors.white),
                 overflow: TextOverflow.clip,
                 maxLines: 1,
@@ -90,7 +90,7 @@ class BouquetItemsListItem extends StatelessWidget {
           ),
           Flexible(
             child: Text(
-              '${viewModel.name}',
+              viewModel.name,
               style: const TextStyle(fontSize: 20.0, color: Colors.white),
               overflow: TextOverflow.ellipsis,
               maxLines: 1,

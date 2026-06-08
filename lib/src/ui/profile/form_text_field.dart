@@ -1,7 +1,6 @@
 import 'package:enigma_signal_meter/src/ui/profile/profile_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter/widgets.dart';
 
 class FormTextField extends StatelessWidget {
   final TextEditingController controller;

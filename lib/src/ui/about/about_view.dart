@@ -7,6 +7,8 @@ import 'package:package_info_plus/package_info_plus.dart';
 import '../../message_provider.dart';
 
 class AboutView extends StatefulWidget {
+  const AboutView({super.key});
+
   @override
   _AboutViewState createState() => _AboutViewState();
 }
@@ -32,7 +34,7 @@ class _AboutViewState extends State<AboutView> {
     return Padding(
       padding: EdgeInsets.only(bottom: 30),
       child: Text(
-        MessageProvider.of(context).build + ':  ' + _packageInfo!.buildNumber,
+        '${MessageProvider.of(context).build}:  ${_packageInfo!.buildNumber}',
         style: TextStyle(fontSize: 15),
       ),
     );
@@ -45,7 +47,7 @@ class _AboutViewState extends State<AboutView> {
     return Padding(
       padding: EdgeInsets.all(10),
       child: Text(
-        MessageProvider.of(context).version + ':  ' + _packageInfo!.version,
+        '${MessageProvider.of(context).version}:  ${_packageInfo!.version}',
         style: TextStyle(fontSize: 15),
       ),
     );
@@ -59,7 +61,7 @@ class _AboutViewState extends State<AboutView> {
       languageCode += '/';
     }
     return Hyperlink(
-      url: krkadoniUrl + '/#/' + languageCode + 'using',
+      url: '$krkadoniUrl/#/${languageCode}using',
       text: krkadoniUrl,
       fontSize: 20,
       color: Theme.of(context).colorScheme.secondary.withOpacity(0.7),

@@ -44,7 +44,7 @@ class BouquetsListItem extends StatelessWidget {
                     alignment: Alignment.centerLeft,
                     padding: EdgeInsets.only(left: 20),
                     child: Text(
-                      '${viewModel.name}',
+                      viewModel.name,
                       style:
                           const TextStyle(fontSize: 20.0, color: Colors.white),
                       overflow: TextOverflow.clip,

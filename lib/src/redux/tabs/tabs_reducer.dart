@@ -7,30 +7,30 @@ import 'tab_events.dart';
 import 'tab_state.dart';
 
 final tabsReducer = combineReducers<TabState>([
-  TypedReducer<TabState, ActiveTabChangedEvent>(_activeTabChangedReducer),
+  TypedReducer<TabState, ActiveTabChangedEvent>(_activeTabChangedReducer).call,
   TypedReducer<TabState, TabPagesActiveChangedEvent>(
-      _tabPagesActiveChangeReducer),
+      _tabPagesActiveChangeReducer).call,
   TypedReducer<TabState, SignalChartFullScreenActiveChangedEvent>(
-      _signalChartFullScreenActiveChangedEvent),
-  TypedReducer<TabState, ChangeSignalView>(_alternativeLookChangedReducer),
-  TypedReducer<TabState, ResetStateEvent>(_tabStateResetEventReducer),
+      _signalChartFullScreenActiveChangedEvent).call,
+  TypedReducer<TabState, ChangeSignalView>(_alternativeLookChangedReducer).call,
+  TypedReducer<TabState, ResetStateEvent>(_tabStateResetEventReducer).call,
 ]);
 
 TabState _activeTabChangedReducer(TabState state, ActiveTabChangedEvent event) {
-  Logger.root.fine('Active tab set to ' + event.tabPage.toString());
+  Logger.root.fine('Active tab set to ${event.tabPage}');
   return state.copyWith(activeTab: event.tabPage);
 }
 
 TabState _tabPagesActiveChangeReducer(
     TabState state, TabPagesActiveChangedEvent event) {
-  Logger.root.fine('Tab pages activity set to ' + event.active.toString());
+  Logger.root.fine('Tab pages activity set to ${event.active}');
   return state.copyWith(tabPagesActive: event.active);
 }
 
 TabState _signalChartFullScreenActiveChangedEvent(
     TabState state, SignalChartFullScreenActiveChangedEvent event) {
   Logger.root
-      .fine('SignalChartFullScreen activity set to ' + event.active.toString());
+      .fine('SignalChartFullScreen activity set to ${event.active}');
   return state.copyWith(signalChartFullScreenActive: event.active);
 }
 

@@ -5,19 +5,19 @@ import 'package:flutter/widgets.dart';
 @immutable
 class ChangeTtsStatusEvent {
   final TtsStatus status;
-  ChangeTtsStatusEvent(this.status);
+  const ChangeTtsStatusEvent(this.status);
 }
 
 @immutable
 class ChangeTtsEnabledEvent {
   final bool enable;
-  ChangeTtsEnabledEvent(this.enable);
+  const ChangeTtsEnabledEvent(this.enable);
 }
 
 @immutable
 class SpeakSignalLevelEvent {
   final ISignalResponse response;
-  SpeakSignalLevelEvent({
+  const SpeakSignalLevelEvent({
     required this.response,
   });
 }
@@ -28,13 +28,13 @@ class SpeakSignalLevelSuccessEvent {}
 @immutable
 class SpeakSignalLevelErrorEvent {
   final dynamic error;
-  SpeakSignalLevelErrorEvent(this.error) : assert(error != null);
+  const SpeakSignalLevelErrorEvent(this.error) : assert(error != null);
 }
 
 @immutable
 class ChangeTtsInitializationStatusEvent {
   final TtsInitializationStatus status;
-  ChangeTtsInitializationStatusEvent(this.status);
+  const ChangeTtsInitializationStatusEvent(this.status);
 }
 
 @immutable
@@ -46,5 +46,5 @@ class InitializeTtsSuccessEvent {}
 @immutable
 class InitializeTtsErrorEvent {
   final dynamic error;
-  InitializeTtsErrorEvent(this.error) : assert(error != null);
+  const InitializeTtsErrorEvent(this.error) : assert(error != null);
 }

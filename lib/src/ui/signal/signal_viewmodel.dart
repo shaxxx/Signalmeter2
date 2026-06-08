@@ -10,7 +10,7 @@ class SignalViewModel {
   final SignalViewEnum signalView;
   final void Function() onCycleView;
 
-  SignalViewModel({
+  const SignalViewModel({
     required this.signalView,
     required this.onCycleView,
   });

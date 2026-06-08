@@ -6,8 +6,8 @@ import 'message_events.dart';
 
 final messageReducer = combineReducers<MessageState>([
   TypedReducer<MessageState, SendMessageStatusChangedEvent>(
-      _messageStatusChangedReducer),
-  TypedReducer<MessageState, ResetStateEvent>(_MessageStateResetReducer),
+      _messageStatusChangedReducer).call,
+  TypedReducer<MessageState, ResetStateEvent>(_MessageStateResetReducer).call,
 ]);
 
 MessageState _messageStatusChangedReducer(

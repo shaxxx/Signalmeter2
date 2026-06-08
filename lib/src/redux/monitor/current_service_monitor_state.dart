@@ -5,7 +5,7 @@ import 'package:meta/meta.dart';
 class CurrentServiceMonitorState {
   final MonitorStatus status;
 
-  CurrentServiceMonitorState({
+  const CurrentServiceMonitorState({
     required this.status,
   });
 

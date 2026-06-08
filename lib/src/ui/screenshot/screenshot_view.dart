@@ -1,4 +1,3 @@
-import 'dart:typed_data';
 
 import 'package:enigma_signal_meter/src/constants.dart';
 import 'package:enigma_signal_meter/src/message_provider.dart';
@@ -18,6 +17,8 @@ import 'package:share_plus/share_plus.dart';
 import 'screenshot_viewmodel.dart';
 
 class ScreenshotView extends StatefulWidget {
+  const ScreenshotView({super.key});
+
   @override
   _ScreenshotViewState createState() => _ScreenshotViewState();
 }
@@ -68,7 +69,7 @@ class _ScreenshotViewState extends State<ScreenshotView> {
                             files: [
                               XFile.fromData(
                                 Uint8List.fromList(bytes),
-                                name: fileName + '.jpg',
+                                name: '$fileName.jpg',
                                 mimeType: 'image/jpeg',
                               )
                             ],

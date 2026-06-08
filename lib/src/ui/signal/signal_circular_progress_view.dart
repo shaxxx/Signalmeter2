@@ -7,6 +7,8 @@ import '../../message_provider.dart';
 import 'signal_circular_progress_viewmodel.dart';
 
 class SignalCircularProgressView extends StatelessWidget {
+  const SignalCircularProgressView({super.key});
+
   @override
   Widget build(BuildContext context) {
     return StoreConnector<AppState, SignalCircularProgressViewModel>(

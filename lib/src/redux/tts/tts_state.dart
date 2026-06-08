@@ -9,7 +9,7 @@ class TtsState {
   final bool ttsEnabled;
   final TtsInitializationStatus ttsInitializationStatus;
 
-  TtsState({
+  const TtsState({
     required this.status,
     required this.response,
     required this.ttsEnabled,

@@ -10,6 +10,8 @@ import '../../message_provider.dart';
 import 'current_service_viewmodel.dart';
 
 class CurrentServiceView extends StatelessWidget {
+  const CurrentServiceView({super.key});
+
   String getServiceType(IBouquetItemService service, Messages messages) {
     var serviceType = EnigmaUtils.serviceInfo(service);
     if (serviceType == ServiceType.DVBS) {
@@ -71,7 +73,7 @@ class CurrentServiceView extends StatelessWidget {
                 padding: EdgeInsets.only(bottom: 10),
                 alignment: Alignment.center,
                 child: Text(
-                  '${_serviceInfo(viewModel, MessageProvider.of(context))}',
+                  _serviceInfo(viewModel, MessageProvider.of(context)),
                   style: const TextStyle(fontSize: 15.0, color: Colors.white),
                   overflow: TextOverflow.ellipsis,
                 ),

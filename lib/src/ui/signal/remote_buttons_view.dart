@@ -7,6 +7,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 
 class RemoteButtonsView extends StatelessWidget {
+  const RemoteButtonsView({super.key});
+
   @override
   Widget build(BuildContext context) {
     var theme = Theme.of(context);
@@ -34,15 +36,15 @@ class RemoteButtonsView extends StatelessWidget {
       children: <Widget>[
         InkWell(
           child: Padding(
+            padding: EdgeInsets.all(10),
             child: Text(
-              messages.channel.toUpperCase() + '-',
+              '${messages.channel.toUpperCase()}-',
               style: TextStyle(
                 fontWeight: FontWeight.w500,
                 fontSize: 16,
                 color: theme.colorScheme.secondary,
               ),
             ),
-            padding: EdgeInsets.all(10),
           ),
           onTap: () => store.dispatch(
             SendRemoteControlCodeEvent(
@@ -53,14 +55,14 @@ class RemoteButtonsView extends StatelessWidget {
         ),
         InkWell(
           child: Padding(
+            padding: EdgeInsets.all(10),
             child: Text(
-              messages.channel.toUpperCase() + '+',
+              '${messages.channel.toUpperCase()}+',
               style: TextStyle(
                   fontWeight: FontWeight.w500,
                   fontSize: 16,
                   color: theme.colorScheme.secondary),
             ),
-            padding: EdgeInsets.all(10),
           ),
           onTap: () => store.dispatch(
             SendRemoteControlCodeEvent(

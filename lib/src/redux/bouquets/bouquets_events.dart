@@ -6,7 +6,7 @@ import 'package:meta/meta.dart';
 class BouquetSelectedEvent {
   final IBouquetItemBouquet bouquet;
   final bool switchToServicesTab;
-  BouquetSelectedEvent({
+  const BouquetSelectedEvent({
     required this.bouquet,
     required this.switchToServicesTab,
   });
@@ -15,5 +15,5 @@ class BouquetSelectedEvent {
 @immutable
 class BouquetsStatusChangedEvent {
   final LoadingStatus status;
-  BouquetsStatusChangedEvent(this.status);
+  const BouquetsStatusChangedEvent(this.status);
 }

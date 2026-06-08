@@ -214,13 +214,13 @@ class _ProfileListItemState extends State<ProfileListItem>
   Widget _connectButton(ProfileListItemViewModel viewModel) {
     if (viewModel.connectButtonEnabled) {
       return CustomFlatButton(
+        onPressed: viewModel.onConnect!,
         child: Text(
           MessageProvider.of(context).actionConnect.toUpperCase(),
           style: TextStyle(
             fontWeight: FontWeight.w500,
           ),
-        ),
-        onPressed: viewModel.onConnect!, // non-null when connectButtonEnabled
+        ), // non-null when connectButtonEnabled
       );
     }
     return SizedBox.shrink();
@@ -229,13 +229,13 @@ class _ProfileListItemState extends State<ProfileListItem>
   Widget _disconnectButton(ProfileListItemViewModel viewModel) {
     if (viewModel.disconnectButtonEnabled) {
       return CustomFlatButton(
+        onPressed: viewModel.onDisconnect!,
         child: Text(
           MessageProvider.of(context).actionDisconnect.toUpperCase(),
           style: TextStyle(
             fontWeight: FontWeight.w500,
           ),
-        ),
-        onPressed: viewModel.onDisconnect!, // non-null when disconnectButtonEnabled
+        ), // non-null when disconnectButtonEnabled
       );
     }
     return SizedBox.shrink();
@@ -246,13 +246,13 @@ class _ProfileListItemState extends State<ProfileListItem>
       return SizedBox.shrink();
     }
     return CustomFlatButton(
+      onPressed: viewModel.onEdit!,
       child: Text(
         MessageProvider.of(context).actionEdit.toUpperCase(),
         style: TextStyle(
           fontWeight: FontWeight.w500,
         ),
-      ),
-      onPressed: viewModel.onEdit!, // non-null after guard above
+      ), // non-null after guard above
     );
   }
 

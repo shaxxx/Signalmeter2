@@ -8,6 +8,8 @@ import '../../constants.dart';
 import '../../message_provider.dart';
 
 class SignalChartView extends StatefulWidget {
+  const SignalChartView({super.key});
+
   @override
   _SignalChartViewState createState() => _SignalChartViewState();
 }
@@ -47,11 +49,9 @@ class _SignalChartViewState extends State<SignalChartView> {
                         alignment: Alignment.center,
                         padding: EdgeInsets.only(bottom: 5),
                         child: Text(
-                            viewModel.requestTimeString() +
-                                '  ' +
-                                (screenSize.width >= 450
+                            '${viewModel.requestTimeString()}  ${screenSize.width >= 450
                                     ? viewModel.averageTimeString()
-                                    : ''),
+                                    : ''}',
                             style: TextStyle(
                               color: Colors.white,
                               fontWeight: FontWeight.normal,

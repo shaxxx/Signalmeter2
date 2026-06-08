@@ -7,7 +7,7 @@ class ScreenshotState {
   final LoadingStatus status;
   final IScreenshotResponse? response;
 
-  ScreenshotState({
+  const ScreenshotState({
     required this.status,
     required this.response,
   });

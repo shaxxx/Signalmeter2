@@ -8,21 +8,21 @@ import 'tts_events.dart';
 import 'tts_state.dart';
 
 final ttsReducer = combineReducers<TtsState>([
-  TypedReducer<TtsState, ChangeTtsStatusEvent>(_statusChangedReducer),
-  TypedReducer<TtsState, ChangeTtsEnabledEvent>(_enabledChangedReducer),
-  TypedReducer<TtsState, SpeakSignalLevelEvent>(_speakSignalReducer),
+  TypedReducer<TtsState, ChangeTtsStatusEvent>(_statusChangedReducer).call,
+  TypedReducer<TtsState, ChangeTtsEnabledEvent>(_enabledChangedReducer).call,
+  TypedReducer<TtsState, SpeakSignalLevelEvent>(_speakSignalReducer).call,
   TypedReducer<TtsState, ChangeTtsInitializationStatusEvent>(
-      _initializationStatusReducer),
-  TypedReducer<TtsState, ResetStateEvent>(_ttsResetStateEventReducer),
+      _initializationStatusReducer).call,
+  TypedReducer<TtsState, ResetStateEvent>(_ttsResetStateEventReducer).call,
 ]);
 
 TtsState _statusChangedReducer(TtsState state, ChangeTtsStatusEvent event) {
-  Logger.root.fine('TTS status changed to ' + event.status.toString());
+  Logger.root.fine('TTS status changed to ${event.status}');
   return state.copyWith(status: event.status);
 }
 
 TtsState _enabledChangedReducer(TtsState state, ChangeTtsEnabledEvent event) {
-  Logger.root.fine('TTS enabled is now ' + event.enable.toString());
+  Logger.root.fine('TTS enabled is now ${event.enable}');
   return state.copyWith(ttsEnabled: event.enable);
 }
 
@@ -36,7 +36,7 @@ TtsState _speakSignalReducer(TtsState state, SpeakSignalLevelEvent event) {
 TtsState _initializationStatusReducer(
     TtsState state, ChangeTtsInitializationStatusEvent event) {
   Logger.root
-      .fine('TTS initialization status changed to ' + event.status.toString());
+      .fine('TTS initialization status changed to ${event.status}');
   return state.copyWith(ttsInitializationStatus: event.status);
 }
 

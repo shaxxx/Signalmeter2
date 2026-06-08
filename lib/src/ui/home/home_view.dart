@@ -21,6 +21,8 @@ import 'home_viewmodel.dart';
 const Duration _kFrontLayerSwitchDuration = Duration(milliseconds: 300);
 
 class HomeView extends StatelessWidget {
+  const HomeView({super.key});
+
   @override
   Widget build(BuildContext context) {
     return ShowCaseWidget(
@@ -123,12 +125,12 @@ class _HomeViewState extends State<_HomeView> with RouteAware {
                   onTargetClick: () => viewModel.addProfile?.call(),
                   disposeOnTap: true,
                   child: DisappearingFab(
+                    finalStateVisible: viewModel.connectionState ==
+                        ConnectionStatusEnum.disconnected,
                     child: FloatingActionButton(
                       onPressed: viewModel.addProfile,
                       child: Icon(Icons.add),
                     ),
-                    finalStateVisible: viewModel.connectionState ==
-                        ConnectionStatusEnum.disconnected,
                   ))
               : null,
           child: Backdrop(

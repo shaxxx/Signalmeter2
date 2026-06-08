@@ -8,7 +8,7 @@ abstract class InfoMessageEvent extends MessageEvent {}
 @immutable
 class InfoMessageShownEvent {
   final InfoMessageEvent infoMessageEvent;
-  InfoMessageShownEvent(this.infoMessageEvent);
+  const InfoMessageShownEvent(this.infoMessageEvent);
 
   @override
   bool operator ==(Object other) =>

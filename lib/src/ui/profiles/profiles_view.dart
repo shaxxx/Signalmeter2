@@ -12,6 +12,8 @@ import 'profiles_list_view.dart';
 GlobalKey fabIosShowcaseKey = GlobalKey();
 
 class ProfilesView extends StatelessWidget {
+  const ProfilesView({super.key});
+
   @override
   Widget build(BuildContext context) {
     return StoreConnector<AppState, ProfilesViewModel>(
@@ -31,7 +33,7 @@ class ProfilesView extends StatelessWidget {
                   mainAxisSize: MainAxisSize.max,
                   children: <Widget>[
                     Expanded(
-                      child: Container(
+                      child: SizedBox(
                         height: double.infinity,
                         child: ProfilesListView(),
                       ),

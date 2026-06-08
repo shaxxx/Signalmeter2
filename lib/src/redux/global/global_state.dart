@@ -14,7 +14,7 @@ class GlobalState {
   final RouteObserver<PageRoute> routeObserver;
   final ApplicationSettings applicationSettings;
 
-  GlobalState({
+  const GlobalState({
     required this.screenSize,
     required this.satellites,
     required this.webRequester,

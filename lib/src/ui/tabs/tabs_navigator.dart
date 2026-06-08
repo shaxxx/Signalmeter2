@@ -6,6 +6,8 @@ import '../../message_provider.dart';
 import 'tabs_navigator_viewmodel.dart';
 
 class TabsNavigator extends StatelessWidget {
+  const TabsNavigator({super.key});
+
   @override
   Widget build(BuildContext context) {
     var theme = Theme.of(context);

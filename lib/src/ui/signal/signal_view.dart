@@ -12,6 +12,8 @@ import 'package:flutter_redux/flutter_redux.dart';
 import 'current_service_view.dart';
 
 class SignalView extends StatefulWidget {
+  const SignalView({super.key});
+
   @override
   _SignalViewState createState() => _SignalViewState();
 }

@@ -7,7 +7,7 @@ class TtsUtils {
   final FlutterTts _flutterTts;
   static TtsUtils? _instance;
   static String get language => _language;
-  static String _language = '';
+  static final String _language = '';
 
   factory TtsUtils() {
     _instance ??= TtsUtils._internal(FlutterTts());

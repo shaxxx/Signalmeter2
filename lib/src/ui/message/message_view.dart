@@ -10,6 +10,8 @@ import 'package:flutter_redux/flutter_redux.dart';
 import '../../message_provider.dart';
 
 class MessageView extends StatefulWidget {
+  const MessageView({super.key});
+
   @override
   _MessageViewState createState() => _MessageViewState();
 }
@@ -83,7 +85,7 @@ class _MessageViewState extends State<MessageView> {
                           messageType,
                           (value) => setState(() => messageType = value),
                         ),
-                        Container(
+                        SizedBox(
                           width: 100,
                           child: TextFormField(
                             autovalidateMode: AutovalidateMode.always, textAlign: TextAlign.right,

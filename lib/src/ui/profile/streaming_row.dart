@@ -4,6 +4,8 @@ import '../../message_provider.dart';
 import 'profile_widget.dart';
 
 class StreamingRow extends StatelessWidget {
+  const StreamingRow({super.key});
+
   @override
   Widget build(BuildContext context) {
     var theme = Theme.of(context);

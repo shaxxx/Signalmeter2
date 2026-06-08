@@ -13,7 +13,7 @@ const EdgeInsetsDirectional _kItemPadding =
     EdgeInsetsDirectional.only(start: 56.0);
 
 class _OptionsItem extends StatelessWidget {
-  const _OptionsItem({super.key, required this.child});
+  const _OptionsItem({required this.child});
 
   final Widget child;
 
@@ -83,7 +83,7 @@ class _ActionItem extends StatelessWidget {
 }
 
 class _FlatButton extends StatelessWidget {
-  const _FlatButton({super.key, this.onPressed, required this.child});
+  const _FlatButton({this.onPressed, required this.child});
 
   final VoidCallback? onPressed;
   final Widget child;
@@ -118,8 +118,8 @@ class _Heading extends StatelessWidget {
           color: theme.colorScheme.secondary,
         ),
         child: Semantics(
-          child: Text(text),
           header: true,
+          child: Text(text),
         ),
       ),
     );
@@ -203,7 +203,7 @@ class SettingsView extends StatelessWidget {
     if (languageCode.isNotEmpty) {
       languageCode += '/';
     }
-    var url = krkadoniUrl + '/#/' + languageCode + 'using';
+    var url = '$krkadoniUrl/#/${languageCode}using';
     return StoreConnector<AppState, SettingsViewModel>(
         distinct: true,
         converter: (store) {
