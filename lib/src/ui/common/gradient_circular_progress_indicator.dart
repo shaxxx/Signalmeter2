@@ -3,16 +3,16 @@ import 'package:flutter/material.dart';
 
 /// A circular progress indicator with gradient effect.
 class GradientCircularProgressIndicator extends StatelessWidget {
-  GradientCircularProgressIndicator({
-    Key key,
+  const GradientCircularProgressIndicator({
+    super.key,
     this.strokeWidth = 18.0,
     required this.colors,
     this.stops,
     this.value,
     this.child,
-  }) : super(key: key);
+  });
 
-  final Widget child;
+  final Widget? child;
 
   /// The width of the line used to draw the circle.
   final double strokeWidth;
@@ -20,7 +20,7 @@ class GradientCircularProgressIndicator extends StatelessWidget {
   /// The value of this progress indicator with 0.0 corresponding
   /// to no progress having been made and 1.0 corresponding to all the progress
   /// having been made.
-  final double value;
+  final double? value;
 
   /// The colors the gradient should obtain at each of the stops.
   ///
@@ -46,7 +46,7 @@ class GradientCircularProgressIndicator extends StatelessWidget {
   ///
   /// If stops is null, then a set of uniformly distributed stops is implied,
   /// with the first stop at 0.0 and the last stop at 1.0.
-  final List<double> stops;
+  final List<double>? stops;
 
   @override
   Widget build(BuildContext context) {
@@ -68,11 +68,11 @@ class GradientArcPainter extends CustomPainter {
     required this.colors,
     required this.stops,
     required this.strokeWidth,
-  })  : super();
+  }) : super();
 
-  final double progress;
+  final double? progress;
   final List<Color> colors;
-  final List<double> stops;
+  final List<double>? stops;
   final double strokeWidth;
 
   @override
@@ -90,7 +90,10 @@ class GradientArcPainter extends CustomPainter {
       startAngle: pi / 2,
       endAngle: 5 * (pi / 2),
       tileMode: TileMode.repeated,
-      colors: [Colors.white.withOpacity(0.3), Colors.white.withOpacity(0.3)],
+      colors: [
+        Colors.white.withValues(alpha: 0.3),
+        Colors.white.withValues(alpha: 0.3),
+      ],
     );
 
     final backPaint = Paint()
@@ -108,7 +111,7 @@ class GradientArcPainter extends CustomPainter {
     final radius = min(size.width / 2, size.height / 2) - (strokeWidth / 2);
     final startAngle = (pi / 2) + (pi / 16 * 3);
     final totalSweepAngle = ((2 * pi) - (2 * (pi / 16 * 3)));
-    final sweepAngle = totalSweepAngle * progress;
+    final sweepAngle = totalSweepAngle * (progress ?? 0.0);
 
     canvas.drawArc(
       Rect.fromCircle(center: center, radius: radius),

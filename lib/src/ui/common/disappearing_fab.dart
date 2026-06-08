@@ -10,13 +10,14 @@ class DisappearingFab extends StatefulWidget {
   static const Duration defaultInitialDelayDuration =
       Duration(milliseconds: 500);
 
-  DisappearingFab({
-    Key key,
+  const DisappearingFab({
+    super.key,
     required this.child,
     this.finalStateVisible = true,
     this.duration = defaultDuration,
     this.initalDelay = defaultInitialDelayDuration,
-  }) : super(key: key);
+  });
+
   @override
   DisappearingFabState createState() => DisappearingFabState();
 }
@@ -24,8 +25,9 @@ class DisappearingFab extends StatefulWidget {
 class DisappearingFabState extends State<DisappearingFab>
     with SingleTickerProviderStateMixin {
   bool didRun = false;
-  AnimationController _controller;
-  Animation<double> doubleAnimation;
+  late AnimationController _controller;
+  late Animation<double> doubleAnimation;
+
   @override
   void initState() {
     super.initState();

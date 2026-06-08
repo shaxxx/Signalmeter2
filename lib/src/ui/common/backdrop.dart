@@ -11,7 +11,7 @@ const double _kFrontClosedHeight = 110.0; // front layer height when closed
 const double _kBackAppBarHeight = 56.0; // back layer (options) appbar height
 
 // The size of the front layer heading's left and right beveled corners.
-final Animatable<BorderRadius> _kFrontHeadingBevelRadius = BorderRadiusTween(
+final Animatable<BorderRadius?> _kFrontHeadingBevelRadius = BorderRadiusTween(
   begin: const BorderRadius.only(
     topLeft: Radius.circular(12.0),
     topRight: Radius.circular(12.0),
@@ -25,10 +25,10 @@ final Animatable<BorderRadius> _kFrontHeadingBevelRadius = BorderRadiusTween(
 class _TappableWhileStatusIs extends StatefulWidget {
   const _TappableWhileStatusIs(
     this.status, {
-    Key key,
-    this.controller,
-    this.child,
-  }) : super(key: key);
+    super.key,
+    required this.controller,
+    required this.child,
+  });
 
   final AnimationController controller;
   final AnimationStatus status;
@@ -39,7 +39,7 @@ class _TappableWhileStatusIs extends StatefulWidget {
 }
 
 class _TappableWhileStatusIsState extends State<_TappableWhileStatusIs> {
-  bool _active;
+  late bool _active;
 
   @override
   void initState() {
@@ -74,12 +74,12 @@ class _TappableWhileStatusIsState extends State<_TappableWhileStatusIs> {
 
 class _CrossFadeTransition extends AnimatedWidget {
   const _CrossFadeTransition({
-    Key key,
+    super.key,
     this.alignment = Alignment.center,
-    Animation<double> progress,
-    this.child0,
-    this.child1,
-  }) : super(key: key, listenable: progress);
+    required Animation<double> progress,
+    required this.child0,
+    required this.child1,
+  }) : super(listenable: progress);
 
   final AlignmentGeometry alignment;
   final Widget child0;
@@ -87,7 +87,7 @@ class _CrossFadeTransition extends AnimatedWidget {
 
   @override
   Widget build(BuildContext context) {
-    final Animation<double> progress = listenable;
+    final Animation<double> progress = listenable as Animation<double>;
 
     final opacity1 = CurvedAnimation(
       parent: ReverseAnimation(progress),
@@ -125,15 +125,15 @@ class _CrossFadeTransition extends AnimatedWidget {
 
 class _BackAppBar extends StatelessWidget {
   const _BackAppBar({
-    Key key,
+    super.key,
     this.leading = const SizedBox(width: 56.0),
     required this.title,
     this.trailing,
-  })  : super(key: key);
+  });
 
   final Widget leading;
   final Widget title;
-  final Widget trailing;
+  final Widget? trailing;
 
   @override
   Widget build(BuildContext context) {
@@ -141,7 +141,7 @@ class _BackAppBar extends StatelessWidget {
     return IconTheme.merge(
       data: theme.primaryIconTheme,
       child: DefaultTextStyle(
-        style: theme.primaryTextTheme.titleLarge,
+        style: theme.primaryTextTheme.titleLarge!,
         child: SizedBox(
           height: _kBackAppBarHeight,
           child: Row(
@@ -169,6 +169,7 @@ class _BackAppBar extends StatelessWidget {
 
 class Backdrop extends StatefulWidget {
   const Backdrop({
+    super.key,
     this.frontAction,
     this.frontTitle,
     this.frontHeading,
@@ -177,12 +178,12 @@ class Backdrop extends StatefulWidget {
     this.backLayer,
   });
 
-  final Widget frontAction;
-  final Widget frontTitle;
-  final Widget frontLayer;
-  final Widget frontHeading;
-  final Widget backTitle;
-  final Widget backLayer;
+  final Widget? frontAction;
+  final Widget? frontTitle;
+  final Widget? frontLayer;
+  final Widget? frontHeading;
+  final Widget? backTitle;
+  final Widget? backLayer;
 
   @override
   _BackdropState createState() => _BackdropState();
@@ -191,8 +192,8 @@ class Backdrop extends StatefulWidget {
 class _BackdropState extends State<Backdrop>
     with SingleTickerProviderStateMixin {
   final GlobalKey _backdropKey = GlobalKey(debugLabel: 'Backdrop');
-  AnimationController _controller;
-  Animation<double> _frontOpacity;
+  late AnimationController _controller;
+  late Animation<double> _frontOpacity;
 
   static final Animatable<double> _frontOpacityTween =
       Tween<double>(begin: 0.2, end: 1.0).chain(
@@ -218,14 +219,18 @@ class _BackdropState extends State<Backdrop>
   double get _backdropHeight {
     // Warning: this can be safely called from the event handlers but it may
     // not be called at build time.
-    final RenderBox renderBox = _backdropKey.currentContext.findRenderObject();
+    final context = _backdropKey.currentContext;
+    if (context == null) return 0.0;
+    final renderBox = context.findRenderObject() as RenderBox?;
+    if (renderBox == null) return 0.0;
     return math.max(
         0.0, renderBox.size.height - _kBackAppBarHeight - _kFrontClosedHeight);
   }
 
   void _handleDragUpdate(DragUpdateDetails details) {
-    _controller.value -=
-        details.primaryDelta / (_backdropHeight ?? details.primaryDelta);
+    final backdropHeight = _backdropHeight;
+    final divisor = backdropHeight != 0.0 ? backdropHeight : details.primaryDelta ?? 1.0;
+    _controller.value -= (details.primaryDelta ?? 0.0) / divisor;
   }
 
   void _handleDragEnd(DragEndDetails details) {
@@ -263,7 +268,7 @@ class _BackdropState extends State<Backdrop>
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
             _BackAppBar(
-              leading: widget.frontAction,
+              leading: widget.frontAction ?? const SizedBox(width: 56.0),
               title: _CrossFadeTransition(
                 progress: _controller,
                 alignment: AlignmentDirectional.centerStart,
@@ -281,12 +286,12 @@ class _BackdropState extends State<Backdrop>
             ),
             Expanded(
               child: Visibility(
-                child: Opacity(
-                  child: widget.backLayer,
-                  opacity: (_controller.value * -1) + 1,
-                ),
                 visible: _controller.status != AnimationStatus.completed,
                 maintainState: true,
+                child: Opacity(
+                  opacity: (_controller.value * -1) + 1,
+                  child: widget.backLayer,
+                ),
               ),
             ),
           ],
@@ -296,14 +301,14 @@ class _BackdropState extends State<Backdrop>
           rect: frontRelativeRect,
           child: AnimatedBuilder(
             animation: _controller,
-            builder: (BuildContext context, Widget child) {
+            builder: (BuildContext context, Widget? child) {
               return PhysicalShape(
                 elevation: 12.0,
                 color: Colors.transparent,
                 clipper: ShapeBorderClipper(
                   shape: BeveledRectangleBorder(
                     borderRadius:
-                        _kFrontHeadingBevelRadius.transform(_controller.value),
+                        _kFrontHeadingBevelRadius.transform(_controller.value) ?? BorderRadius.zero,
                   ),
                 ),
                 clipBehavior: Clip.antiAlias,

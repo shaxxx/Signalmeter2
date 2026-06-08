@@ -4,9 +4,9 @@ class SubtitlePanelView extends StatelessWidget {
   final Widget child;
 
   const SubtitlePanelView({
-    Key key,
+    super.key,
     required this.child,
-  })  : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -17,8 +17,8 @@ class SubtitlePanelView extends StatelessWidget {
         borderRadius: BorderRadius.all(
           const Radius.circular(10.0),
         ),
-        color: theme.primaryColor.withOpacity(0.3),
-        border: Border.all(color: theme.colorScheme.secondary.withOpacity(0.3)),
+        color: theme.primaryColor.withValues(alpha: 0.3),
+        border: Border.all(color: theme.colorScheme.secondary.withValues(alpha: 0.3)),
       ),
       child: child,
     );

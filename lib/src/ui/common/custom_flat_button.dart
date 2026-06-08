@@ -5,10 +5,10 @@ class CustomFlatButton extends StatelessWidget {
   final VoidCallback onPressed;
 
   const CustomFlatButton({
-    Key key,
+    super.key,
     required this.child,
     required this.onPressed,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

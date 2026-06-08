@@ -12,7 +12,7 @@ class CircularProgressView extends StatelessWidget {
   final List<double> stops;
 
   const CircularProgressView({
-    Key key,
+    super.key,
     required this.stringValue,
     required this.doubleValue,
     required this.footerString,
@@ -24,7 +24,7 @@ class CircularProgressView extends StatelessWidget {
       Colors.green,
     ],
     this.stops = const [0.2, 0.3, 0.5, 0.75],
-  })  : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
