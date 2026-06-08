@@ -1,12 +1,11 @@
 import 'package:enigma_signal_meter/src/model/enigma_web_exception.dart';
 import 'package:enigma_web/enigma_web.dart';
-import 'package:flutter/widgets.dart';
 
 class EnigmaApi {
-  static Future<GetStreamParametersResponse> getStreamParameters({
-    @required IWebRequester requester,
-    @required IProfile profile,
-    @required IBouquetItemService service,
+  static Future<IGetStreamParametersResponse> getStreamParameters({
+    required IWebRequester requester,
+    required IProfile profile,
+    required IBouquetItemService service,
   }) async {
     var parser = GetStreamParametersParser();
     var command = GetStreamParametersCommand(
@@ -25,9 +24,9 @@ class EnigmaApi {
     }
   }
 
-  static Future<UnparsedResponse<WakeUpCommand>> wakeUp({
-    @required IWebRequester requester,
-    @required IProfile profile,
+  static Future<IResponse<IWakeUpCommand>> wakeUp({
+    required IWebRequester requester,
+    required IProfile profile,
   }) async {
     var parser = UnparsedParser<WakeUpCommand>();
     var command = WakeUpCommand(
@@ -45,9 +44,9 @@ class EnigmaApi {
     }
   }
 
-  static Future<UnparsedResponse<SleepCommand>> sleep({
-    @required IWebRequester requester,
-    @required IProfile profile,
+  static Future<IResponse<ISleepCommand>> sleep({
+    required IWebRequester requester,
+    required IProfile profile,
   }) async {
     var parser = UnparsedParser<SleepCommand>();
     var command = SleepCommand(
@@ -65,9 +64,9 @@ class EnigmaApi {
     }
   }
 
-  static Future<UnparsedResponse<RestartCommand>> restart({
-    @required IWebRequester requester,
-    @required IProfile profile,
+  static Future<IResponse<IRestartCommand>> restart({
+    required IWebRequester requester,
+    required IProfile profile,
   }) async {
     var parser = UnparsedParser<RestartCommand>();
     var command = RestartCommand(
@@ -85,9 +84,9 @@ class EnigmaApi {
     }
   }
 
-  static Future<GetBouquetsResponse> getBouquets({
-    @required IWebRequester requester,
-    @required IProfile profile,
+  static Future<IGetBouquetsResponse> getBouquets({
+    required IWebRequester requester,
+    required IProfile profile,
   }) async {
     var parser = GetBouquetsParser();
     var command = GetBouquetsCommand(
@@ -105,10 +104,10 @@ class EnigmaApi {
     }
   }
 
-  static Future<GetBouquetItemsResponse> getServices({
-    @required IWebRequester requester,
-    @required IProfile profile,
-    @required IBouquetItemBouquet bouquet,
+  static Future<IGetBouquetItemsResponse> getServices({
+    required IWebRequester requester,
+    required IProfile profile,
+    required IBouquetItemBouquet bouquet,
   }) async {
     var parser = GetBouquetItemsParser();
     var command = GetBouquetItemsCommand(
@@ -127,9 +126,9 @@ class EnigmaApi {
     }
   }
 
-  static Future<GetCurrentServiceResponse> getCurrentService({
-    @required IWebRequester requester,
-    @required IProfile profile,
+  static Future<IGetCurrentServiceResponse> getCurrentService({
+    required IWebRequester requester,
+    required IProfile profile,
   }) async {
     var parser = GetCurrentServiceParser();
     var command = GetCurrentServiceCommand(
@@ -147,10 +146,10 @@ class EnigmaApi {
     }
   }
 
-  static Future<IResponse<ZapCommand>> zapService({
-    @required IWebRequester requester,
-    @required IProfile profile,
-    @required IBouquetItemService service,
+  static Future<IResponse<IZapCommand>> zapService({
+    required IWebRequester requester,
+    required IProfile profile,
+    required IBouquetItemService service,
   }) async {
     var parser = UnparsedParser<ZapCommand>();
     var command = ZapCommand(
@@ -171,10 +170,10 @@ class EnigmaApi {
   }
 
   static Future<ISignalResponse> readSignalLevelMonitor({
-    @required IWebRequester requester,
-    @required IProfile profile,
-    @required IResponseParser<ISignalCommand, SignalResponse> parser,
-    @required ISignalCommand command,
+    required IWebRequester requester,
+    required IProfile profile,
+    required IResponseParser<ISignalCommand, SignalResponse> parser,
+    required ISignalCommand command,
   }) async {
     try {
       return await command.executeAsync();
@@ -186,13 +185,13 @@ class EnigmaApi {
     }
   }
 
-  static Future<GetCurrentServiceResponse> getCurrentServiceMonitor({
-    @required IWebRequester requester,
-    @required IProfile profile,
-    @required
+  static Future<IGetCurrentServiceResponse> getCurrentServiceMonitor({
+    required IWebRequester requester,
+    required IProfile profile,
+    required
         IResponseParser<IGetCurrentServiceCommand, IGetCurrentServiceResponse>
             parser,
-    @required IGetCurrentServiceCommand command,
+    required IGetCurrentServiceCommand command,
   }) async {
     try {
       return await command.executeAsync();
@@ -204,10 +203,10 @@ class EnigmaApi {
     }
   }
 
-  static Future<ScreenshotResponse> getScreenShotOfCurrentService({
-    @required IWebRequester requester,
-    @required IProfile profile,
-    @required ScreenshotType screenshotType,
+  static Future<IScreenshotResponse> getScreenShotOfCurrentService({
+    required IWebRequester requester,
+    required IProfile profile,
+    required ScreenshotType screenshotType,
   }) async {
     var command = ScreenshotCommand(
       requester,
@@ -224,10 +223,10 @@ class EnigmaApi {
     }
   }
 
-  static Future<UnparsedResponse<RemoteControlCommand>> sendRemoteControlCode({
-    @required IWebRequester requester,
-    @required IProfile profile,
-    @required RemoteControlCode code,
+  static Future<IResponse<IRemoteControlCommand>> sendRemoteControlCode({
+    required IWebRequester requester,
+    required IProfile profile,
+    required RemoteControlCode code,
   }) async {
     var parser = UnparsedParser<RemoteControlCommand>();
     var command = RemoteControlCommand(
@@ -246,12 +245,12 @@ class EnigmaApi {
     }
   }
 
-  static Future<UnparsedResponse<MessageCommand>> sendMessage({
-    @required IWebRequester requester,
-    @required IProfile profile,
-    @required String message,
-    @required Duration timeout,
-    @required MessageType type,
+  static Future<IResponse<IMessageCommand>> sendMessage({
+    required IWebRequester requester,
+    required IProfile profile,
+    required String message,
+    required Duration timeout,
+    required MessageType type,
   }) async {
     var parser = UnparsedParser<MessageCommand>();
     var command = MessageCommand(

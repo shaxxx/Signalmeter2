@@ -1,8 +1,7 @@
 import 'package:enigma_signal_meter/src/constants.dart';
 import 'package:enigma_signal_meter/src/message_provider.dart';
-import 'package:flushbar/flushbar.dart';
+import 'package:another_flushbar/flushbar.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 
 class SnackbarHandler {
   static bool isShowing = false;
@@ -45,7 +44,7 @@ class SnackbarHandler {
   static Future showErrorSnackBar(
     BuildContext context,
     String message,
-    String detailsMessage,
+    String? detailsMessage,
   ) async {
     var snackBar = Flushbar(
       message: message,
@@ -58,8 +57,10 @@ class SnackbarHandler {
       leftBarIndicatorColor: Colors.red[300],
       mainButton: detailsMessage == null
           ? null
-          : FlatButton(
-              materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
+          : TextButton(
+              style: TextButton.styleFrom(
+                tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+              ),
               child: Text(
                 MessageProvider.of(context).details.toUpperCase(),
               ),
@@ -73,7 +74,7 @@ class SnackbarHandler {
                         ),
                         content: Text(detailsMessage),
                         actions: <Widget>[
-                          FlatButton(
+                          TextButton(
                             onPressed: () {
                               Navigator.pop(context);
                             },
@@ -108,7 +109,7 @@ class SnackbarHandler {
       await s.show(context).timeout(
         //set timeout because if widget is not visible show() event will never end
         Duration(
-          seconds: s.duration.inSeconds + 1,
+          seconds: (s.duration ?? const Duration(seconds: 3)).inSeconds + 1,
         ),
         onTimeout: () {
           if (s.isDismissible) {

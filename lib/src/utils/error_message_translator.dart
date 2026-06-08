@@ -3,15 +3,14 @@ import 'dart:io';
 import 'package:enigma_signal_meter/src/i18n/messages.dart';
 import 'package:enigma_signal_meter/src/redux/messages/error_messages_events.dart';
 import 'package:enigma_web/enigma_web.dart';
-import 'package:flutter/widgets.dart';
 
 class TranslatedErrorMessage {
   final String message;
-  final String details;
+  final String? details;
   TranslatedErrorMessage({
-    @required this.message,
+    required this.message,
     this.details,
-  }) : assert(message != null);
+  });
 }
 
 class ErrorMessageTranslator {
@@ -43,13 +42,13 @@ class ErrorMessageTranslator {
     );
   }
 
-  static String _getDynamicErrorMessage(dynamic error) {
+  static String? _getDynamicErrorMessage(dynamic error) {
     if (error == null) {
       return null;
     }
     try {
       if (error.error != null) {
-        String message;
+        String? message;
         try {
           message = error.error.message;
         } catch (e) {
@@ -78,13 +77,13 @@ class ErrorMessageTranslator {
     }
   }
 
-  static String _getErrorDetails(EnigmaCommandErrorMessageEvent event) {
+  static String? _getErrorDetails(EnigmaCommandErrorMessageEvent event) {
     return _getDynamicErrorMessage(
       event.exception.innerException.innerException,
     );
   }
 
-  static String _getErrorDetailsOrEnigmaExceptionMessage(
+  static String? _getErrorDetailsOrEnigmaExceptionMessage(
     EnigmaCommandErrorMessageEvent event,
   ) {
     if (event.exception.innerException.innerException != null) {
@@ -140,7 +139,7 @@ class ErrorMessageTranslator {
 
   static TranslatedErrorMessage _safeEnigmaErrorInfo(
       EnigmaCommandErrorMessageEvent event) {
-    var message = event.exception.innerException.message;
+    String? message = event.exception.innerException.message as String?;
     message ??= prettyInstanceTypeString(event.exception.innerException);
     return TranslatedErrorMessage(
       message: message,
