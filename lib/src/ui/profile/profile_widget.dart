@@ -79,7 +79,10 @@ class ProfileWidgetState extends State<ProfileWidget> {
   late FormFieldValidator<String?> nameValidator;
   late FormFieldValidator<String?> addressValidator;
   late FormFieldValidator<String?> usernameValidator;
-  late FormFieldValidator<String?> passwordValidator;
+  // Password has no validation rule (matches the original pre-null-safety
+  // behavior where this field defaulted to null). Kept nullable rather than
+  // `late` so PasswordRow can pass it through as a null validator.
+  FormFieldValidator<String?>? passwordValidator;
   late FormFieldValidator<String?> transcodingPortValidator;
   late FormFieldValidator<String?> streamingPortValidator;
   late FormFieldValidator<String?> httpPortValidator;
