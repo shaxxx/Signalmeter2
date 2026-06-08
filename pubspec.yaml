@@ -1,6 +1,7 @@
 name: enigma_signal_meter
 description: Use your phone or tablet to align your satellite dish by reading signal levels from Enigma 1 or Enigma2 satellite receiver.
 homepage: https://www.krkadoni.com
+publish_to: none
 
 # The following defines the version and build number for your application.
 # A version number is three numbers separated by dots, like 1.2.43
@@ -15,7 +16,7 @@ homepage: https://www.krkadoni.com
 version: 1.0.4+311
 
 environment:
-  sdk: ">=2.7.0 <3.0.0"
+  sdk: ">=3.0.0 <4.0.0"
 
 dependencies:
   flutter:
@@ -27,7 +28,8 @@ dependencies:
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   #cupertino_icons: ^0.1.2
-  enigma_web: ^1.0.5
+  enigma_web:
+    path: ../EnigmaWeb.Dart
   flutter_redux: ^0.6.0
   percent_indicator: ^2.1.3
   flutter_flip_view: ^1.0.3
