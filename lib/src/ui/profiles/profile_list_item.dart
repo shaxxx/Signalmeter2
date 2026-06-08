@@ -2,7 +2,7 @@ import 'package:enigma_signal_meter/src/redux/app/app_state.dart';
 import 'package:enigma_signal_meter/src/ui/common/custom_flat_button.dart';
 import 'package:enigma_web/enigma_web.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_flip_view/flutter_flip_view.dart';
+import '../common/flip_view.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 
 import '../../message_provider.dart';

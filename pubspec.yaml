@@ -30,8 +30,6 @@ dependencies:
   #cupertino_icons: ^0.1.2
   enigma_web:
     path: ../EnigmaWeb.Dart
-  flutter_flip_view:
-    path: ../flutter_flip_view
   flutter_redux: ^0.10.0
   flutter_redux_navigation: ^0.7.1
   percent_indicator: ^4.2.5
