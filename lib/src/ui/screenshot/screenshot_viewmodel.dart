@@ -6,8 +6,8 @@ import 'package:redux/redux.dart';
 
 class ScreenshotViewModel {
   final LoadingStatus status;
-  final ScreenshotResponse response;
-  final IProfile profile;
+  final IScreenshotResponse? response;
+  final IProfile? profile;
   final Function(ScreenshotType) takeScreenshot;
 
   ScreenshotViewModel({
@@ -25,7 +25,7 @@ class ScreenshotViewModel {
       takeScreenshot: (ScreenshotType type) {
         store.dispatch(
           GetScreenShotOfCurrentServiceEvent(
-            profile: store.state.profilesState.selectedProfile,
+            profile: store.state.profilesState.selectedProfile!,
             screenshotType: type,
           ),
         );

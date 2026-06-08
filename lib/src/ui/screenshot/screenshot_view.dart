@@ -60,24 +60,29 @@ class _ScreenshotViewState extends State<ScreenshotView> {
                 IconButton(
                     icon: Icon(menuIcons[shareMenuItemKey]),
                     onPressed: () async {
-                      final bytes = viewModel.response.screenshot;
-                      await SharePlus.instance.share(
-                        ShareParams(
-                          files: [
-                            XFile.fromData(
-                              Uint8List.fromList(bytes),
-                              name: fileName + '.jpg',
-                              mimeType: 'image/jpeg',
-                            )
-                          ],
-                          subject: MessageProvider.of(context).share,
-                        ),
-                      );
-                                        }),
+                      final bytes = viewModel.response?.screenshot;
+                      if (bytes != null) {
+                        await SharePlus.instance.share(
+                          ShareParams(
+                            files: [
+                              XFile.fromData(
+                                Uint8List.fromList(bytes),
+                                name: fileName + '.jpg',
+                                mimeType: 'image/jpeg',
+                              )
+                            ],
+                            subject: MessageProvider.of(context).share,
+                          ),
+                        );
+                      }
+                    }),
                 IconButton(
                     icon: Icon(menuIcons[saveMenuItemKey]),
                     onPressed: () async {
-                      final bytes = viewModel.response.screenshot;
+                      final bytes = viewModel.response?.screenshot;
+                      if (bytes == null) {
+                        return;
+                      }
                       try {
                         if (!await Gal.hasAccess()) {
                           await Gal.requestAccess();
@@ -103,7 +108,7 @@ class _ScreenshotViewState extends State<ScreenshotView> {
                       minScale: PhotoViewComputedScale.contained * 0.8,
                       imageProvider: MemoryImage(
                         Uint8List.fromList(
-                            viewModel.response.screenshot ?? <int>[]),
+                            viewModel.response?.screenshot ?? <int>[]),
                       ),
                     )),
           );
