@@ -13,9 +13,9 @@ class SettingsViewModel {
   void Function(String url) onSupport;
 
   SettingsViewModel({
-    @required this.applicationSettings,
-    @required this.onAbout,
-    @required this.onSupport,
+    required this.applicationSettings,
+    required this.onAbout,
+    required this.onSupport,
   });
 
   static SettingsViewModel fromStore(Store<AppState> store) {

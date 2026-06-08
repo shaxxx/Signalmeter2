@@ -13,7 +13,7 @@ class ProfileListItem extends StatefulWidget {
 
   const ProfileListItem({
     Key key,
-    @required this.profile,
+    required this.profile,
   }) : super(key: key);
 
   @override

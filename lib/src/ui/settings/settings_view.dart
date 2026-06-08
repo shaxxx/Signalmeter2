@@ -191,7 +191,7 @@ class SettingsView extends StatelessWidget {
 
   const SettingsView({
     Key key,
-    @required this.onSettingsChanged,
+    required this.onSettingsChanged,
   }) : super(key: key);
 
   @override

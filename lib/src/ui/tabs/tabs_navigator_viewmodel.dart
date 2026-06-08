@@ -10,9 +10,9 @@ class TabsNavigatorViewModel {
   final int currentIndex;
 
   TabsNavigatorViewModel({
-    @required this.connectionStatus,
-    @required this.onTap,
-    @required this.currentIndex,
+    required this.connectionStatus,
+    required this.onTap,
+    required this.currentIndex,
   });
 
   bool get connected => connectionStatus == ConnectionStatusEnum.connected;

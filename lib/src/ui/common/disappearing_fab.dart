@@ -12,7 +12,7 @@ class DisappearingFab extends StatefulWidget {
 
   DisappearingFab({
     Key key,
-    @required this.child,
+    required this.child,
     this.finalStateVisible = true,
     this.duration = defaultDuration,
     this.initalDelay = defaultInitialDelayDuration,

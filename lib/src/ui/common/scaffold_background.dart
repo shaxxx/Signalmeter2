@@ -11,7 +11,7 @@ class ScaffoldBackground extends StatelessWidget {
 
   const ScaffoldBackground({
     Key key,
-    @required this.child,
+    required this.child,
     this.appBar,
     this.floatingActionButton,
     this.bottomNavigationBar,

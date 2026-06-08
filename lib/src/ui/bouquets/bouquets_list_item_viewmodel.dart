@@ -1,7 +1,6 @@
 import 'package:enigma_signal_meter/src/redux/app/app_state.dart';
 import 'package:enigma_signal_meter/src/redux/bouquets/bouquets_events.dart';
 import 'package:enigma_web/enigma_web.dart';
-import 'package:flutter/widgets.dart';
 import 'package:redux/redux.dart';
 
 class BouquetsListItemViewModel {
@@ -11,9 +10,9 @@ class BouquetsListItemViewModel {
   String get name => bouquet.name;
 
   const BouquetsListItemViewModel({
-    @required this.selected,
-    @required this.onTap,
-    @required this.bouquet,
+    required this.selected,
+    required this.onTap,
+    required this.bouquet,
   });
 
   static BouquetsListItemViewModel fromStore(

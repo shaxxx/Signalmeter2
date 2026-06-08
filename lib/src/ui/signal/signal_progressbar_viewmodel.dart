@@ -1,7 +1,6 @@
 import 'package:enigma_signal_meter/src/i18n/messages.dart';
 import 'package:enigma_signal_meter/src/redux/app/app_state.dart';
 import 'package:enigma_web/enigma_web.dart';
-import 'package:flutter/material.dart';
 import 'package:redux/redux.dart';
 
 class SignalProgressbarViewModel {
@@ -12,9 +11,9 @@ class SignalProgressbarViewModel {
   bool get hasdb => signalResponse.signal is E2Signal;
 
   SignalProgressbarViewModel({
-    @required this.signalResponse,
-    @required this.messages,
-    @required this.dbIsPrimaryLevel,
+    required this.signalResponse,
+    required this.messages,
+    required this.dbIsPrimaryLevel,
   });
 
   String snrString() {

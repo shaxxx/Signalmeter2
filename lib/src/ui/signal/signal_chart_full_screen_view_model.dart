@@ -1,13 +1,12 @@
 import 'package:enigma_signal_meter/src/redux/app/app_state.dart';
 import 'package:enigma_signal_meter/src/redux/tabs/tab_events.dart';
-import 'package:flutter/widgets.dart';
 import 'package:redux/redux.dart';
 
 class SignalChartFullScreenViewModel {
   final Function(bool active) onActiveChanged;
 
   SignalChartFullScreenViewModel({
-    @required this.onActiveChanged,
+    required this.onActiveChanged,
   });
 
   static SignalChartFullScreenViewModel fromStore(Store<AppState> store) {

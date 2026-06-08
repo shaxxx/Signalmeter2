@@ -2,7 +2,6 @@ import 'package:enigma_signal_meter/src/i18n/messages.dart';
 import 'package:enigma_signal_meter/src/model/enums.dart';
 import 'package:enigma_signal_meter/src/redux/app/app_state.dart';
 import 'package:enigma_web/enigma_web.dart';
-import 'package:flutter/material.dart';
 import 'package:redux/redux.dart';
 
 class SignalCircularProgressViewModel {
@@ -18,12 +17,12 @@ class SignalCircularProgressViewModel {
   }
 
   SignalCircularProgressViewModel({
-    @required this.stringValue,
-    @required this.doubleValue,
-    @required this.footerValue,
-    @required this.hasdb,
-    @required this.hasInfo,
-    @required this.isBerView,
+    required this.stringValue,
+    required this.doubleValue,
+    required this.footerValue,
+    required this.hasdb,
+    required this.hasInfo,
+    required this.isBerView,
   })  : assert(doubleValue >= 0 && doubleValue <= 1);
 
   static String _snrString(

@@ -127,7 +127,7 @@ class _BackAppBar extends StatelessWidget {
   const _BackAppBar({
     Key key,
     this.leading = const SizedBox(width: 56.0),
-    @required this.title,
+    required this.title,
     this.trailing,
   })  : super(key: key);
 

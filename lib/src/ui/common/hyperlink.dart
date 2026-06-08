@@ -9,8 +9,8 @@ class Hyperlink extends StatelessWidget {
   final Color color;
 
   Hyperlink({
-    @required this.url,
-    @required this.text,
+    required this.url,
+    required this.text,
     this.fontSize,
     this.color,
   });

@@ -1,7 +1,6 @@
 import 'package:enigma_signal_meter/src/i18n/messages.dart';
 import 'package:enigma_signal_meter/src/redux/app/app_state.dart';
 import 'package:enigma_web/enigma_web.dart';
-import 'package:flutter/material.dart';
 import 'package:redux/redux.dart';
 import 'package:collection/collection.dart';
 
@@ -11,9 +10,9 @@ class CurrentServiceViewModel {
   final Messages messages;
 
   CurrentServiceViewModel({
-    @required this.currentService,
-    @required this.satellites,
-    @required this.messages,
+    required this.currentService,
+    required this.satellites,
+    required this.messages,
   });
 
   static CurrentServiceViewModel fromStore(

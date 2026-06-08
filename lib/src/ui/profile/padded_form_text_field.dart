@@ -13,10 +13,10 @@ class PaddedFormTextField extends StatelessWidget {
 
   const PaddedFormTextField({
     Key key,
-    @required this.controller,
-    @required this.hintText,
-    @required this.labelText,
-    @required this.validator,
+    required this.controller,
+    required this.hintText,
+    required this.labelText,
+    required this.validator,
     this.maxLength,
     this.isPassword = false,
     this.isNumeric = false,

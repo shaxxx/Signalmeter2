@@ -14,7 +14,7 @@ class ErrorView extends InfoMessageView {
   const ErrorView({
     String title,
     String description,
-    @required VoidCallback onRetry,
+    required VoidCallback onRetry,
   }) : super(
           actionButtonKey: tryAgainButtonKey,
           title: title,
@@ -26,8 +26,8 @@ class ErrorView extends InfoMessageView {
 class InfoMessageView extends StatelessWidget {
   const InfoMessageView({
     Key key,
-    @required this.title,
-    @required this.description,
+    required this.title,
+    required this.description,
     this.actionButtonKey,
     this.onActionButtonTapped,
   }) : super(key: key);

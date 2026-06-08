@@ -14,10 +14,10 @@ class CircularProgressView extends StatelessWidget {
 
   const CircularProgressView({
     Key key,
-    @required this.stringValue,
-    @required this.doubleValue,
-    @required this.footerString,
-    @required this.screenSize,
+    required this.stringValue,
+    required this.doubleValue,
+    required this.footerString,
+    required this.screenSize,
     this.colors = const [
       Colors.red,
       Colors.orange,

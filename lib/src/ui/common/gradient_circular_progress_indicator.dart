@@ -6,7 +6,7 @@ class GradientCircularProgressIndicator extends StatelessWidget {
   GradientCircularProgressIndicator({
     Key key,
     this.strokeWidth = 18.0,
-    @required this.colors,
+    required this.colors,
     this.stops,
     this.value,
     this.child,
@@ -64,10 +64,10 @@ class GradientCircularProgressIndicator extends StatelessWidget {
 
 class GradientArcPainter extends CustomPainter {
   const GradientArcPainter({
-    @required this.progress,
-    @required this.colors,
-    @required this.stops,
-    @required this.strokeWidth,
+    required this.progress,
+    required this.colors,
+    required this.stops,
+    required this.strokeWidth,
   })  : super();
 
   final double progress;

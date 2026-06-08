@@ -9,8 +9,8 @@ class _InheritedProfileWidget extends InheritedWidget {
   final ProfileWidgetState data;
   _InheritedProfileWidget({
     Key key,
-    @required this.data,
-    @required Widget child,
+    required this.data,
+    required Widget child,
   }) : super(key: key, child: child);
 
   @override
@@ -23,7 +23,7 @@ class ProfileWidget extends StatefulWidget {
   final ProfileEditViewModel viewModel;
 
   ProfileWidget(
-      {@required this.child, @required this.profile, @required this.viewModel});
+      {required this.child, required this.profile, required this.viewModel});
 
   static ProfileWidgetState of(BuildContext context) {
     return (context

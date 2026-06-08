@@ -11,8 +11,6 @@ import 'package:enigma_signal_meter/src/redux/messages/info_messages_events.dart
 import 'package:enigma_signal_meter/src/redux/messages/warning_messages_events.dart';
 import 'package:enigma_signal_meter/src/utils/stream_manager.dart';
 
-import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:collection/collection.dart';
 import 'package:redux/redux.dart';
 import 'package:flutter_redux_navigation/flutter_redux_navigation.dart';
@@ -29,11 +27,11 @@ class MoreViewModel {
   final bool streamEnabled;
 
   MoreViewModel({
-    @required this.menuItems,
-    @required this.onSelected,
-    @required this.messages,
-    @required this.profileName,
-    @required this.streamEnabled,
+    required this.menuItems,
+    required this.onSelected,
+    required this.messages,
+    required this.profileName,
+    required this.streamEnabled,
   });
 
   static MoreViewModel fromStore(

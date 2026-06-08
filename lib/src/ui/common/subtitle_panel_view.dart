@@ -5,7 +5,7 @@ class SubtitlePanelView extends StatelessWidget {
 
   const SubtitlePanelView({
     Key key,
-    @required this.child,
+    required this.child,
   })  : super(key: key);
 
   @override

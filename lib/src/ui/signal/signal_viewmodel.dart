@@ -11,8 +11,8 @@ class SignalViewModel {
   final void Function() onCycleView;
 
   SignalViewModel({
-    @required this.signalView,
-    @required this.onCycleView,
+    required this.signalView,
+    required this.onCycleView,
   });
 
   static void _onCycleView(

@@ -37,9 +37,9 @@ class ProfileListItemViewModel {
   final VoidCallback onDelete;
 
   ProfileListItemViewModel({
-    @required this.selected,
-    @required this.onTap,
-    @required this.connectionStatus,
+    required this.selected,
+    required this.onTap,
+    required this.connectionStatus,
     this.onConnect,
     this.onDisconnect,
     this.onEdit,

@@ -5,7 +5,7 @@ class TitlePanelView extends StatelessWidget {
 
   const TitlePanelView({
     Key key,
-    @required this.child,
+    required this.child,
   })  : super(key: key);
 
   @override

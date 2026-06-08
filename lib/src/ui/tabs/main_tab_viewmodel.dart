@@ -2,7 +2,6 @@ import 'package:enigma_signal_meter/src/model/enums.dart';
 import 'package:enigma_signal_meter/src/redux/app/app_state.dart';
 import 'package:enigma_signal_meter/src/redux/tabs/tab_events.dart';
 import 'package:enigma_signal_meter/src/redux/tts/tts_events.dart';
-import 'package:flutter/widgets.dart';
 import 'package:redux/redux.dart';
 
 class MainTabViewModel {
@@ -17,15 +16,15 @@ class MainTabViewModel {
   final void Function(dynamic error) onSpeakError;
 
   MainTabViewModel({
-    @required this.onTabSelected,
-    @required this.onActiveChanged,
-    @required this.showNavigator,
-    @required this.scrollable,
-    @required this.shouldInitializeTts,
-    @required this.onTtsInitialized,
-    @required this.onTtsInitError,
-    @required this.onSpeakEnd,
-    @required this.onSpeakError,
+    required this.onTabSelected,
+    required this.onActiveChanged,
+    required this.showNavigator,
+    required this.scrollable,
+    required this.shouldInitializeTts,
+    required this.onTtsInitialized,
+    required this.onTtsInitError,
+    required this.onSpeakEnd,
+    required this.onSpeakError,
   });
 
   static MainTabViewModel fromStore(Store<AppState> store) {

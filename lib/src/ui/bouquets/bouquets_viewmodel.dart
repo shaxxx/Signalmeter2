@@ -3,14 +3,13 @@ import 'package:enigma_signal_meter/src/model/enums.dart';
 import 'package:enigma_signal_meter/src/redux/app/app_state.dart';
 import 'package:enigma_signal_meter/src/redux/enigma/enigma_command_events.dart';
 import 'package:enigma_web/enigma_web.dart';
-import 'package:meta/meta.dart';
 import 'package:redux/redux.dart';
 
 class BouquetsViewModel {
   BouquetsViewModel({
-    @required this.status,
-    @required this.bouquets,
-    @required this.refreshBouquets,
+    required this.status,
+    required this.bouquets,
+    required this.refreshBouquets,
   });
 
   final LoadingStatus status;

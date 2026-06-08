@@ -1,7 +1,6 @@
 import 'package:enigma_signal_meter/src/i18n/messages.dart';
 import 'package:enigma_signal_meter/src/redux/app/app_state.dart';
 import 'package:enigma_web/enigma_web.dart';
-import 'package:flutter/material.dart';
 import 'package:redux/redux.dart';
 import 'package:collection/collection.dart';
 
@@ -64,10 +63,10 @@ class SignalChartViewModel {
   }
 
   SignalChartViewModel({
-    @required this.responses,
-    @required this.messages,
-    @required this.dbIsPrimaryLevel,
-    @required this.profile,
+    required this.responses,
+    required this.messages,
+    required this.dbIsPrimaryLevel,
+    required this.profile,
   });
 
   static SignalChartViewModel fromStore(

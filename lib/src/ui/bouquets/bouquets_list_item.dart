@@ -11,7 +11,7 @@ class BouquetsListItem extends StatelessWidget {
 
   const BouquetsListItem({
     Key key,
-    @required this.bouquet,
+    required this.bouquet,
   })  : super(key: key);
 
   @override

@@ -4,17 +4,16 @@ import 'package:enigma_signal_meter/src/redux/app/app_state.dart';
 import 'package:enigma_signal_meter/src/redux/enigma/enigma_command_events.dart';
 import 'package:enigma_signal_meter/src/redux/services/bouquet_items_events.dart';
 import 'package:enigma_web/enigma_web.dart';
-import 'package:meta/meta.dart';
 import 'package:redux/redux.dart';
 
 class BouquetItemsViewModel {
   BouquetItemsViewModel({
-    @required this.status,
-    @required this.bouquetItems,
-    @required this.bouquet,
-    @required this.refreshBouquetItems,
-    @required this.searchTerm,
-    @required this.onSearchTermChanged,
+    required this.status,
+    required this.bouquetItems,
+    required this.bouquet,
+    required this.refreshBouquetItems,
+    required this.searchTerm,
+    required this.onSearchTermChanged,
   });
 
   final LoadingStatus status;

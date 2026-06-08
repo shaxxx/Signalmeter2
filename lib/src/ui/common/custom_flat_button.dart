@@ -6,8 +6,8 @@ class CustomFlatButton extends StatelessWidget {
 
   const CustomFlatButton({
     Key key,
-    @required this.child,
-    @required this.onPressed,
+    required this.child,
+    required this.onPressed,
   }) : super(key: key);
 
   @override

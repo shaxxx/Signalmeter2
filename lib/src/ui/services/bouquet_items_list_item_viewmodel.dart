@@ -2,7 +2,6 @@ import 'package:enigma_signal_meter/src/redux/app/app_state.dart';
 import 'package:enigma_signal_meter/src/redux/enigma/enigma_command_events.dart';
 import 'package:enigma_signal_meter/src/redux/services/bouquet_items_events.dart';
 import 'package:enigma_web/enigma_web.dart';
-import 'package:flutter/widgets.dart';
 import 'package:redux/redux.dart';
 
 class BouquetItemsListItemViewModel {
@@ -13,9 +12,9 @@ class BouquetItemsListItemViewModel {
   bool get isMarker => bouquetItem is IBouquetItemMarker;
 
   const BouquetItemsListItemViewModel({
-    @required this.selected,
-    @required this.onTap,
-    @required this.bouquetItem,
+    required this.selected,
+    required this.onTap,
+    required this.bouquetItem,
   });
 
   static BouquetItemsListItemViewModel fromStore(

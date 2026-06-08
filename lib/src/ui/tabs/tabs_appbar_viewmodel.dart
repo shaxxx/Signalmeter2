@@ -7,8 +7,6 @@ import 'package:enigma_signal_meter/src/redux/tabs/tab_events.dart';
 import 'package:enigma_signal_meter/src/redux/tts/tts_events.dart';
 import 'package:enigma_web/enigma_web.dart';
 
-import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:collection/collection.dart';
 import 'package:redux/redux.dart';
 import '../../constants.dart';
@@ -25,15 +23,15 @@ class TabsAppBarViewModel {
   final SignalViewEnum signalView;
 
   TabsAppBarViewModel({
-    @required this.isVisible,
-    @required this.menuItems,
-    @required this.title,
-    @required this.visibleItemsCount,
-    @required this.onSelected,
-    @required this.messages,
-    @required this.profileName,
-    @required this.activeTab,
-    @required this.signalView,
+    required this.isVisible,
+    required this.menuItems,
+    required this.title,
+    required this.visibleItemsCount,
+    required this.onSelected,
+    required this.messages,
+    required this.profileName,
+    required this.activeTab,
+    required this.signalView,
   });
 
   static TabsAppBarViewModel fromStore(

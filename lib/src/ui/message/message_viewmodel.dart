@@ -12,9 +12,9 @@ class MessageViewModel {
   final LoadingStatus status;
 
   MessageViewModel({
-    @required this.displayFormInvalidWarningMessage,
-    @required this.onSendMessage,
-    @required this.status,
+    required this.displayFormInvalidWarningMessage,
+    required this.onSendMessage,
+    required this.status,
   });
 
   static MessageViewModel fromStore(Store<AppState> store) {
