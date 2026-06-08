@@ -71,7 +71,7 @@ class _ProfileListItemState extends State<ProfileListItem>
             child: Card(
               elevation: 2,
               color: viewModel.selected
-                  ? theme.accentColor.withOpacity(0.3)
+                  ? theme.colorScheme.secondary.withOpacity(0.3)
                   : theme.primaryColor.withOpacity(0.3),
               child: _buildRow(context, viewModel),
             ),
@@ -180,7 +180,7 @@ class _ProfileListItemState extends State<ProfileListItem>
         Flexible(
           child: Text(
             viewModel.name,
-            style: theme.textTheme.subtitle1,
+            style: theme.textTheme.titleMedium,
             textAlign: TextAlign.left,
             overflow: TextOverflow.ellipsis,
           ),
@@ -188,7 +188,7 @@ class _ProfileListItemState extends State<ProfileListItem>
         Flexible(
           child: Text(
             viewModel.address,
-            style: theme.textTheme.bodyText2,
+            style: theme.textTheme.bodyMedium,
             overflow: TextOverflow.ellipsis,
           ),
         ),

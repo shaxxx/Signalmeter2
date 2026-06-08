@@ -96,7 +96,7 @@ class _FlatButton extends StatelessWidget {
       child: Align(
         alignment: Alignment.centerLeft,
         child: DefaultTextStyle(
-          style: Theme.of(context).primaryTextTheme.subtitle1,
+          style: Theme.of(context).primaryTextTheme.titleMedium,
           child: child,
         ),
       ),
@@ -114,8 +114,8 @@ class _Heading extends StatelessWidget {
     final theme = Theme.of(context);
     return _OptionsItem(
       child: DefaultTextStyle(
-        style: theme.textTheme.bodyText2.copyWith(
-          color: theme.accentColor,
+        style: theme.textTheme.bodyMedium.copyWith(
+          color: theme.colorScheme.secondary,
         ),
         child: Semantics(
           child: Text(text),
@@ -211,7 +211,7 @@ class SettingsView extends StatelessWidget {
         },
         builder: (context, viewModel) {
           return DefaultTextStyle(
-            style: theme.primaryTextTheme.subtitle1,
+            style: theme.primaryTextTheme.titleMedium,
             child: ListView(
               padding: const EdgeInsets.only(bottom: 124.0, right: 20),
               children: <Widget>[

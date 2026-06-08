@@ -13,10 +13,10 @@ class TabsNavigator extends StatelessWidget {
         distinct: true,
         converter: (store) => TabsNavigatorViewModel.fromStore(store),
         builder: (context, viewModel) {
-          var iconColor = theme.textTheme.caption.color;
+          var iconColor = theme.textTheme.bodySmall.color;
           return BottomNavigationBar(
             backgroundColor: Colors.transparent,
-            selectedItemColor: theme.accentColor,
+            selectedItemColor: theme.colorScheme.secondary,
             unselectedItemColor: iconColor,
             type: BottomNavigationBarType.fixed,
             onTap: viewModel.onTap,
@@ -27,7 +27,7 @@ class TabsNavigator extends StatelessWidget {
                 icon: Icon(
                   Icons.folder_special,
                 ),
-                title: Text(
+                label: Text(
                   MessageProvider.of(context).bouquets,
                 ),
               ),
@@ -36,7 +36,7 @@ class TabsNavigator extends StatelessWidget {
                 icon: Icon(
                   Icons.reorder,
                 ),
-                title: Text(
+                label: Text(
                   MessageProvider.of(context).services,
                 ),
               ),
@@ -45,7 +45,7 @@ class TabsNavigator extends StatelessWidget {
                 icon: Icon(
                   Icons.network_check,
                 ),
-                title: Text(
+                label: Text(
                   MessageProvider.of(context).signal,
                 ),
               ),
@@ -54,7 +54,7 @@ class TabsNavigator extends StatelessWidget {
                 icon: Icon(
                   Icons.more_horiz,
                 ),
-                title: Text(
+                label: Text(
                   MessageProvider.of(context).more,
                 ),
               ),

@@ -46,9 +46,9 @@ class BouquetItemsListItem extends StatelessWidget {
                   const Radius.circular(10.0),
                 ),
                 color: viewModel.selected
-                    ? theme.accentColor.withOpacity(0.3)
+                    ? theme.colorScheme.secondary.withOpacity(0.3)
                     : theme.primaryColor.withOpacity(0.3),
-                border: Border.all(color: theme.accentColor.withOpacity(0.3)),
+                border: Border.all(color: theme.colorScheme.secondary.withOpacity(0.3)),
               ),
               alignment: Alignment.centerLeft,
               padding: EdgeInsets.only(left: 20),
@@ -75,7 +75,7 @@ class BouquetItemsListItem extends StatelessWidget {
           const Radius.circular(10.0),
         ),
         color: Theme.of(context).primaryColor.withOpacity(0.7),
-        border: Border.all(color: Theme.of(context).accentColor),
+        border: Border.all(color: Theme.of(context).colorScheme.secondary),
       ),
       alignment: Alignment.centerLeft,
       padding: EdgeInsets.only(left: 10),

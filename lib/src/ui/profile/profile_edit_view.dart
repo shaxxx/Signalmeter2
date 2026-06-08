@@ -100,7 +100,7 @@ class ProfileEditView extends StatelessWidget {
           margin: EdgeInsets.symmetric(vertical: 15),
           child: Text(
             MessageProvider.of(context).actionSave.toUpperCase(),
-            style: TextStyle(fontSize: 16, color: theme.accentColor),
+            style: TextStyle(fontSize: 16, color: theme.colorScheme.secondary),
           ),
         ),
       ),

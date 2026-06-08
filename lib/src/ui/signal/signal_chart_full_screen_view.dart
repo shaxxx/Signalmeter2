@@ -2,7 +2,6 @@ import 'package:enigma_signal_meter/src/redux/app/app_state.dart';
 import 'package:enigma_signal_meter/src/ui/signal/signal_chart_full_screen_view_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter/widgets.dart';
 import 'package:enigma_signal_meter/src/ui/signal/signal_chart_view.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 

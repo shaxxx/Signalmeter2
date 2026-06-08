@@ -62,7 +62,7 @@ class _AboutViewState extends State<AboutView> {
       url: krkadoniUrl + '/#/' + languageCode + 'using',
       text: krkadoniUrl,
       fontSize: 20,
-      color: Theme.of(context).accentColor.withOpacity(0.7),
+      color: Theme.of(context).colorScheme.secondary.withOpacity(0.7),
     );
   }
 
@@ -108,7 +108,7 @@ class _AboutViewState extends State<AboutView> {
             Text(
               'Bosnian Pharao | GigaBlue',
               style: TextStyle(
-                color: theme.accentColor.withOpacity(0.7),
+                color: theme.colorScheme.secondary.withOpacity(0.7),
                 fontSize: 17,
               ),
             ),
@@ -120,7 +120,7 @@ class _AboutViewState extends State<AboutView> {
               url: satelitskiForumUrl,
               text: satelitskiForumUrl,
               fontSize: 17,
-              color: theme.accentColor.withOpacity(0.7),
+              color: theme.colorScheme.secondary.withOpacity(0.7),
             ),
           ],
         ),

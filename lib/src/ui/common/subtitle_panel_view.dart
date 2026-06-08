@@ -18,7 +18,7 @@ class SubtitlePanelView extends StatelessWidget {
           const Radius.circular(10.0),
         ),
         color: theme.primaryColor.withOpacity(0.3),
-        border: Border.all(color: theme.accentColor.withOpacity(0.3)),
+        border: Border.all(color: theme.colorScheme.secondary.withOpacity(0.3)),
       ),
       child: child,
     );

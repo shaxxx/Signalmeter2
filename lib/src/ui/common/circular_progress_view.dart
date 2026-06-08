@@ -1,6 +1,5 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 
 import 'gradient_circular_progress_indicator.dart';
 
@@ -42,8 +41,7 @@ class CircularProgressView extends StatelessWidget {
           maxWidth: maxSize,
         ),
         child: Stack(
-          alignment: Alignment.center,
-          overflow: Overflow.clip,
+          clipBehavior: Clip.hardEdge, alignment: Alignment.center,
           children: <Widget>[
             Container(
               child: Container(

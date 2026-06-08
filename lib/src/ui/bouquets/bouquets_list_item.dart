@@ -35,10 +35,10 @@ class BouquetsListItem extends StatelessWidget {
                       const Radius.circular(10.0),
                     ),
                     color: viewModel.selected
-                        ? theme.accentColor.withOpacity(0.3)
+                        ? theme.colorScheme.secondary.withOpacity(0.3)
                         : theme.primaryColor.withOpacity(0.3),
                     border:
-                        Border.all(color: theme.accentColor.withOpacity(0.3)),
+                        Border.all(color: theme.colorScheme.secondary.withOpacity(0.3)),
                   ),
                   child: Container(
                     alignment: Alignment.centerLeft,

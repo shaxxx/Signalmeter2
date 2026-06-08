@@ -13,7 +13,6 @@ import 'package:enigma_signal_meter/src/ui/settings/settings_view.dart';
 import 'package:enigma_signal_meter/src/utils/message_display_handler.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 import 'package:showcaseview/showcaseview.dart';
 

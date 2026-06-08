@@ -86,8 +86,7 @@ class _MessageViewState extends State<MessageView> {
                         Container(
                           width: 100,
                           child: TextFormField(
-                            autovalidate: true,
-                            textAlign: TextAlign.right,
+                            autovalidateMode: AutovalidateMode.always, textAlign: TextAlign.right,
                             //maxLength: 3,
                             minLines: 1,
                             maxLines: 1,

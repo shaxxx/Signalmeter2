@@ -39,7 +39,7 @@ class RemoteButtonsView extends StatelessWidget {
               style: TextStyle(
                 fontWeight: FontWeight.w500,
                 fontSize: 16,
-                color: theme.accentColor,
+                color: theme.colorScheme.secondary,
               ),
             ),
             padding: EdgeInsets.all(10),
@@ -58,7 +58,7 @@ class RemoteButtonsView extends StatelessWidget {
               style: TextStyle(
                   fontWeight: FontWeight.w500,
                   fontSize: 16,
-                  color: theme.accentColor),
+                  color: theme.colorScheme.secondary),
             ),
             padding: EdgeInsets.all(10),
           ),
