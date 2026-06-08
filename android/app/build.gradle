@@ -24,6 +24,9 @@ if (keystorePropertiesFile.exists()) {
 android {
     namespace = "com.krkadoni.app.signalmeter"
     compileSdk = 36
+    // Pinned to satisfy the highest NDK required by plugins (jni → 28.2.x).
+    // NDK releases are backward compatible, so the highest wins.
+    ndkVersion = "28.2.13676358"
 
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_17
