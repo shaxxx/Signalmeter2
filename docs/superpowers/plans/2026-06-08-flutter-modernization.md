@@ -176,23 +176,23 @@ dependencies:
   flutter_flip_view:
     path: ../flutter_flip_view
   flutter_redux: ^0.10.0
-  flutter_redux_navigation: ^0.8.0
-  percent_indicator: ^4.2.3
-  xml: ^6.5.0
-  fl_chart: ^1.0.0
-  wakelock_plus: ^1.2.8
-  another_flushbar: ^1.12.30
-  url_launcher: ^6.3.1
-  package_info_plus: ^8.1.1
+  flutter_redux_navigation: ^0.7.1   # 0.8.0 does not exist; 0.7.1 is latest
+  percent_indicator: ^4.2.5
+  xml: ^6.5.0                         # kept on 6.x to match enigma_web's xml ^6.5.0 (7.x would conflict)
+  fl_chart: ^1.2.0
+  wakelock_plus: ^1.6.1
+  another_flushbar: ^2.2.4
+  url_launcher: ^6.3.2
+  package_info_plus: ^10.1.0
   auto_size_text: ^3.0.0
-  flutter_tts: ^4.2.0
-  shared_preferences: ^2.3.3
+  flutter_tts: ^4.2.5
+  shared_preferences: ^2.5.5
   photo_view: ^0.15.0
-  share_plus: ^10.1.2
-  gal: ^2.3.0
-  showcaseview: ^4.0.1
-  android_intent_plus: ^5.2.0
-  permission_handler: ^12.0.0
+  share_plus: ^13.1.0
+  gal: ^2.3.2
+  showcaseview: ^5.0.2
+  android_intent_plus: ^6.0.0
+  permission_handler: ^12.0.3
   intl: ^0.20.2
 ```
 
@@ -202,9 +202,9 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  intl_translation: ^0.20.1
-  flutter_launcher_icons: ^0.14.1
-  flutter_lints: ^5.0.0
+  intl_translation: ^0.21.0
+  flutter_launcher_icons: ^0.14.4
+  flutter_lints: ^6.0.0
 ```
 
 - [ ] **Step 3: Rename the launcher-icons config key**
@@ -481,24 +481,27 @@ import 'package:permission_handler/permission_handler.dart';
 ```
 (remove `wc_flutter_share`, `image_gallery_saver`, `auto_orientation`).
 
-Share button `onPressed` — write bytes to an `XFile` and share:
+Share button `onPressed` — share bytes via the share_plus 13 `ShareParams`/`SharePlus.instance` API (the old static `Share.shareXFiles` is removed in 13.x):
 ```dart
 onPressed: () async {
   final bytes = viewModel.response?.screenshot;
   if (bytes != null) {
-    await Share.shareXFiles(
-      [
-        XFile.fromData(
-          Uint8List.fromList(bytes),
-          name: '$fileName.jpg',
-          mimeType: 'image/jpeg',
-        )
-      ],
-      subject: MessageProvider.of(context).share,
+    await SharePlus.instance.share(
+      ShareParams(
+        files: [
+          XFile.fromData(
+            Uint8List.fromList(bytes),
+            name: '$fileName.jpg',
+            mimeType: 'image/jpeg',
+          )
+        ],
+        subject: MessageProvider.of(context).share,
+      ),
     );
   }
 },
 ```
+(`XFile` comes from `package:cross_file`, re-exported by `package:share_plus/share_plus.dart`.)
 
 Save button `onPressed` — use `gal`:
 ```dart
@@ -525,13 +528,13 @@ Consolidate imports to:
 ```dart
 import 'package:showcaseview/showcaseview.dart';
 ```
-(remove `showcase.dart` / `showcase_widget.dart`). In `home_view.dart` the `ShowCaseWidget(builder: (context) {...})` becomes:
+(remove `showcase.dart` / `showcase_widget.dart`). In showcaseview 5.x the `ShowCaseWidget` `builder` is a `Builder` **widget**, not a function. Convert `ShowCaseWidget(builder: (context) {...})` to:
 ```dart
 ShowCaseWidget(
-  builder: (context) => /* existing child */,
+  builder: Builder(builder: (context) => /* existing child */),
 )
 ```
-(In showcaseview 4.x `builder` is a `WidgetBuilder` — `builder: (context) => child`. If the installed version exposes `Builder`, use `builder: Builder(builder: (context) => child)`; pick whichever the analyzer accepts.) `ShowCaseWidget.of(context).startShowCase([key])` is unchanged. `Showcase(key:, title:, description:, child:)` is unchanged.
+`ShowCaseWidget.of(context).startShowCase([key])` is unchanged. `Showcase(key:, title:, description:, child:)` is unchanged (5.x adds optional tooltip-action params we don't need). If the analyzer reports a different `builder` signature for the resolved 5.x point release, follow it.
 
 - [ ] **Step 7: Rewrite signal_chart_view.dart for fl_chart 1.x**
 
@@ -1121,5 +1124,6 @@ git commit -m "docs: record manual verification results"
 - **Spec coverage:** every spec section maps to tasks — null safety (Phase 2), Android-first build incl. embedding v2 (Phase 3), iOS lockstep (Task 3.4), plugin inventory incl. all higher-risk swaps (Phase 2 tasks 2.3/2.5), permission_handler fork dropped (Task 1.1), light mod lints/cleanup (Phase 4), gen-l10n deferred with rationale (Task 4.2 note), test safety net (Phase 5), enigma_web path dep (Task 0.2). ✓
 - **Big-bang reality:** documented that the project won't analyze/build until Phase 2/3 complete. ✓
 - **Type consistency:** `WakelockPlus`, `launchUrl(Uri.parse(...))`, `Share.shareXFiles`/`XFile.fromData`, `Gal.putImageBytes`, `getTitlesWidget`, `gradient:` used consistently across tasks. ✓
-- **Null-safety availability audit:** every dependency was checked for a null-safe release. The only holdout is `flutter_flip_view` (no null-safe version on pub.dev) — handled via the local fork migration in Task 0.3 + path dep. All others (flutter_redux 0.10, flutter_redux_navigation 0.8, percent_indicator 4, photo_view 0.15, etc.) have null-safe releases. ✓
+- **Dependency audit (verified against pub.dev API):** every dependency checked for (a) a null-safe release and (b) the correct latest version. Findings folded in: `flutter_flip_view` has no null-safe release → local fork migration (Task 0.3); `flutter_redux_navigation` latest is **0.7.1** (the earlier `^0.8.0` pin was nonexistent and would fail `pub get`) → corrected; `another_flushbar`/`package_info_plus`/`share_plus`/`showcaseview`/`intl_translation`/`flutter_lints` bumped to current latest majors; `share_plus 13` and `showcaseview 5` call-sites updated for their new APIs; `xml` deliberately held at 6.x to match `enigma_web`. All SDK floors (Dart ≥3.10 for wakelock_plus/share_plus/package_info_plus) are met by 3.11.1. ✓
+- **Resolve-time risk:** `flutter_redux_navigation 0.7.1` may pin an older `redux`/`flutter_redux` than `flutter_redux 0.10.0`. If `flutter pub get` reports a conflict, the fallback is to use `dependency_overrides` for `redux`/`flutter_redux` or relax `flutter_redux` — recorded in Task 1.1 Step 4's "relax-and-record" instruction.
 - **Known gaps (intentional):** exact per-file null-safety edits are analyzer-driven (cannot be pre-scripted for ~162 files); plugin version numbers are pinned-at-resolve (`flutter pub get` may adjust a line). Both are called out where they occur.
