@@ -1,5 +1,4 @@
 import 'package:enigma_web/enigma_web.dart';
-import 'package:flutter/widgets.dart';
 
 /// Wraps all exceptions comming from enigma_web package
 /// and includes calling command for extra details.
@@ -9,12 +8,11 @@ class EnigmaWebException implements Exception {
 
   EnigmaWebException({
     /// Enigma command that resulted with exception
-    @required this.command,
+    required this.command,
 
     /// enigma_web package wraps all exceptions with KnownException type.
-    @required this.innerException,
-  })  : assert(command != null),
-        assert(innerException != null);
+    required this.innerException,
+  });
 
   @override
   bool operator ==(Object other) =>
