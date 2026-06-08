@@ -9,16 +9,16 @@ import 'package:collection/collection.dart';
 @immutable
 class ProfilesState {
   final LoadingStatus status;
-  final IProfile selectedProfile;
+  final IProfile? selectedProfile;
   final List<IProfile> profiles;
   final StreamController<IProfile> profilesStream;
   final bool profilesLoaded;
 
   ProfilesState({
-    @required this.status,
-    @required this.selectedProfile,
-    @required this.profiles,
-    @required this.profilesLoaded,
+    required this.status,
+    required this.selectedProfile,
+    required this.profiles,
+    required this.profilesLoaded,
   })  : profilesStream = StreamController<IProfile>.broadcast();
 
   static ProfilesState initial() {
@@ -31,11 +31,11 @@ class ProfilesState {
   }
 
   ProfilesState copyWith({
-    LoadingStatus status,
-    IProfile selectedProfile,
-    List<IProfile> profiles,
-    Size screenSize,
-    bool profilesLoaded,
+    LoadingStatus? status,
+    IProfile? selectedProfile,
+    List<IProfile>? profiles,
+    Size? screenSize,
+    bool? profilesLoaded,
   }) {
     return ProfilesState(
       status: status ?? this.status,

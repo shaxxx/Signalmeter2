@@ -4,9 +4,9 @@ import 'package:flutter/cupertino.dart';
 
 abstract class EnigmaCommandEvent {
   final IProfile profile;
-  DateTime startTime;
+  late DateTime startTime;
   EnigmaCommandEvent({
-    @required this.profile,
+    required this.profile,
   }) {
     startTime = DateTime.now();
   }
@@ -16,7 +16,7 @@ abstract class EnigmaCommandEvent {
 abstract class EnigmaCommandSuccessEvent {
   final Duration responseDuration;
   EnigmaCommandSuccessEvent({
-    @required this.responseDuration,
+    required this.responseDuration,
   });
 }
 
@@ -25,22 +25,22 @@ abstract class EnigmaCommandErrorEvent {
   final EnigmaWebException error;
   final IProfile profile;
   EnigmaCommandErrorEvent({
-    @required this.error,
-    @required this.profile,
+    required this.error,
+    required this.profile,
   });
 }
 
 class GetCurrentServiceEvent extends EnigmaCommandEvent {
   GetCurrentServiceEvent({
-    @required IProfile profile,
+    required IProfile profile,
   }) : super(profile: profile);
 }
 
 @immutable
 class GetCurrentServiceErrorEvent extends EnigmaCommandErrorEvent {
   GetCurrentServiceErrorEvent({
-    @required EnigmaWebException error,
-    @required IProfile profile,
+    required EnigmaWebException error,
+    required IProfile profile,
   }) : super(
           error: error,
           profile: profile,
@@ -51,22 +51,22 @@ class GetCurrentServiceErrorEvent extends EnigmaCommandErrorEvent {
 class GetCurrentServiceSuccessEvent extends EnigmaCommandSuccessEvent {
   final IGetCurrentServiceResponse response;
   GetCurrentServiceSuccessEvent({
-    @required Duration responseDuration,
-    @required this.response,
+    required Duration responseDuration,
+    required this.response,
   }) : super(responseDuration: responseDuration);
 }
 
 class GetSignalLevelEvent extends EnigmaCommandEvent {
   GetSignalLevelEvent({
-    @required IProfile profile,
+    required IProfile profile,
   }) : super(profile: profile);
 }
 
 @immutable
 class GetSignalLevelErrorEvent extends EnigmaCommandErrorEvent {
   GetSignalLevelErrorEvent({
-    @required EnigmaWebException error,
-    @required IProfile profile,
+    required EnigmaWebException error,
+    required IProfile profile,
   }) : super(
           error: error,
           profile: profile,
@@ -77,16 +77,16 @@ class GetSignalLevelErrorEvent extends EnigmaCommandErrorEvent {
 class GetSignalLevelSuccessEvent extends EnigmaCommandSuccessEvent {
   final ISignalResponse response;
   GetSignalLevelSuccessEvent({
-    @required Duration responseDuration,
-    @required this.response,
+    required Duration responseDuration,
+    required this.response,
   })  : super(responseDuration: responseDuration);
 }
 
 class ChangeServiceEvent extends EnigmaCommandEvent {
   final IBouquetItemService service;
   ChangeServiceEvent({
-    @required IProfile profile,
-    @required this.service,
+    required IProfile profile,
+    required this.service,
   }) : super(profile: profile);
 }
 
@@ -94,9 +94,9 @@ class ChangeServiceEvent extends EnigmaCommandEvent {
 class ChangeServiceErrorEvent extends EnigmaCommandErrorEvent {
   final IBouquetItemService service;
   ChangeServiceErrorEvent({
-    @required EnigmaWebException error,
-    @required IProfile profile,
-    @required this.service,
+    required EnigmaWebException error,
+    required IProfile profile,
+    required this.service,
   }) : super(
           error: error,
           profile: profile,
@@ -107,8 +107,8 @@ class ChangeServiceErrorEvent extends EnigmaCommandErrorEvent {
 class ChangeServiceSuccessEvent extends EnigmaCommandSuccessEvent {
   final IBouquetItemService service;
   ChangeServiceSuccessEvent({
-    @required Duration responseDuration,
-    @required this.service,
+    required Duration responseDuration,
+    required this.service,
   }) : super(responseDuration: responseDuration);
 }
 
@@ -117,17 +117,17 @@ class GetBouquetItemsEvent extends EnigmaCommandEvent {
   @override
   final IProfile profile;
   GetBouquetItemsEvent({
-    @required this.profile,
-    @required this.bouquet,
+    required this.profile,
+    required this.bouquet,
   })  : super(profile: profile);
 }
 
 @immutable
 class GetBouquetItemsErrorEvent extends EnigmaCommandErrorEvent {
   GetBouquetItemsErrorEvent({
-    @required IBouquetItemBouquet bouquet,
-    @required EnigmaWebException error,
-    @required IProfile profile,
+    required IBouquetItemBouquet bouquet,
+    required EnigmaWebException error,
+    required IProfile profile,
   })  : super(
           error: error,
           profile: profile,
@@ -136,26 +136,26 @@ class GetBouquetItemsErrorEvent extends EnigmaCommandErrorEvent {
 
 @immutable
 class GetBouquetItemsSuccessEvent extends EnigmaCommandSuccessEvent {
-  final BouquetItemBouquet bouquet;
+  final IBouquetItemBouquet bouquet;
   final List<IBouquetItem> bouquetItems;
   GetBouquetItemsSuccessEvent({
-    @required this.bouquet,
-    @required this.bouquetItems,
-    @required Duration responseDuration,
+    required this.bouquet,
+    required this.bouquetItems,
+    required Duration responseDuration,
   })  : super(responseDuration: responseDuration);
 }
 
 class GetBouquetsEvent extends EnigmaCommandEvent {
   GetBouquetsEvent({
-    @required IProfile profile,
+    required IProfile profile,
   }) : super(profile: profile);
 }
 
 @immutable
 class GetBouquetsErrorEvent extends EnigmaCommandErrorEvent {
   GetBouquetsErrorEvent({
-    @required EnigmaWebException error,
-    @required IProfile profile,
+    required EnigmaWebException error,
+    required IProfile profile,
   }) : super(
           error: error,
           profile: profile,
@@ -166,16 +166,16 @@ class GetBouquetsErrorEvent extends EnigmaCommandErrorEvent {
 class GetBouquetsSuccessEvent extends EnigmaCommandSuccessEvent {
   final List<IBouquetItemBouquet> bouquets;
   GetBouquetsSuccessEvent({
-    @required this.bouquets,
-    @required Duration responseDuration,
+    required this.bouquets,
+    required Duration responseDuration,
   })  : super(responseDuration: responseDuration);
 }
 
 class GetStreamParametersEvent extends EnigmaCommandEvent {
   final IBouquetItemService service;
   GetStreamParametersEvent({
-    @required IProfile profile,
-    @required this.service,
+    required IProfile profile,
+    required this.service,
   })  : super(profile: profile);
 }
 
@@ -183,9 +183,9 @@ class GetStreamParametersEvent extends EnigmaCommandEvent {
 class GetStreamParametersErrorEvent extends EnigmaCommandErrorEvent {
   final IBouquetItemService service;
   GetStreamParametersErrorEvent({
-    @required EnigmaWebException error,
-    @required this.service,
-    @required IProfile profile,
+    required EnigmaWebException error,
+    required this.service,
+    required IProfile profile,
   })  : super(
           error: error,
           profile: profile,
@@ -196,24 +196,24 @@ class GetStreamParametersErrorEvent extends EnigmaCommandErrorEvent {
 class GetStreamParametersSuccessEvent extends EnigmaCommandSuccessEvent {
   final IBouquetItemService service;
   GetStreamParametersSuccessEvent({
-    @required Duration responseDuration,
-    @required this.service,
+    required Duration responseDuration,
+    required this.service,
   })  : super(responseDuration: responseDuration);
 }
 
 class GetScreenShotOfCurrentServiceEvent extends EnigmaCommandEvent {
   final ScreenshotType screenshotType;
   GetScreenShotOfCurrentServiceEvent({
-    @required IProfile profile,
-    @required this.screenshotType,
+    required IProfile profile,
+    required this.screenshotType,
   }) : super(profile: profile);
 }
 
 @immutable
 class GetScreenShotOfCurrentServiceErrorEvent extends EnigmaCommandErrorEvent {
   GetScreenShotOfCurrentServiceErrorEvent({
-    @required EnigmaWebException error,
-    @required IProfile profile,
+    required EnigmaWebException error,
+    required IProfile profile,
   }) : super(
           error: error,
           profile: profile,
@@ -223,45 +223,45 @@ class GetScreenShotOfCurrentServiceErrorEvent extends EnigmaCommandErrorEvent {
 @immutable
 class GetScreenShotOfCurrentServiceSuccessEvent
     extends EnigmaCommandSuccessEvent {
-  final ScreenshotResponse response;
+  final IScreenshotResponse response;
   GetScreenShotOfCurrentServiceSuccessEvent({
-    @required Duration responseDuration,
-    @required this.response,
+    required Duration responseDuration,
+    required this.response,
   }) : super(responseDuration: responseDuration);
 }
 
 class SentToSleepEvent extends EnigmaCommandEvent {
   SentToSleepEvent({
-    @required IProfile profile,
+    required IProfile profile,
   }) : super(profile: profile);
 }
 
 @immutable
 class SentToSleepErrorEvent extends EnigmaCommandErrorEvent {
   SentToSleepErrorEvent({
-    @required EnigmaWebException error,
-    @required IProfile profile,
+    required EnigmaWebException error,
+    required IProfile profile,
   }) : super(error: error, profile: profile);
 }
 
 @immutable
 class SentToSleepSuccessEvent extends EnigmaCommandSuccessEvent {
   SentToSleepSuccessEvent({
-    @required Duration responseDuration,
+    required Duration responseDuration,
   }) : super(responseDuration: responseDuration);
 }
 
 class RestartEvent extends EnigmaCommandEvent {
   RestartEvent({
-    @required IProfile profile,
+    required IProfile profile,
   }) : super(profile: profile);
 }
 
 @immutable
 class RestartErrorEvent extends EnigmaCommandErrorEvent {
   RestartErrorEvent({
-    @required EnigmaWebException error,
-    @required IProfile profile,
+    required EnigmaWebException error,
+    required IProfile profile,
   }) : super(
           error: error,
           profile: profile,
@@ -271,21 +271,21 @@ class RestartErrorEvent extends EnigmaCommandErrorEvent {
 @immutable
 class RestartSuccessEvent extends EnigmaCommandSuccessEvent {
   RestartSuccessEvent({
-    @required Duration responseDuration,
+    required Duration responseDuration,
   }) : super(responseDuration: responseDuration);
 }
 
 class WakeUpEvent extends EnigmaCommandEvent {
   WakeUpEvent({
-    @required IProfile profile,
+    required IProfile profile,
   }) : super(profile: profile);
 }
 
 @immutable
 class WakeUpErrorEvent extends EnigmaCommandErrorEvent {
   WakeUpErrorEvent({
-    @required EnigmaWebException error,
-    @required IProfile profile,
+    required EnigmaWebException error,
+    required IProfile profile,
   }) : super(
           error: error,
           profile: profile,
@@ -295,22 +295,22 @@ class WakeUpErrorEvent extends EnigmaCommandErrorEvent {
 @immutable
 class WakeUpSuccessEvent extends EnigmaCommandSuccessEvent {
   WakeUpSuccessEvent({
-    @required Duration responseDuration,
+    required Duration responseDuration,
   }) : super(responseDuration: responseDuration);
 }
 
 class SendRemoteControlCodeEvent extends EnigmaCommandEvent {
   final RemoteControlCode code;
   SendRemoteControlCodeEvent({
-    @required IProfile profile,
-    @required this.code,
+    required IProfile profile,
+    required this.code,
   }) : super(profile: profile);
 }
 
 @immutable
 class SendRemoteControlCodeSuccessEvent extends EnigmaCommandSuccessEvent {
   SendRemoteControlCodeSuccessEvent({
-    @required Duration responseDuration,
+    required Duration responseDuration,
   }) : super(responseDuration: responseDuration);
 }
 
@@ -318,9 +318,9 @@ class SendRemoteControlCodeSuccessEvent extends EnigmaCommandSuccessEvent {
 class SendRemoteControlCodeErrorEvent extends EnigmaCommandErrorEvent {
   final RemoteControlCode code;
   SendRemoteControlCodeErrorEvent({
-    @required EnigmaWebException error,
-    @required IProfile profile,
-    @required this.code,
+    required EnigmaWebException error,
+    required IProfile profile,
+    required this.code,
   }) : super(
           error: error,
           profile: profile,
@@ -332,24 +332,24 @@ class SendMessageEvent extends EnigmaCommandEvent {
   final Duration timeout;
   final MessageType messageType;
   SendMessageEvent({
-    @required IProfile profile,
-    @required this.message,
-    @required this.timeout,
-    @required this.messageType,
+    required IProfile profile,
+    required this.message,
+    required this.timeout,
+    required this.messageType,
   }) : super(profile: profile);
 }
 
 @immutable
 class SendMessageErrorEvent extends EnigmaCommandErrorEvent {
   SendMessageErrorEvent({
-    @required EnigmaWebException error,
-    @required IProfile profile,
+    required EnigmaWebException error,
+    required IProfile profile,
   }) : super(error: error, profile: profile);
 }
 
 @immutable
 class SendMessageSuccessEvent extends EnigmaCommandSuccessEvent {
   SendMessageSuccessEvent({
-    @required Duration responseDuration,
+    required Duration responseDuration,
   }) : super(responseDuration: responseDuration);
 }

@@ -9,8 +9,8 @@ class SignalMonitorState {
   final List<ISignalResponse> responses;
 
   SignalMonitorState({
-    @required this.status,
-    @required this.responses,
+    required this.status,
+    required this.responses,
   });
 
   static SignalMonitorState initial() {
@@ -21,8 +21,8 @@ class SignalMonitorState {
   }
 
   SignalMonitorState copyWith({
-    MonitorStatus status,
-    List<ISignalResponse> responses,
+    MonitorStatus? status,
+    List<ISignalResponse>? responses,
   }) {
     return SignalMonitorState(
         status: status ?? this.status, responses: responses ?? this.responses);

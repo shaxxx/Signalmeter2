@@ -18,7 +18,7 @@ class ChangeTtsEnabledEvent {
 class SpeakSignalLevelEvent {
   final ISignalResponse response;
   SpeakSignalLevelEvent({
-    @required this.response,
+    required this.response,
   });
 }
 

@@ -6,7 +6,7 @@ class MessageState {
   final LoadingStatus status;
 
   MessageState({
-    @required this.status,
+    required this.status,
   });
 
   static MessageState initial() {
@@ -16,7 +16,7 @@ class MessageState {
   }
 
   MessageState copyWith({
-    LoadingStatus status,
+    LoadingStatus? status,
   }) {
     return MessageState(
       status: status ?? this.status,

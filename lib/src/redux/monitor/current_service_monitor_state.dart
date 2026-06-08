@@ -6,7 +6,7 @@ class CurrentServiceMonitorState {
   final MonitorStatus status;
 
   CurrentServiceMonitorState({
-    @required this.status,
+    required this.status,
   });
 
   static CurrentServiceMonitorState inital() {
@@ -16,7 +16,7 @@ class CurrentServiceMonitorState {
   }
 
   CurrentServiceMonitorState copyWith({
-    MonitorStatus status,
+    MonitorStatus? status,
   }) {
     return CurrentServiceMonitorState(
       status: status ?? this.status,

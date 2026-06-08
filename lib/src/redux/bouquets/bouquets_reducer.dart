@@ -18,7 +18,7 @@ final bouquetsReducer = combineReducers<BouquetsState>([
 
 BouquetsState _bouquetSelectedReducer(
     BouquetsState state, BouquetSelectedEvent event) {
-  Logger.root.fine('Selected bouquet ' + event.bouquet.name);
+  Logger.root.fine('Selected bouquet ' + (event.bouquet.name ?? ''));
   return state.copyWith(selectedBouquet: event.bouquet);
 }
 

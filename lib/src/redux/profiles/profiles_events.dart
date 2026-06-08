@@ -4,7 +4,7 @@ import 'package:meta/meta.dart';
 
 @immutable
 class ProfileSelectedEvent {
-  final Profile profile;
+  final IProfile? profile;
   ProfileSelectedEvent(this.profile);
 }
 
@@ -35,13 +35,13 @@ class LoadProfilesSuccessEvent {
   final List<IProfile> profiles;
 
   LoadProfilesSuccessEvent({
-    @required this.responseDuration,
-    @required this.profiles,
+    required this.responseDuration,
+    required this.profiles,
   });
 }
 
 @immutable
 class LoadProfilesErrorEvent {
   final dynamic error;
-  LoadProfilesErrorEvent({@required this.error}) : assert(error != null);
+  LoadProfilesErrorEvent({required this.error}) : assert(error != null);
 }

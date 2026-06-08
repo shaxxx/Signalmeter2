@@ -48,18 +48,18 @@ class AppState {
   }
 
   AppState copyWith({
-    ConnectionStatusEnum connectionState,
-    CurrentServiceMonitorState currentServiceMonitorState,
-    SignalMonitorState signalMonitorState,
-    ProfilesState profilesState,
-    BouquetsState bouquetsState,
-    BouquetItemsState bouquetItemsState,
-    TabState tabsState,
-    MessagesState messagesState,
-    TtsState ttsState,
-    ScreenshotState screenshotState,
-    MessageState messageState,
-    GlobalState globalState,
+    ConnectionStatusEnum? connectionState,
+    CurrentServiceMonitorState? currentServiceMonitorState,
+    SignalMonitorState? signalMonitorState,
+    ProfilesState? profilesState,
+    BouquetsState? bouquetsState,
+    BouquetItemsState? bouquetItemsState,
+    TabState? tabsState,
+    MessagesState? messagesState,
+    TtsState? ttsState,
+    ScreenshotState? screenshotState,
+    MessageState? messageState,
+    GlobalState? globalState,
   }) {
     return AppState._internal(
       connectionState: connectionState ?? this.connectionState,
@@ -69,7 +69,7 @@ class AppState {
       profilesState: profilesState ?? this.profilesState,
       bouquetsState: bouquetsState ?? this.bouquetsState,
       bouquetItemsState: bouquetItemsState ?? this.bouquetItemsState,
-      tabsState: tabsState ?? this.bouquetItemsState,
+      tabsState: tabsState ?? this.tabsState,
       messagesState: messagesState ?? this.messagesState,
       ttsState: ttsState ?? this.ttsState,
       screenshotState: screenshotState ?? this.screenshotState,
@@ -79,18 +79,18 @@ class AppState {
   }
 
   AppState._internal({
-    this.connectionState,
-    this.currentServiceMonitorState,
-    this.signalMonitorState,
-    this.profilesState,
-    this.bouquetsState,
-    this.bouquetItemsState,
-    this.tabsState,
-    this.messagesState,
-    this.ttsState,
-    this.screenshotState,
-    this.messageState,
-    this.globalState,
+    required this.connectionState,
+    required this.currentServiceMonitorState,
+    required this.signalMonitorState,
+    required this.profilesState,
+    required this.bouquetsState,
+    required this.bouquetItemsState,
+    required this.tabsState,
+    required this.messagesState,
+    required this.ttsState,
+    required this.screenshotState,
+    required this.messageState,
+    required this.globalState,
   });
 
   @override

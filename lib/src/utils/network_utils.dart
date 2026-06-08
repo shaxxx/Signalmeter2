@@ -43,7 +43,7 @@ class NetworkUtils {
   }
 
   static Future<bool> isPortOpen(String address, int port) async {
-    bool isOpen;
+    bool isOpen = false;
     try {
       await Socket.connect(
         address,

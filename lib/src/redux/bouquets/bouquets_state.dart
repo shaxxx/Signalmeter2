@@ -6,12 +6,12 @@ import 'package:collection/collection.dart';
 @immutable
 class BouquetsState {
   final LoadingStatus status;
-  final IBouquetItemBouquet selectedBouquet;
-  final List<IBouquetItemBouquet> bouquets;
+  final IBouquetItemBouquet? selectedBouquet;
+  final List<IBouquetItemBouquet>? bouquets;
   BouquetsState({
-    @required this.status,
-    @required this.selectedBouquet,
-    @required this.bouquets,
+    required this.status,
+    required this.selectedBouquet,
+    required this.bouquets,
   });
 
   static BouquetsState initial() {
@@ -20,10 +20,10 @@ class BouquetsState {
   }
 
   BouquetsState copyWith({
-    LoadingStatus status,
-    IBouquetItemBouquet selectedBouquet,
-    List<IBouquetItemBouquet> bouquets,
-    Exception loadingError,
+    LoadingStatus? status,
+    IBouquetItemBouquet? selectedBouquet,
+    List<IBouquetItemBouquet>? bouquets,
+    Exception? loadingError,
   }) {
     return BouquetsState(
         status: status ?? this.status,

@@ -21,7 +21,7 @@ class TtsMiddleware extends MiddlewareClass<AppState> {
       store.dispatch(ChangeTtsStatusEvent(TtsStatus.Error));
       store.dispatch(TtsSpeakFailedMessageEvent(action.error));
     } else if (action is SpeakSignalLevelEvent) {
-      if (store.state.profilesState.selectedProfile.enigma ==
+      if (store.state.profilesState.selectedProfile?.enigma ==
               EnigmaType.enigma2 &&
           store.state.globalState.applicationSettings.dbIsPrimaryLevel) {
         var db = (action.response.signal as IE2Signal).db;

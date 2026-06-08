@@ -38,7 +38,7 @@ class EnigmaCommandMiddleware extends MiddlewareClass<AppState> {
       Logger.root.fine(
           'Dispatching GetCurrentServiceEvent from EnigmaCommandMiddleware as response to SendRemoteControlCodeSuccessEvent');
       store.dispatch(GetCurrentServiceEvent(
-          profile: store.state.profilesState.selectedProfile));
+          profile: store.state.profilesState.selectedProfile!));
     } else if (action is SendMessageEvent) {
       await _sendMessage(store, action);
     }
@@ -124,7 +124,7 @@ class EnigmaCommandMiddleware extends MiddlewareClass<AppState> {
       store.dispatch(GetBouquetItemsSuccessEvent(
         bouquet: action.bouquet,
         bouquetItems:
-            store.state.bouquetItemsState.cachedBouquetItems[action.bouquet],
+            store.state.bouquetItemsState.cachedBouquetItems[action.bouquet]!,
         responseDuration: Duration(milliseconds: 0),
       ));
       return;
@@ -151,10 +151,14 @@ class EnigmaCommandMiddleware extends MiddlewareClass<AppState> {
   }
 
   Future _getCurrentService(Store<AppState> store) async {
+    final profile = store.state.profilesState.selectedProfile;
+    if (profile == null) {
+      return;
+    }
     try {
       var response = await EnigmaApi.getCurrentService(
         requester: requester,
-        profile: store.state.profilesState.selectedProfile,
+        profile: profile,
       );
       store.dispatch(
         GetCurrentServiceSuccessEvent(
@@ -166,7 +170,7 @@ class EnigmaCommandMiddleware extends MiddlewareClass<AppState> {
       store.dispatch(
         GetCurrentServiceErrorEvent(
           error: e,
-          profile: store.state.profilesState.selectedProfile,
+          profile: profile,
         ),
       );
     }
@@ -211,7 +215,7 @@ class EnigmaCommandMiddleware extends MiddlewareClass<AppState> {
       store.dispatch(
         GetScreenShotOfCurrentServiceErrorEvent(
           error: e,
-          profile: store.state.profilesState.selectedProfile,
+          profile: action.profile,
         ),
       );
     }

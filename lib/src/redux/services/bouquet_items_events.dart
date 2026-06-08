@@ -7,8 +7,8 @@ class BouquetItemSelectedEvent {
   final bool switchTabs;
   final IBouquetItemService bouquetItem;
   BouquetItemSelectedEvent({
-    @required this.bouquetItem,
-    @required this.switchTabs,
+    required this.bouquetItem,
+    required this.switchTabs,
   });
 }
 
