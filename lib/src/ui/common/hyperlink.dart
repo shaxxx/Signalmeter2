@@ -5,20 +5,20 @@ import 'package:url_launcher/url_launcher.dart';
 class Hyperlink extends StatelessWidget {
   final String url;
   final String text;
-  final double fontSize;
-  final Color color;
+  final double? fontSize;
+  final Color? color;
 
-  Hyperlink({
-    @required this.url,
-    @required this.text,
+  const Hyperlink({super.key, 
+    required this.url,
+    required this.text,
     this.fontSize,
     this.color,
-  })  : assert(text != null),
-        assert(url != null);
+  });
 
   Future _launchURL() async {
-    if (await canLaunch(url)) {
-      await launch(url);
+    final uri = Uri.parse(url);
+    if (await canLaunchUrl(uri)) {
+      await launchUrl(uri);
     } else {
       throw 'Could not launch $url';
     }
@@ -27,6 +27,7 @@ class Hyperlink extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
+      onTap: _launchURL,
       child: Text(
         text,
         style: TextStyle(
@@ -35,7 +36,6 @@ class Hyperlink extends StatelessWidget {
           color: color,
         ),
       ),
-      onTap: _launchURL,
     );
   }
 }

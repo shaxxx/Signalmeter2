@@ -5,18 +5,16 @@ import 'package:meta/meta.dart';
 @immutable
 class TtsState {
   final TtsStatus status;
-  final ISignalResponse response;
+  final ISignalResponse? response;
   final bool ttsEnabled;
   final TtsInitializationStatus ttsInitializationStatus;
 
-  TtsState({
-    @required this.status,
-    @required this.response,
-    @required this.ttsEnabled,
-    @required this.ttsInitializationStatus,
-  })  : assert(status != null),
-        assert(ttsEnabled != null),
-        assert(ttsInitializationStatus != null);
+  const TtsState({
+    required this.status,
+    required this.response,
+    required this.ttsEnabled,
+    required this.ttsInitializationStatus,
+  });
 
   static TtsState initial() {
     return TtsState(
@@ -28,11 +26,11 @@ class TtsState {
   }
 
   TtsState copyWith({
-    TtsStatus status,
-    ISignalResponse response,
-    ISignalResponse previousResponse,
-    bool ttsEnabled,
-    TtsInitializationStatus ttsInitializationStatus,
+    TtsStatus? status,
+    ISignalResponse? response,
+    ISignalResponse? previousResponse,
+    bool? ttsEnabled,
+    TtsInitializationStatus? ttsInitializationStatus,
   }) {
     return TtsState(
       status: status ?? this.status,

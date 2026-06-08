@@ -1,5 +1,3 @@
-import 'dart:ui';
-
 import 'package:enigma_signal_meter/src/model/enums.dart';
 import 'package:enigma_signal_meter/src/redux/app/app_state.dart';
 import 'package:enigma_signal_meter/src/ui/bouquets/bouquets_view.dart';
@@ -10,24 +8,27 @@ import 'package:enigma_signal_meter/src/ui/signal/signal_view.dart';
 import 'package:enigma_signal_meter/src/ui/tabs/tabs_navigator.dart';
 import 'package:enigma_signal_meter/src/utils/tts_utils.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 
 import 'main_tab_viewmodel.dart';
 import 'tabs_appbar_view.dart';
 
 class MainTabView extends StatefulWidget {
+  const MainTabView({super.key});
+
   @override
   _MainTabViewState createState() => _MainTabViewState();
 }
 
 class _MainTabViewState extends State<MainTabView>
     with SingleTickerProviderStateMixin, WidgetsBindingObserver, RouteAware {
-  PageController controller;
+  late PageController controller;
   int goToPage = -1;
   bool isAnimating = false;
-  MainTabViewModel _viewModel;
-  RouteObserver<PageRoute> _routeObserver;
+  // Nullable, not late: the RouteAware/lifecycle callbacks (didPush, etc.) can
+  // fire before onDidChange assigns the view model, so they must null-guard.
+  MainTabViewModel? _viewModel;
+  late RouteObserver<PageRoute> _routeObserver;
 
   @override
   void initState() {
@@ -53,51 +54,42 @@ class _MainTabViewState extends State<MainTabView>
 
   @override
   void didChangeAppLifecycleState(AppLifecycleState state) {
-    if (_viewModel != null) {
-      _viewModel.onActiveChanged(state == AppLifecycleState.resumed);
-    }
+    _viewModel?.onActiveChanged(state == AppLifecycleState.resumed);
   }
 
   // Called when the top route has been popped off, and the current route shows up.
   @override
   void didPopNext() {
-    if (_viewModel != null) {
-      _viewModel.onActiveChanged(true);
-    }
+    _viewModel?.onActiveChanged(true);
   }
 
   // Called when the current route has been pushed.
   @override
   void didPush() {
-    if (_viewModel != null) {
-      _viewModel.onActiveChanged(true);
-    }
+    _viewModel?.onActiveChanged(true);
   }
 
   // Called when the current route has been popped off.
   @override
   void didPop() {
-    if (_viewModel != null) {
-      _viewModel.onActiveChanged(false);
-    }
+    _viewModel?.onActiveChanged(false);
   }
 
   // Called when a new route has been pushed, and the current route is no longer visible.
   @override
   void didPushNext() {
-    if (_viewModel != null) {
-      _viewModel.onActiveChanged(false);
-    }
+    _viewModel?.onActiveChanged(false);
   }
 
   void _handleTabSelection() {
-    if (_viewModel == null) return;
     if (!isAnimating) {
       var store = StoreProvider.of<AppState>(context);
+      final page = controller.page;
+      if (page == null) return;
       var isControllerOnActiveTab =
-          store.state.tabsState.activeTab.index == controller.page.round();
+          store.state.tabsState.activeTab.index == page.round();
       if (!isControllerOnActiveTab) {
-        _viewModel.onTabSelected(TabPagesEnum.values[controller.page.round()]);
+        _viewModel?.onTabSelected(TabPagesEnum.values[page.round()]);
       }
     }
   }
@@ -111,7 +103,7 @@ class _MainTabViewState extends State<MainTabView>
 
   Future _animateToPage() async {
     // ignore: INVALID_USE_OF_PROTECTED_MEMBER
-    if (controller.positions == null || controller.positions.isEmpty) {
+    if (controller.positions.isEmpty) {
       return;
     }
     //uncoment to have pageview animate to page
@@ -139,13 +131,13 @@ class _MainTabViewState extends State<MainTabView>
       },
       onInit: (store) {
         _routeObserver = store.state.globalState.routeObserver;
-        _routeObserver.subscribe(this, ModalRoute.of(context));
+        _routeObserver.subscribe(this, ModalRoute.of(context)! as PageRoute);
         store.onChange.listen(selectTab);
       },
       onInitialBuild: (vm) {
         vm.onActiveChanged(true);
       },
-      onDidChange: (vm) {
+      onDidChange: (_, vm) {
         _viewModel = vm;
         if (vm.shouldInitializeTts && !ttsInitCalled) {
           ttsInitCalled = true;
@@ -160,7 +152,7 @@ class _MainTabViewState extends State<MainTabView>
       builder: (context, viewModel) {
         return ScaffoldBackground(
           appBar: TabsAppBarView.buildAppBar(
-              Theme.of(context).primaryColor.withOpacity(0.6)),
+              Theme.of(context).primaryColor.withValues(alpha: 0.6)),
           bottomNavigationBar: viewModel.showNavigator ? TabsNavigator() : null,
           child: PageView(
             controller: controller,

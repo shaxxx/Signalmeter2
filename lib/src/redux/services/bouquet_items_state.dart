@@ -6,17 +6,16 @@ import 'package:collection/collection.dart';
 @immutable
 class BouquetItemsState {
   final LoadingStatus status;
-  final IBouquetItemService selectedService;
+  final IBouquetItemService? selectedService;
   final Map<IBouquetItemBouquet, List<IBouquetItem>> cachedBouquetItems;
-  final String searchTerm;
+  final String? searchTerm;
 
-  BouquetItemsState({
-    @required this.status,
-    @required this.selectedService,
-    @required this.cachedBouquetItems,
-    @required this.searchTerm,
-  })  : assert(status != null),
-        assert(cachedBouquetItems != null);
+  const BouquetItemsState({
+    required this.status,
+    required this.selectedService,
+    required this.cachedBouquetItems,
+    required this.searchTerm,
+  });
 
   static BouquetItemsState initial() {
     return BouquetItemsState(
@@ -27,28 +26,30 @@ class BouquetItemsState {
     );
   }
 
-  List<IBouquetItem> bouquetItems(IBouquetItemBouquet bouquet) {
-    if (searchTerm == null || searchTerm.trim().isEmpty) {
+  List<IBouquetItem>? bouquetItems(IBouquetItemBouquet bouquet) {
+    final term = searchTerm;
+    if (term == null || term.trim().isEmpty) {
       return cachedBouquetItems[bouquet];
     }
-    if (cachedBouquetItems[bouquet] == null) {
+    final items = cachedBouquetItems[bouquet];
+    if (items == null) {
       return null;
     }
-    var results = cachedBouquetItems[bouquet]
+    var results = items
         .where((item) =>
             item is BouquetItemService &&
-            item.name.toUpperCase().contains(searchTerm.toUpperCase()))
+            (item.name ?? '').toUpperCase().contains(term.toUpperCase()))
         .toList();
     return results;
   }
 
   BouquetItemsState copyWith({
-    LoadingStatus status,
-    IBouquetItemService selectedService,
-    List<IBouquetItem> bouquetItems,
-    Exception loadingError,
-    Map<IBouquetItemBouquet, List<IBouquetItem>> cachedBouquetItems,
-    String searchTerm,
+    LoadingStatus? status,
+    IBouquetItemService? selectedService,
+    List<IBouquetItem>? bouquetItems,
+    Exception? loadingError,
+    Map<IBouquetItemBouquet, List<IBouquetItem>>? cachedBouquetItems,
+    String? searchTerm,
   }) {
     return BouquetItemsState(
       status: status ?? this.status,

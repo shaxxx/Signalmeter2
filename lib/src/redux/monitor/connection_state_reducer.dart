@@ -10,9 +10,9 @@ final connectionStateReducer = combineReducers<ConnectionStatusEnum>([
       (curentState, event) {
     Logger.root.fine('Connection state set to ${event.status.toString()}');
     return event.status;
-  }),
+  }).call,
   TypedReducer<ConnectionStatusEnum, ResetStateEvent>((curentState, event) {
     Logger.root.fine('Reseting connection state');
     return ConnectionStatusEnum.disconnected;
-  }),
+  }).call,
 ]);

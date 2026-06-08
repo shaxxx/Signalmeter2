@@ -5,9 +5,7 @@ import 'package:enigma_signal_meter/src/ui/profile/enigma_version_row.dart';
 import 'package:enigma_signal_meter/src/ui/profile/profile_widget.dart';
 import 'package:enigma_signal_meter/src/ui/profile/usessl_row.dart';
 import 'package:enigma_web/enigma_web.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 import 'address_row.dart';
 import 'http_port_row.dart';
@@ -21,10 +19,12 @@ import 'transcoding_row.dart';
 import 'username_row.dart';
 
 class ProfileEditView extends StatelessWidget {
+  const ProfileEditView({super.key});
+
   @override
   Widget build(BuildContext context) {
     var theme = Theme.of(context);
-    var profile = ModalRoute.of(context).settings.arguments;
+    var profile = ModalRoute.of(context)?.settings.arguments as IProfile?;
     return ScaffoldBackground(
       backgroundColor: theme.primaryColor.withOpacity(0.3),
       appBar: AppBar(
@@ -87,10 +87,12 @@ class ProfileEditView extends StatelessWidget {
     return Container(
       padding: EdgeInsets.only(top: 20, right: 20, left: 20),
       alignment: Alignment.center,
-      child: RaisedButton(
-        shape:
-            RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.0)),
-        color: theme.primaryColor.withOpacity(0.6),
+      child: ElevatedButton(
+        style: ElevatedButton.styleFrom(
+          shape:
+              RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.0)),
+          backgroundColor: theme.primaryColor.withValues(alpha: 0.6),
+        ),
         onPressed: () async {
           var formValid = await profileWidget.validateForm();
           if (formValid) {
@@ -102,7 +104,7 @@ class ProfileEditView extends StatelessWidget {
           margin: EdgeInsets.symmetric(vertical: 15),
           child: Text(
             MessageProvider.of(context).actionSave.toUpperCase(),
-            style: TextStyle(fontSize: 16, color: theme.accentColor),
+            style: TextStyle(fontSize: 16, color: theme.colorScheme.secondary),
           ),
         ),
       ),

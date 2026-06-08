@@ -2,27 +2,31 @@ import 'package:enigma_signal_meter/src/utils/enigma_utils.dart';
 import 'package:enigma_web/enigma_web.dart';
 
 class ProfileEditModel {
-  String address;
+  String address = '';
   EnigmaType enigma = EnigmaType.enigma2;
-  String httpPort;
-  String name;
-  String password;
+  String httpPort = '';
+  String name = '';
+  String password = '';
   bool useSsl = false;
-  String username;
-  String streamingPort;
+  String username = '';
+  String streamingPort = '';
   bool transcoding = false;
-  String transcodingPort;
+  String transcodingPort = '';
   bool streaming = false;
-  String id;
+  String id = '';
 
   Profile toProfile() {
     return Profile(
       address: address,
       enigma: enigma,
       httpPort: int.parse(httpPort),
-      id: id ?? EnigmaUtils.unixTimeStamp(),
+      // `id` is non-nullable and defaults to '' for new profiles, so the old
+      // `id ?? unixTimeStamp()` fallback never fired (every new profile got an
+      // empty id and collided with the first one). Generate a unique id when
+      // empty; keep the existing id when editing.
+      id: id.isEmpty ? EnigmaUtils.unixTimeStamp() : id,
       name: name,
-      password: password ?? '',
+      password: password,
       streaming: streaming,
       streamingPort: streaming && enigma == EnigmaType.enigma2
           ? int.parse(streamingPort)
@@ -40,7 +44,7 @@ class ProfileEditModel {
     var model = ProfileEditModel();
     model.address = profile.address;
     model.enigma = profile.enigma;
-    model.httpPort = profile.httpPort.toString() ?? '';
+    model.httpPort = profile.httpPort.toString();
     model.id = profile.id;
     model.name = profile.name;
     model.password = profile.password;

@@ -7,8 +7,8 @@ import 'profile_widget.dart';
 
 class StreamingPortRow extends StatelessWidget {
   const StreamingPortRow({
-    Key key,
-  }) : super(key: key);
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {

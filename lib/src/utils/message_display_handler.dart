@@ -10,8 +10,8 @@ import 'error_message_translator.dart';
 
 class MessageDisplayHandler {
   static Future displayMessages({
-    BuildContext context,
-    MessageDisplayerInterface viewModel,
+    required BuildContext context,
+    required MessageDisplayerInterface viewModel,
   }) async {
     await _displayInfoMessages(viewModel, context);
     await _displayWarningMessages(viewModel, context);

@@ -2,7 +2,6 @@ import 'package:enigma_signal_meter/src/i18n/messages.dart';
 import 'package:enigma_signal_meter/src/model/enums.dart';
 import 'package:enigma_signal_meter/src/redux/app/app_state.dart';
 import 'package:enigma_web/enigma_web.dart';
-import 'package:flutter/material.dart';
 import 'package:redux/redux.dart';
 
 class SignalCircularProgressViewModel {
@@ -14,35 +13,22 @@ class SignalCircularProgressViewModel {
   final bool hasInfo;
 
   static bool _hasInfo(ISignalResponse signalResponse) {
-    if (signalResponse == null ||
-        signalResponse.signal == null ||
-        signalResponse.signal.snr == null) {
-      return false;
-    }
     return signalResponse.signal.snr >= 0;
   }
 
   SignalCircularProgressViewModel({
-    @required this.stringValue,
-    @required this.doubleValue,
-    @required this.footerValue,
-    @required this.hasdb,
-    @required this.hasInfo,
-    @required this.isBerView,
-  })  : assert(stringValue != null),
-        assert(doubleValue != null && doubleValue >= 0 && doubleValue <= 1),
-        assert(footerValue != null),
-        assert(hasdb != null),
-        assert(hasInfo != null),
-        assert(isBerView != null);
+    required this.stringValue,
+    required this.doubleValue,
+    required this.footerValue,
+    required this.hasdb,
+    required this.hasInfo,
+    required this.isBerView,
+  })  : assert(doubleValue >= 0 && doubleValue <= 1);
 
   static String _snrString(
     ISignalResponse signalResponse,
     Messages messages,
   ) {
-    if (signalResponse == null) {
-      return messages.noInformation;
-    }
     if (signalResponse.signal.snr == -1) {
       return messages.noInformation;
     }
@@ -50,9 +36,6 @@ class SignalCircularProgressViewModel {
   }
 
   static double _snrDouble(ISignalResponse signalResponse) {
-    if (signalResponse == null) {
-      return 0;
-    }
     if (signalResponse.signal.snr == -1) {
       return 0;
     }
@@ -63,23 +46,17 @@ class SignalCircularProgressViewModel {
     ISignalResponse signalResponse,
     Messages messages,
   ) {
-    if (signalResponse == null) {
-      return messages.noInformation;
-    }
     if (signalResponse.signal is E2Signal) {
       var db = (signalResponse.signal as E2Signal).db;
       if (db == -1) {
         return messages.noInformation;
       }
-      return '${db.toStringAsFixed(2)}';
+      return db.toStringAsFixed(2);
     }
     return messages.noInformation;
   }
 
   static double _dbDouble(ISignalResponse signalResponse) {
-    if (signalResponse == null) {
-      return 0;
-    }
     if (signalResponse.signal is E2Signal) {
       var db = (signalResponse.signal as E2Signal).db;
       if (db < 0) {
@@ -98,9 +75,6 @@ class SignalCircularProgressViewModel {
     ISignalResponse signalResponse,
     Messages messages,
   ) {
-    if (signalResponse == null) {
-      return messages.noInformation;
-    }
     if (signalResponse.signal.acg == -1) {
       return messages.noInformation;
     }
@@ -108,9 +82,6 @@ class SignalCircularProgressViewModel {
   }
 
   static double _acgDouble(ISignalResponse signalResponse) {
-    if (signalResponse == null) {
-      return 0;
-    }
     if (signalResponse.signal.acg == -1) {
       return 0;
     }
@@ -121,9 +92,6 @@ class SignalCircularProgressViewModel {
     ISignalResponse signalResponse,
     Messages messages,
   ) {
-    if (signalResponse == null) {
-      return messages.noInformation;
-    }
     if (signalResponse.signal.ber == -1) {
       return messages.noInformation;
     }
@@ -133,9 +101,6 @@ class SignalCircularProgressViewModel {
   static double _berDouble(
     ISignalResponse signalResponse,
   ) {
-    if (signalResponse == null) {
-      return 0;
-    }
     if (signalResponse.signal.ber == -1) {
       return 0;
     }
@@ -216,10 +181,20 @@ class SignalCircularProgressViewModel {
 
   static SignalCircularProgressViewModel fromStore(
       Store<AppState> store, Messages messages) {
-    var signalResponse = store.state.signalMonitorState.responses.isNotEmpty
+    final signalResponse = store.state.signalMonitorState.responses.isNotEmpty
         ? store.state.signalMonitorState.responses.last
         : null;
     var signalView = store.state.tabsState.signalView;
+    if (signalResponse == null) {
+      return SignalCircularProgressViewModel(
+        stringValue: messages.noInformation,
+        footerValue: _getFooterValue(signalView),
+        doubleValue: 0,
+        hasdb: false,
+        hasInfo: false,
+        isBerView: signalView == SignalViewEnum.CircularBer,
+      );
+    }
     return SignalCircularProgressViewModel(
       stringValue: _getStringValue(signalResponse, signalView, messages),
       footerValue: _getFooterValue(signalView),

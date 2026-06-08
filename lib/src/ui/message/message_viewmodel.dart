@@ -12,9 +12,9 @@ class MessageViewModel {
   final LoadingStatus status;
 
   MessageViewModel({
-    @required this.displayFormInvalidWarningMessage,
-    @required this.onSendMessage,
-    @required this.status,
+    required this.displayFormInvalidWarningMessage,
+    required this.onSendMessage,
+    required this.status,
   });
 
   static MessageViewModel fromStore(Store<AppState> store) {
@@ -27,7 +27,7 @@ class MessageViewModel {
         onSendMessage: (message, timeout, messageType) {
           store.dispatch(
             SendMessageEvent(
-              profile: store.state.profilesState.selectedProfile,
+              profile: store.state.profilesState.selectedProfile!,
               message: message,
               timeout: timeout,
               messageType: messageType,

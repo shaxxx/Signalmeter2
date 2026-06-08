@@ -1,10 +1,11 @@
 import 'package:enigma_web/enigma_web.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 
 import 'profile_widget.dart';
 
 class EnigmaVersionRow extends StatelessWidget {
+  const EnigmaVersionRow({super.key});
+
   @override
   Widget build(BuildContext context) {
     var theme = Theme.of(context);
@@ -21,11 +22,13 @@ class EnigmaVersionRow extends StatelessWidget {
               child: Row(
                 mainAxisSize: MainAxisSize.max,
                 children: <Widget>[
-                  Radio(
+                  Radio<EnigmaType>(
                     groupValue: ProfileWidget.of(context).profile.enigma,
                     value: EnigmaType.enigma1,
                     onChanged: (value) {
-                      ProfileWidget.of(context).setEnigmaType(value);
+                      if (value != null) {
+                        ProfileWidget.of(context).setEnigmaType(value);
+                      }
                     },
                   ),
                   Text(
@@ -33,11 +36,13 @@ class EnigmaVersionRow extends StatelessWidget {
                     textAlign: TextAlign.left,
                     style: TextStyle(color: theme.hintColor),
                   ),
-                  Radio(
+                  Radio<EnigmaType>(
                     groupValue: ProfileWidget.of(context).profile.enigma,
                     value: EnigmaType.enigma2,
                     onChanged: (value) {
-                      ProfileWidget.of(context).setEnigmaType(value);
+                      if (value != null) {
+                        ProfileWidget.of(context).setEnigmaType(value);
+                      }
                     },
                   ),
                   Text(

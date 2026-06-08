@@ -2,7 +2,6 @@ import 'package:enigma_signal_meter/src/model/enigma_web_exception.dart';
 import 'package:enigma_signal_meter/src/utils/enigma_api.dart';
 import 'package:enigma_signal_meter/src/utils/network_utils.dart';
 import 'package:enigma_web/enigma_web.dart';
-import 'package:flutter/widgets.dart';
 import 'package:logging/logging.dart';
 
 class StreamUtils {
@@ -10,8 +9,8 @@ class StreamUtils {
     IProfile profile,
     IBouquetItemService service,
   ) async {
-    StreamParametersResponseStatus status;
-    int port;
+    StreamParametersResponseStatus? status;
+    int? port;
 
     if (profile.transcoding) {
       port = await _findTranscodingPort(profile);
@@ -35,8 +34,8 @@ class StreamUtils {
       }
     }
 
-    Uri extraParametersUri;
-    EnigmaWebException webException;
+    Uri? extraParametersUri;
+    EnigmaWebException? webException;
     if (_needExtraStreamParameters(profile, port)) {
       try {
         extraParametersUri = await _getExtraParametersUri(profile, service);
@@ -51,7 +50,7 @@ class StreamUtils {
 
     if (status == StreamParametersResponseStatus.FailedToGetExtraParameters) {
       return StreamParametersResponse(
-        status: status,
+        status: status!,
         getStreamParametersError: webException,
         streamUri: null,
       );
@@ -66,7 +65,7 @@ class StreamUtils {
 
     if (port == null) {
       return StreamParametersResponse(
-        status: status,
+        status: status!,
         getStreamParametersError: webException,
         streamUri: null,
       );
@@ -78,39 +77,43 @@ class StreamUtils {
       streamUri = 'http://${profile.address}:$port/${service.reference}';
     } else {
       //http://dm600pvr:31339/0,61,1ff,200
-      streamUri = 'http://${profile.address}:$port${extraParametersUri.path}';
+      streamUri = 'http://${profile.address}:$port${extraParametersUri!.path}';
     }
     streamUri = Uri.encodeFull(streamUri);
     return StreamParametersResponse(
-      status: status,
+      status: status!,
       getStreamParametersError: null,
       streamUri: streamUri,
     );
   }
 
-  static Future<int> _findTranscodingPort(IProfile profile) async {
+  static Future<int?> _findTranscodingPort(IProfile profile) async {
     //check if transcoding port is available
+    final transcodingPort = profile.transcodingPort;
+    if (transcodingPort == null) return null;
     if (await NetworkUtils.isPortOpen(
       profile.address,
-      profile.transcodingPort,
+      transcodingPort,
     )) {
-      return profile.transcodingPort;
-    } else if (profile.transcodingPort != 8002 &&
+      return transcodingPort;
+    } else if (transcodingPort != 8002 &&
         await NetworkUtils.isPortOpen(profile.address, 8002)) {
       return 8002;
     }
     return null;
   }
 
-  static Future<int> _findStreamingPort(IProfile profile) async {
+  static Future<int?> _findStreamingPort(IProfile profile) async {
     //check if streaming port is available
+    final streamingPort = profile.streamingPort;
+    if (streamingPort == null) return null;
     if (await NetworkUtils.isPortOpen(
       profile.address,
-      profile.streamingPort,
+      streamingPort,
     )) {
-      return profile.streamingPort;
+      return streamingPort;
     } else if (profile.enigma == EnigmaType.enigma2 &&
-        profile.streamingPort != 8001 &&
+        streamingPort != 8001 &&
         await NetworkUtils.isPortOpen(profile.address, 8001)) {
       return 8001;
     }
@@ -119,13 +122,13 @@ class StreamUtils {
 
   static bool _needExtraStreamParameters(
     IProfile profile,
-    int port,
+    int? port,
   ) {
     return profile.enigma == EnigmaType.enigma1 || port == null;
   }
 
-  static Future<Uri> _getExtraParametersUri(
-    Profile profile,
+  static Future<Uri?> _getExtraParametersUri(
+    IProfile profile,
     IBouquetItemService service,
   ) async {
     var extraParameters = await EnigmaApi.getStreamParameters(
@@ -133,16 +136,15 @@ class StreamUtils {
       profile: profile,
       service: service,
     );
-    if (extraParameters == null ||
-        extraParameters.streamUrl == null ||
-        extraParameters.streamUrl.isEmpty) {
+    if (extraParameters.streamUrl.isEmpty) {
       return null;
     }
     return Uri.parse(extraParameters.streamUrl);
   }
 
-  static Future<int> _findExtraParametersPort(
-      IProfile profile, Uri extraParametersUri) async {
+  static Future<int?> _findExtraParametersPort(
+      IProfile profile, Uri? extraParametersUri) async {
+    if (extraParametersUri == null) return null;
     if (await NetworkUtils.isPortOpen(
       profile.address,
       extraParametersUri.port,
@@ -155,14 +157,14 @@ class StreamUtils {
 
 class StreamParametersResponse {
   final StreamParametersResponseStatus status;
-  final String streamUri;
-  final EnigmaWebException getStreamParametersError;
+  final String? streamUri;
+  final EnigmaWebException? getStreamParametersError;
 
   StreamParametersResponse({
-    @required this.status,
-    @required this.streamUri,
-    @required this.getStreamParametersError,
-  }) : assert(status != null);
+    required this.status,
+    required this.streamUri,
+    required this.getStreamParametersError,
+  });
 
   @override
   bool operator ==(Object other) =>

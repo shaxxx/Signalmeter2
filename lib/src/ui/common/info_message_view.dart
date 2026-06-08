@@ -5,48 +5,45 @@
 import 'package:enigma_signal_meter/src/i18n/messages.dart';
 import 'package:flutter/material.dart';
 
-import 'package:meta/meta.dart';
 
 import '../../message_provider.dart';
 
 class ErrorView extends InfoMessageView {
   static const Key tryAgainButtonKey = Key('tryAgainButton');
 
-  const ErrorView({
-    String title,
-    String description,
-    @required VoidCallback onRetry,
+  const ErrorView({super.key, 
+    super.title,
+    super.description,
+    required VoidCallback onRetry,
   }) : super(
           actionButtonKey: tryAgainButtonKey,
-          title: title,
-          description: description,
           onActionButtonTapped: onRetry,
         );
 }
 
 class InfoMessageView extends StatelessWidget {
   const InfoMessageView({
-    Key key,
-    @required this.title,
-    @required this.description,
+    super.key,
+    this.title,
+    required this.description,
     this.actionButtonKey,
     this.onActionButtonTapped,
-  }) : super(key: key);
+  });
 
-  final String title;
-  final String description;
-  final Key actionButtonKey;
-  final VoidCallback onActionButtonTapped;
+  final String? title;
+  final String? description;
+  final Key? actionButtonKey;
+  final VoidCallback? onActionButtonTapped;
 
   List<Widget> _buildContent(Messages messages) => [
         const CircleAvatar(
+          backgroundColor: Colors.white12,
+          radius: 42.0,
           child: Icon(
             Icons.info_outline,
             color: Colors.white70,
             size: 52.0,
           ),
-          backgroundColor: Colors.white12,
-          radius: 42.0,
         ),
         const SizedBox(height: 16.0),
         Text(
@@ -55,7 +52,7 @@ class InfoMessageView extends StatelessWidget {
         ),
         const SizedBox(height: 8.0),
         Text(
-          description,
+          description ?? '',
           textAlign: TextAlign.center,
           style: const TextStyle(color: Colors.white70),
         ),
@@ -66,12 +63,10 @@ class InfoMessageView extends StatelessWidget {
     final messages = MessageProvider.of(context);
     final content = _buildContent(messages);
 
-    if (onActionButtonTapped != null) {
-      content.add(_ActionButton(
-        actionButtonKey,
-        onActionButtonTapped,
-      ));
-    }
+    content.add(_ActionButton(
+      actionButtonKey,
+      onActionButtonTapped,
+    ));
 
     return SingleChildScrollView(
       child: Container(
@@ -88,14 +83,14 @@ class InfoMessageView extends StatelessWidget {
 }
 
 class _ActionButton extends StatelessWidget {
-  _ActionButton(Key key, this.onActionButtonTapped) : super(key: key);
-  final VoidCallback onActionButtonTapped;
+  const _ActionButton(Key? key, this.onActionButtonTapped) : super(key: key);
+  final VoidCallback? onActionButtonTapped;
 
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.only(top: 12.0),
-      child: FlatButton(
+      child: TextButton(
         onPressed: onActionButtonTapped,
         child: Text(
           MessageProvider.of(context).tryAgain,

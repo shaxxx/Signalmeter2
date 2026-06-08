@@ -5,7 +5,7 @@ import 'package:meta/meta.dart';
 @immutable
 class SetScreenSizeEvent {
   final Size screenSize;
-  SetScreenSizeEvent(this.screenSize);
+  const SetScreenSizeEvent(this.screenSize);
 }
 
 @immutable
@@ -17,11 +17,11 @@ class LoadApplicationSettingsEvent {}
 @immutable
 class ApplicationSettingsChangedEvent {
   final ApplicationSettings applicationSettings;
-  ApplicationSettingsChangedEvent(this.applicationSettings);
+  const ApplicationSettingsChangedEvent(this.applicationSettings);
 }
 
 @immutable
 class SatellitesLoadedEvent {
   final Map<int, String> satellites;
-  SatellitesLoadedEvent(this.satellites);
+  const SatellitesLoadedEvent(this.satellites);
 }

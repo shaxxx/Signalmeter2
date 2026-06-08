@@ -1,10 +1,6 @@
 class StringUtils {
   /// Remove illegal XML characters from a string.
   static String sanitizeXmlString(String xml) {
-    if (xml == null) {
-      throw ArgumentError.notNull('xml');
-    }
-
     var buffer = StringBuffer();
     for (var c in xml.split('')) {
       if (isLegalXmlChar(c.codeUnitAt(0))) {
@@ -27,12 +23,12 @@ class StringUtils {
         (asciiCode >= 65536 && asciiCode <= 1114111));
   }
 
-  static bool stringIsNullOrEmpty(String text) {
-    if (text?.isEmpty ?? true) return true;
+  static bool stringIsNullOrEmpty(String? text) {
+    if (text == null || text.isEmpty) return true;
     return false;
   }
 
-  static String trimAll(String text) {
+  static String? trimAll(String? text) {
     if (text == null) {
       return text;
     }
@@ -58,21 +54,21 @@ class StringUtils {
     return result;
   }
 
-  static String trimStart(String text, int charCode) {
+  static String? trimStart(String? text, int? charCode) {
     if (text == null) return text;
     if (charCode == null) return text;
     var char = String.fromCharCode(charCode);
-    while (text.startsWith(char)) {
+    while (text!.startsWith(char)) {
       text = text.substring(1);
     }
     return text;
   }
 
-  static String trimEnd(String text, int charCode) {
+  static String? trimEnd(String? text, int? charCode) {
     if (text == null) return text;
     if (charCode == null) return text;
     var char = String.fromCharCode(charCode);
-    while (text.endsWith(char)) {
+    while (text!.endsWith(char)) {
       text = text.substring(0, text.length - 1);
     }
     return text;

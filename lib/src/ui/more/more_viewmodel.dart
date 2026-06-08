@@ -1,7 +1,7 @@
 import 'dart:core';
 import 'dart:io';
 
-import 'package:android_intent/android_intent.dart';
+import 'package:android_intent_plus/android_intent.dart';
 import 'package:enigma_signal_meter/src/i18n/messages.dart';
 import 'package:enigma_signal_meter/src/model/menu_item.dart';
 import 'package:enigma_signal_meter/src/redux/app/app_state.dart';
@@ -11,8 +11,6 @@ import 'package:enigma_signal_meter/src/redux/messages/info_messages_events.dart
 import 'package:enigma_signal_meter/src/redux/messages/warning_messages_events.dart';
 import 'package:enigma_signal_meter/src/utils/stream_manager.dart';
 
-import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:collection/collection.dart';
 import 'package:redux/redux.dart';
 import 'package:flutter_redux_navigation/flutter_redux_navigation.dart';
@@ -29,13 +27,12 @@ class MoreViewModel {
   final bool streamEnabled;
 
   MoreViewModel({
-    @required this.menuItems,
-    @required this.onSelected,
-    @required this.messages,
-    @required this.profileName,
-    @required this.streamEnabled,
-  })  : assert(menuItems != null),
-        assert(streamEnabled != null);
+    required this.menuItems,
+    required this.onSelected,
+    required this.messages,
+    required this.profileName,
+    required this.streamEnabled,
+  });
 
   static MoreViewModel fromStore(
     Store<AppState> store,
@@ -47,19 +44,19 @@ class MoreViewModel {
         _setItemSelectedEvent(store, item);
       },
       messages: messages,
-      profileName: store.state.profilesState.selectedProfile?.name,
-      streamEnabled: store.state.profilesState.selectedProfile.streaming,
+      profileName: store.state.profilesState.selectedProfile!.name,
+      streamEnabled: store.state.profilesState.selectedProfile!.streaming,
     );
   }
 
   static List<MenuItem> _menuItemsFromStore(
       Store<AppState> store, Messages messages) {
     var menuItems = <MenuItem>[];
-    if (store.state.profilesState.selectedProfile.streaming) {
+    if (store.state.profilesState.selectedProfile!.streaming) {
       menuItems.add(
         MenuItem(
           key: streamMenuItemKey,
-          icon: menuIcons[streamMenuItemKey],
+          icon: menuIcons[streamMenuItemKey]!,
           title: messages.actionStream,
         ),
       );
@@ -67,35 +64,35 @@ class MoreViewModel {
     menuItems.add(
       MenuItem(
         key: screenshotMenuItemKey,
-        icon: menuIcons[screenshotMenuItemKey],
+        icon: menuIcons[screenshotMenuItemKey]!,
         title: messages.actionScreenshot,
       ),
     );
     menuItems.add(
       MenuItem(
         key: sendToSleepMenuItemKey,
-        icon: menuIcons[sendToSleepMenuItemKey],
+        icon: menuIcons[sendToSleepMenuItemKey]!,
         title: messages.actionSleep,
       ),
     );
     menuItems.add(
       MenuItem(
         key: restartMenuItemKey,
-        icon: menuIcons[restartMenuItemKey],
+        icon: menuIcons[restartMenuItemKey]!,
         title: messages.actionRestart,
       ),
     );
     menuItems.add(
       MenuItem(
         key: messageMenuItemKey,
-        icon: menuIcons[messageMenuItemKey],
+        icon: menuIcons[messageMenuItemKey]!,
         title: messages.message,
       ),
     );
     menuItems.add(
       MenuItem(
         key: aboutMenuItemKey,
-        icon: menuIcons[aboutMenuItemKey],
+        icon: menuIcons[aboutMenuItemKey]!,
         title: messages.actionAbout,
       ),
     );
@@ -106,11 +103,11 @@ class MoreViewModel {
       Store<AppState> store, MenuItem item) async {
     var profile = store.state.profilesState.selectedProfile;
     if (item.key == sendToSleepMenuItemKey) {
-      store.dispatch(SentToSleepEvent(profile: profile));
+      store.dispatch(SentToSleepEvent(profile: profile!));
     } else if (item.key == streamMenuItemKey) {
       _setStreamMenuItemEvent(store, item);
     } else if (item.key == restartMenuItemKey) {
-      store.dispatch(RestartEvent(profile: profile));
+      store.dispatch(RestartEvent(profile: profile!));
     } else if (item.key == aboutMenuItemKey) {
       store.dispatch(NavigateToAction.push(AppRoutes.about));
     } else if (item.key == screenshotMenuItemKey) {
@@ -127,14 +124,14 @@ class MoreViewModel {
     store.dispatch(InitializingStreamMessageEvent());
 
     var parameters = await StreamUtils.getStreamUrl(
-      store.state.profilesState.selectedProfile,
-      store.state.bouquetItemsState.selectedService,
+      store.state.profilesState.selectedProfile!,
+      store.state.bouquetItemsState.selectedService!,
     );
 
     if (parameters.getStreamParametersError != null) {
       store.dispatch(FailedStreamExtraParametersMessageEvent(
         response: parameters,
-        exception: parameters.getStreamParametersError,
+        exception: parameters.getStreamParametersError!,
       ));
       return;
     }
@@ -144,18 +141,18 @@ class MoreViewModel {
       return;
     }
 
+    final streamUri = parameters.streamUri!;
     if (Platform.isAndroid) {
       var intent = AndroidIntent(
         action: 'action_view',
-        data: parameters.streamUri,
+        data: streamUri,
         type: 'video/*',
       );
       await intent.launch();
     } else {
-      var iOSUri =
-          'vlc-x-callback://x-callback-url/stream?url=' + parameters.streamUri;
-      if (await canLaunch(iOSUri)) {
-        await launch(iOSUri);
+      var iOSUri = 'vlc-x-callback://x-callback-url/stream?url=$streamUri';
+      if (await canLaunchUrl(Uri.parse(iOSUri))) {
+        await launchUrl(Uri.parse(iOSUri));
       } else {
         store.dispatch(VlcRequiredMessageEvent());
         return;

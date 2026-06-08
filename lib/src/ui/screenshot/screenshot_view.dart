@@ -1,7 +1,4 @@
-import 'dart:io';
-import 'dart:typed_data';
 
-import 'package:auto_orientation/auto_orientation.dart';
 import 'package:enigma_signal_meter/src/constants.dart';
 import 'package:enigma_signal_meter/src/message_provider.dart';
 import 'package:enigma_signal_meter/src/model/enums.dart';
@@ -11,16 +8,17 @@ import 'package:enigma_signal_meter/src/ui/common/platform_adaptive_progress_ind
 import 'package:enigma_signal_meter/src/utils/enigma_utils.dart';
 import 'package:enigma_web/enigma_web.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_redux/flutter_redux.dart';
-import 'package:image_gallery_saver/image_gallery_saver.dart';
-import 'package:permission_handler/permission_handler.dart';
+import 'package:gal/gal.dart';
 import 'package:photo_view/photo_view.dart';
-import 'package:wc_flutter_share/wc_flutter_share.dart';
+import 'package:share_plus/share_plus.dart';
 
 import 'screenshot_viewmodel.dart';
 
 class ScreenshotView extends StatefulWidget {
+  const ScreenshotView({super.key});
+
   @override
   _ScreenshotViewState createState() => _ScreenshotViewState();
 }
@@ -29,12 +27,15 @@ class _ScreenshotViewState extends State<ScreenshotView> {
   @override
   void initState() {
     super.initState();
-    AutoOrientation.fullAutoMode();
+    SystemChrome.setPreferredOrientations(DeviceOrientation.values);
   }
 
   @override
   void dispose() {
-    AutoOrientation.portraitAutoMode();
+    SystemChrome.setPreferredOrientations([
+      DeviceOrientation.portraitUp,
+      DeviceOrientation.portraitDown,
+    ]);
     super.dispose();
   }
 
@@ -61,35 +62,41 @@ class _ScreenshotViewState extends State<ScreenshotView> {
                 IconButton(
                     icon: Icon(menuIcons[shareMenuItemKey]),
                     onPressed: () async {
-                      if (viewModel.response?.screenshot != null) {
-                        await WcFlutterShare.share(
-                          sharePopupTitle: MessageProvider.of(context).share,
-                          fileName: fileName + '.jpg',
-                          mimeType: 'image/jpeg',
-                          bytesOfFile: viewModel.response?.screenshot,
+                      final bytes = viewModel.response?.screenshot;
+                      if (bytes != null) {
+                        await SharePlus.instance.share(
+                          ShareParams(
+                            files: [
+                              XFile.fromData(
+                                Uint8List.fromList(bytes),
+                                name: '$fileName.jpg',
+                                mimeType: 'image/jpeg',
+                              )
+                            ],
+                            subject: MessageProvider.of(context).share,
+                          ),
                         );
                       }
                     }),
                 IconButton(
                     icon: Icon(menuIcons[saveMenuItemKey]),
                     onPressed: () async {
-                      if (!await _checkPermissions()) {
+                      final bytes = viewModel.response?.screenshot;
+                      if (bytes == null) {
                         return;
                       }
-                      if (viewModel.response?.screenshot != null) {
-                        final result = await ImageGallerySaver.saveImage(
-                            Uint8List.fromList(viewModel.response?.screenshot));
-                        if (Platform.isIOS) {
-                          if (result) {
-                            StoreProvider.of<AppState>(context)
-                                .dispatch(ScreenshotSavedInfoMessageEvent());
-                          }
-                        } else {
-                          if (result != null) {
-                            StoreProvider.of<AppState>(context)
-                                .dispatch(ScreenshotSavedInfoMessageEvent());
-                          }
+                      try {
+                        if (!await Gal.hasAccess()) {
+                          await Gal.requestAccess();
                         }
+                        await Gal.putImageBytes(
+                          Uint8List.fromList(bytes),
+                          name: fileName,
+                        );
+                        StoreProvider.of<AppState>(context)
+                            .dispatch(ScreenshotSavedInfoMessageEvent());
+                      } on GalException catch (_) {
+                        // permission denied or save failed; leave UI unchanged
                       }
                     }),
               ],
@@ -102,39 +109,11 @@ class _ScreenshotViewState extends State<ScreenshotView> {
                     child: PhotoView(
                       minScale: PhotoViewComputedScale.contained * 0.8,
                       imageProvider: MemoryImage(
-                        Uint8List.fromList(viewModel.response?.screenshot),
+                        Uint8List.fromList(
+                            viewModel.response?.screenshot ?? <int>[]),
                       ),
                     )),
           );
         });
-  }
-
-  Future<bool> _checkPermissions() async {
-    if (Platform.isAndroid) {
-      return _checkPermissionsAndroid();
-    }
-    return _checkPermissionsIos();
-  }
-
-  Future<bool> _checkPermissionsIos() async {
-    var permission =
-        await PermissionHandler().checkPermissionStatus(PermissionGroup.photos);
-    if (permission != PermissionStatus.granted) {
-      var permissions = await PermissionHandler()
-          .requestPermissions([PermissionGroup.photos]);
-      return (permissions.values.first == PermissionStatus.granted);
-    }
-    return true;
-  }
-
-  Future<bool> _checkPermissionsAndroid() async {
-    var permission = await PermissionHandler()
-        .checkPermissionStatus(PermissionGroup.storage);
-    if (permission != PermissionStatus.granted) {
-      var permissions = await PermissionHandler()
-          .requestPermissions([PermissionGroup.storage]);
-      return (permissions.values.first == PermissionStatus.granted);
-    }
-    return true;
   }
 }

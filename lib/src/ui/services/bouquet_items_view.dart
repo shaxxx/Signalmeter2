@@ -2,7 +2,6 @@ import 'package:enigma_signal_meter/src/model/enums.dart';
 import 'package:enigma_signal_meter/src/redux/app/app_state.dart';
 import 'package:enigma_signal_meter/src/ui/common/platform_adaptive_progress_indicator.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 
 import '../../message_provider.dart';
@@ -10,9 +9,7 @@ import 'bouquet_items_list_item.dart';
 import 'bouquet_items_viewmodel.dart';
 
 class BouquetItemsView extends StatefulWidget {
-  const BouquetItemsView({
-    Key key,
-  }) : super(key: key);
+  const BouquetItemsView({super.key});
 
   @override
   _BouquetItemsViewState createState() => _BouquetItemsViewState();
@@ -58,9 +55,7 @@ class _BouquetItemsViewState extends State<BouquetItemsView>
   Widget _successContent(BouquetItemsViewModel viewModel) {
     return Scrollbar(
       child: ListView.builder(
-        itemCount: viewModel.bouquetItems != null
-            ? viewModel.bouquetItems.length + 1
-            : 1,
+        itemCount: viewModel.bouquetItems.length + 1,
         itemBuilder: (BuildContext context, int index) {
           if (index == 0) {
             return Padding(
@@ -99,7 +94,7 @@ class _BouquetItemsViewState extends State<BouquetItemsView>
 
           index -= 1;
           return BouquetItemsListItem(
-              key: Key(viewModel.bouquetItems[index].reference),
+              key: Key(viewModel.bouquetItems[index].reference ?? ''),
               bouquetItem: viewModel.bouquetItems[index]);
         },
       ),

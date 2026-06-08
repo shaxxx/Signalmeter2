@@ -6,14 +6,14 @@ import 'messages_state.dart';
 import 'warning_messages_events.dart';
 
 final messagesReducer = combineReducers<MessagesState>([
-  TypedReducer<MessagesState, ErrorMessageEvent>(_errorMessageReducer),
-  TypedReducer<MessagesState, WarningMessageEvent>(_warningMessageReducer),
-  TypedReducer<MessagesState, InfoMessageEvent>(_infoMessageReducer),
-  TypedReducer<MessagesState, InfoMessageShownEvent>(_infoMessageShownReducer),
+  TypedReducer<MessagesState, ErrorMessageEvent>(_errorMessageReducer).call,
+  TypedReducer<MessagesState, WarningMessageEvent>(_warningMessageReducer).call,
+  TypedReducer<MessagesState, InfoMessageEvent>(_infoMessageReducer).call,
+  TypedReducer<MessagesState, InfoMessageShownEvent>(_infoMessageShownReducer).call,
   TypedReducer<MessagesState, ErrorMessageShownEvent>(
-      _errorMessageShownReducer),
+      _errorMessageShownReducer).call,
   TypedReducer<MessagesState, WarningMessageShownEvent>(
-      _warningMessageShownReducer),
+      _warningMessageShownReducer).call,
 ]);
 
 MessagesState _errorMessageReducer(

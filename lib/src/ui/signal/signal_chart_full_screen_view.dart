@@ -1,44 +1,44 @@
-import 'package:auto_orientation/auto_orientation.dart';
 import 'package:enigma_signal_meter/src/redux/app/app_state.dart';
 import 'package:enigma_signal_meter/src/ui/signal/signal_chart_full_screen_view_model.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
+import 'package:flutter/services.dart';
 import 'package:enigma_signal_meter/src/ui/signal/signal_chart_view.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 
 import '../../constants.dart';
 
 class SignalChartFullScreen extends StatefulWidget {
+  const SignalChartFullScreen({super.key});
+
   @override
   _SignalChartFullScreenState createState() => _SignalChartFullScreenState();
 }
 
 class _SignalChartFullScreenState extends State<SignalChartFullScreen>
     with WidgetsBindingObserver, RouteAware {
-  SignalChartFullScreenViewModel _viewModel;
-  RouteObserver<PageRoute> _routeObserver;
+  // Nullable, not late: RouteObserver.subscribe() (in onInit) immediately
+  // calls didPush() before onInitialBuild assigns the view model, so the
+  // RouteAware/lifecycle callbacks must null-guard.
+  SignalChartFullScreenViewModel? _viewModel;
+  late RouteObserver<PageRoute> _routeObserver;
 
   @override
   void initState() {
     WidgetsBinding.instance.addObserver(this);
     super.initState();
-    // SystemChrome.setPreferredOrientations([
-    //   DeviceOrientation.landscapeRight,
-    //   DeviceOrientation.landscapeLeft,
-    // ]);
-    AutoOrientation.landscapeAutoMode();
+    SystemChrome.setPreferredOrientations([
+      DeviceOrientation.landscapeLeft,
+      DeviceOrientation.landscapeRight,
+    ]);
   }
 
   @override
   void dispose() {
-    // SystemChrome.setPreferredOrientations([
-    //   DeviceOrientation.landscapeRight,
-    //   DeviceOrientation.landscapeLeft,
-    //   DeviceOrientation.portraitUp,
-    //   DeviceOrientation.portraitDown,
-    // ]);
-    AutoOrientation.portraitAutoMode();
-    _viewModel.onActiveChanged(false);
+    SystemChrome.setPreferredOrientations([
+      DeviceOrientation.portraitUp,
+      DeviceOrientation.portraitDown,
+    ]);
+    _viewModel?.onActiveChanged(false);
     WidgetsBinding.instance.removeObserver(this);
     _routeObserver.unsubscribe(this);
     super.dispose();
@@ -46,41 +46,31 @@ class _SignalChartFullScreenState extends State<SignalChartFullScreen>
 
   @override
   void didChangeAppLifecycleState(AppLifecycleState state) {
-    if (_viewModel != null) {
-      _viewModel.onActiveChanged(state == AppLifecycleState.resumed);
-    }
+    _viewModel?.onActiveChanged(state == AppLifecycleState.resumed);
   }
 
   // Called when the top route has been popped off, and the current route shows up.
   @override
   void didPopNext() {
-    if (_viewModel != null) {
-      _viewModel.onActiveChanged(true);
-    }
+    _viewModel?.onActiveChanged(true);
   }
 
   // Called when the current route has been pushed.
   @override
   void didPush() {
-    if (_viewModel != null) {
-      _viewModel.onActiveChanged(true);
-    }
+    _viewModel?.onActiveChanged(true);
   }
 
   // Called when the current route has been popped off.
   @override
   void didPop() {
-    if (_viewModel != null) {
-      _viewModel.onActiveChanged(false);
-    }
+    _viewModel?.onActiveChanged(false);
   }
 
   // Called when a new route has been pushed, and the current route is no longer visible.
   @override
   void didPushNext() {
-    if (_viewModel != null) {
-      _viewModel.onActiveChanged(false);
-    }
+    _viewModel?.onActiveChanged(false);
   }
 
   @override
@@ -92,13 +82,13 @@ class _SignalChartFullScreenState extends State<SignalChartFullScreen>
       },
       onInit: (store) {
         _routeObserver = store.state.globalState.routeObserver;
-        _routeObserver.subscribe(this, ModalRoute.of(context));
+        _routeObserver.subscribe(this, ModalRoute.of(context) as PageRoute);
       },
       onInitialBuild: (vm) {
         _viewModel = vm;
-        _viewModel.onActiveChanged(true);
+        _viewModel?.onActiveChanged(true);
       },
-      onDidChange: (vm) {
+      onDidChange: (prev, vm) {
         _viewModel = vm;
       },
       builder: (context, viewModel) {

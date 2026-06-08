@@ -2,23 +2,20 @@ import 'package:enigma_signal_meter/src/model/enums.dart';
 import 'package:enigma_signal_meter/src/redux/app/app_state.dart';
 import 'package:enigma_signal_meter/src/redux/enigma/enigma_command_events.dart';
 import 'package:enigma_web/enigma_web.dart';
-import 'package:flutter/widgets.dart';
 import 'package:redux/redux.dart';
 
 class ScreenshotViewModel {
   final LoadingStatus status;
-  final ScreenshotResponse response;
-  final IProfile profile;
+  final IScreenshotResponse? response;
+  final IProfile? profile;
   final Function(ScreenshotType) takeScreenshot;
 
   ScreenshotViewModel({
-    @required this.status,
-    @required this.response,
-    @required this.profile,
-    @required this.takeScreenshot,
-  })  : assert(status != null),
-        assert(profile != null),
-        assert(takeScreenshot != null);
+    required this.status,
+    required this.response,
+    required this.profile,
+    required this.takeScreenshot,
+  });
 
   static ScreenshotViewModel fromStore(Store<AppState> store) {
     return ScreenshotViewModel(
@@ -28,7 +25,7 @@ class ScreenshotViewModel {
       takeScreenshot: (ScreenshotType type) {
         store.dispatch(
           GetScreenShotOfCurrentServiceEvent(
-            profile: store.state.profilesState.selectedProfile,
+            profile: store.state.profilesState.selectedProfile!,
             screenshotType: type,
           ),
         );

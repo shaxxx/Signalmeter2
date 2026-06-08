@@ -1,23 +1,23 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 
 import '../../constants.dart';
 
 class ScaffoldBackground extends StatelessWidget {
   final Widget child;
-  final PreferredSizeWidget appBar;
-  final Widget floatingActionButton;
-  final Widget bottomNavigationBar;
+  final PreferredSizeWidget? appBar;
+  final Widget? floatingActionButton;
+  final Widget? bottomNavigationBar;
   final Color backgroundColor;
 
   const ScaffoldBackground({
-    Key key,
-    @required this.child,
+    super.key,
+    required this.child,
     this.appBar,
     this.floatingActionButton,
     this.bottomNavigationBar,
     this.backgroundColor = Colors.transparent,
-  }) : super(key: key);
+  });
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(

@@ -8,10 +8,7 @@ abstract class WarningMessageEvent extends MessageEvent {}
 @immutable
 class WarningMessageShownEvent {
   final WarningMessageEvent warningMessageEvent;
-  WarningMessageShownEvent(this.warningMessageEvent)
-      : assert(
-          warningMessageEvent != null,
-        );
+  const WarningMessageShownEvent(this.warningMessageEvent);
 
   @override
   bool operator ==(Object other) =>
@@ -32,8 +29,8 @@ class UnsupportedPlatformMessageEvent extends WarningMessageEvent {
   final String platform;
 
   UnsupportedPlatformMessageEvent({
-    @required this.platform,
-  }) : assert(platform != null);
+    required this.platform,
+  });
 
   @override
   bool operator ==(Object other) =>

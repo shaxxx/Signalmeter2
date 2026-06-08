@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 
 import '../../message_provider.dart';
 import 'profile_widget.dart';
 
 class UseSslRow extends StatelessWidget {
+  const UseSslRow({super.key});
+
   @override
   Widget build(BuildContext context) {
     var theme = Theme.of(context);
@@ -31,7 +32,9 @@ class UseSslRow extends StatelessWidget {
                   Checkbox(
                     value: ProfileWidget.of(context).profile.useSsl,
                     onChanged: (value) {
-                      ProfileWidget.of(context).setUseSsl(value);
+                      if (value != null) {
+                        ProfileWidget.of(context).setUseSsl(value);
+                      }
                     },
                   )
                 ],

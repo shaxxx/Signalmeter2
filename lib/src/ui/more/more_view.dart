@@ -5,13 +5,14 @@ import 'package:enigma_signal_meter/src/model/menu_item.dart';
 import 'package:enigma_signal_meter/src/redux/app/app_state.dart';
 import 'package:enigma_signal_meter/src/ui/more/more_viewmodel.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 
 class MoreView extends StatelessWidget {
+  const MoreView({super.key});
+
   @override
   Widget build(BuildContext context) {
-    var backgroundColor = Theme.of(context).primaryColor.withOpacity(0.3);
+    var backgroundColor = Theme.of(context).primaryColor.withValues(alpha: 0.3);
     var messages = MessageProvider.of(context);
     return StoreConnector<AppState, MoreViewModel>(
         distinct: true,
@@ -91,7 +92,7 @@ class MoreView extends StatelessWidget {
             messages.questionRestartGui(viewModel.profileName),
           ),
           actions: <Widget>[
-            FlatButton(
+            TextButton(
               onPressed: () {
                 viewModel.onSelected(menuItem);
                 Navigator.pop(context, true);

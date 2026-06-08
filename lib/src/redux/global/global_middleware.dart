@@ -26,9 +26,9 @@ class GlobalMiddleware extends MiddlewareClass<AppState> {
     var fileContent = await _loadAsset();
     var fileString = StringUtils.sanitizeXmlString(fileContent);
     var satellites = <int, String>{};
-    var document = xml.parse(fileString);
+    var document = xml.XmlDocument.parse(fileString);
     var children = document.findAllElements('sat');
-    if (children != null && children.isNotEmpty) {
+    if (children.isNotEmpty) {
       for (final node in children) {
         final nameNode = node.attributes
             .where((attribute) => attribute.name.toString() == 'name')
@@ -37,16 +37,17 @@ class GlobalMiddleware extends MiddlewareClass<AppState> {
             .where((attribute) => attribute.name.toString() == 'position')
             .single;
 
-        var satellite = nameNode.value;
-        var position = positionNode.value;
-        if (satellite != null && satellite.isNotEmpty) {
+        String? satellite = nameNode.value;
+        String? position = positionNode.value;
+        if (satellite.isNotEmpty) {
           satellite = StringUtils.trimAll(satellite);
         }
-        if (position != null && position.isNotEmpty) {
+        if (position.isNotEmpty) {
           position = StringUtils.trimAll(position);
         }
-        if (satellite != null && position != null) {
-          satellites.putIfAbsent(int.parse(position), () => satellite);
+        if (satellite != null && satellite.isNotEmpty &&
+            position != null && position.isNotEmpty) {
+          satellites.putIfAbsent(int.parse(position), () => satellite!);
         }
       }
       return satellites;

@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 
 import '../../message_provider.dart';
 import 'profile_widget.dart';
 
 class StreamingRow extends StatelessWidget {
+  const StreamingRow({super.key});
+
   @override
   Widget build(BuildContext context) {
     var theme = Theme.of(context);
@@ -29,7 +30,9 @@ class StreamingRow extends StatelessWidget {
             Checkbox(
               value: ProfileWidget.of(context).profile.streaming,
               onChanged: (value) {
-                ProfileWidget.of(context).setStreaming(value);
+                if (value != null) {
+                  ProfileWidget.of(context).setStreaming(value);
+                }
               },
             )
           ],

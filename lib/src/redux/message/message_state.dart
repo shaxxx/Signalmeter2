@@ -5,9 +5,9 @@ import 'package:meta/meta.dart';
 class MessageState {
   final LoadingStatus status;
 
-  MessageState({
-    @required this.status,
-  }) : assert(status != null);
+  const MessageState({
+    required this.status,
+  });
 
   static MessageState initial() {
     return MessageState(
@@ -16,7 +16,7 @@ class MessageState {
   }
 
   MessageState copyWith({
-    LoadingStatus status,
+    LoadingStatus? status,
   }) {
     return MessageState(
       status: status ?? this.status,

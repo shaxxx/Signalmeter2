@@ -1,7 +1,6 @@
 import 'package:enigma_signal_meter/src/redux/app/app_state.dart';
 import 'package:enigma_web/enigma_web.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 
 import '../../constants.dart';
@@ -11,10 +10,9 @@ class BouquetItemsListItem extends StatelessWidget {
   final IBouquetItem bouquetItem;
 
   const BouquetItemsListItem({
-    Key key,
-    @required this.bouquetItem,
-  })  : assert(bouquetItem != null),
-        super(key: key);
+    super.key,
+    required this.bouquetItem,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -48,14 +46,14 @@ class BouquetItemsListItem extends StatelessWidget {
                   const Radius.circular(10.0),
                 ),
                 color: viewModel.selected
-                    ? theme.accentColor.withOpacity(0.3)
+                    ? theme.colorScheme.secondary.withOpacity(0.3)
                     : theme.primaryColor.withOpacity(0.3),
-                border: Border.all(color: theme.accentColor.withOpacity(0.3)),
+                border: Border.all(color: theme.colorScheme.secondary.withOpacity(0.3)),
               ),
               alignment: Alignment.centerLeft,
               padding: EdgeInsets.only(left: 20),
               child: Text(
-                '${viewModel.name}',
+                viewModel.name,
                 style: const TextStyle(fontSize: 20.0, color: Colors.white),
                 overflow: TextOverflow.clip,
                 maxLines: 1,
@@ -77,7 +75,7 @@ class BouquetItemsListItem extends StatelessWidget {
           const Radius.circular(10.0),
         ),
         color: Theme.of(context).primaryColor.withOpacity(0.7),
-        border: Border.all(color: Theme.of(context).accentColor),
+        border: Border.all(color: Theme.of(context).colorScheme.secondary),
       ),
       alignment: Alignment.centerLeft,
       padding: EdgeInsets.only(left: 10),
@@ -92,7 +90,7 @@ class BouquetItemsListItem extends StatelessWidget {
           ),
           Flexible(
             child: Text(
-              '${viewModel.name}',
+              viewModel.name,
               style: const TextStyle(fontSize: 20.0, color: Colors.white),
               overflow: TextOverflow.ellipsis,
               maxLines: 1,

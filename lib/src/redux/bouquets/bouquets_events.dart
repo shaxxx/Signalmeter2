@@ -6,15 +6,14 @@ import 'package:meta/meta.dart';
 class BouquetSelectedEvent {
   final IBouquetItemBouquet bouquet;
   final bool switchToServicesTab;
-  BouquetSelectedEvent({
-    @required this.bouquet,
-    @required this.switchToServicesTab,
-  })  : assert(bouquet != null),
-        assert(switchToServicesTab != null);
+  const BouquetSelectedEvent({
+    required this.bouquet,
+    required this.switchToServicesTab,
+  });
 }
 
 @immutable
 class BouquetsStatusChangedEvent {
   final LoadingStatus status;
-  BouquetsStatusChangedEvent(this.status) : assert(status != null);
+  const BouquetsStatusChangedEvent(this.status);
 }

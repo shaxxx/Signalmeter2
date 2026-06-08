@@ -64,5 +64,7 @@
 	<false/>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>Save Screenshot</string>
+	<key>NSPhotoLibraryAddUsageDescription</key>
+	<string>Save Screenshot</string>
 </dict>
 </plist>

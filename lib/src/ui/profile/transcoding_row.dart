@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import '../../message_provider.dart';
 import 'profile_widget.dart';
 
 class TranscodingRow extends StatelessWidget {
+  const TranscodingRow({super.key});
+
   @override
   Widget build(BuildContext context) {
     var theme = Theme.of(context);
@@ -28,7 +29,9 @@ class TranscodingRow extends StatelessWidget {
             Checkbox(
               value: ProfileWidget.of(context).profile.transcoding,
               onChanged: (value) {
-                ProfileWidget.of(context).setTranscoding(value);
+                if (value != null) {
+                  ProfileWidget.of(context).setTranscoding(value);
+                }
               },
             )
           ],

@@ -1,7 +1,6 @@
 import 'package:enigma_signal_meter/src/model/enums.dart';
 import 'package:enigma_signal_meter/src/redux/app/app_state.dart';
 import 'package:enigma_signal_meter/src/redux/enigma/enigma_command_events.dart';
-import 'package:flutter/widgets.dart';
 import 'package:redux/redux.dart';
 
 class ToggleConnectionViewModel {
@@ -9,8 +8,8 @@ class ToggleConnectionViewModel {
   final Function toggleStatus;
 
   ToggleConnectionViewModel({
-    @required this.visible,
-    @required this.toggleStatus,
+    required this.visible,
+    required this.toggleStatus,
   });
 
   static ToggleConnectionViewModel fromStore(Store<AppState> store) {
@@ -21,11 +20,11 @@ class ToggleConnectionViewModel {
         toggleStatus: () async {
           if (store.state.connectionState != ConnectionStatusEnum.connected) {
             store.dispatch(WakeUpEvent(
-              profile: store.state.profilesState.selectedProfile,
+              profile: store.state.profilesState.selectedProfile!, // active profile guaranteed in this flow
             ));
           } else {
             store.dispatch(SentToSleepEvent(
-              profile: store.state.profilesState.selectedProfile,
+              profile: store.state.profilesState.selectedProfile!, // active profile guaranteed in this flow
             ));
           }
         });

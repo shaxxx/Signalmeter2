@@ -6,9 +6,8 @@ import 'string_utils.dart';
 
 class EnigmaUtils {
   static int getSatellitePosition(IBouquetItemService service) {
-    if (service == null ||
-        service.reference == null ||
-        service.reference.isEmpty) return 0;
+    final reference = service.reference;
+    if (reference == null || reference.isEmpty) return 0;
     var mNameSpc = getNamespaceFromReference(service);
     if (mNameSpc.length < 5) return 0;
     mNameSpc = mNameSpc.substring(0, mNameSpc.length - 4);
@@ -22,16 +21,15 @@ class EnigmaUtils {
   }
 
   static String getNamespaceFromReference(IBouquetItemService service) {
-    if (service == null ||
-        service.reference == null ||
-        service.reference.isEmpty) return '';
+    final reference = service.reference;
+    if (reference == null || reference.isEmpty) return '';
     try {
-      var sData = StringUtils.trimAll(service.reference).split(':');
+      var sData = (StringUtils.trimAll(reference) ?? '').split(':');
       var mNameSpc = '';
       if (sData.length >= 10) {
-        mNameSpc = StringUtils.trimStart(sData[6], '0'.codeUnitAt(0));
+        mNameSpc = StringUtils.trimStart(sData[6], '0'.codeUnitAt(0)) ?? '';
       } else {
-        mNameSpc = StringUtils.trimStart(sData[1], '0'.codeUnitAt(0));
+        mNameSpc = StringUtils.trimStart(sData[1], '0'.codeUnitAt(0)) ?? '';
       }
       return mNameSpc;
     } catch (ex) {
@@ -41,12 +39,11 @@ class EnigmaUtils {
   }
 
   static ServiceType serviceInfo(IBouquetItemService service) {
-    if (service == null ||
-        service.reference == null ||
-        service.reference.isEmpty) {
+    final reference = service.reference;
+    if (reference == null || reference.isEmpty) {
       return ServiceType.Unknown;
     }
-    var sData = StringUtils.trimAll(service.reference).split(':');
+    var sData = (StringUtils.trimAll(reference) ?? '').split(':');
     var nameSpc = getNamespaceFromReference(service);
     if (nameSpc.toLowerCase().startsWith('eeee')) {
       return ServiceType.DVBT;
@@ -55,7 +52,7 @@ class EnigmaUtils {
     } else if (sData.length >= 10 &&
         (sData[0] == '4097' ||
             sData[10].contains('//') ||
-            (sData.length == 12 && sData[11] != null))) {
+            sData.length == 12)) {
       return ServiceType.Stream;
     } else {
       var satPosition = getSatellitePosition(service);

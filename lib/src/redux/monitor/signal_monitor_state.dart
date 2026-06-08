@@ -8,10 +8,10 @@ class SignalMonitorState {
   final MonitorStatus status;
   final List<ISignalResponse> responses;
 
-  SignalMonitorState({
-    @required this.status,
-    @required this.responses,
-  }) : assert(status != null);
+  const SignalMonitorState({
+    required this.status,
+    required this.responses,
+  });
 
   static SignalMonitorState initial() {
     return SignalMonitorState(
@@ -21,8 +21,8 @@ class SignalMonitorState {
   }
 
   SignalMonitorState copyWith({
-    MonitorStatus status,
-    List<ISignalResponse> responses,
+    MonitorStatus? status,
+    List<ISignalResponse>? responses,
   }) {
     return SignalMonitorState(
         status: status ?? this.status, responses: responses ?? this.responses);

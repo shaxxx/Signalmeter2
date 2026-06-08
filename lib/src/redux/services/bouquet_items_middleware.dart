@@ -26,7 +26,7 @@ class BouquetItemsMiddleware extends MiddlewareClass<AppState> {
       Logger.root.fine(
           'Dispatching GetBouquetItemsEvent from BouquetItemsMiddleware as response to BouquetSelectedEvent');
       store.dispatch(GetBouquetItemsEvent(
-        profile: store.state.profilesState.selectedProfile,
+        profile: store.state.profilesState.selectedProfile!,
         bouquet: action.bouquet,
       ));
     } else if (action is SentToSleepSuccessEvent) {

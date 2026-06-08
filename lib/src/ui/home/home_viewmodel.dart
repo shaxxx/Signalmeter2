@@ -6,9 +6,7 @@ import 'package:enigma_signal_meter/src/redux/messages/info_messages_events.dart
 import 'package:enigma_signal_meter/src/redux/messages/message_event.dart';
 import 'package:enigma_signal_meter/src/redux/messages/warning_messages_events.dart';
 import 'package:enigma_signal_meter/src/redux/monitor/connection_state_events.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_redux_navigation/flutter_redux_navigation.dart';
-import 'package:meta/meta.dart';
 import 'package:redux/redux.dart';
 import 'package:collection/collection.dart';
 
@@ -25,21 +23,21 @@ class HomeViewModel implements MessageDisplayerInterface {
   final List<InfoMessageEvent> infos;
   @override
   final List<WarningMessageEvent> warnings;
-  final Function() addProfile;
+  final Function()? addProfile;
   final ConnectionStatusEnum connectionState;
   final Function() openAbout;
   final bool displayShowcase;
 
   HomeViewModel({
-    @required this.onPop,
-    this.errors,
-    this.warnings,
-    this.infos,
-    this.messageShown,
+    required this.onPop,
+    required this.errors,
+    required this.warnings,
+    required this.infos,
+    required this.messageShown,
     this.addProfile,
-    this.openAbout,
-    @required this.connectionState,
-    @required this.displayShowcase,
+    required this.openAbout,
+    required this.connectionState,
+    required this.displayShowcase,
   });
 
   static HomeViewModel fromStore(Store<AppState> store) {

@@ -10,10 +10,10 @@ final currentServiceMonitorReducer =
   TypedReducer<CurrentServiceMonitorState,
       ChangeCurrentServiceMonitorStatusEvent>(
     _changeCurrentServiceMonitorStatus,
-  ),
+  ).call,
   TypedReducer<CurrentServiceMonitorState, ResetStateEvent>(
     _currentServiceMonitorResetReducer,
-  ),
+  ).call,
 ]);
 
 CurrentServiceMonitorState _changeCurrentServiceMonitorStatus(

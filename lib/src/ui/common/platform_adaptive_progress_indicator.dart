@@ -4,7 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class PlatformAdaptiveProgressIndicator extends StatelessWidget {
-  const PlatformAdaptiveProgressIndicator() : super();
+  const PlatformAdaptiveProgressIndicator({super.key});
 
   @override
   Widget build(BuildContext context) {

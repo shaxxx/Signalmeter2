@@ -2,13 +2,14 @@ import 'package:enigma_signal_meter/src/redux/app/app_state.dart';
 import 'package:enigma_signal_meter/src/ui/signal/signal_chart_viewmodel.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 
 import '../../constants.dart';
 import '../../message_provider.dart';
 
 class SignalChartView extends StatefulWidget {
+  const SignalChartView({super.key});
+
   @override
   _SignalChartViewState createState() => _SignalChartViewState();
 }
@@ -36,7 +37,7 @@ class _SignalChartViewState extends State<SignalChartView> {
               child: Container(
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.all(Radius.circular(18)),
-                  color: Theme.of(context).primaryColor.withOpacity(0.3),
+                  color: Theme.of(context).primaryColor.withValues(alpha: 0.3),
                 ),
                 child: Padding(
                   padding: const EdgeInsets.only(
@@ -48,11 +49,9 @@ class _SignalChartViewState extends State<SignalChartView> {
                         alignment: Alignment.center,
                         padding: EdgeInsets.only(bottom: 5),
                         child: Text(
-                            viewModel.requestTimeString() +
-                                '  ' +
-                                (screenSize.width >= 450
+                            '${viewModel.requestTimeString()}  ${screenSize.width >= 450
                                     ? viewModel.averageTimeString()
-                                    : ''),
+                                    : ''}',
                             style: TextStyle(
                               color: Colors.white,
                               fontWeight: FontWeight.normal,
@@ -83,21 +82,20 @@ class _SignalChartViewState extends State<SignalChartView> {
                             ),
                             titlesData: FlTitlesData(
                               show: true,
-                              bottomTitles: SideTitles(
-                                showTitles: false,
-                              ),
-                              leftTitles: SideTitles(
-                                showTitles: true,
-                                textStyle: TextStyle(
-                                  color: Colors.white,
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 15,
+                              topTitles: const AxisTitles(
+                                  sideTitles: SideTitles(showTitles: false)),
+                              rightTitles: const AxisTitles(
+                                  sideTitles: SideTitles(showTitles: false)),
+                              bottomTitles: const AxisTitles(
+                                  sideTitles: SideTitles(showTitles: false)),
+                              leftTitles: AxisTitles(
+                                sideTitles: SideTitles(
+                                  showTitles: true,
+                                  reservedSize: 50,
+                                  interval: viewModel.useDb ? 1 : 10,
+                                  getTitlesWidget: (value, meta) =>
+                                      _getTitleWidget(value, viewModel),
                                 ),
-                                getTitles: (value) {
-                                  return _getTitle(value, viewModel);
-                                },
-                                reservedSize: 30,
-                                margin: 12,
                               ),
                             ),
                             borderData: FlBorderData(
@@ -112,8 +110,7 @@ class _SignalChartViewState extends State<SignalChartView> {
                               _getChartData(viewModel),
                             ],
                           ),
-                          swapAnimationDuration:
-                              const Duration(milliseconds: 0),
+                          duration: const Duration(milliseconds: 0),
                         ),
                       ),
                     ],
@@ -127,26 +124,40 @@ class _SignalChartViewState extends State<SignalChartView> {
     );
   }
 
-  String _getTitle(double value, SignalChartViewModel viewModel) {
+  Widget _getTitleWidget(double value, SignalChartViewModel viewModel) {
+    const style = TextStyle(
+      color: Colors.white,
+      fontWeight: FontWeight.bold,
+      fontSize: 12,
+    );
+    var text = '';
     if (viewModel.useDb) {
       if (value == 1.0) {
-        return '1 db';
+        text = '1 db';
       } else if (value == 8.0) {
-        return '8 db';
+        text = '8 db';
       } else if (value == 16.0) {
-        return '16 dB';
+        text = '16 dB';
       }
-      return '';
+    } else {
+      switch (value.toInt()) {
+        case 10:
+          text = '10%';
+          break;
+        case 50:
+          text = '50%';
+          break;
+        case 100:
+          text = '100%';
+          break;
+      }
     }
-    switch (value.toInt()) {
-      case 10:
-        return '10%';
-      case 50:
-        return '50%';
-      case 100:
-        return '100%';
-    }
-    return '';
+    return Padding(
+      padding: const EdgeInsets.only(right: 12),
+      // maxLines/softWrap guard against the label wrapping to one character per
+      // line in the reserved axis width (fl_chart renders it as a widget now).
+      child: Text(text, style: style, maxLines: 1, softWrap: false),
+    );
   }
 
   LineChartBarData _getChartData(SignalChartViewModel viewModel) {
@@ -157,15 +168,18 @@ class _SignalChartViewState extends State<SignalChartView> {
     return LineChartBarData(
       spots: spots,
       isCurved: true,
-      colors: gradientColors,
+      gradient: LinearGradient(colors: gradientColors),
       barWidth: 3,
       isStrokeCapRound: true,
-      dotData: FlDotData(
+      dotData: const FlDotData(
         show: false,
       ),
       belowBarData: BarAreaData(
         show: true,
-        colors: gradientColors.map((color) => color.withOpacity(0.3)).toList(),
+        gradient: LinearGradient(
+          colors:
+              gradientColors.map((color) => color.withValues(alpha: 0.3)).toList(),
+        ),
       ),
     );
   }

@@ -6,8 +6,8 @@ import 'profile_widget.dart';
 
 class UsernameRow extends StatelessWidget {
   const UsernameRow({
-    Key key,
-  }) : super(key: key);
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {

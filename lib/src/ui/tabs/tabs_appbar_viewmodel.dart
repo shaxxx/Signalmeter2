@@ -7,8 +7,6 @@ import 'package:enigma_signal_meter/src/redux/tabs/tab_events.dart';
 import 'package:enigma_signal_meter/src/redux/tts/tts_events.dart';
 import 'package:enigma_web/enigma_web.dart';
 
-import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:collection/collection.dart';
 import 'package:redux/redux.dart';
 import '../../constants.dart';
@@ -25,17 +23,16 @@ class TabsAppBarViewModel {
   final SignalViewEnum signalView;
 
   TabsAppBarViewModel({
-    @required this.isVisible,
-    @required this.menuItems,
-    @required this.title,
-    @required this.visibleItemsCount,
-    @required this.onSelected,
-    @required this.messages,
-    @required this.profileName,
-    @required this.activeTab,
-    @required this.signalView,
-  })  : assert(isVisible != null),
-        assert(menuItems != null);
+    required this.isVisible,
+    required this.menuItems,
+    required this.title,
+    required this.visibleItemsCount,
+    required this.onSelected,
+    required this.messages,
+    required this.profileName,
+    required this.activeTab,
+    required this.signalView,
+  });
 
   static TabsAppBarViewModel fromStore(
     Store<AppState> store,
@@ -50,7 +47,7 @@ class TabsAppBarViewModel {
         _setItemSelectedEvent(store, item);
       },
       messages: messages,
-      profileName: store.state.profilesState.selectedProfile?.name,
+      profileName: store.state.profilesState.selectedProfile?.name ?? '',
       activeTab: store.state.tabsState.activeTab,
       signalView: store.state.tabsState.signalView,
     );
@@ -85,7 +82,7 @@ class TabsAppBarViewModel {
             menuItems.add(
               MenuItem(
                 key: disableTtsMenuItemKey,
-                icon: menuIcons[disableTtsMenuItemKey],
+                icon: menuIcons[disableTtsMenuItemKey]!, // key always present in map
                 title: messages.disableTts,
               ),
             );
@@ -93,7 +90,7 @@ class TabsAppBarViewModel {
             menuItems.add(
               MenuItem(
                 key: enableTtsMenuItemKey,
-                icon: menuIcons[enableTtsMenuItemKey],
+                icon: menuIcons[enableTtsMenuItemKey]!, // key always present in map
                 title: messages.enableTts,
               ),
             );
@@ -103,7 +100,7 @@ class TabsAppBarViewModel {
           menuItems.add(
             MenuItem(
               key: defaultLookMenuItemKey,
-              icon: menuIcons[defaultLookMenuItemKey],
+              icon: menuIcons[defaultLookMenuItemKey]!, // key always present in map
               title: messages.defaultLook,
             ),
           );
@@ -111,7 +108,7 @@ class TabsAppBarViewModel {
           menuItems.add(
             MenuItem(
               key: alternativeLookMenuItemKey,
-              icon: menuIcons[alternativeLookMenuItemKey],
+              icon: menuIcons[alternativeLookMenuItemKey]!, // key always present in map
               title: messages.alternativeLook,
             ),
           );
@@ -130,7 +127,7 @@ class TabsAppBarViewModel {
     } else if (item.key == defaultLookMenuItemKey) {
       store.dispatch(ChangeSignalView(SignalViewEnum.Linear));
     } else if (item.key == alternativeLookMenuItemKey) {
-      if (store.state.profilesState.selectedProfile.enigma ==
+      if (store.state.profilesState.selectedProfile?.enigma ==
               EnigmaType.enigma2 &&
           store.state.globalState.applicationSettings.dbIsPrimaryLevel) {
         store.dispatch(ChangeSignalView(SignalViewEnum.CircularDb));

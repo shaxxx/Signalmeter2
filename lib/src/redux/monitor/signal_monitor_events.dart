@@ -4,5 +4,5 @@ import 'package:flutter/widgets.dart';
 @immutable
 class ChangeSignalMonitorStatusEvent {
   final MonitorStatus status;
-  ChangeSignalMonitorStatusEvent(this.status);
+  const ChangeSignalMonitorStatusEvent(this.status);
 }

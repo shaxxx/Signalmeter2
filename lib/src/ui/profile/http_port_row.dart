@@ -6,8 +6,8 @@ import 'profile_widget.dart';
 
 class HttpPortRow extends StatelessWidget {
   const HttpPortRow({
-    Key key,
-  }) : super(key: key);
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {

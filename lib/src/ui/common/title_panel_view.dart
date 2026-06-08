@@ -1,14 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 
 class TitlePanelView extends StatelessWidget {
   final Widget child;
 
   const TitlePanelView({
-    Key key,
-    @required this.child,
-  })  : assert(child != null),
-        super(key: key);
+    super.key,
+    required this.child,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -19,8 +17,8 @@ class TitlePanelView extends StatelessWidget {
         borderRadius: BorderRadius.all(
           const Radius.circular(10.0),
         ),
-        color: theme.accentColor.withOpacity(0.3),
-        border: Border.all(color: theme.accentColor.withOpacity(0.3)),
+        color: theme.colorScheme.secondary.withValues(alpha: 0.3),
+        border: Border.all(color: theme.colorScheme.secondary.withValues(alpha: 0.3)),
       ),
       child: child,
     );

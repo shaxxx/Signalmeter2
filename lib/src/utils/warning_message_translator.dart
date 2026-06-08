@@ -10,17 +10,11 @@ class WarningMessageTranslator {
     if (event is UnsupportedPlatformMessageEvent) {
       return messages.platformNotSupported(event.platform);
     } else if (event is FailedStreamPortMessageEvent) {
-      return messages.errFailedToInitializeStream +
-          '\n' +
-          messages.warnStreamingPortClosed;
+      return '${messages.errFailedToInitializeStream}\n${messages.warnStreamingPortClosed}';
     } else if (event is TtsInitFailedMessageEvent) {
-      return messages.errFailedToInitializeTtsEngine +
-          ' ' +
-          messages.errNoTtsLanguageAvailable;
+      return '${messages.errFailedToInitializeTtsEngine} ${messages.errNoTtsLanguageAvailable}';
     } else if (event is TtsSpeakFailedMessageEvent) {
-      return messages.errFailedToInitializeTtsEngine +
-          ' ' +
-          _safeErrorMessage(event.error);
+      return '${messages.errFailedToInitializeTtsEngine} ${_safeErrorMessage(event.error)}';
     } else if (event is VlcRequiredMessageEvent) {
       return messages.streamRequiresVlc;
     } else if (event is FormInvalidMessageEvent) {

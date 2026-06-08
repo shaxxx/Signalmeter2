@@ -11,13 +11,13 @@ import 'signal_monitor_state.dart';
 final signalMonitorReducer = combineReducers<SignalMonitorState>([
   TypedReducer<SignalMonitorState, ChangeSignalMonitorStatusEvent>(
     _changeSignalMonitorStatus,
-  ),
+  ).call,
   TypedReducer<SignalMonitorState, GetSignalLevelSuccessEvent>(
     _getSignalLevelSuccessReducer,
-  ),
+  ).call,
   TypedReducer<SignalMonitorState, ResetStateEvent>(
     _signalResetStateEvent,
-  ),
+  ).call,
 ]);
 
 SignalMonitorState _changeSignalMonitorStatus(

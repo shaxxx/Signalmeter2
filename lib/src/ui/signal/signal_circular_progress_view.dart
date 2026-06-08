@@ -2,12 +2,13 @@ import 'package:enigma_signal_meter/src/redux/app/app_state.dart';
 import 'package:enigma_signal_meter/src/ui/common/circular_progress_view.dart';
 import 'package:enigma_signal_meter/src/ui/common/subtitle_panel_view.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 import '../../message_provider.dart';
 import 'signal_circular_progress_viewmodel.dart';
 
 class SignalCircularProgressView extends StatelessWidget {
+  const SignalCircularProgressView({super.key});
+
   @override
   Widget build(BuildContext context) {
     return StoreConnector<AppState, SignalCircularProgressViewModel>(
@@ -22,7 +23,7 @@ class SignalCircularProgressView extends StatelessWidget {
         return GestureDetector(
           child: viewModel.hasInfo
               ? _circularProgressView(
-                  viewModel, viewModel.isBerView, screenSize)
+                  viewModel, viewModel.isBerView, screenSize!)
               : _noSignalView(context),
         );
       },

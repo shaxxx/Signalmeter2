@@ -2,7 +2,6 @@ import 'package:enigma_signal_meter/src/constants.dart';
 import 'package:enigma_signal_meter/src/model/menu_item.dart';
 import 'package:enigma_signal_meter/src/redux/app/app_state.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 
 import '../../message_provider.dart';
@@ -33,8 +32,8 @@ class TabsAppBarView {
   }
 
   static List<Widget> _buildMenu() {
-    var _actions = <Widget>[];
-    _actions.add(Builder(builder: (context) {
+    var actions0 = <Widget>[];
+    actions0.add(Builder(builder: (context) {
       return StoreConnector<AppState, TabsAppBarViewModel>(
         distinct: true,
         converter: (store) {
@@ -42,7 +41,7 @@ class TabsAppBarView {
               store, MessageProvider.of(context));
         },
         builder: (context, viewModel) {
-          if (viewModel.menuItems == null || viewModel.menuItems.isEmpty) {
+          if (viewModel.menuItems.isEmpty) {
             return SizedBox.shrink();
           }
           var actions = _visibleActions(viewModel);
@@ -55,7 +54,7 @@ class TabsAppBarView {
         },
       );
     }));
-    return _actions;
+    return actions0;
   }
 
   static List<Widget> _visibleActions(TabsAppBarViewModel viewModel) {
@@ -125,7 +124,7 @@ class TabsAppBarView {
                       .questionRestartGui(viewmodel.profileName),
                 ),
                 actions: <Widget>[
-                  FlatButton(
+                  TextButton(
                     onPressed: () {
                       viewmodel.onSelected(menuItem);
                       Navigator.pop(context, true);

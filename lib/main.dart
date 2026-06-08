@@ -11,7 +11,6 @@ import 'package:enigma_signal_meter/src/ui/home/home_view.dart';
 import 'package:enigma_signal_meter/src/ui/message/message_view.dart';
 import 'package:enigma_signal_meter/src/ui/screenshot/screenshot_view.dart';
 import 'package:enigma_signal_meter/src/ui/signal/signal_chart_full_screen_view.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -58,23 +57,23 @@ void main() {
       Store<AppState>(appReducer, initialState: AppState.inital(), middleware: [
     EnigmaCommandMiddleware(
       initialState.globalState.webRequester,
-    ),
-    ConnectionStateMiddleware(),
-    TabsMiddleware(),
-    ProfilesMiddleware(),
-    BouquetsMiddleware(),
-    BouquetItemsMiddleware(),
+    ).call,
+    ConnectionStateMiddleware().call,
+    TabsMiddleware().call,
+    ProfilesMiddleware().call,
+    BouquetsMiddleware().call,
+    BouquetItemsMiddleware().call,
     CurrentServiceMonitorMiddleware(
       initialState.globalState.webRequester,
-    ),
-    SignalMonitorMiddleware(),
-    navigation.NavigationMiddleware(),
-    NavigationMiddleware<AppState>(),
-    MessagesMiddleware(),
-    TtsMiddleware(),
-    ScreenshotMiddleware(),
-    MessageMiddleware(),
-    GlobalMiddleware(),
+    ).call,
+    SignalMonitorMiddleware().call,
+    navigation.NavigationMiddleware().call,
+    NavigationMiddleware<AppState>().call,
+    MessagesMiddleware().call,
+    TtsMiddleware().call,
+    ScreenshotMiddleware().call,
+    MessageMiddleware().call,
+    GlobalMiddleware().call,
     //LoggingMiddleware(logger: Logger.root),
   ]);
 
@@ -90,10 +89,10 @@ class EnigmaSignalMeterApp extends StatefulWidget {
   final String title;
 
   const EnigmaSignalMeterApp({
-    Key key,
-    @required this.store,
-    @required this.title,
-  }) : super(key: key);
+    super.key,
+    required this.store,
+    required this.title,
+  });
 
   @override
   _EnigmaSignalMeterAppState createState() => _EnigmaSignalMeterAppState();
@@ -116,7 +115,10 @@ class _EnigmaSignalMeterAppState extends State<EnigmaSignalMeterApp>
       child: MaterialApp(
         navigatorKey: NavigatorHolder.navigatorKey,
         navigatorObservers: [widget.store.state.globalState.routeObserver],
-        theme: ThemeData.dark(),
+        // Use Material 2 to preserve the original pre-migration look.
+        // Flutter 3.x defaults to Material 3, which changes text metrics,
+        // component sizes and colors and regresses several fixed layouts.
+        theme: ThemeData.dark(useMaterial3: false),
         localizationsDelegates: [
           SignalMeterLocalizationsDelegate(),
           GlobalMaterialLocalizations.delegate,

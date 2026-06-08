@@ -5,13 +5,13 @@ import 'package:flutter_tts/flutter_tts.dart';
 
 class TtsUtils {
   final FlutterTts _flutterTts;
-  static TtsUtils _instance;
+  static TtsUtils? _instance;
   static String get language => _language;
-  static String _language;
+  static final String _language = '';
 
   factory TtsUtils() {
     _instance ??= TtsUtils._internal(FlutterTts());
-    return _instance;
+    return _instance!;
   }
 
   TtsUtils._internal(this._flutterTts);
@@ -30,7 +30,7 @@ class TtsUtils {
     await instance._flutterTts.speak(text);
   }
 
-  static void setSpeakEndHandler(Function callback) {
+  static void setSpeakEndHandler(VoidCallback callback) {
     var instance = TtsUtils();
     instance._flutterTts.setCompletionHandler(callback);
   }

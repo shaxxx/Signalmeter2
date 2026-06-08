@@ -6,8 +6,8 @@ import 'profile_widget.dart';
 
 class TranscodingPortRow extends StatelessWidget {
   const TranscodingPortRow({
-    Key key,
-  }) : super(key: key);
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {

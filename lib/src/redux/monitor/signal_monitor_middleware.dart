@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:enigma_signal_meter/src/model/enigma_web_exception.dart';
 import 'package:enigma_signal_meter/src/model/enums.dart';
 import 'package:enigma_signal_meter/src/redux/app/app_state.dart';
 import 'package:enigma_signal_meter/src/redux/enigma/enigma_command_events.dart';
@@ -9,18 +10,17 @@ import 'package:enigma_web/enigma_web.dart';
 import 'package:redux/redux.dart';
 import 'package:logging/logging.dart';
 import 'package:async/async.dart';
-import 'package:wakelock/wakelock.dart';
-import 'package:pedantic/pedantic.dart';
+import 'package:wakelock_plus/wakelock_plus.dart';
 
 import '../../constants.dart';
 import 'connection_state_events.dart';
 import 'signal_monitor_events.dart';
 
 class SignalMonitorMiddleware extends MiddlewareClass<AppState> {
-  IWebRequester _requester;
-  CancelableOperation<dynamic> _operation;
-  MonitorStatus _status;
-  int _monitorHash;
+  late IWebRequester _requester;
+  CancelableOperation<dynamic>? _operation;
+  MonitorStatus? _status;
+  int? _monitorHash;
 
   @override
   void call(Store<AppState> store, action, NextDispatcher next) async {
@@ -83,29 +83,33 @@ class SignalMonitorMiddleware extends MiddlewareClass<AppState> {
       );
       _monitorHash = store.state.signalMonitorState.hashCode;
       if (action.status == MonitorStatus.running) {
-        unawaited(Wakelock.enable());
+        unawaited(WakelockPlus.enable());
         _operation = CancelableOperation.fromFuture(_getSignal(
           store,
           store.state.signalMonitorState.hashCode,
         ));
       } else {
-        unawaited(Wakelock.disable());
+        unawaited(WakelockPlus.disable());
       }
     }
     next(action);
   }
 
   Future _getSignal(Store<AppState> store, int hash) async {
+    final profile = store.state.profilesState.selectedProfile;
+    if (profile == null) {
+      return;
+    }
     try {
       var parser = SignalParser();
       var command = SignalCommand(
         parser,
         _requester,
-        store.state.profilesState.selectedProfile,
+        profile,
       );
       while (_status == MonitorStatus.running && hash == _monitorHash) {
         var response = await EnigmaApi.readSignalLevelMonitor(
-          profile: store.state.profilesState.selectedProfile,
+          profile: profile,
           parser: parser,
           command: command,
           requester: _requester,
@@ -117,11 +121,11 @@ class SignalMonitorMiddleware extends MiddlewareClass<AppState> {
           ),
         );
       }
-    } catch (e) {
+    } on EnigmaWebException catch (e) {
       store.dispatch(
         GetSignalLevelErrorEvent(
           error: e,
-          profile: store.state.profilesState.selectedProfile,
+          profile: profile,
         ),
       );
     }

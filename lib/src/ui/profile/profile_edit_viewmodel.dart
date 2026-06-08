@@ -15,9 +15,9 @@ class ProfileEditViewModel {
   final void Function(IProfile) onSaveProfile;
 
   ProfileEditViewModel({
-    @required this.displayCheckingPortsInfoMessage,
-    @required this.displayFormInvalidWarningMessage,
-    @required this.onSaveProfile,
+    required this.displayCheckingPortsInfoMessage,
+    required this.displayFormInvalidWarningMessage,
+    required this.onSaveProfile,
   });
 
   static ProfileEditViewModel fromStore(Store<AppState> store) {

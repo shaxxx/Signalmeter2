@@ -1,7 +1,6 @@
 import 'package:enigma_signal_meter/src/model/enums.dart';
 import 'package:enigma_signal_meter/src/redux/app/app_state.dart';
 import 'package:enigma_web/enigma_web.dart';
-import 'package:meta/meta.dart';
 import 'package:redux/redux.dart';
 import 'package:collection/collection.dart';
 
@@ -11,10 +10,10 @@ class ProfilesListViewModel {
   final List<IProfile> profiles;
 
   ProfilesListViewModel({
-    @required this.status,
-    @required this.connectionStatus,
-    @required this.profiles,
-  }) : assert(profiles != null);
+    required this.status,
+    required this.connectionStatus,
+    required this.profiles,
+  });
 
   static ProfilesListViewModel fromStore(Store<AppState> store) {
     return ProfilesListViewModel(

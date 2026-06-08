@@ -6,8 +6,8 @@ import 'profile_widget.dart';
 
 class AddressRow extends StatelessWidget {
   const AddressRow({
-    Key key,
-  }) : super(key: key);
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {

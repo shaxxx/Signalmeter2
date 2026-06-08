@@ -5,28 +5,24 @@ import 'package:logging/logging.dart';
 import 'package:redux/redux.dart';
 
 final profilesReducer = combineReducers<ProfilesState>([
-  TypedReducer<ProfilesState, ProfileSelectedEvent>(_profileSelectedReducer),
+  TypedReducer<ProfilesState, ProfileSelectedEvent>(_profileSelectedReducer).call,
   TypedReducer<ProfilesState, ProfilesStatusChangedEvent>(
-      _profilesStatusChangedReducer),
+      _profilesStatusChangedReducer).call,
   TypedReducer<ProfilesState, LoadProfilesSuccessEvent>(
-      _loadProfilesSuccessReducer),
-  TypedReducer<ProfilesState, ProfileDeletedEvent>(_profileDeletedReducer),
-  TypedReducer<ProfilesState, ProfileSaveEvent>(_profileSaveReducer),
+      _loadProfilesSuccessReducer).call,
+  TypedReducer<ProfilesState, ProfileDeletedEvent>(_profileDeletedReducer).call,
+  TypedReducer<ProfilesState, ProfileSaveEvent>(_profileSaveReducer).call,
 ]);
 
 ProfilesState _profileSelectedReducer(
     ProfilesState state, ProfileSelectedEvent event) {
-  if (event.profile != null) {
-    Logger.root.fine('Selected profile ' + event.profile.name);
-  } else {
-    Logger.root.fine('Deselected profile');
-  }
+  Logger.root.fine('Selected profile ${event.profile?.name ?? ''}');
   return state.copyWith(selectedProfile: event.profile);
 }
 
 ProfilesState _profilesStatusChangedReducer(
     ProfilesState state, ProfilesStatusChangedEvent event) {
-  Logger.root.fine('Profiles status changed to ' + event.status.toString());
+  Logger.root.fine('Profiles status changed to ${event.status}');
   return state.copyWith(status: event.status);
 }
 

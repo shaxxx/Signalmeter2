@@ -1,7 +1,6 @@
 import 'package:enigma_signal_meter/src/redux/app/app_state.dart';
 import 'package:enigma_web/enigma_web.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 
 import '../../constants.dart';
@@ -11,10 +10,9 @@ class BouquetsListItem extends StatelessWidget {
   final IBouquetItemBouquet bouquet;
 
   const BouquetsListItem({
-    Key key,
-    @required this.bouquet,
-  })  : assert(bouquet != null),
-        super(key: key);
+    super.key,
+    required this.bouquet,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -37,16 +35,16 @@ class BouquetsListItem extends StatelessWidget {
                       const Radius.circular(10.0),
                     ),
                     color: viewModel.selected
-                        ? theme.accentColor.withOpacity(0.3)
-                        : theme.primaryColor.withOpacity(0.3),
+                        ? theme.colorScheme.secondary.withValues(alpha: 0.3)
+                        : theme.primaryColor.withValues(alpha: 0.3),
                     border:
-                        Border.all(color: theme.accentColor.withOpacity(0.3)),
+                        Border.all(color: theme.colorScheme.secondary.withValues(alpha: 0.3)),
                   ),
                   child: Container(
                     alignment: Alignment.centerLeft,
                     padding: EdgeInsets.only(left: 20),
                     child: Text(
-                      '${viewModel.name}',
+                      viewModel.name,
                       style:
                           const TextStyle(fontSize: 20.0, color: Colors.white),
                       overflow: TextOverflow.clip,

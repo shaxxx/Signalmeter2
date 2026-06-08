@@ -7,12 +7,12 @@ import 'screenshot_state.dart';
 
 final screenshotReducer = combineReducers<ScreenshotState>([
   TypedReducer<ScreenshotState, ScreenshotStatusChangedEvent>(
-      _screenshotStatusChangedReducer),
+      _screenshotStatusChangedReducer).call,
   TypedReducer<ScreenshotState, GetScreenShotOfCurrentServiceSuccessEvent>(
-      _screenshotSuccessReducer),
+      _screenshotSuccessReducer).call,
   TypedReducer<ScreenshotState, GetScreenShotOfCurrentServiceErrorEvent>(
-      _screenshotErrorReducer),
-  TypedReducer<ScreenshotState, ResetStateEvent>(_screenshotStateResetReducer),
+      _screenshotErrorReducer).call,
+  TypedReducer<ScreenshotState, ResetStateEvent>(_screenshotStateResetReducer).call,
 ]);
 
 ScreenshotState _screenshotStatusChangedReducer(

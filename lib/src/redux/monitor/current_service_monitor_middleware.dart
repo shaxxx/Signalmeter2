@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:enigma_signal_meter/src/model/enigma_web_exception.dart';
 import 'package:enigma_signal_meter/src/model/enums.dart';
 import 'package:enigma_signal_meter/src/redux/app/app_state.dart';
 import 'package:enigma_signal_meter/src/redux/enigma/enigma_command_events.dart';
@@ -18,8 +19,8 @@ class CurrentServiceMonitorMiddleware extends MiddlewareClass<AppState> {
   final IWebRequester requester;
 
   CurrentServiceMonitorMiddleware(this.requester);
-  Timer _timer;
-  CancelableOperation<dynamic> _operation;
+  Timer? _timer;
+  CancelableOperation<dynamic>? _operation;
 
   @override
   void call(Store<AppState> store, action, NextDispatcher next) async {
@@ -93,15 +94,19 @@ class CurrentServiceMonitorMiddleware extends MiddlewareClass<AppState> {
   }
 
   Future _getCurrentService(Store<AppState> store) async {
+    final profile = store.state.profilesState.selectedProfile;
+    if (profile == null) {
+      return;
+    }
     try {
       var parser = GetCurrentServiceParser();
       var command = GetCurrentServiceCommand(
         parser,
         requester,
-        store.state.profilesState.selectedProfile,
+        profile,
       );
       var response = await EnigmaApi.getCurrentServiceMonitor(
-        profile: store.state.profilesState.selectedProfile,
+        profile: profile,
         command: command,
         parser: parser,
         requester: requester,
@@ -112,11 +117,11 @@ class CurrentServiceMonitorMiddleware extends MiddlewareClass<AppState> {
           response: response,
         ),
       );
-    } catch (e) {
+    } on EnigmaWebException catch (e) {
       store.dispatch(
         GetCurrentServiceErrorEvent(
           error: e,
-          profile: store.state.profilesState.selectedProfile,
+          profile: profile,
         ),
       );
     }

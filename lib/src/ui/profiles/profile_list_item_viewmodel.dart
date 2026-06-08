@@ -31,23 +31,23 @@ class ProfileListItemViewModel {
   final String _name;
   final String _address;
   final bool isClickable;
-  final VoidCallback onConnect;
-  final VoidCallback onDisconnect;
-  final VoidCallback onEdit;
-  final VoidCallback onDelete;
+  final VoidCallback? onConnect;
+  final VoidCallback? onDisconnect;
+  final VoidCallback? onEdit;
+  final VoidCallback? onDelete;
 
   ProfileListItemViewModel({
-    @required this.selected,
-    @required this.onTap,
-    @required this.connectionStatus,
+    required this.selected,
+    required this.onTap,
+    required this.connectionStatus,
     this.onConnect,
     this.onDisconnect,
     this.onEdit,
     this.onDelete,
-    String name,
-    String address,
-  })  : _name = name,
-        _address = address,
+    String? name,
+    String? address,
+  })  : _name = name ?? '',
+        _address = address ?? '',
         isClickable = _isDisconnected(connectionStatus);
 
   static bool _isDisconnected(ConnectionStatusEnum connectionStatus) {
@@ -57,7 +57,7 @@ class ProfileListItemViewModel {
 
   static String _addressWithPort(IProfile profile) {
     if (profile.httpPort != 80 && profile.httpPort != 443) {
-      return profile.address + ':' + profile.httpPort.toString();
+      return '${profile.address}:${profile.httpPort}';
     }
     return profile.address;
   }
@@ -69,7 +69,7 @@ class ProfileListItemViewModel {
     return ProfileListItemViewModel(
       name: profile.name,
       address: _addressWithPort(profile),
-      selected: store.state.profilesState?.selectedProfile == profile,
+      selected: store.state.profilesState.selectedProfile == profile,
       connectionStatus: store.state.connectionState,
       onConnect: !_isDisconnected(store.state.connectionState)
           ? null
@@ -106,7 +106,7 @@ class ProfileListItemViewModel {
       onDelete: _isDisconnected(store.state.connectionState)
           ? () {
               store.dispatch(
-                ProfileDeletedEvent(profile),
+                ProfileDeletedEvent(profile as Profile),
               );
             }
           : null,

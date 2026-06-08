@@ -5,9 +5,9 @@ import 'package:meta/meta.dart';
 class CurrentServiceMonitorState {
   final MonitorStatus status;
 
-  CurrentServiceMonitorState({
-    @required this.status,
-  }) : assert(status != null);
+  const CurrentServiceMonitorState({
+    required this.status,
+  });
 
   static CurrentServiceMonitorState inital() {
     return CurrentServiceMonitorState(
@@ -16,7 +16,7 @@ class CurrentServiceMonitorState {
   }
 
   CurrentServiceMonitorState copyWith({
-    MonitorStatus status,
+    MonitorStatus? status,
   }) {
     return CurrentServiceMonitorState(
       status: status ?? this.status,

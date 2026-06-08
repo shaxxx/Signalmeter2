@@ -8,15 +8,12 @@ class TabState {
   final bool signalChartFullScreenActive;
   final SignalViewEnum signalView;
 
-  TabState({
-    @required this.activeTab,
-    @required this.tabPagesActive,
-    @required this.signalChartFullScreenActive,
-    @required this.signalView,
-  })  : assert(activeTab != null),
-        assert(signalView != null),
-        assert(tabPagesActive != null),
-        assert(signalChartFullScreenActive != null);
+  const TabState({
+    required this.activeTab,
+    required this.tabPagesActive,
+    required this.signalChartFullScreenActive,
+    required this.signalView,
+  });
 
   static TabState initial() {
     return TabState(
@@ -28,10 +25,10 @@ class TabState {
   }
 
   TabState copyWith({
-    TabPagesEnum activeTab,
-    bool tabPagesActive,
-    bool signalChartFullScreenActive,
-    SignalViewEnum signalView,
+    TabPagesEnum? activeTab,
+    bool? tabPagesActive,
+    bool? signalChartFullScreenActive,
+    SignalViewEnum? signalView,
   }) {
     return TabState(
       activeTab: activeTab ?? this.activeTab,

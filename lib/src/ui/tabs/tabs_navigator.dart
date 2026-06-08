@@ -6,6 +6,8 @@ import '../../message_provider.dart';
 import 'tabs_navigator_viewmodel.dart';
 
 class TabsNavigator extends StatelessWidget {
+  const TabsNavigator({super.key});
+
   @override
   Widget build(BuildContext context) {
     var theme = Theme.of(context);
@@ -13,10 +15,10 @@ class TabsNavigator extends StatelessWidget {
         distinct: true,
         converter: (store) => TabsNavigatorViewModel.fromStore(store),
         builder: (context, viewModel) {
-          var iconColor = theme.textTheme.caption.color;
+          var iconColor = theme.textTheme.bodySmall?.color;
           return BottomNavigationBar(
             backgroundColor: Colors.transparent,
-            selectedItemColor: theme.accentColor,
+            selectedItemColor: theme.colorScheme.secondary,
             unselectedItemColor: iconColor,
             type: BottomNavigationBarType.fixed,
             onTap: viewModel.onTap,
@@ -27,36 +29,28 @@ class TabsNavigator extends StatelessWidget {
                 icon: Icon(
                   Icons.folder_special,
                 ),
-                title: Text(
-                  MessageProvider.of(context).bouquets,
-                ),
+                label: MessageProvider.of(context).bouquets,
               ),
               BottomNavigationBarItem(
                 backgroundColor: Colors.transparent,
                 icon: Icon(
                   Icons.reorder,
                 ),
-                title: Text(
-                  MessageProvider.of(context).services,
-                ),
+                label: MessageProvider.of(context).services,
               ),
               BottomNavigationBarItem(
                 backgroundColor: Colors.transparent,
                 icon: Icon(
                   Icons.network_check,
                 ),
-                title: Text(
-                  MessageProvider.of(context).signal,
-                ),
+                label: MessageProvider.of(context).signal,
               ),
               BottomNavigationBarItem(
                 backgroundColor: Colors.transparent,
                 icon: Icon(
                   Icons.more_horiz,
                 ),
-                title: Text(
-                  MessageProvider.of(context).more,
-                ),
+                label: MessageProvider.of(context).more,
               ),
             ],
           );

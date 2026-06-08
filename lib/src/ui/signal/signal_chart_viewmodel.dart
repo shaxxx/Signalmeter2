@@ -1,7 +1,6 @@
 import 'package:enigma_signal_meter/src/i18n/messages.dart';
 import 'package:enigma_signal_meter/src/redux/app/app_state.dart';
 import 'package:enigma_web/enigma_web.dart';
-import 'package:flutter/material.dart';
 import 'package:redux/redux.dart';
 import 'package:collection/collection.dart';
 
@@ -29,9 +28,6 @@ class SignalChartViewModel {
   }
 
   String requestTimeString() {
-    if (responses == null) {
-      return '';
-    }
     if (responses.isEmpty) {
       return '';
     }
@@ -40,9 +36,6 @@ class SignalChartViewModel {
   }
 
   String averageTimeString() {
-    if (responses == null) {
-      return '';
-    }
     if (responses.isEmpty) {
       return '';
     }
@@ -55,9 +48,6 @@ class SignalChartViewModel {
 
   double _convertedSignal(int index) {
     var signal = responses[index].signal;
-    if (signal == null) {
-      return 0.0;
-    }
     if (signal.snr < 0) {
       return 0.0;
     }
@@ -73,13 +63,11 @@ class SignalChartViewModel {
   }
 
   SignalChartViewModel({
-    @required this.responses,
-    @required this.messages,
-    @required this.dbIsPrimaryLevel,
-    @required this.profile,
-  })  : assert(responses != null),
-        assert(dbIsPrimaryLevel != null),
-        assert(profile != null);
+    required this.responses,
+    required this.messages,
+    required this.dbIsPrimaryLevel,
+    required this.profile,
+  });
 
   static SignalChartViewModel fromStore(
       Store<AppState> store, Messages messages) {
@@ -88,7 +76,7 @@ class SignalChartViewModel {
       messages: messages,
       dbIsPrimaryLevel:
           store.state.globalState.applicationSettings.dbIsPrimaryLevel,
-      profile: store.state.profilesState.selectedProfile,
+      profile: store.state.profilesState.selectedProfile!,
     );
   }
 

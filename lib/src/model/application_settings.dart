@@ -1,18 +1,17 @@
 import 'package:enigma_signal_meter/src/model/enums.dart';
-import 'package:flutter/widgets.dart';
 
 class ApplicationSettings {
   bool dbIsPrimaryLevel;
   ChannelUpDownButtonsEnum channelUpDownButtons;
 
   ApplicationSettings({
-    @required this.dbIsPrimaryLevel,
-    @required this.channelUpDownButtons,
-  }) : assert(dbIsPrimaryLevel != null);
+    required this.dbIsPrimaryLevel,
+    required this.channelUpDownButtons,
+  });
 
   ApplicationSettings copyWith({
-    bool dbIsPrimaryLevel,
-    ChannelUpDownButtonsEnum channelUpDownButtons,
+    bool? dbIsPrimaryLevel,
+    ChannelUpDownButtonsEnum? channelUpDownButtons,
   }) {
     return ApplicationSettings(
       dbIsPrimaryLevel: dbIsPrimaryLevel ?? this.dbIsPrimaryLevel,
@@ -20,13 +19,10 @@ class ApplicationSettings {
     );
   }
 
-  @override
-  ApplicationSettings.fromJson(Map<String, dynamic> json) {
-    dbIsPrimaryLevel = json['dbIsPrimaryLevel'];
-    int channelUpDownButtonsIndex = json['channelUpDownButtons'];
-    channelUpDownButtons =
-        ChannelUpDownButtonsEnum.values[channelUpDownButtonsIndex ?? 0];
-  }
+  ApplicationSettings.fromJson(Map<String, dynamic> json)
+      : dbIsPrimaryLevel = json['dbIsPrimaryLevel'] as bool? ?? false,
+        channelUpDownButtons = ChannelUpDownButtonsEnum
+            .values[(json['channelUpDownButtons'] as int? ?? 0)];
 
   Map<String, dynamic> toJson() => {
         'dbIsPrimaryLevel': dbIsPrimaryLevel,

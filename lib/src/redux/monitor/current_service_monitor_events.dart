@@ -4,5 +4,5 @@ import 'package:flutter/foundation.dart';
 @immutable
 class ChangeCurrentServiceMonitorStatusEvent {
   final MonitorStatus status;
-  ChangeCurrentServiceMonitorStatusEvent(this.status);
+  const ChangeCurrentServiceMonitorStatusEvent(this.status);
 }

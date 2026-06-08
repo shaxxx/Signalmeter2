@@ -4,10 +4,11 @@ import 'package:enigma_signal_meter/src/redux/app/app_state.dart';
 import 'package:enigma_signal_meter/src/redux/enigma/enigma_command_events.dart';
 import 'package:enigma_web/enigma_web.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 
 class RemoteButtonsView extends StatelessWidget {
+  const RemoteButtonsView({super.key});
+
   @override
   Widget build(BuildContext context) {
     var theme = Theme.of(context);
@@ -35,37 +36,37 @@ class RemoteButtonsView extends StatelessWidget {
       children: <Widget>[
         InkWell(
           child: Padding(
+            padding: EdgeInsets.all(10),
             child: Text(
-              messages.channel.toUpperCase() + '-',
+              '${messages.channel.toUpperCase()}-',
               style: TextStyle(
                 fontWeight: FontWeight.w500,
                 fontSize: 16,
-                color: theme.accentColor,
+                color: theme.colorScheme.secondary,
               ),
             ),
-            padding: EdgeInsets.all(10),
           ),
           onTap: () => store.dispatch(
             SendRemoteControlCodeEvent(
-              profile: store.state.profilesState.selectedProfile,
+              profile: store.state.profilesState.selectedProfile!,
               code: channelDown,
             ),
           ),
         ),
         InkWell(
           child: Padding(
+            padding: EdgeInsets.all(10),
             child: Text(
-              messages.channel.toUpperCase() + '+',
+              '${messages.channel.toUpperCase()}+',
               style: TextStyle(
                   fontWeight: FontWeight.w500,
                   fontSize: 16,
-                  color: theme.accentColor),
+                  color: theme.colorScheme.secondary),
             ),
-            padding: EdgeInsets.all(10),
           ),
           onTap: () => store.dispatch(
             SendRemoteControlCodeEvent(
-              profile: store.state.profilesState.selectedProfile,
+              profile: store.state.profilesState.selectedProfile!,
               code: channelUp,
             ),
           ),

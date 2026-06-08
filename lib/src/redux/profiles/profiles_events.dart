@@ -4,26 +4,26 @@ import 'package:meta/meta.dart';
 
 @immutable
 class ProfileSelectedEvent {
-  final Profile profile;
-  ProfileSelectedEvent(this.profile);
+  final IProfile? profile;
+  const ProfileSelectedEvent(this.profile);
 }
 
 @immutable
 class ProfileDeletedEvent {
   final Profile profile;
-  ProfileDeletedEvent(this.profile) : assert(profile != null);
+  const ProfileDeletedEvent(this.profile);
 }
 
 @immutable
 class ProfilesStatusChangedEvent {
   final LoadingStatus status;
-  ProfilesStatusChangedEvent(this.status) : assert(status != null);
+  const ProfilesStatusChangedEvent(this.status);
 }
 
 @immutable
 class ProfileSaveEvent {
   final IProfile profile;
-  ProfileSaveEvent(this.profile) : assert(profile != null);
+  const ProfileSaveEvent(this.profile);
 }
 
 @immutable
@@ -34,15 +34,14 @@ class LoadProfilesSuccessEvent {
   final Duration responseDuration;
   final List<IProfile> profiles;
 
-  LoadProfilesSuccessEvent({
-    @required this.responseDuration,
-    @required this.profiles,
-  })  : assert(responseDuration != null),
-        assert(profiles != null);
+  const LoadProfilesSuccessEvent({
+    required this.responseDuration,
+    required this.profiles,
+  });
 }
 
 @immutable
 class LoadProfilesErrorEvent {
   final dynamic error;
-  LoadProfilesErrorEvent({@required this.error}) : assert(error != null);
+  const LoadProfilesErrorEvent({required this.error}) : assert(error != null);
 }

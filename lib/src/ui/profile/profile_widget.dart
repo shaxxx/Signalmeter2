@@ -4,15 +4,13 @@ import 'package:enigma_signal_meter/src/ui/profile/profile_edit_viewmodel.dart';
 import 'package:enigma_signal_meter/src/utils/network_utils.dart';
 import 'package:enigma_web/enigma_web.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 
 class _InheritedProfileWidget extends InheritedWidget {
   final ProfileWidgetState data;
-  _InheritedProfileWidget({
-    Key key,
-    @required this.data,
-    @required Widget child,
-  }) : super(key: key, child: child);
+  const _InheritedProfileWidget({
+    required this.data,
+    required super.child,
+  });
 
   @override
   bool updateShouldNotify(_InheritedProfileWidget old) => true;
@@ -20,17 +18,15 @@ class _InheritedProfileWidget extends InheritedWidget {
 
 class ProfileWidget extends StatefulWidget {
   final Widget child;
-  final IProfile profile;
+  final IProfile? profile;
   final ProfileEditViewModel viewModel;
 
-  ProfileWidget(
-      {@required this.child, @required this.profile, @required this.viewModel})
-      : assert(viewModel != null),
-        assert(child != null);
+  const ProfileWidget(
+      {super.key, required this.child, this.profile, required this.viewModel});
 
   static ProfileWidgetState of(BuildContext context) {
     return (context
-            .dependOnInheritedWidgetOfExactType<_InheritedProfileWidget>())
+            .dependOnInheritedWidgetOfExactType<_InheritedProfileWidget>())!
         .data;
   }
 
@@ -46,8 +42,9 @@ class ProfileWidgetState extends State<ProfileWidget> {
   @override
   void initState() {
     super.initState();
-    if (widget.profile != null) {
-      profile = ProfileEditModel.fromProfile(widget.profile);
+    final existing = widget.profile;
+    if (existing != null) {
+      profile = ProfileEditModel.fromProfile(existing as Profile);
     }
     _setTextFieldValues();
     _setListeners();
@@ -79,13 +76,16 @@ class ProfileWidgetState extends State<ProfileWidget> {
   final streamingPortController = TextEditingController();
   final httpPortController = TextEditingController();
 
-  FormFieldValidator nameValidator;
-  FormFieldValidator addressValidator;
-  FormFieldValidator usernameValidator;
-  FormFieldValidator passwordValidator;
-  FormFieldValidator transcodingPortValidator;
-  FormFieldValidator streamingPortValidator;
-  FormFieldValidator httpPortValidator;
+  late FormFieldValidator<String?> nameValidator;
+  late FormFieldValidator<String?> addressValidator;
+  late FormFieldValidator<String?> usernameValidator;
+  // Password has no validation rule (matches the original pre-null-safety
+  // behavior where this field defaulted to null). Kept nullable rather than
+  // `late` so PasswordRow can pass it through as a null validator.
+  FormFieldValidator<String?>? passwordValidator;
+  late FormFieldValidator<String?> transcodingPortValidator;
+  late FormFieldValidator<String?> streamingPortValidator;
+  late FormFieldValidator<String?> httpPortValidator;
 
   void _setTextFieldValues() {
     nameController.value = nameController.value.copyWith(text: profile.name);
@@ -96,11 +96,11 @@ class ProfileWidgetState extends State<ProfileWidget> {
     passwordController.value =
         passwordController.value.copyWith(text: profile.password);
     transcodingPortController.value = transcodingPortController.value
-        .copyWith(text: profile.transcodingPort?.toString() ?? '');
+        .copyWith(text: profile.transcodingPort.toString() ?? '');
     streamingPortController.value = streamingPortController.value
-        .copyWith(text: profile.streamingPort?.toString() ?? '');
+        .copyWith(text: profile.streamingPort.toString() ?? '');
     httpPortController.value = httpPortController.value
-        .copyWith(text: profile.httpPort?.toString() ?? '');
+        .copyWith(text: profile.httpPort.toString() ?? '');
   }
 
   Future<bool> showWarningDialog(String text) async {
@@ -115,7 +115,7 @@ class ProfileWidgetState extends State<ProfileWidget> {
                   text,
                 ),
                 actions: <Widget>[
-                  FlatButton(
+                  TextButton(
                     onPressed: () {
                       Navigator.pop(context, true);
                     },
@@ -134,7 +134,7 @@ class ProfileWidgetState extends State<ProfileWidget> {
         profile.address, int.parse(profile.httpPort)))) {
       var message = MessageProvider.of(context)
           .warnHttpPortClosed(profile.address, profile.httpPort);
-      message += '\n' + MessageProvider.of(context).warnSaveTheProfileAnyway;
+      message += '\n${MessageProvider.of(context).warnSaveTheProfileAnyway}';
       return await showWarningDialog(message);
     }
     return true;
@@ -147,7 +147,7 @@ class ProfileWidgetState extends State<ProfileWidget> {
     if (!(await NetworkUtils.isPortOpen(
         profile.address, int.parse(profile.streamingPort)))) {
       var message = MessageProvider.of(context).warnStreamingPortClosed;
-      message += '\n' + MessageProvider.of(context).warnSaveTheProfileAnyway;
+      message += '\n${MessageProvider.of(context).warnSaveTheProfileAnyway}';
       return await showWarningDialog(message);
     }
     return true;
@@ -160,7 +160,7 @@ class ProfileWidgetState extends State<ProfileWidget> {
     if (!(await NetworkUtils.isPortOpen(
         profile.address, int.parse(profile.transcodingPort)))) {
       var message = MessageProvider.of(context).warnTranscodingPortClosed;
-      message += '\n' + MessageProvider.of(context).warnSaveTheProfileAnyway;
+      message += '\n${MessageProvider.of(context).warnSaveTheProfileAnyway}';
       return await showWarningDialog(message);
     }
     return true;
@@ -170,14 +170,14 @@ class ProfileWidgetState extends State<ProfileWidget> {
     if (StringHelper.stringIsNullOrEmpty(profile.username) &&
         StringHelper.stringIsNullOrEmpty(profile.password)) {
       var message = MessageProvider.of(context).questionEmptyUsernamePassword;
-      message += '\n' + MessageProvider.of(context).warnSaveTheProfileAnyway;
+      message += '\n${MessageProvider.of(context).warnSaveTheProfileAnyway}';
       return await showWarningDialog(message);
     }
     return true;
   }
 
   Future<bool> validateForm() async {
-    if (_formKey.currentState.validate()) {
+    if (_formKey.currentState!.validate()) {
       widget.viewModel.displayCheckingPortsInfoMessage();
       if (!await _checkUsernamePassword()) {
         return false;
@@ -222,14 +222,14 @@ class ProfileWidgetState extends State<ProfileWidget> {
 
   void _setValidators() {
     nameValidator = (value) {
-      if (value == null || value.length == 0) {
+      if (value == null || value.isEmpty) {
         return MessageProvider.of(context).errInvalidProfileName;
       }
       return null;
     };
 
     addressValidator = (value) {
-      if (value == null || value.length == 0) {
+      if (value == null || value.isEmpty) {
         return MessageProvider.of(context).errInvalidAddress;
       }
       if (!NetworkUtils.isValidAddress(value)) {
@@ -239,16 +239,15 @@ class ProfileWidgetState extends State<ProfileWidget> {
     };
 
     httpPortValidator = (value) {
-      if (!NetworkUtils.isStringValidPort(value)) {
+      if (!NetworkUtils.isStringValidPort(value ?? '')) {
         return MessageProvider.of(context).errInvalidHttpPort;
       }
       return null;
     };
 
     usernameValidator = (value) {
-      if (value == null || value.length == 0) {
-        if (passwordController.text != null &&
-            passwordController.text.isNotEmpty) {
+      if (value == null || value.isEmpty) {
+        if (passwordController.text.isNotEmpty) {
           return MessageProvider.of(context).errInvalidUsername;
         }
       }
@@ -259,7 +258,7 @@ class ProfileWidgetState extends State<ProfileWidget> {
       if (!profile.transcoding) {
         return null;
       }
-      if (!NetworkUtils.isStringValidPort(value)) {
+      if (!NetworkUtils.isStringValidPort(value ?? '')) {
         return MessageProvider.of(context).errInvalidTranscodingPort;
       }
       return null;
@@ -269,7 +268,7 @@ class ProfileWidgetState extends State<ProfileWidget> {
       if (!profile.streaming || profile.enigma == EnigmaType.enigma1) {
         return null;
       }
-      if (!NetworkUtils.isStringValidPort(value)) {
+      if (!NetworkUtils.isStringValidPort(value ?? '')) {
         return MessageProvider.of(context).errInvalidStreamingPort;
       }
       return null;
@@ -316,7 +315,9 @@ class ProfileWidgetState extends State<ProfileWidget> {
       node: focusNode,
       child: Form(
         key: _formKey,
-        autovalidate: widget.profile != null,
+        autovalidateMode: widget.profile != null
+            ? AutovalidateMode.always
+            : AutovalidateMode.disabled,
         child: _InheritedProfileWidget(
           data: this,
           child: widget.child,

@@ -8,19 +8,19 @@ class PaddedFormTextField extends StatelessWidget {
   final bool isPassword;
   final bool isNumeric;
   final String labelText;
-  final String Function(String) validator;
-  final int maxLength;
+  final FormFieldValidator<String>? validator;
+  final int? maxLength;
 
   const PaddedFormTextField({
-    Key key,
-    @required this.controller,
-    @required this.hintText,
-    @required this.labelText,
-    @required this.validator,
+    super.key,
+    required this.controller,
+    required this.hintText,
+    required this.labelText,
+    this.validator,
     this.maxLength,
     this.isPassword = false,
     this.isNumeric = false,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

@@ -13,10 +13,7 @@ abstract class ErrorMessageEvent<T> extends MessageEvent {
 @immutable
 class ErrorMessageShownEvent {
   final ErrorMessageEvent errorMessageEvent;
-  ErrorMessageShownEvent(this.errorMessageEvent)
-      : assert(
-          errorMessageEvent != null,
-        );
+  const ErrorMessageShownEvent(this.errorMessageEvent);
 
   @override
   bool operator ==(Object other) =>
@@ -37,10 +34,9 @@ class EnigmaCommandErrorMessageEvent
   final EnigmaWebException exception;
 
   EnigmaCommandErrorMessageEvent({
-    @required this.action,
-    @required this.exception,
-  })  : assert(action != null),
-        assert(exception != null);
+    required this.action,
+    required this.exception,
+  });
 
   @override
   bool operator ==(Object other) =>
@@ -61,10 +57,9 @@ class FailedStreamExtraParametersMessageEvent
   @override
   final EnigmaWebException exception;
   FailedStreamExtraParametersMessageEvent({
-    @required this.response,
-    @required this.exception,
-  })  : assert(response != null),
-        assert(exception != null);
+    required this.response,
+    required this.exception,
+  });
 
   @override
   bool operator ==(Object other) =>
@@ -84,8 +79,8 @@ class UnhandledErrorMessageEvent extends ErrorMessageEvent<dynamic> {
   final dynamic exception;
 
   UnhandledErrorMessageEvent({
-    @required this.exception,
-  }) : assert(exception != null);
+    required this.exception,
+  });
 
   @override
   bool operator ==(Object other) =>

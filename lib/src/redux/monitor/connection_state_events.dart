@@ -4,7 +4,7 @@ import 'package:meta/meta.dart';
 @immutable
 class ConnectionStatusChangedEvent {
   final ConnectionStatusEnum status;
-  ConnectionStatusChangedEvent(this.status) : assert(status != null);
+  const ConnectionStatusChangedEvent(this.status);
 }
 
 @immutable

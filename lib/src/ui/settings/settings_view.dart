@@ -3,7 +3,6 @@ import 'package:enigma_signal_meter/src/model/application_settings.dart';
 import 'package:enigma_signal_meter/src/model/enums.dart';
 import 'package:enigma_signal_meter/src/redux/app/app_state.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 
 import '../../constants.dart';
@@ -14,7 +13,7 @@ const EdgeInsetsDirectional _kItemPadding =
     EdgeInsetsDirectional.only(start: 56.0);
 
 class _OptionsItem extends StatelessWidget {
-  const _OptionsItem({Key key, this.child}) : super(key: key);
+  const _OptionsItem({required this.child});
 
   final Widget child;
 
@@ -47,7 +46,7 @@ class _BooleanItem extends StatelessWidget {
   final String title;
   final bool value;
   final ValueChanged<bool> onChanged;
-  final Key switchKey;
+  final Key? switchKey;
 
   @override
   Widget build(BuildContext context) {
@@ -84,20 +83,20 @@ class _ActionItem extends StatelessWidget {
 }
 
 class _FlatButton extends StatelessWidget {
-  const _FlatButton({Key key, this.onPressed, this.child}) : super(key: key);
+  const _FlatButton({this.onPressed, required this.child});
 
-  final VoidCallback onPressed;
+  final VoidCallback? onPressed;
   final Widget child;
 
   @override
   Widget build(BuildContext context) {
-    return FlatButton(
-      padding: EdgeInsets.zero,
+    return TextButton(
+      style: TextButton.styleFrom(padding: EdgeInsets.zero),
       onPressed: onPressed,
       child: Align(
         alignment: Alignment.centerLeft,
         child: DefaultTextStyle(
-          style: Theme.of(context).primaryTextTheme.subtitle1,
+          style: Theme.of(context).primaryTextTheme.titleMedium!,
           child: child,
         ),
       ),
@@ -115,12 +114,12 @@ class _Heading extends StatelessWidget {
     final theme = Theme.of(context);
     return _OptionsItem(
       child: DefaultTextStyle(
-        style: theme.textTheme.bodyText2.copyWith(
-          color: theme.accentColor,
+        style: theme.textTheme.bodyMedium!.copyWith(
+          color: theme.colorScheme.secondary,
         ),
         child: Semantics(
-          child: Text(text),
           header: true,
+          child: Text(text),
         ),
       ),
     );
@@ -175,7 +174,7 @@ class _ChannelUpDownButtons extends StatelessWidget {
             child: Text(MessageProvider.of(context).upDownArrows),
           ),
         ],
-        onChanged: (ChannelUpDownButtonsEnum value) {
+        onChanged: (ChannelUpDownButtonsEnum? value) {
           onSettingsChanged(
             applicationSettings.copyWith(
               channelUpDownButtons: value,
@@ -191,9 +190,9 @@ class SettingsView extends StatelessWidget {
   final ValueChanged<ApplicationSettings> onSettingsChanged;
 
   const SettingsView({
-    Key key,
-    @required this.onSettingsChanged,
-  }) : super(key: key);
+    super.key,
+    required this.onSettingsChanged,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -204,7 +203,7 @@ class SettingsView extends StatelessWidget {
     if (languageCode.isNotEmpty) {
       languageCode += '/';
     }
-    var url = krkadoniUrl + '/#/' + languageCode + 'using';
+    var url = '$krkadoniUrl/#/${languageCode}using';
     return StoreConnector<AppState, SettingsViewModel>(
         distinct: true,
         converter: (store) {
@@ -212,7 +211,7 @@ class SettingsView extends StatelessWidget {
         },
         builder: (context, viewModel) {
           return DefaultTextStyle(
-            style: theme.primaryTextTheme.subtitle1,
+            style: theme.primaryTextTheme.titleMedium!,
             child: ListView(
               padding: const EdgeInsets.only(bottom: 124.0, right: 20),
               children: <Widget>[

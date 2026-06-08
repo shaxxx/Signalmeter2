@@ -5,10 +5,10 @@ import 'global_events.dart';
 import 'global_state.dart';
 
 final globalReducer = combineReducers<GlobalState>([
-  TypedReducer<GlobalState, SetScreenSizeEvent>(_screenSizeEventReducer),
-  TypedReducer<GlobalState, SatellitesLoadedEvent>(_satellitesLoadedReducer),
+  TypedReducer<GlobalState, SetScreenSizeEvent>(_screenSizeEventReducer).call,
+  TypedReducer<GlobalState, SatellitesLoadedEvent>(_satellitesLoadedReducer).call,
   TypedReducer<GlobalState, ApplicationSettingsChangedEvent>(
-      _appSettingsLoadedReducer),
+      _appSettingsLoadedReducer).call,
 ]);
 
 GlobalState _screenSizeEventReducer(

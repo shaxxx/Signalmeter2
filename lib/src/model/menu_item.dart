@@ -3,12 +3,10 @@ import 'package:flutter/widgets.dart';
 @immutable
 class MenuItem {
   const MenuItem({
-    @required this.title,
-    @required this.icon,
-    @required this.key,
-  })  : assert(title != null),
-        assert(icon != null),
-        assert(key != null);
+    required this.title,
+    required this.icon,
+    required this.key,
+  });
 
   final String title;
   final IconData icon;

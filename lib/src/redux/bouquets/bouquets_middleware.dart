@@ -18,7 +18,6 @@ class BouquetsMiddleware extends MiddlewareClass<AppState> {
           'Dispatching BouquetsStatusChangedEvent from BouquetsMiddleware as response to GetBouquetsSuccessEvent');
       store.dispatch(BouquetsStatusChangedEvent(LoadingStatus.success));
       if (store.state.bouquetsState.selectedBouquet == null &&
-          action.bouquets != null &&
           action.bouquets.isNotEmpty) {
         Logger.root.fine(
             'Dispatching BouquetSelectedEvent from BouquetsMiddleware as response to GetBouquetsSuccessEvent');
@@ -33,7 +32,7 @@ class BouquetsMiddleware extends MiddlewareClass<AppState> {
       Logger.root.fine(
           'Dispatching GetBouquetsEvent from BouquetsMiddleware as response to WakeUpSuccessEvent');
       store.dispatch(
-          GetBouquetsEvent(profile: store.state.profilesState.selectedProfile));
+          GetBouquetsEvent(profile: store.state.profilesState.selectedProfile!));
     } else if (action is SentToSleepSuccessEvent) {
       Logger.root.fine(
           'Dispatching BouquetsStatusChangedEvent from BouquetsMiddleware as response to SentToSleepSuccessEvent');

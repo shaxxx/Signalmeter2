@@ -5,12 +5,12 @@ import 'package:meta/meta.dart';
 @immutable
 class ScreenshotState {
   final LoadingStatus status;
-  final ScreenshotResponse response;
+  final IScreenshotResponse? response;
 
-  ScreenshotState({
-    @required this.status,
-    @required this.response,
-  }) : assert(status != null);
+  const ScreenshotState({
+    required this.status,
+    required this.response,
+  });
 
   static ScreenshotState initial() {
     return ScreenshotState(
@@ -20,8 +20,8 @@ class ScreenshotState {
   }
 
   ScreenshotState copyWith({
-    LoadingStatus status,
-    ScreenshotResponse response,
+    LoadingStatus? status,
+    IScreenshotResponse? response,
   }) {
     return ScreenshotState(
       status: status ?? this.status,

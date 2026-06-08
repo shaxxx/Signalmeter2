@@ -1,6 +1,5 @@
 import 'package:enigma_signal_meter/src/redux/app/app_state.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 import 'package:percent_indicator/linear_percent_indicator.dart';
 import '../../message_provider.dart';
@@ -18,6 +17,8 @@ class SignalProgressbarView extends StatelessWidget {
       Colors.green,
     ],
   );
+
+  SignalProgressbarView({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -61,7 +62,7 @@ class SignalProgressbarView extends StatelessWidget {
           ),
           overflow: TextOverflow.ellipsis,
         ),
-        linearStrokeCap: LinearStrokeCap.roundAll,
+        barRadius: const Radius.circular(15),
         maskFilter: MaskFilter.blur(BlurStyle.solid, 3),
         linearGradient: gradient,
         clipLinearGradient: true,
@@ -89,7 +90,7 @@ class SignalProgressbarView extends StatelessWidget {
           ),
           overflow: TextOverflow.ellipsis,
         ),
-        linearStrokeCap: LinearStrokeCap.roundAll,
+        barRadius: const Radius.circular(15),
         maskFilter: MaskFilter.blur(BlurStyle.solid, 3),
         linearGradient: gradient,
         clipLinearGradient: true,
@@ -114,7 +115,7 @@ class SignalProgressbarView extends StatelessWidget {
           ),
           overflow: TextOverflow.ellipsis,
         ),
-        linearStrokeCap: LinearStrokeCap.roundAll,
+        barRadius: const Radius.circular(15),
         maskFilter: MaskFilter.blur(BlurStyle.solid, 3),
         linearGradient: LinearGradient(
             begin: Alignment.centerLeft,
@@ -149,7 +150,7 @@ class SignalProgressbarView extends StatelessWidget {
           ),
           overflow: TextOverflow.ellipsis,
         ),
-        linearStrokeCap: LinearStrokeCap.roundAll,
+        barRadius: const Radius.circular(15),
         maskFilter: MaskFilter.blur(BlurStyle.solid, 3),
         linearGradient: gradient,
         clipLinearGradient: true,

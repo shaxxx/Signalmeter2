@@ -5,12 +5,13 @@ import 'package:enigma_signal_meter/src/ui/common/title_panel_view.dart';
 import 'package:enigma_signal_meter/src/utils/enigma_utils.dart';
 import 'package:enigma_web/enigma_web.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 import '../../message_provider.dart';
 import 'current_service_viewmodel.dart';
 
 class CurrentServiceView extends StatelessWidget {
+  const CurrentServiceView({super.key});
+
   String getServiceType(IBouquetItemService service, Messages messages) {
     var serviceType = EnigmaUtils.serviceInfo(service);
     if (serviceType == ServiceType.DVBS) {
@@ -31,14 +32,12 @@ class CurrentServiceView extends StatelessWidget {
     if (serviceType == ServiceType.DVBS) {
       var satellite =
           _findSatellite(viewModel.satellites, viewModel.currentService);
-      if (satellite != null) {
-        return satellite.value;
-      }
+      if (satellite != null) return satellite.value;
     }
     return getServiceType(viewModel.currentService, messages);
   }
 
-  static MapEntry<int, String> _findSatellite(
+  static MapEntry<int, String>? _findSatellite(
       Map<int, String> satellites, IBouquetItemService service) {
     var position = EnigmaUtils.getSatellitePosition(service);
     if (position == 0) {
@@ -64,7 +63,7 @@ class CurrentServiceView extends StatelessWidget {
                 margin: EdgeInsets.only(top: 10),
                 alignment: Alignment.center,
                 child: Text(
-                  '${viewModel.currentService == null ? '' : viewModel.currentService.name}',
+                  '${viewModel.currentService.name}',
                   style: const TextStyle(fontSize: 20.0, color: Colors.white),
                   overflow: TextOverflow.ellipsis,
                 ),
@@ -74,7 +73,7 @@ class CurrentServiceView extends StatelessWidget {
                 padding: EdgeInsets.only(bottom: 10),
                 alignment: Alignment.center,
                 child: Text(
-                  '${_serviceInfo(viewModel, MessageProvider.of(context))}',
+                  _serviceInfo(viewModel, MessageProvider.of(context)),
                   style: const TextStyle(fontSize: 15.0, color: Colors.white),
                   overflow: TextOverflow.ellipsis,
                 ),

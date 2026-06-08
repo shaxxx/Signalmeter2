@@ -2,17 +2,19 @@ import 'package:enigma_signal_meter/src/constants.dart';
 import 'package:enigma_signal_meter/src/ui/common/hyperlink.dart';
 import 'package:enigma_signal_meter/src/ui/common/scaffold_background.dart';
 import 'package:flutter/material.dart';
-import 'package:package_info/package_info.dart';
+import 'package:package_info_plus/package_info_plus.dart';
 
 import '../../message_provider.dart';
 
 class AboutView extends StatefulWidget {
+  const AboutView({super.key});
+
   @override
   _AboutViewState createState() => _AboutViewState();
 }
 
 class _AboutViewState extends State<AboutView> {
-  PackageInfo _packageInfo;
+  PackageInfo? _packageInfo;
 
   @override
   void didChangeDependencies() async {
@@ -32,7 +34,7 @@ class _AboutViewState extends State<AboutView> {
     return Padding(
       padding: EdgeInsets.only(bottom: 30),
       child: Text(
-        MessageProvider.of(context).build + ':  ' + _packageInfo.buildNumber,
+        '${MessageProvider.of(context).build}:  ${_packageInfo!.buildNumber}',
         style: TextStyle(fontSize: 15),
       ),
     );
@@ -45,7 +47,7 @@ class _AboutViewState extends State<AboutView> {
     return Padding(
       padding: EdgeInsets.all(10),
       child: Text(
-        MessageProvider.of(context).version + ':  ' + _packageInfo.version,
+        '${MessageProvider.of(context).version}:  ${_packageInfo!.version}',
         style: TextStyle(fontSize: 15),
       ),
     );
@@ -59,10 +61,10 @@ class _AboutViewState extends State<AboutView> {
       languageCode += '/';
     }
     return Hyperlink(
-      url: krkadoniUrl + '/#/' + languageCode + 'using',
+      url: '$krkadoniUrl/#/${languageCode}using',
       text: krkadoniUrl,
       fontSize: 20,
-      color: Theme.of(context).accentColor.withOpacity(0.7),
+      color: Theme.of(context).colorScheme.secondary.withOpacity(0.7),
     );
   }
 
@@ -108,7 +110,7 @@ class _AboutViewState extends State<AboutView> {
             Text(
               'Bosnian Pharao | GigaBlue',
               style: TextStyle(
-                color: theme.accentColor.withOpacity(0.7),
+                color: theme.colorScheme.secondary.withOpacity(0.7),
                 fontSize: 17,
               ),
             ),
@@ -120,7 +122,7 @@ class _AboutViewState extends State<AboutView> {
               url: satelitskiForumUrl,
               text: satelitskiForumUrl,
               fontSize: 17,
-              color: theme.accentColor.withOpacity(0.7),
+              color: theme.colorScheme.secondary.withOpacity(0.7),
             ),
           ],
         ),
