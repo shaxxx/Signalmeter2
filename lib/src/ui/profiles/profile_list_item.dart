@@ -66,7 +66,10 @@ class _ProfileListItemState extends State<ProfileListItem>
         builder: (context, viewModel) {
           return AnimatedContainer(
             duration: Duration(milliseconds: 300),
-            height: viewModel.selected ? 121 : 90,
+            // Expanded height bumped from 121 to fit Material 3 metrics
+            // (larger text line-heights / tap targets in Flutter 3.x grew the
+            // icon+buttons+progress column past the old fixed 121 px).
+            height: viewModel.selected ? 140 : 90,
             alignment: Alignment.topLeft,
             child: Card(
               elevation: 2,
