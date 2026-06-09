@@ -18,12 +18,17 @@ class SignalCircularProgressView extends StatelessWidget {
         MessageProvider.of(context),
       ),
       builder: (context, viewModel) {
-        var screenSize =
-            StoreProvider.of<AppState>(context).state.globalState.screenSize;
+        // Read the size live from MediaQuery rather than from a value cached
+        // once at startup. The cached globalState.screenSize is captured in
+        // HomeView.onInit, which in release builds can run before the platform
+        // reports window metrics, yielding Size.zero. That zero is stored
+        // permanently and collapses the circular indicator to 0x0 (invisible)
+        // — the cause of the "circle never appears without a debugger" bug.
+        var screenSize = MediaQuery.sizeOf(context);
         return GestureDetector(
           child: viewModel.hasInfo
               ? _circularProgressView(
-                  viewModel, viewModel.isBerView, screenSize!)
+                  viewModel, viewModel.isBerView, screenSize)
               : _noSignalView(context),
         );
       },
