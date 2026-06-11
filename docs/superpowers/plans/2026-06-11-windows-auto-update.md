@@ -1119,7 +1119,9 @@ Future<void> maybeShowUpdateDialog(
     if (!context.mounted) {
       return;
     }
-    await showDialog<void>(
+    // Scheduled, not awaited: showDialog's future resolves only when the
+    // dialog pops, and this gate has nothing left to do once it is shown.
+    unawaited(showDialog<void>(
       context: context,
       barrierDismissible: false,
       builder: (_) => UpdateDialog(
@@ -1128,7 +1130,7 @@ Future<void> maybeShowUpdateDialog(
         isInstallDirWritable: isInstallDirWritable,
         grantInstallDirAccess: grantInstallDirAccess,
       ),
-    );
+    ));
   } catch (e) {
     _log.fine('Update check skipped: $e');
   }
