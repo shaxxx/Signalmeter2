@@ -956,7 +956,7 @@ class _UpdateDialogState extends State<UpdateDialog> {
         return [
           TextButton(
             onPressed: () => Navigator.of(context).pop(),
-            child: Text(messages.updateActionClose),
+            child: Text(messages.close),
           ),
         ];
     }
