@@ -21,6 +21,8 @@ Future<void> maybeShowUpdateDialog(
   DesktopUpdater? updater,
   bool? isWindows,
   Duration timeout = const Duration(seconds: 5),
+  // The two seams below are forwarded to UpdateDialog so widget tests can
+  // stub the filesystem probe; production call sites use the defaults.
   Future<bool> Function() isInstallDirWritable =
       install_dir_access.isInstallDirWritable,
   Future<bool> Function() grantInstallDirAccess =
@@ -51,8 +53,12 @@ Future<void> maybeShowUpdateDialog(
         isInstallDirWritable: isInstallDirWritable,
         grantInstallDirAccess: grantInstallDirAccess,
       ),
+    ).catchError(
+      // A late rejection (e.g. navigator torn down at shutdown) must not
+      // surface as an unhandled zone error.
+      (Object e) => _log.fine('Update dialog closed abnormally: $e'),
     ));
   } catch (e) {
-    _log.fine('Update check skipped: $e');
+    _log.warning('Update check skipped: $e');
   }
 }
