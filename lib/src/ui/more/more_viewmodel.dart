@@ -10,6 +10,7 @@ import 'package:enigma_signal_meter/src/redux/messages/error_messages_events.dar
 import 'package:enigma_signal_meter/src/redux/messages/info_messages_events.dart';
 import 'package:enigma_signal_meter/src/redux/messages/warning_messages_events.dart';
 import 'package:enigma_signal_meter/src/utils/stream_manager.dart';
+import 'package:enigma_signal_meter/src/utils/vlc_launcher.dart';
 
 import 'package:collection/collection.dart';
 import 'package:redux/redux.dart';
@@ -149,6 +150,8 @@ class MoreViewModel {
         type: 'video/*',
       );
       await intent.launch();
+    } else if (Platform.isWindows) {
+      await VlcLauncher.playStream(streamUri);
     } else {
       var iOSUri = 'vlc-x-callback://x-callback-url/stream?url=$streamUri';
       if (await canLaunchUrl(Uri.parse(iOSUri))) {
