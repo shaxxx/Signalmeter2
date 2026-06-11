@@ -522,3 +522,5 @@ Note: `CHANGES.TXT` has pre-existing uncommitted edits from the 1.1.2 release-no
 ## Out of scope (per spec — do not implement)
 
 MSIX/Microsoft Store packaging, installer, code signing, window size/position persistence, keyboard shortcuts, wide-screen layouts, macOS/Linux, CI for Windows builds.
+
+Packaging-phase note (from Task 3 review): the generated `app_icon.ico` has a single 256×256 frame; regenerate as multi-size (16/24/32/48/64/128/256, e.g. via ImageMagick `-define icon:auto-resize`) for crisp small-icon contexts when packaging.
