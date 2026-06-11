@@ -1,9 +1,7 @@
-- Send messages to the receiver
-- French translation (thnx to @pr2 from OpenPli forum)
-- Dutch translation (thnx to Voorzitter from OpenPli)
-- Spanish translation (thnx to @jpuigs from OpenPli forum)
-- Catalan translation (thnx to @jpuigs from OpenPli forum)
-- Italian translation
-- German translation
-- Chinese translation
-- Russian translation
+- Rebuilt on the latest Flutter for better speed and stability; now targets Android 16
+- Fixed crashes on startup, in the full-screen chart, and during connect/disconnect
+- Fixed circular signal indicator not showing
+- Fixed adding a new profile overwriting the existing one
+- Fixed tapping a profile opening settings instead of expanding it
+- Fixed settings screen sometimes not appearing
+- Polished charts, progress bars and refreshed app icons
