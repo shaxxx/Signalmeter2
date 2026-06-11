@@ -18,7 +18,8 @@
 - The app is portrait-only on mobile; the Windows window mimics a phone: default 450×800 logical px, minimum 360×640.
 - All commands below are PowerShell, run from the repo root `c:\Users\isako\source\repos\Signalmeter2`.
 - The working tree already has uncommitted changes to `CHANGES.TXT` and `pubspec.yaml` (unrelated release notes work). **Always `git add` specific files, never `git add -A`.**
-- `flutter analyze` must stay clean and `flutter test` green after every task.
+- `flutter analyze` has a pre-existing baseline of 56 info/warning items (zero errors). "Analyze clean" below means **no new issues relative to that baseline**. `flutter test` (6 tests) must stay green after every task.
+- Existing tests live under `test/unit/` and `test/widget/` — new unit tests go in `test/unit/utils/`.
 - API-drift note: the `win32` package occasionally renames constants between majors. If `KF_FLAG_DEFAULT` or `NULL` is missing after `pub add`, substitute literal `0` for both — same values.
 
 ---
@@ -174,7 +175,7 @@ git commit -m "feat(windows): generate Windows app icon"
 
 **Files:**
 - Create: `lib/src/utils/screenshot_saver.dart`
-- Create: `test/screenshot_saver_test.dart`
+- Create: `test/unit/utils/screenshot_saver_test.dart`
 - Modify: `lib/src/ui/screenshot/screenshot_view.dart:13` (imports) and `:81-101` (save button)
 - Modify: `pubspec.yaml` (+ `win32`, `ffi`)
 
@@ -185,7 +186,7 @@ Expected: both resolve and land in `dependencies:` in `pubspec.yaml`. (Both are 
 
 - [ ] **Step 2: Write the failing test**
 
-Create `test/screenshot_saver_test.dart`:
+Create `test/unit/utils/screenshot_saver_test.dart`:
 
 ```dart
 import 'dart:io';
@@ -243,7 +244,7 @@ void main() {
 
 - [ ] **Step 3: Run test to verify it fails**
 
-Run: `flutter test test/screenshot_saver_test.dart`
+Run: `flutter test test/unit/utils/screenshot_saver_test.dart`
 Expected: FAIL — compilation error, `screenshot_saver.dart` does not exist.
 
 - [ ] **Step 4: Implement `ScreenshotSaver`**
@@ -348,7 +349,7 @@ class ScreenshotSaver {
 
 - [ ] **Step 5: Run test to verify it passes**
 
-Run: `flutter test test/screenshot_saver_test.dart`
+Run: `flutter test test/unit/utils/screenshot_saver_test.dart`
 Expected: PASS (4 tests, the `windowsPicturesPath` one runs because the dev machine is Windows).
 
 - [ ] **Step 6: Wire into the screenshot view**
@@ -405,7 +406,7 @@ Note: success still dispatches the existing `ScreenshotSavedInfoMessageEvent` ("
 - [ ] **Step 7: Analyze and run full test suite**
 
 Run: `flutter analyze && flutter test`
-Expected: `No issues found!` and all tests pass.
+Expected: no new analyzer issues beyond the 56-item baseline, and all tests pass.
 
 - [ ] **Step 8: Manual verify on Windows**
 
@@ -414,7 +415,7 @@ Run: `flutter run -d windows`, connect to a receiver profile, open the screensho
 - [ ] **Step 9: Commit**
 
 ```powershell
-git add pubspec.yaml pubspec.lock lib/src/utils/screenshot_saver.dart test/screenshot_saver_test.dart lib/src/ui/screenshot/screenshot_view.dart
+git add pubspec.yaml pubspec.lock lib/src/utils/screenshot_saver.dart test/unit/utils/screenshot_saver_test.dart lib/src/ui/screenshot/screenshot_view.dart
 git commit -m "feat(windows): save screenshots to the Pictures folder"
 ```
 
@@ -424,7 +425,7 @@ git commit -m "feat(windows): save screenshots to the Pictures folder"
 
 **Files:**
 - Create: `lib/src/utils/vlc_launcher.dart`
-- Create: `test/vlc_launcher_test.dart`
+- Create: `test/unit/utils/vlc_launcher_test.dart`
 - Modify: `lib/src/ui/more/more_viewmodel.dart:144-160` (the platform branch) and imports
 - Modify: `pubspec.yaml` (+ `win32_registry`)
 
@@ -435,7 +436,7 @@ Expected: resolves and lands in `dependencies:`.
 
 - [ ] **Step 2: Write the failing test**
 
-Create `test/vlc_launcher_test.dart`:
+Create `test/unit/utils/vlc_launcher_test.dart`:
 
 ```dart
 import 'package:enigma_signal_meter/src/utils/vlc_launcher.dart';
@@ -495,7 +496,7 @@ void main() {
 
 - [ ] **Step 3: Run test to verify it fails**
 
-Run: `flutter test test/vlc_launcher_test.dart`
+Run: `flutter test test/unit/utils/vlc_launcher_test.dart`
 Expected: FAIL — compilation error, `vlc_launcher.dart` does not exist.
 
 - [ ] **Step 4: Implement `VlcLauncher`**
@@ -590,7 +591,7 @@ API-drift note: in `win32_registry` 2.x the read call is `LOCAL_MACHINE.open(pat
 
 - [ ] **Step 5: Run test to verify it passes**
 
-Run: `flutter test test/vlc_launcher_test.dart`
+Run: `flutter test test/unit/utils/vlc_launcher_test.dart`
 Expected: PASS (5 tests).
 
 - [ ] **Step 6: Wire into the More menu viewmodel**
@@ -636,7 +637,7 @@ with:
 - [ ] **Step 7: Analyze and run full test suite**
 
 Run: `flutter analyze && flutter test`
-Expected: `No issues found!` and all tests pass.
+Expected: no new analyzer issues beyond the 56-item baseline, and all tests pass.
 
 - [ ] **Step 8: Manual verify on Windows**
 
@@ -645,7 +646,7 @@ Run: `flutter run -d windows`, connect to a receiver with streaming enabled, cho
 - [ ] **Step 9: Commit**
 
 ```powershell
-git add pubspec.yaml pubspec.lock lib/src/utils/vlc_launcher.dart test/vlc_launcher_test.dart lib/src/ui/more/more_viewmodel.dart
+git add pubspec.yaml pubspec.lock lib/src/utils/vlc_launcher.dart test/unit/utils/vlc_launcher_test.dart lib/src/ui/more/more_viewmodel.dart
 git commit -m "feat(windows): play streams in VLC with default-handler fallback"
 ```
 
