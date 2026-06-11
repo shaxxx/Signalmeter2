@@ -1289,11 +1289,14 @@ class DesktopUpdaterClient implements DesktopUpdater {
   }
 
   Version _parseVersion(String raw) {
+    final trimmed = raw.trim();
     try {
-      return Version.parse(raw.trim());
+      return Version.parse(trimmed);
     } catch (_) {
       // Non-semver string (e.g. a bare build number) — degrade gracefully.
-      return Version(0, 0, 0, build: raw.trim());
+      // Keep only build-legal characters so the fallback cannot itself throw.
+      final safe = trimmed.replaceAll(RegExp(r'[^0-9A-Za-z\-.]'), '-');
+      return safe.isEmpty ? Version(0, 0, 0) : Version(0, 0, 0, build: safe);
     }
   }
 }
@@ -1449,6 +1452,7 @@ dart pub global run dhttpd --path "$env:TEMP\esm-serve" --port 8080
 - [ ] "Restart" exits the app, swaps files, relaunches
 - [ ] After relaunch, About screen shows 1.1.3 — and the dialog does NOT reappear (5002 is now current)
 - [ ] Optional ACL path: copy the install folder into a protected location (e.g. `C:\Program Files\esm-test`), relaunch, confirm the Allow button + UAC flow grants access and the update applies
+- [ ] Optional (from Task 6 review): a deletion-only release variant — manifest entry whose new version only removes a file (no changed files) — still stages and applies correctly
 
 - [ ] **Step 6: Revert temporaries**
 
