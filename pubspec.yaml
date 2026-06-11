@@ -70,6 +70,10 @@ flutter_launcher_icons:
   ios: true # can specify file name here e.g. "My-Launcher-Icon"
   adaptive_icon_background: "#64ffda" # only available for Android 8.0 devices and above
   adaptive_icon_foreground: "assets/icons/esm_icon_432_432_adaptive.png" # only available for Android 8.0 devices and above
+  windows:
+    generate: true
+    image_path: "assets/icons/esm_icon_1024_1024_iOS.png"
+    icon_size: 256
 
 # For information on the generic Dart part of this file, see the
 # following page: https://www.dartlang.org/tools/pub/pubspec
