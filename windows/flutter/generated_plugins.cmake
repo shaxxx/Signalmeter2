@@ -3,6 +3,7 @@
 #
 
 list(APPEND FLUTTER_PLUGIN_LIST
+  desktop_updater
   flutter_tts
   gal
   permission_handler_windows
