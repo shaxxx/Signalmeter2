@@ -34,6 +34,7 @@ add_definitions(-DUNICODE -D_UNICODE)
 
 # Suppress MSVC deprecation error for <experimental/coroutine> used by some
 # plugins (gal, permission_handler_windows) with the /await flag on VS 2026+.
+# Remove once gal/permission_handler_windows drop <experimental/coroutine>.
 add_definitions(-D_SILENCE_EXPERIMENTAL_COROUTINE_DEPRECATION_WARNINGS)
 
 # Compilation settings that should be applied to most targets.
