@@ -32,16 +32,21 @@ mobile code paths untouched — lowest regression risk.
 
 ## Plugin compatibility audit
 
-Already Windows-capable: `wakelock_plus`, `url_launcher`, `shared_preferences`,
-`package_info_plus`, `share_plus`, `flutter_tts`.
+Already Windows-capable: `gal` (verified: its Windows implementation saves via
+WinRT `KnownFolders::PicturesLibrary()`), `wakelock_plus`, `url_launcher`,
+`shared_preferences`, `package_info_plus`, `share_plus`, `flutter_tts`.
 
 Pure Dart/Flutter (no platform code): `enigma_web`, `redux`/`flutter_redux`/
 `flutter_redux_navigation`, `fl_chart`, `photo_view`, `showcaseview`,
 `percent_indicator`, `auto_size_text`, `another_flushbar`, `xml`, `intl`.
 
-No Windows support, but never invoked on Windows (guarded or Android-build-only),
-so inert at runtime and fine at compile time: `gal`, `android_intent_plus`,
-`permission_handler`.
+Never invoked on Windows (guarded or Android-build-only), so inert at runtime:
+`android_intent_plus`, `permission_handler`.
+
+Build note: the `gal` and `permission_handler` Windows plugins use legacy
+`/await` MSVC coroutines; VS 2026 requires
+`-D_SILENCE_EXPERIMENTAL_COROUTINE_DEPRECATION_WARNINGS` in
+`windows/CMakeLists.txt` (added during scaffolding).
 
 ## Section 1 — Platform enablement & app shell
 
@@ -64,13 +69,11 @@ so inert at runtime and fine at compile time: `gal`, `android_intent_plus`,
 (the square, non-adaptive variant), generating
 `windows/runner/resources/app_icon.ico`.
 
-**New Dart dependency: `win32`** (pure-Dart FFI bindings; no native toolchain
-impact). Used for:
-1. `SHGetKnownFolderPath(FOLDERID_Pictures)` — resolves the real Pictures
-   folder. `%USERPROFILE%\Pictures` alone is unreliable because OneDrive known-
-   folder redirection is common on Windows 11; the env-var path remains as a
-   fallback.
-2. Reading the VLC install path from the registry.
+**New Dart dependency: `win32_registry`** (pure-Dart FFI bindings; no native
+toolchain impact). Used only for reading the VLC install path from the
+registry. (Originally `win32` was also planned for Pictures-folder resolution;
+that became unnecessary once `gal`'s native Windows support was verified —
+see 2.1.)
 
 **Dart entry point.** No changes to `lib/main.dart` — verified: the
 `SystemChrome.setSystemUIOverlayStyle` call is a no-op on desktop and there are
@@ -80,19 +83,15 @@ no orientation locks.
 
 ### 2.1 Screenshot save → Pictures folder
 
-Extract the save logic from `screenshot_view.dart` (currently lines 88–100)
-into a new util `lib/src/utils/screenshot_saver.dart` exposing a single
-`saveScreenshot(bytes, fileName)`:
-
-- **Mobile path (unchanged):** `Gal.hasAccess` / `Gal.requestAccess` /
-  `Gal.putImageBytes` — the exact code there today.
-- **Windows path:** resolve Pictures via `SHGetKnownFolderPath` (fallback
-  `%USERPROFILE%\Pictures`), write `<fileName>.jpg`. On name collision append
-  ` (1)`, ` (2)`, … per Windows convention.
-- Success → the existing `ScreenshotSavedInfoMessageEvent` fires (same message
-  text on all platforms, per decision above).
-- Failure → silent, UI unchanged (exact parity with the current `GalException`
-  handling on mobile).
+**No code change needed** (verified during implementation): `gal` ships a
+Windows implementation that saves via WinRT `KnownFolders::PicturesLibrary()`
+— exactly the chosen auto-save-to-Pictures behavior, with OneDrive known-folder
+redirection handled by Windows. The existing
+`Gal.hasAccess`/`requestAccess`/`putImageBytes` code and the existing
+`ScreenshotSavedInfoMessageEvent` message work unchanged on all platforms.
+Verified by the manual smoke checklist. (This supersedes the original
+`screenshot_saver.dart` + `win32`/`SHGetKnownFolderPath` design — that
+dependency is no longer needed.)
 
 ### 2.2 Stream playback → VLC with default-handler fallback
 
@@ -107,10 +106,15 @@ line 145), placed before the existing iOS `else`:
 - Not found → `launchUrl(streamUri)` and let the default handler take it — no
   error message. If `launchUrl` itself fails, log and do nothing.
 
-### 2.3 Existing platform checks — audited, no behavior changes
+### 2.3 Existing platform checks — audited
 
-- `home_view.dart` exit-FAB (`Platform.isAndroid`) → correctly absent on
-  Windows; the window has a close button.
+- **`home_view.dart` — change required (found during testing):** the
+  `Platform.isAndroid`-gated FAB (lines 116 and 103) is the **add-profile (+)
+  button**, and the iOS alternative in `profiles_view.dart` is
+  `Platform.isIOS`-gated — so Windows had no way to add a profile at all.
+  Fix: widen both `home_view.dart` conditions to
+  `Platform.isAndroid || Platform.isWindows` so Windows gets the Material FAB
+  (and its showcase). `profiles_view.dart` stays iOS-only.
 - `PlatformAdaptiveProgressIndicator` (`Platform.isIOS`) → Material spinner on
   Windows. Correct for a Material-themed app.
 - `profiles_view.dart` `Platform.isIOS` branch → non-iOS branch is correct.
@@ -124,9 +128,8 @@ line 145), placed before the existing iOS `else`:
 **Testing.**
 - `flutter analyze` clean; existing test suite passes (mobile code paths are
   untouched by design, so green tests demonstrate zero mobile regressions).
-- New unit tests for testable logic in the two new utils: filename-collision
-  suffixing in `screenshot_saver`; VLC path discovery with injectable
-  probe/registry seams.
+- New unit tests for the testable logic in the new util: VLC path discovery
+  with injectable probe/registry seams.
 - Manual smoke checklist on Windows against a real receiver: launch, connect
   profile, signal monitoring + chart, TTS announcement, screenshot
   fetch/save/share, stream-to-VLC (and fallback with VLC absent), wakelock

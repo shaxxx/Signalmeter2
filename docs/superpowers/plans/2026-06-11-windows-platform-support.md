@@ -4,9 +4,9 @@
 
 **Goal:** Add Windows desktop as a fully functional build target for Enigma Signal Meter (no store packaging yet).
 
-**Architecture:** Scaffold the standard Flutter Windows runner, then handle the three platform divergence points with inline `Platform.isWindows` branches backed by two small utils: `ScreenshotSaver` (gallery on mobile / Pictures folder on Windows) and `VlcLauncher` (VLC discovery + default-handler fallback). Mobile code paths stay byte-for-byte equivalent.
+**Architecture:** Scaffold the standard Flutter Windows runner, then handle the platform divergence points with inline `Platform.isWindows` branches: widen the add-profile FAB gate to include Windows, and add a `VlcLauncher` util (VLC discovery + default-handler fallback) for streaming. Screenshot save needs no change — `gal` ships a native Windows implementation that saves to the Pictures library (verified in its source). Mobile code paths stay logically equivalent.
 
-**Tech Stack:** Flutter (Windows desktop), C++ runner template, `win32` + `ffi` (Pictures known-folder), `win32_registry` (VLC install path), existing plugins (`gal`, `share_plus`, `url_launcher`, `wakelock_plus`, `flutter_tts` — all verified Windows-capable or correctly guarded).
+**Tech Stack:** Flutter (Windows desktop), C++ runner template, `win32_registry` (VLC install path), existing plugins (`gal`, `share_plus`, `url_launcher`, `wakelock_plus`, `flutter_tts` — all verified Windows-capable or correctly guarded).
 
 **Spec:** `docs/superpowers/specs/2026-06-11-windows-platform-support-design.md`
 
@@ -20,7 +20,7 @@
 - The working tree already has uncommitted changes to `CHANGES.TXT` and `pubspec.yaml` (unrelated release notes work). **Always `git add` specific files, never `git add -A`.**
 - `flutter analyze` has a pre-existing baseline of 56 info/warning items (zero errors). "Analyze clean" below means **no new issues relative to that baseline**. `flutter test` (6 tests) must stay green after every task.
 - Existing tests live under `test/unit/` and `test/widget/` — new unit tests go in `test/unit/utils/`.
-- API-drift note: the `win32` package occasionally renames constants between majors. If `KF_FLAG_DEFAULT` or `NULL` is missing after `pub add`, substitute literal `0` for both — same values.
+- `windows/CMakeLists.txt` carries a `-D_SILENCE_EXPERIMENTAL_COROUTINE_DEPRECATION_WARNINGS` define (added in Task 1): the `gal`/`permission_handler` Windows plugins use legacy `/await` coroutines that VS 2026's MSVC otherwise rejects. Do not remove it.
 
 ---
 
@@ -171,256 +171,66 @@ git commit -m "feat(windows): generate Windows app icon"
 
 ---
 
-### Task 4: ScreenshotSaver — gallery on mobile, Pictures folder on Windows
+### Task 4: Add-profile button on Windows
 
 **Files:**
-- Create: `lib/src/utils/screenshot_saver.dart`
-- Create: `test/unit/utils/screenshot_saver_test.dart`
-- Modify: `lib/src/ui/screenshot/screenshot_view.dart:13` (imports) and `:81-101` (save button)
-- Modify: `pubspec.yaml` (+ `win32`, `ffi`)
+- Modify: `lib/src/ui/home/home_view.dart` (two `Platform.isAndroid` conditions, ~lines 103 and 116)
 
-- [ ] **Step 1: Add dependencies**
+**Background:** the add-profile (+) FAB is gated `Platform.isAndroid`, and the iOS alternative (the "ADD PROFILE" text button in `profiles_view.dart`) is gated `Platform.isIOS`. On Windows neither renders, so a fresh install cannot create a profile (found during Task 1 verification). Fix: Windows joins the Android branch — the Material FAB suits the app's Material theme. `profiles_view.dart` stays iOS-only.
 
-Run: `flutter pub add win32 ffi`
-Expected: both resolve and land in `dependencies:` in `pubspec.yaml`. (Both are pure-Dart FFI bindings; they compile on Android/iOS too and are only *invoked* behind `Platform.isWindows` guards.)
+No TDD for this task: both conditions read `dart:io` `Platform` directly, which cannot be faked in widget tests without a refactor that is out of scope. Covered by manual verification.
 
-- [ ] **Step 2: Write the failing test**
+- [ ] **Step 1: Widen the FAB condition**
 
-Create `test/unit/utils/screenshot_saver_test.dart`:
+In `lib/src/ui/home/home_view.dart` find:
 
 ```dart
-import 'dart:io';
-
-import 'package:enigma_signal_meter/src/utils/screenshot_saver.dart';
-import 'package:flutter_test/flutter_test.dart';
-
-void main() {
-  late Directory tempDir;
-
-  setUp(() async {
-    tempDir = await Directory.systemTemp.createTemp('screenshot_saver_test');
-  });
-
-  tearDown(() async {
-    await tempDir.delete(recursive: true);
-  });
-
-  group('collisionFreePath', () {
-    test('returns base name when no file exists', () {
-      final path = ScreenshotSaver.collisionFreePath(tempDir, '12345', '.jpg');
-      expect(path, '${tempDir.path}${Platform.pathSeparator}12345.jpg');
-    });
-
-    test('appends (1) when base name is taken', () {
-      File('${tempDir.path}${Platform.pathSeparator}12345.jpg')
-          .writeAsBytesSync([0]);
-      final path = ScreenshotSaver.collisionFreePath(tempDir, '12345', '.jpg');
-      expect(path, '${tempDir.path}${Platform.pathSeparator}12345 (1).jpg');
-    });
-
-    test('appends (2) when base and (1) are taken', () {
-      File('${tempDir.path}${Platform.pathSeparator}12345.jpg')
-          .writeAsBytesSync([0]);
-      File('${tempDir.path}${Platform.pathSeparator}12345 (1).jpg')
-          .writeAsBytesSync([0]);
-      final path = ScreenshotSaver.collisionFreePath(tempDir, '12345', '.jpg');
-      expect(path, '${tempDir.path}${Platform.pathSeparator}12345 (2).jpg');
-    });
-  });
-
-  group('windowsPicturesPath', () {
-    test(
-      'resolves an existing directory',
-      () {
-        final path = ScreenshotSaver.windowsPicturesPath();
-        expect(path, isNotNull);
-        expect(Directory(path!).existsSync(), isTrue);
-      },
-      skip: !Platform.isWindows ? 'Windows-only API' : false,
-    );
-  });
-}
+          floatingActionButton: Platform.isAndroid
+              ? Showcase(
 ```
 
-- [ ] **Step 3: Run test to verify it fails**
-
-Run: `flutter test test/unit/utils/screenshot_saver_test.dart`
-Expected: FAIL — compilation error, `screenshot_saver.dart` does not exist.
-
-- [ ] **Step 4: Implement `ScreenshotSaver`**
-
-Create `lib/src/utils/screenshot_saver.dart`:
+replace with:
 
 ```dart
-import 'dart:ffi';
-import 'dart:io';
-import 'dart:typed_data';
-
-import 'package:ffi/ffi.dart';
-import 'package:gal/gal.dart';
-import 'package:logging/logging.dart';
-import 'package:win32/win32.dart';
-
-/// Saves receiver screenshots to the platform image library: the photo
-/// gallery on Android/iOS, the user's Pictures folder on Windows.
-class ScreenshotSaver {
-  static final Logger _log = Logger('ScreenshotSaver');
-
-  /// Returns true if the screenshot was saved. Failures are silent
-  /// (logged only), matching the pre-existing mobile behavior.
-  static Future<bool> save(Uint8List bytes, String fileName) {
-    if (Platform.isWindows) {
-      return _saveToPictures(bytes, fileName);
-    }
-    return _saveToGallery(bytes, fileName);
-  }
-
-  static Future<bool> _saveToGallery(Uint8List bytes, String fileName) async {
-    try {
-      if (!await Gal.hasAccess()) {
-        await Gal.requestAccess();
-      }
-      await Gal.putImageBytes(bytes, name: fileName);
-      return true;
-    } on GalException catch (_) {
-      // permission denied or save failed; leave UI unchanged
-      return false;
-    }
-  }
-
-  static Future<bool> _saveToPictures(Uint8List bytes, String fileName) async {
-    try {
-      final picturesPath = windowsPicturesPath();
-      if (picturesPath == null) {
-        _log.warning('Could not resolve the Pictures folder');
-        return false;
-      }
-      final path =
-          collisionFreePath(Directory(picturesPath), fileName, '.jpg');
-      await File(path).writeAsBytes(bytes, flush: true);
-      return true;
-    } catch (e) {
-      _log.warning('Failed to save screenshot: $e');
-      return false;
-    }
-  }
-
-  /// Returns a path inside [dir] for [baseName] + [extension] that does not
-  /// collide with an existing file, appending " (1)", " (2)", … as needed.
-  static String collisionFreePath(
-      Directory dir, String baseName, String extension) {
-    var candidate = '${dir.path}${Platform.pathSeparator}$baseName$extension';
-    var counter = 1;
-    while (File(candidate).existsSync()) {
-      candidate =
-          '${dir.path}${Platform.pathSeparator}$baseName ($counter)$extension';
-      counter++;
-    }
-    return candidate;
-  }
-
-  /// Resolves the user's Pictures folder via SHGetKnownFolderPath (handles
-  /// OneDrive known-folder redirection), falling back to
-  /// %USERPROFILE%\Pictures. Windows only.
-  static String? windowsPicturesPath() {
-    final folderId = GUIDFromString(FOLDERID_Pictures);
-    final pathPtr = calloc<Pointer<Utf16>>();
-    try {
-      final hr =
-          SHGetKnownFolderPath(folderId, KF_FLAG_DEFAULT, NULL, pathPtr);
-      if (SUCCEEDED(hr)) {
-        final path = pathPtr.value.toDartString();
-        CoTaskMemFree(pathPtr.value.cast());
-        return path;
-      }
-    } finally {
-      free(folderId);
-      free(pathPtr);
-    }
-    final profile = Platform.environment['USERPROFILE'];
-    if (profile == null) {
-      return null;
-    }
-    final fallback = '$profile\\Pictures';
-    return Directory(fallback).existsSync() ? fallback : null;
-  }
-}
+          floatingActionButton: Platform.isAndroid || Platform.isWindows
+              ? Showcase(
 ```
 
-- [ ] **Step 5: Run test to verify it passes**
+- [ ] **Step 2: Widen the showcase-target condition**
 
-Run: `flutter test test/unit/utils/screenshot_saver_test.dart`
-Expected: PASS (4 tests, the `windowsPicturesPath` one runs because the dev machine is Windows).
-
-- [ ] **Step 6: Wire into the screenshot view**
-
-In `lib/src/ui/screenshot/screenshot_view.dart`:
-
-Replace the import:
+Same file, find:
 
 ```dart
-import 'package:gal/gal.dart';
+          if (Platform.isAndroid) {
+            ShowCaseWidget.of(context).startShowCase([_fabShowcaseKey]);
+          } else {
 ```
 
-with:
+replace with:
 
 ```dart
-import 'package:enigma_signal_meter/src/utils/screenshot_saver.dart';
+          if (Platform.isAndroid || Platform.isWindows) {
+            ShowCaseWidget.of(context).startShowCase([_fabShowcaseKey]);
+          } else {
 ```
 
-(Keep the import block alphabetized: the new import sorts with the other `package:enigma_signal_meter/...` imports near the top.)
-
-Replace the save button's `onPressed` body:
-
-```dart
-                      try {
-                        if (!await Gal.hasAccess()) {
-                          await Gal.requestAccess();
-                        }
-                        await Gal.putImageBytes(
-                          Uint8List.fromList(bytes),
-                          name: fileName,
-                        );
-                        StoreProvider.of<AppState>(context)
-                            .dispatch(ScreenshotSavedInfoMessageEvent());
-                      } on GalException catch (_) {
-                        // permission denied or save failed; leave UI unchanged
-                      }
-```
-
-with:
-
-```dart
-                      final saved = await ScreenshotSaver.save(
-                        Uint8List.fromList(bytes),
-                        fileName,
-                      );
-                      if (saved && context.mounted) {
-                        StoreProvider.of<AppState>(context)
-                            .dispatch(ScreenshotSavedInfoMessageEvent());
-                      }
-```
-
-Note: success still dispatches the existing `ScreenshotSavedInfoMessageEvent` ("saved to gallery" message) on all platforms — per spec, no new i18n key.
-
-- [ ] **Step 7: Analyze and run full test suite**
+- [ ] **Step 3: Analyze and run full test suite**
 
 Run: `flutter analyze && flutter test`
 Expected: no new analyzer issues beyond the 56-item baseline, and all tests pass.
 
-- [ ] **Step 8: Manual verify on Windows**
+- [ ] **Step 4: Manual verify on Windows**
 
-Run: `flutter run -d windows`, connect to a receiver profile, open the screenshot screen, press save. Expected: the "saved" flushbar appears and a `<unix-timestamp>.jpg` lands in your Pictures folder. Press save again: a ` (1)` variant appears. Quit.
+Build and launch the debug exe. Expected: with no connection, the (+) FAB is visible bottom-right on the home screen; clicking it opens the profile editor; on a first launch the showcase bubble points at the FAB.
 
-- [ ] **Step 9: Commit**
+- [ ] **Step 5: Commit**
 
 ```powershell
-git add pubspec.yaml pubspec.lock lib/src/utils/screenshot_saver.dart test/unit/utils/screenshot_saver_test.dart lib/src/ui/screenshot/screenshot_view.dart
-git commit -m "feat(windows): save screenshots to the Pictures folder"
+git add lib/src/ui/home/home_view.dart
+git commit -m "fix(windows): show add-profile FAB on Windows"
 ```
 
 ---
-
 ### Task 5: VlcLauncher — stream playback on Windows
 
 **Files:**
