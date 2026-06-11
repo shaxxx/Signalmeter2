@@ -322,12 +322,18 @@ Future<bool> grantInstallDirAccess() async {
     _log.warning('USERNAME not set; cannot grant access');
     return false;
   }
+  // Apostrophes would terminate the single-quoted PowerShell string below;
+  // '' is PowerShell's escape for a literal ' inside one.
+  final escapedDir = dir.replaceAll("'", "''");
+  final escapedUser = user.replaceAll("'", "''");
   try {
     final process = await Process.start('powershell', [
       '-NoProfile',
       '-Command',
+      // (OI)(CI) = object + container inherit, so the Modify grant reaches
+      // existing and future files in the install folder.
       'Start-Process icacls -Verb RunAs -Wait -ArgumentList '
-          '\'"$dir" /grant "$user":(OI)(CI)M\'',
+          '\'"$escapedDir" /grant "$escapedUser":(OI)(CI)M\'',
     ]);
     await process.exitCode;
   } catch (e) {
