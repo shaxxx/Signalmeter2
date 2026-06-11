@@ -5,3 +5,4 @@
 - Fixed tapping a profile opening settings instead of expanding it
 - Fixed settings screen sometimes not appearing
 - Polished charts, progress bars and refreshed app icons
+- Added Windows desktop support: portrait window, screenshots save to Pictures, streams play in VLC
