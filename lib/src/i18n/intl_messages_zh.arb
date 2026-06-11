@@ -207,5 +207,16 @@
       "port": {}
     }
   },
-  "yes": "是"
+  "yes": "是",
+  "updateAvailableTitle": "有可用更新",
+  "updateAvailableBody": "新版本 {version} 可用。",
+  "updateActionUpdate": "更新",
+  "updateActionLater": "稍后",
+  "updateDownloading": "正在下载更新…",
+  "updateRestartBody": "更新已下载，重启后生效。",
+  "updateActionRestart": "重启",
+  "updateFailedBody": "更新失败。",
+  "updatePermissionBody": "应用文件夹不可写。请授予权限以启用更新。",
+  "updateActionGrant": "允许",
+  "updatePermissionFailedBody": "未授予权限。请将应用移至可写文件夹，或以管理员身份运行一次。"
 }

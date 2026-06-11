@@ -607,4 +607,49 @@ class Messages {
         'Time',
         name: 'time',
       );
+  String get updateAvailableTitle => Intl.message(
+        'Update available',
+        name: 'updateAvailableTitle',
+      );
+  String updateAvailableBody(String version) => Intl.message(
+        'Version $version is available.',
+        args: [version],
+        name: 'updateAvailableBody',
+      );
+  String get updateActionUpdate => Intl.message(
+        'Update',
+        name: 'updateActionUpdate',
+      );
+  String get updateActionLater => Intl.message(
+        'Later',
+        name: 'updateActionLater',
+      );
+  String get updateDownloading => Intl.message(
+        'Downloading update…',
+        name: 'updateDownloading',
+      );
+  String get updateRestartBody => Intl.message(
+        'Update downloaded. Restart to apply.',
+        name: 'updateRestartBody',
+      );
+  String get updateActionRestart => Intl.message(
+        'Restart',
+        name: 'updateActionRestart',
+      );
+  String get updateFailedBody => Intl.message(
+        'Update failed.',
+        name: 'updateFailedBody',
+      );
+  String get updatePermissionBody => Intl.message(
+        'The app folder is not writable. Grant permission to enable updates.',
+        name: 'updatePermissionBody',
+      );
+  String get updateActionGrant => Intl.message(
+        'Allow',
+        name: 'updateActionGrant',
+      );
+  String get updatePermissionFailedBody => Intl.message(
+        'Permission was not granted. Move the app to a writable folder, or run it once as administrator.',
+        name: 'updatePermissionFailedBody',
+      );
 }

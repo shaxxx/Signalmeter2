@@ -41,9 +41,11 @@ class MessageLookup extends MessageLookupByLibrary {
 
   static m9(profileName) => "Restart user interface on ${profileName}?";
 
-  static m10(address, port) => "${address}:${port} seems to be unreachable.";
+  static m10(version) => "Version ${version} is available.";
 
-  static m11(port) => "Using alternative port ${port}";
+  static m11(address, port) => "${address}:${port} seems to be unreachable.";
+
+  static m12(port) => "Using alternative port ${port}";
 
   @override
   final Map<String, dynamic> messages = _notInlinedMessages(_notInlinedMessages);
@@ -187,14 +189,25 @@ class MessageLookup extends MessageLookupByLibrary {
     'tryAgain': MessageLookupByLibrary.simpleMessage('Try again'),
     'unknownError': MessageLookupByLibrary.simpleMessage('Unknown error.'),
     'upDownArrows': MessageLookupByLibrary.simpleMessage('Up / Down arrows'),
+    'updateActionGrant': MessageLookupByLibrary.simpleMessage('Allow'),
+    'updateActionLater': MessageLookupByLibrary.simpleMessage('Later'),
+    'updateActionRestart': MessageLookupByLibrary.simpleMessage('Restart'),
+    'updateActionUpdate': MessageLookupByLibrary.simpleMessage('Update'),
+    'updateAvailableBody': m10,
+    'updateAvailableTitle': MessageLookupByLibrary.simpleMessage('Update available'),
+    'updateDownloading': MessageLookupByLibrary.simpleMessage('Downloading update…'),
+    'updateFailedBody': MessageLookupByLibrary.simpleMessage('Update failed.'),
+    'updatePermissionBody': MessageLookupByLibrary.simpleMessage('The app folder is not writable. Grant permission to enable updates.'),
+    'updatePermissionFailedBody': MessageLookupByLibrary.simpleMessage('Permission was not granted. Move the app to a writable folder, or run it once as administrator.'),
+    'updateRestartBody': MessageLookupByLibrary.simpleMessage('Update downloaded. Restart to apply.'),
     'useDbAsPrimaryLevel': MessageLookupByLibrary.simpleMessage('Use dB as primary level'),
     'version': MessageLookupByLibrary.simpleMessage('Version'),
     'voice': MessageLookupByLibrary.simpleMessage('Voice'),
-    'warnHttpPortClosed': m10,
+    'warnHttpPortClosed': m11,
     'warnSaveTheProfileAnyway': MessageLookupByLibrary.simpleMessage('Save the device anyway?'),
     'warnStreamingPortClosed': MessageLookupByLibrary.simpleMessage('Streaming port seems to be closed.'),
     'warnTranscodingPortClosed': MessageLookupByLibrary.simpleMessage('Transcoding port seems to be closed.'),
-    'warnUsingAlternativePort': m11,
+    'warnUsingAlternativePort': m12,
     'yes': MessageLookupByLibrary.simpleMessage('Yes')
   };
 }

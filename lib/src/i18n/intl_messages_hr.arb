@@ -759,5 +759,16 @@
   "@time": {
     "type": "text",
     "placeholders": {}
-  }
+  },
+  "updateAvailableTitle": "Dostupna nadogradnja",
+  "updateAvailableBody": "Dostupna je verzija {version}.",
+  "updateActionUpdate": "Nadogradi",
+  "updateActionLater": "Kasnije",
+  "updateDownloading": "Preuzimanje nadogradnje…",
+  "updateRestartBody": "Nadogradnja preuzeta. Ponovno pokreni za primjenu.",
+  "updateActionRestart": "Ponovno pokreni",
+  "updateFailedBody": "Nadogradnja nije uspjela.",
+  "updatePermissionBody": "Mapa aplikacije nije zapisiva. Dodijelite dozvolu za omogućavanje nadogradnje.",
+  "updateActionGrant": "Dopusti",
+  "updatePermissionFailedBody": "Dozvola nije dodijeljena. Premjestite aplikaciju u zapisivu mapu ili je jednom pokrenite kao administrator."
 }

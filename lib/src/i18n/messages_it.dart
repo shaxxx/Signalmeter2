@@ -41,9 +41,11 @@ class MessageLookup extends MessageLookupByLibrary {
 
   static m9(profileName) => "Riavviare l\'interfaccia utente su ${profileName}?";
 
-  static m10(address, port) => "${address}:${port} sembra essere irraggiungibile.";
+  static m10(version) => "La versione ${version} è disponibile.";
 
-  static m11(port) => "Utilizzo della porta alternativa ${port}";
+  static m11(address, port) => "${address}:${port} sembra essere irraggiungibile.";
+
+  static m12(port) => "Utilizzo della porta alternativa ${port}";
 
   @override
   final Map<String, dynamic> messages = _notInlinedMessages(_notInlinedMessages);
@@ -187,14 +189,25 @@ class MessageLookup extends MessageLookupByLibrary {
     'tryAgain': MessageLookupByLibrary.simpleMessage('Riprova'),
     'unknownError': MessageLookupByLibrary.simpleMessage('Errore sconosciuto.'),
     'upDownArrows': MessageLookupByLibrary.simpleMessage('Frecce in su / giù'),
+    'updateActionGrant': MessageLookupByLibrary.simpleMessage('Consenti'),
+    'updateActionLater': MessageLookupByLibrary.simpleMessage('Più tardi'),
+    'updateActionRestart': MessageLookupByLibrary.simpleMessage('Riavvia'),
+    'updateActionUpdate': MessageLookupByLibrary.simpleMessage('Aggiorna'),
+    'updateAvailableBody': m10,
+    'updateAvailableTitle': MessageLookupByLibrary.simpleMessage('Aggiornamento disponibile'),
+    'updateDownloading': MessageLookupByLibrary.simpleMessage('Download dell\'aggiornamento…'),
+    'updateFailedBody': MessageLookupByLibrary.simpleMessage('Aggiornamento non riuscito.'),
+    'updatePermissionBody': MessageLookupByLibrary.simpleMessage('La cartella dell\'app non è scrivibile. Concedi il permesso per abilitare gli aggiornamenti.'),
+    'updatePermissionFailedBody': MessageLookupByLibrary.simpleMessage('Permesso non concesso. Sposta l\'app in una cartella scrivibile o eseguila una volta come amministratore.'),
+    'updateRestartBody': MessageLookupByLibrary.simpleMessage('Aggiornamento scaricato. Riavvia per applicarlo.'),
     'useDbAsPrimaryLevel': MessageLookupByLibrary.simpleMessage('Usa dB come livello primario'),
     'version': MessageLookupByLibrary.simpleMessage('Versione'),
     'voice': MessageLookupByLibrary.simpleMessage('Voce'),
-    'warnHttpPortClosed': m10,
+    'warnHttpPortClosed': m11,
     'warnSaveTheProfileAnyway': MessageLookupByLibrary.simpleMessage('Salvare il dispositivo comunque?'),
     'warnStreamingPortClosed': MessageLookupByLibrary.simpleMessage('La porta di streaming sembra essere chiusa.'),
     'warnTranscodingPortClosed': MessageLookupByLibrary.simpleMessage('La porta di transcodifica sembra essere chiusa.'),
-    'warnUsingAlternativePort': m11,
+    'warnUsingAlternativePort': m12,
     'yes': MessageLookupByLibrary.simpleMessage('Sì')
   };
 }

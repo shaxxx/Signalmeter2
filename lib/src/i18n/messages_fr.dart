@@ -41,9 +41,11 @@ class MessageLookup extends MessageLookupByLibrary {
 
   static m9(profileName) => "Redémarrer l\'IGU sur ${profileName}?";
 
-  static m10(address, port) => "${address}:${port} semble être inaccessible.";
+  static m10(version) => "La version ${version} est disponible.";
 
-  static m11(port) => "En utilisant le port alternatif ${port}";
+  static m11(address, port) => "${address}:${port} semble être inaccessible.";
+
+  static m12(port) => "En utilisant le port alternatif ${port}";
 
   @override
   final Map<String, dynamic> messages = _notInlinedMessages(_notInlinedMessages);
@@ -187,14 +189,25 @@ class MessageLookup extends MessageLookupByLibrary {
     'tryAgain': MessageLookupByLibrary.simpleMessage('Essayer à nouveau'),
     'unknownError': MessageLookupByLibrary.simpleMessage('Erreur inconnue.'),
     'upDownArrows': MessageLookupByLibrary.simpleMessage('Flêches Haut / Bas'),
+    'updateActionGrant': MessageLookupByLibrary.simpleMessage('Autoriser'),
+    'updateActionLater': MessageLookupByLibrary.simpleMessage('Plus tard'),
+    'updateActionRestart': MessageLookupByLibrary.simpleMessage('Redémarrer'),
+    'updateActionUpdate': MessageLookupByLibrary.simpleMessage('Mettre à jour'),
+    'updateAvailableBody': m10,
+    'updateAvailableTitle': MessageLookupByLibrary.simpleMessage('Mise à jour disponible'),
+    'updateDownloading': MessageLookupByLibrary.simpleMessage('Téléchargement de la mise à jour…'),
+    'updateFailedBody': MessageLookupByLibrary.simpleMessage('Échec de la mise à jour.'),
+    'updatePermissionBody': MessageLookupByLibrary.simpleMessage('Le dossier de l\'application n\'est pas accessible en écriture. Accordez l\'autorisation pour activer les mises à jour.'),
+    'updatePermissionFailedBody': MessageLookupByLibrary.simpleMessage('Autorisation refusée. Déplacez l\'application vers un dossier accessible en écriture ou exécutez-la une fois en tant qu\'administrateur.'),
+    'updateRestartBody': MessageLookupByLibrary.simpleMessage('Mise à jour téléchargée. Redémarrez pour l\'appliquer.'),
     'useDbAsPrimaryLevel': MessageLookupByLibrary.simpleMessage('Utiliser dB comme niveau primaire'),
     'version': MessageLookupByLibrary.simpleMessage('Version'),
     'voice': MessageLookupByLibrary.simpleMessage('Voix'),
-    'warnHttpPortClosed': m10,
+    'warnHttpPortClosed': m11,
     'warnSaveTheProfileAnyway': MessageLookupByLibrary.simpleMessage('Sauvegarder le périphérique malgré tout?'),
     'warnStreamingPortClosed': MessageLookupByLibrary.simpleMessage('Le port de flux semble être fermé.'),
     'warnTranscodingPortClosed': MessageLookupByLibrary.simpleMessage('Le port de transcodage semble être fermé.'),
-    'warnUsingAlternativePort': m11,
+    'warnUsingAlternativePort': m12,
     'yes': MessageLookupByLibrary.simpleMessage('Oui')
   };
 }

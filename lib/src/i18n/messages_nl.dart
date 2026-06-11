@@ -41,9 +41,11 @@ class MessageLookup extends MessageLookupByLibrary {
 
   static m9(profileName) => "Herstart de gebruikersinterface op ${profileName}?";
 
-  static m10(address, port) => "${address}:${port} lijkt onbereikbaar.";
+  static m10(version) => "Versie ${version} is beschikbaar.";
 
-  static m11(port) => "Gebruik een afwijkende poort ${port}";
+  static m11(address, port) => "${address}:${port} lijkt onbereikbaar.";
+
+  static m12(port) => "Gebruik een afwijkende poort ${port}";
 
   @override
   final Map<String, dynamic> messages = _notInlinedMessages(_notInlinedMessages);
@@ -187,14 +189,25 @@ class MessageLookup extends MessageLookupByLibrary {
     'tryAgain': MessageLookupByLibrary.simpleMessage('Probeer het nogmaals'),
     'unknownError': MessageLookupByLibrary.simpleMessage('Onbekende fout.'),
     'upDownArrows': MessageLookupByLibrary.simpleMessage('Up / Down pijlen'),
+    'updateActionGrant': MessageLookupByLibrary.simpleMessage('Toestaan'),
+    'updateActionLater': MessageLookupByLibrary.simpleMessage('Later'),
+    'updateActionRestart': MessageLookupByLibrary.simpleMessage('Herstarten'),
+    'updateActionUpdate': MessageLookupByLibrary.simpleMessage('Bijwerken'),
+    'updateAvailableBody': m10,
+    'updateAvailableTitle': MessageLookupByLibrary.simpleMessage('Update beschikbaar'),
+    'updateDownloading': MessageLookupByLibrary.simpleMessage('Update downloaden…'),
+    'updateFailedBody': MessageLookupByLibrary.simpleMessage('Update mislukt.'),
+    'updatePermissionBody': MessageLookupByLibrary.simpleMessage('De app-map is niet beschrijfbaar. Verleen toestemming om updates mogelijk te maken.'),
+    'updatePermissionFailedBody': MessageLookupByLibrary.simpleMessage('Toestemming niet verleend. Verplaats de app naar een beschrijfbare map of voer deze eenmaal uit als administrator.'),
+    'updateRestartBody': MessageLookupByLibrary.simpleMessage('Update gedownload. Herstart om toe te passen.'),
     'useDbAsPrimaryLevel': MessageLookupByLibrary.simpleMessage('Gebruik dB als standaardnivo'),
     'version': MessageLookupByLibrary.simpleMessage('Versie'),
     'voice': MessageLookupByLibrary.simpleMessage('Stem'),
-    'warnHttpPortClosed': m10,
+    'warnHttpPortClosed': m11,
     'warnSaveTheProfileAnyway': MessageLookupByLibrary.simpleMessage('Moet het apparaat toch opgeslagen worden?'),
     'warnStreamingPortClosed': MessageLookupByLibrary.simpleMessage('Streaming poort lijkt gesloten.'),
     'warnTranscodingPortClosed': MessageLookupByLibrary.simpleMessage('Transcoding poort lijkt gesloten.'),
-    'warnUsingAlternativePort': m11,
+    'warnUsingAlternativePort': m12,
     'yes': MessageLookupByLibrary.simpleMessage('Ja')
   };
 }

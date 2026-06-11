@@ -207,5 +207,16 @@
       "port": {}
     }
   },
-  "yes": "Ja"
+  "yes": "Ja",
+  "updateAvailableTitle": "Update verfügbar",
+  "updateAvailableBody": "Version {version} ist verfügbar.",
+  "updateActionUpdate": "Aktualisieren",
+  "updateActionLater": "Später",
+  "updateDownloading": "Update wird geladen…",
+  "updateRestartBody": "Update geladen. Zum Anwenden neu starten.",
+  "updateActionRestart": "Neu starten",
+  "updateFailedBody": "Update fehlgeschlagen.",
+  "updatePermissionBody": "Der App-Ordner ist schreibgeschützt. Erteilen Sie die Berechtigung für Updates.",
+  "updateActionGrant": "Erlauben",
+  "updatePermissionFailedBody": "Berechtigung nicht erteilt. Verschieben Sie die App in einen beschreibbaren Ordner oder starten Sie sie einmal als Administrator."
 }

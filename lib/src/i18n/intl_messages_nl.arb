@@ -760,5 +760,16 @@
   "@time": {
     "type": "text",
     "placeholders": {}
-  }
+  },
+  "updateAvailableTitle": "Update beschikbaar",
+  "updateAvailableBody": "Versie {version} is beschikbaar.",
+  "updateActionUpdate": "Bijwerken",
+  "updateActionLater": "Later",
+  "updateDownloading": "Update downloaden…",
+  "updateRestartBody": "Update gedownload. Herstart om toe te passen.",
+  "updateActionRestart": "Herstarten",
+  "updateFailedBody": "Update mislukt.",
+  "updatePermissionBody": "De app-map is niet beschrijfbaar. Verleen toestemming om updates mogelijk te maken.",
+  "updateActionGrant": "Toestaan",
+  "updatePermissionFailedBody": "Toestemming niet verleend. Verplaats de app naar een beschrijfbare map of voer deze eenmaal uit als administrator."
 }

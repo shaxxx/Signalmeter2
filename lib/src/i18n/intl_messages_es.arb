@@ -760,5 +760,16 @@
   "@time": {
     "type": "text",
     "placeholders": {}
-  }
+  },
+  "updateAvailableTitle": "Actualización disponible",
+  "updateAvailableBody": "La versión {version} está disponible.",
+  "updateActionUpdate": "Actualizar",
+  "updateActionLater": "Más tarde",
+  "updateDownloading": "Descargando actualización…",
+  "updateRestartBody": "Actualización descargada. Reinicia para aplicarla.",
+  "updateActionRestart": "Reiniciar",
+  "updateFailedBody": "Error al actualizar.",
+  "updatePermissionBody": "La carpeta de la aplicación no es escribible. Concede permiso para habilitar actualizaciones.",
+  "updateActionGrant": "Permitir",
+  "updatePermissionFailedBody": "No se concedió el permiso. Mueve la aplicación a una carpeta escribible o ejecútala una vez como administrador."
 }

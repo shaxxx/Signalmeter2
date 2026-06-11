@@ -760,5 +760,16 @@
   "@time": {
     "type": "text",
     "placeholders": {}
-  }
+  },
+  "updateAvailableTitle": "Actualització disponible",
+  "updateAvailableBody": "La versió {version} està disponible.",
+  "updateActionUpdate": "Actualitza",
+  "updateActionLater": "Més tard",
+  "updateDownloading": "Baixant l'actualització…",
+  "updateRestartBody": "Actualització baixada. Reinicia per aplicar-la.",
+  "updateActionRestart": "Reinicia",
+  "updateFailedBody": "Ha fallat l'actualització.",
+  "updatePermissionBody": "La carpeta de l'aplicació no és escrivible. Concedeix permís per habilitar les actualitzacions.",
+  "updateActionGrant": "Permet",
+  "updatePermissionFailedBody": "No s'ha concedit el permís. Mou l'aplicació a una carpeta escrivible o executa-la un cop com a administrador."
 }
