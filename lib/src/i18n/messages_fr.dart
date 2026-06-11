@@ -192,7 +192,7 @@ class MessageLookup extends MessageLookupByLibrary {
     'updateActionGrant': MessageLookupByLibrary.simpleMessage('Autoriser'),
     'updateActionLater': MessageLookupByLibrary.simpleMessage('Plus tard'),
     'updateActionRestart': MessageLookupByLibrary.simpleMessage('Redémarrer'),
-    'updateActionUpdate': MessageLookupByLibrary.simpleMessage('Mettre à jour'),
+    'updateActionUpdate': MessageLookupByLibrary.simpleMessage('Actualiser'),
     'updateAvailableBody': m10,
     'updateAvailableTitle': MessageLookupByLibrary.simpleMessage('Mise à jour disponible'),
     'updateDownloading': MessageLookupByLibrary.simpleMessage('Téléchargement de la mise à jour…'),

@@ -763,7 +763,7 @@
   },
   "updateAvailableTitle": "Mise à jour disponible",
   "updateAvailableBody": "La version {version} est disponible.",
-  "updateActionUpdate": "Mettre à jour",
+  "updateActionUpdate": "Actualiser",
   "updateActionLater": "Plus tard",
   "updateDownloading": "Téléchargement de la mise à jour…",
   "updateRestartBody": "Mise à jour téléchargée. Redémarrez pour l'appliquer.",
