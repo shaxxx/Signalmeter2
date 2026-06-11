@@ -25,6 +25,7 @@ then exit–swap–relaunch via the plugin's native helper. No manual zip copyin
 | i18n | All dialog strings localized in all 10 locales, length-balanced (see i18n section) |
 | Hosting | `https://www.krkadoni.com/signalmeter/app-archive.json` + `/signalmeter/<version>/windows/` file trees |
 | Architecture | BRKO's seam pattern (interface + sole plugin importer) + self-contained dialog with local state (no Redux slice — progress is dialog-local, not app state) |
+| Non-writable install dir | One-time elevated `icacls` grant (current user, Modify) offered in-dialog; warning with manual fallback if declined. No installer exists (neither has BRKO) |
 
 ## Components
 
@@ -95,6 +96,9 @@ stages by itself. `package_info_plus` (current version) is already a dependency.
   log, return), read the current version via `package_info_plus`, and only when
   `latest > current` show the dialog. Injectable updater for tests.
 
+- `lib/src/utils/install_dir_access.dart` — writability probe + one-time
+  elevated ACL grant; see "Install-folder writability" below.
+
 - `lib/src/constants.dart` — add
   `const String appArchiveUrl = 'https://www.krkadoni.com/signalmeter/app-archive.json';`
 
@@ -120,6 +124,9 @@ nl, ru, zh). About 9 new keys:
 | `updateActionRestart` | Restart |
 | `updateFailedBody` | Update failed. |
 | `updateActionClose` | Close |
+| `updatePermissionBody` | The app folder is not writable. Grant permission to enable updates. |
+| `updateActionGrant` | Allow |
+| `updatePermissionFailedBody` | Permission was not granted. Move the app to a writable folder, or run it once as administrator. |
 
 **Translation length rule (user requirement):** every locale's string stays
 within roughly ±30% of the English length; button labels are one word (two at
@@ -170,13 +177,36 @@ per-version folders are immutable and may cache long; files must be served
 **byte-exact** — CDN compression rewriting or transformation breaks Blake2b
 verification.
 
-## Prerequisite / limitation
+## Install-folder writability (ACL handling)
 
 The plugin's helper swaps files inside the install folder, so that folder must
-be user-writable. True today (users run the app from an unzipped folder). If
-someone manually installs under `C:\Program Files`, applying fails — accepted
-and documented; the proper fix (installer that grants ACLs, as BRKO does with
-Inno Setup) belongs to the deferred packaging phase.
+be writable by the current user. Usually true (users run the app from an
+unzipped folder), but not when someone parks it under `C:\Program Files`.
+There is no installer to fix ACLs (BRKO has none either — its spec only lists
+the ACL fix as an open downstream prerequisite), so Signal Meter handles it
+in-app with a **one-time ACL grant**:
+
+- `lib/src/utils/install_dir_access.dart` — two functions:
+  - `isInstallDirWritable()` — probes `File(Platform.resolvedExecutable).parent`
+    by creating and deleting a temp file (tests effective ACLs, not
+    attributes).
+  - `grantInstallDirAccess()` — launches a single elevated `icacls` (UAC
+    prompt) granting the **current user** (not the Users group) Modify rights
+    with inheritance on the app folder:
+    `icacls "<appDir>" /grant "<user>":(OI)(CI)M`, waits for it to finish,
+    then re-probes and returns the probe result (the probe is the source of
+    truth, not exit codes).
+
+- Dialog behavior: the prompt state probes writability first. If blocked, the
+  body gains an explanation line and the Update button is replaced by a
+  **Grant permission** button (Later/dismissal rules unchanged, still governed
+  by `mandatory`). Grant success → the prompt returns with the normal Update
+  button. UAC declined or icacls failure → an inline warning with the manual
+  fallback (move the app to a writable folder, or run it once as
+  administrator); the Grant button stays for retry.
+
+- The grant is permanent — future updates skip straight to the normal flow.
+  The app itself never runs elevated; only the one icacls process does.
 
 ## Error handling
 
@@ -191,9 +221,13 @@ Inno Setup) belongs to the deferred packaging phase.
 
 - **Unit:** version-compare decision in `update_checker` (newer / equal /
   older / null latest / check throws) with a `FakeDesktopUpdater`.
-- **Widget:** all four dialog states driven by the fake (prompt incl.
-  mandatory-hides-Later, downloading progress, restart button calls
-  `restartAndApply()` once, error state) — no plugin, no network.
+- **Widget:** all dialog states driven by the fake (prompt incl.
+  mandatory-hides-Later, permission-blocked prompt with Grant button,
+  downloading progress, restart button calls `restartAndApply()` once, error
+  state) — no plugin, no network. Writability/grant seams injected as
+  functions so widget tests cover both probe outcomes.
+- **Unit:** `isInstallDirWritable()` probe logic against temp directories
+  (writable and read-only). The elevated grant itself is manual-only (UAC).
 - **Manual E2E (BRKO's method):** serve a test manifest + archived tree from
   localhost, point a debug build at it, and perform a real version-bump
   upgrade on the dev machine: exit → file swap → relaunch at the new version.
