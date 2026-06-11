@@ -971,6 +971,8 @@ Note: tests render the dialog inline (not via `showDialog`), so `Navigator.pop` 
 Run: `flutter test test/widget/update_dialog_test.dart`
 Expected: PASS (7 tests).
 
+> **Review addendum (executed):** quality review added three hardenings — restart failures now `await` + transition to the error phase; `canPop` is also false while downloading (Escape must not orphan an in-flight download); a comment documents the intentional first-frame prompt. Two extra tests (restart-failure, mandatory-ignores-Escape) bring the dialog suite to 9.
+
 - [ ] **Step 5: Full verify + commit**
 
 Run: `flutter analyze` (no new) and `flutter test` (21/21).
