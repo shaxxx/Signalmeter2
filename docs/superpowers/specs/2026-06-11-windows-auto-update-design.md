@@ -92,9 +92,10 @@ stages by itself. `package_info_plus` (current version) is already a dependency.
 
 - `lib/src/ui/update/update_checker.dart` — startup hook:
   `maybeShowUpdateDialog(BuildContext, {DesktopUpdater?})`. Guard
-  `Platform.isWindows`, call `checkAvailability()` in a try/catch (failure →
-  log, return), read the current version via `package_info_plus`, and only when
-  `latest > current` show the dialog. Injectable updater for tests.
+  `Platform.isWindows`, call `checkAvailability()` in a try/catch with a 5 s
+  timeout (failure → log, return), and show the dialog when `latest != null`
+  (the plugin already compared build numbers; see hosting section). Injectable
+  updater for tests.
 
 - `lib/src/utils/install_dir_access.dart` — writability probe + one-time
   elevated ACL grant; see "Install-folder writability" below.
@@ -143,8 +144,12 @@ sizes buttons flexibly, so residual variance is safe.
 Per release:
 
 1. `flutter build windows --release`
-2. `dart run desktop_updater:archive --input build\windows\x64\runner\Release --output dist\<version>\windows`
-   → extracted file tree + Blake2b `hashes.json`
+2. `dart run desktop_updater:release windows` (release build staged into
+   `dist\<build>\<name>-<ver>+<build>-windows\`), then
+   `dart run desktop_updater:archive windows` → upload tree
+   `dist\<build>\<ver>+<build>-windows\` with Blake2b `hashes.json`.
+   (Corrected during planning: the plugin CLI takes a platform argument and a
+   `dist/` convention, not `--input/--output` flags as BRKO's spec sketched.)
 3. Upload the tree to `https://www.krkadoni.com/signalmeter/<version>/windows/`
 4. Update `https://www.krkadoni.com/signalmeter/app-archive.json` **last** —
    append one `items[]` entry:
@@ -168,8 +173,12 @@ Per release:
    }
    ```
 
-   `version` and `shortVersion` are the same semver string; the plugin orders
-   by `shortVersion` and displays `version`.
+   Corrected during planning (verified in plugin source): `shortVersion` is
+   the **integer build number** (the part after `+` in pubspec's version, read
+   from the exe's ProductVersion resource) and is what the plugin compares;
+   `version` is the display string. `versionCheck` returns null when up to
+   date, so "update available" simply means `latest != null` — the app does
+   not re-compare versions itself.
 
 **Server rules (BRKO-proven):** the manifest is served with
 `Cache-Control: no-cache` (stale manifest = clients never see updates);
