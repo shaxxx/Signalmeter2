@@ -61,7 +61,7 @@ Expected: `1.1.2+5001`. If the exe is missing, run `flutter build windows --rele
 flutter pub add "desktop_updater:^2.0.0-dev.1" version
 ```
 
-Expected: both resolve (`desktop_updater 2.0.0-dev.1`, `version 3.x`). Only `pubspec.yaml` changes (lock is gitignored).
+Expected: both resolve (`desktop_updater 2.0.0-dev.1`, `version 3.x`). Only `pubspec.yaml` changes (lock is gitignored). Note: pub writes the prerelease back as an exact pin (`desktop_updater: 2.0.0-dev.1`, no caret) — keep it; an exact pin is the deliberate choice for a prerelease.
 
 - [ ] **Step 4: Create the seam**
 
