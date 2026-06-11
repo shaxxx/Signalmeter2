@@ -52,6 +52,8 @@ class _HomeViewState extends State<_HomeView> with RouteAware {
       DeviceOrientation.portraitUp,
       DeviceOrientation.portraitDown,
     ]);
+    // Home is the persistent root route (never re-pushed), so this fires
+    // exactly once per app run.
     if (Platform.isWindows) {
       WidgetsBinding.instance.addPostFrameCallback((_) {
         maybeShowUpdateDialog(context);
