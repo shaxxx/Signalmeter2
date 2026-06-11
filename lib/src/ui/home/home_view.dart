@@ -100,7 +100,7 @@ class _HomeViewState extends State<_HomeView> with RouteAware {
         _viewModel = viewModel;
         if (viewModel.displayShowcase && !_showcaseSeen) {
           _showcaseSeen = true;
-          if (Platform.isAndroid) {
+          if (Platform.isAndroid || Platform.isWindows) {
             ShowCaseWidget.of(context).startShowCase([_fabShowcaseKey]);
           } else {
             ShowCaseWidget.of(context).startShowCase([fabIosShowcaseKey]);
@@ -113,7 +113,7 @@ class _HomeViewState extends State<_HomeView> with RouteAware {
       },
       builder: (context, viewModel) {
         return ScaffoldBackground(
-          floatingActionButton: Platform.isAndroid
+          floatingActionButton: Platform.isAndroid || Platform.isWindows
               ? Showcase(
                   key: _fabShowcaseKey,
                   title: MessageProvider.of(context).addProfileShowcaseTitle,
