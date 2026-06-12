@@ -57,5 +57,47 @@ function Get-PubspecVersion([string]$PubspecPath) {
     [pscustomobject]@{ Display = $Matches[1]; Build = [int]$Matches[2] }
 }
 
+function Read-Manifest([string]$Path) {
+    if (Test-Path $Path) {
+        return Get-Content $Path -Raw | ConvertFrom-Json
+    }
+    # First release: the canonical manifest does not exist yet.
+    [pscustomobject]@{
+        appName     = $script:AppName
+        description = $script:AppDescription
+        items       = @()
+    }
+}
+
+function Test-BuildInManifest($Manifest, [int]$Build) {
+    foreach ($item in $Manifest.items) {
+        if ([int]$item.shortVersion -eq $Build) { return $true }
+    }
+    return $false
+}
+
+function Add-ManifestItem($Manifest, [string]$DisplayVersion, [int]$Build,
+        [string]$Date, [bool]$IsMandatory, [string]$Url, [string[]]$NoteLines) {
+    $changes = @($NoteLines | ForEach-Object {
+        [pscustomobject]@{ type = 'feat'; message = $_ }
+    })
+    $item = [pscustomobject]@{
+        version      = $DisplayVersion
+        shortVersion = $Build      # JSON number - plugin ItemModel wants int
+        date         = $Date
+        mandatory    = $IsMandatory
+        platform     = 'windows'
+        url          = $Url        # must keep trailing /
+        changes      = $changes
+    }
+    $Manifest.items = @($Manifest.items) + @($item)
+    $Manifest
+}
+
+function Write-Manifest($Manifest, [string]$Path) {
+    $json = $Manifest | ConvertTo-Json -Depth 6
+    Set-Content -Path $Path -Value $json -Encoding utf8NoBOM
+}
+
 # --- main (everything below is skipped when dot-sourced for testing) -------
 if ($MyInvocation.InvocationName -eq '.') { return }
