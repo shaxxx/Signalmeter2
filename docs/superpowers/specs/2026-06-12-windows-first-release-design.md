@@ -73,7 +73,7 @@ One command, no parameters required for the normal case.
    ```json
    {
      "version": "<ver>",
-     "shortVersion": "<build>",
+     "shortVersion": <build>,
      "date": "<today, yyyy-MM-dd>",
      "mandatory": false,
      "platform": "windows",
@@ -83,12 +83,14 @@ One command, no parameters required for the normal case.
    ```
 
    Rules carried over from the auto-update spec: `shortVersion` is the
-   **integer build number** (the plugin's comparison key); `version` is the
-   display string; the URL path uses the display version only — no `+` in
-   URLs. The file is read with `ConvertFrom-Json` and written back in a
+   **integer build number** as a JSON number, not a string (the plugin's
+   `ItemModel` declares it `int`; the proven E2E manifest used `5002`
+   unquoted); `version` is the display string; the URL path uses the
+   display version only — no `+` in URLs — and keeps the trailing slash. The file is read with `ConvertFrom-Json` and written back in a
    single write (UTF-8 **without** BOM), so a malformed manifest can never
    be produced. If `tool/app-archive.json` does not exist yet (this first
-   release), the script creates it with the `appName` wrapper and one item.
+   release), the script creates it with the `appName`/`description` wrapper
+   (matching the manifest shape proven in E2E testing) and one item.
 6. **Upload bundle** — assemble `dist\<build>\upload\` mirroring the server
    layout:
 
