@@ -41,9 +41,11 @@ class MessageLookup extends MessageLookupByLibrary {
 
   static m9(profileName) => "Ponovno pokreni sučelje na ${profileName}?";
 
-  static m10(address, port) => "${address} : ${port} se čini trenutno nedostupnim.";
+  static m10(version) => "Dostupna je verzija ${version}.";
 
-  static m11(port) => "Koristim alternativni port ${port}";
+  static m11(address, port) => "${address} : ${port} se čini trenutno nedostupnim.";
+
+  static m12(port) => "Koristim alternativni port ${port}";
 
   @override
   final Map<String, dynamic> messages = _notInlinedMessages(_notInlinedMessages);
@@ -187,14 +189,25 @@ class MessageLookup extends MessageLookupByLibrary {
     'tryAgain': MessageLookupByLibrary.simpleMessage('Pokušaj ponovno'),
     'unknownError': MessageLookupByLibrary.simpleMessage('Nepoznata greška.'),
     'upDownArrows': MessageLookupByLibrary.simpleMessage('Gore / Dolje'),
+    'updateActionGrant': MessageLookupByLibrary.simpleMessage('Dopusti'),
+    'updateActionLater': MessageLookupByLibrary.simpleMessage('Kasnije'),
+    'updateActionRestart': MessageLookupByLibrary.simpleMessage('Ponovno pokreni'),
+    'updateActionUpdate': MessageLookupByLibrary.simpleMessage('Nadogradi'),
+    'updateAvailableBody': m10,
+    'updateAvailableTitle': MessageLookupByLibrary.simpleMessage('Dostupna nadogradnja'),
+    'updateDownloading': MessageLookupByLibrary.simpleMessage('Preuzimanje nadogradnje…'),
+    'updateFailedBody': MessageLookupByLibrary.simpleMessage('Nadogradnja nije uspjela.'),
+    'updatePermissionBody': MessageLookupByLibrary.simpleMessage('Mapa aplikacije nije zapisiva. Dodijelite dozvolu za omogućavanje nadogradnje.'),
+    'updatePermissionFailedBody': MessageLookupByLibrary.simpleMessage('Dozvola nije dodijeljena. Premjestite aplikaciju u zapisivu mapu ili je jednom pokrenite kao administrator.'),
+    'updateRestartBody': MessageLookupByLibrary.simpleMessage('Nadogradnja preuzeta. Ponovno pokreni za primjenu.'),
     'useDbAsPrimaryLevel': MessageLookupByLibrary.simpleMessage('Koristi dB kao primarnu mjeru'),
     'version': MessageLookupByLibrary.simpleMessage('Verzija'),
     'voice': MessageLookupByLibrary.simpleMessage('Glas'),
-    'warnHttpPortClosed': m10,
+    'warnHttpPortClosed': m11,
     'warnSaveTheProfileAnyway': MessageLookupByLibrary.simpleMessage('Ipak nastavi sa spremanjem?'),
     'warnStreamingPortClosed': MessageLookupByLibrary.simpleMessage('Streaming port se čini zatvorenim.'),
     'warnTranscodingPortClosed': MessageLookupByLibrary.simpleMessage('Port za transkodiranje se čini zatvorenim.'),
-    'warnUsingAlternativePort': m11,
+    'warnUsingAlternativePort': m12,
     'yes': MessageLookupByLibrary.simpleMessage('Da')
   };
 }

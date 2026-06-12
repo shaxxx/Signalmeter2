@@ -41,9 +41,11 @@ class MessageLookup extends MessageLookupByLibrary {
 
   static m9(profileName) => "Перезапустить пользовательский интерфейс в ${profileName}?";
 
-  static m10(address, port) => "Похоже, ${address}:${port} недоступен.";
+  static m10(version) => "Доступна версия ${version}.";
 
-  static m11(port) => "Использование альтернативного порта ${port}";
+  static m11(address, port) => "Похоже, ${address}:${port} недоступен.";
+
+  static m12(port) => "Использование альтернативного порта ${port}";
 
   @override
   final Map<String, dynamic> messages = _notInlinedMessages(_notInlinedMessages);
@@ -187,14 +189,25 @@ class MessageLookup extends MessageLookupByLibrary {
     'tryAgain': MessageLookupByLibrary.simpleMessage('Попробовать еще раз'),
     'unknownError': MessageLookupByLibrary.simpleMessage('Неизвестная ошибка.'),
     'upDownArrows': MessageLookupByLibrary.simpleMessage('Стрелки вверх/вниз'),
+    'updateActionGrant': MessageLookupByLibrary.simpleMessage('Разрешить'),
+    'updateActionLater': MessageLookupByLibrary.simpleMessage('Позже'),
+    'updateActionRestart': MessageLookupByLibrary.simpleMessage('Перезапуск'),
+    'updateActionUpdate': MessageLookupByLibrary.simpleMessage('Обновить'),
+    'updateAvailableBody': m10,
+    'updateAvailableTitle': MessageLookupByLibrary.simpleMessage('Доступно обновление'),
+    'updateDownloading': MessageLookupByLibrary.simpleMessage('Загрузка обновления…'),
+    'updateFailedBody': MessageLookupByLibrary.simpleMessage('Не удалось обновить.'),
+    'updatePermissionBody': MessageLookupByLibrary.simpleMessage('Папка приложения недоступна для записи. Предоставьте разрешение для обновлений.'),
+    'updatePermissionFailedBody': MessageLookupByLibrary.simpleMessage('Разрешение не предоставлено. Переместите приложение в доступную для записи папку или запустите его один раз от имени администратора.'),
+    'updateRestartBody': MessageLookupByLibrary.simpleMessage('Обновление загружено. Перезапустите для установки.'),
     'useDbAsPrimaryLevel': MessageLookupByLibrary.simpleMessage('Использовать дБ в качестве основного уровня'),
     'version': MessageLookupByLibrary.simpleMessage('Версия'),
     'voice': MessageLookupByLibrary.simpleMessage('Голос'),
-    'warnHttpPortClosed': m10,
+    'warnHttpPortClosed': m11,
     'warnSaveTheProfileAnyway': MessageLookupByLibrary.simpleMessage('Сохранить устройство в любом случае?'),
     'warnStreamingPortClosed': MessageLookupByLibrary.simpleMessage('Похоже, порт потоковой передачи закрыт.'),
     'warnTranscodingPortClosed': MessageLookupByLibrary.simpleMessage('Похоже, порт перекодировки закрыт.'),
-    'warnUsingAlternativePort': m11,
+    'warnUsingAlternativePort': m12,
     'yes': MessageLookupByLibrary.simpleMessage('Да')
   };
 }

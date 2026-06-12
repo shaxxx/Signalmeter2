@@ -59,3 +59,5 @@ const Map<String, IconData> menuIcons = {
   shareMenuItemKey: Icons.share,
   messageMenuItemKey: Icons.message
 };
+const String appArchiveUrl =
+    'https://www.krkadoni.com/signalmeter/app-archive.json';

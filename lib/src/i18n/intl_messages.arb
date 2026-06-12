@@ -1,6 +1,6 @@
 {
   "@@locale": "en",
-  "@@last_modified": "2020-05-28T10:22:34.932220",
+  "@@last_modified": "2026-06-11T19:21:17.125748",
   "appName": "SignalMeter",
   "@appName": {
     "type": "text",
@@ -758,6 +758,63 @@
   },
   "time": "Time",
   "@time": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "updateAvailableTitle": "Update available",
+  "@updateAvailableTitle": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "updateAvailableBody": "Version {version} is available.",
+  "@updateAvailableBody": {
+    "type": "text",
+    "placeholders": {
+      "version": {}
+    }
+  },
+  "updateActionUpdate": "Update",
+  "@updateActionUpdate": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "updateActionLater": "Later",
+  "@updateActionLater": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "updateDownloading": "Downloading update…",
+  "@updateDownloading": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "updateRestartBody": "Update downloaded. Restart to apply.",
+  "@updateRestartBody": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "updateActionRestart": "Restart",
+  "@updateActionRestart": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "updateFailedBody": "Update failed.",
+  "@updateFailedBody": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "updatePermissionBody": "The app folder is not writable. Grant permission to enable updates.",
+  "@updatePermissionBody": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "updateActionGrant": "Allow",
+  "@updateActionGrant": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "updatePermissionFailedBody": "Permission was not granted. Move the app to a writable folder, or run it once as administrator.",
+  "@updatePermissionFailedBody": {
     "type": "text",
     "placeholders": {}
   }

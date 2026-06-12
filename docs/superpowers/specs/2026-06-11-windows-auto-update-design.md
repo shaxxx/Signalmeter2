@@ -29,9 +29,10 @@ then exit–swap–relaunch via the plugin's native helper. No manual zip copyin
 
 ## Components
 
-**New dependencies:** `desktop_updater` `^2.0.0-dev.1` (the version BRKO ships
-in production; prerelease — the seam isolates the risk to one file) and
-`version` (semver compare). No `http`, no `path_provider` — the plugin downloads, hashes and
+**New dependencies:** `desktop_updater` pinned exactly to `2.0.0-dev.1` (the
+version BRKO ships in production; an exact pin is deliberate for a prerelease —
+every machine resolves the identical vetted build, and the seam isolates the
+API risk to one file) and `version` (semver compare). No `http`, no `path_provider` — the plugin downloads, hashes and
 stages by itself. `package_info_plus` (current version) is already a dependency.
 
 **New files (Signal Meter conventions):**

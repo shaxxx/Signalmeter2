@@ -10,6 +10,7 @@ import 'package:enigma_signal_meter/src/ui/common/disappearing_fab.dart';
 import 'package:enigma_signal_meter/src/ui/common/scaffold_background.dart';
 import 'package:enigma_signal_meter/src/ui/profiles/profiles_view.dart';
 import 'package:enigma_signal_meter/src/ui/settings/settings_view.dart';
+import 'package:enigma_signal_meter/src/ui/update/update_checker.dart';
 import 'package:enigma_signal_meter/src/utils/message_display_handler.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -51,6 +52,13 @@ class _HomeViewState extends State<_HomeView> with RouteAware {
       DeviceOrientation.portraitUp,
       DeviceOrientation.portraitDown,
     ]);
+    // Home is the persistent root route (never re-pushed), so this fires
+    // exactly once per app run.
+    if (Platform.isWindows) {
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        maybeShowUpdateDialog(context);
+      });
+    }
   }
 
   @override

@@ -215,5 +215,16 @@
   "@time": {
     "type": "text",
     "placeholders": {}
-  }
+  },
+  "updateAvailableTitle": "Aggiornamento disponibile",
+  "updateAvailableBody": "La versione {version} è disponibile.",
+  "updateActionUpdate": "Aggiorna",
+  "updateActionLater": "Più tardi",
+  "updateDownloading": "Download dell'aggiornamento…",
+  "updateRestartBody": "Aggiornamento scaricato. Riavvia per applicarlo.",
+  "updateActionRestart": "Riavvia",
+  "updateFailedBody": "Aggiornamento non riuscito.",
+  "updatePermissionBody": "La cartella dell'app non è scrivibile. Concedi il permesso per abilitare gli aggiornamenti.",
+  "updateActionGrant": "Consenti",
+  "updatePermissionFailedBody": "Permesso non concesso. Sposta l'app in una cartella scrivibile o eseguila una volta come amministratore."
 }

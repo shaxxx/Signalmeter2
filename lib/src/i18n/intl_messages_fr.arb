@@ -760,5 +760,16 @@
   "@time": {
     "type": "text",
     "placeholders": {}
-  }
+  },
+  "updateAvailableTitle": "Mise à jour disponible",
+  "updateAvailableBody": "La version {version} est disponible.",
+  "updateActionUpdate": "Actualiser",
+  "updateActionLater": "Plus tard",
+  "updateDownloading": "Téléchargement de la mise à jour…",
+  "updateRestartBody": "Mise à jour téléchargée. Redémarrez pour l'appliquer.",
+  "updateActionRestart": "Redémarrer",
+  "updateFailedBody": "Échec de la mise à jour.",
+  "updatePermissionBody": "Le dossier de l'application n'est pas accessible en écriture. Accordez l'autorisation pour activer les mises à jour.",
+  "updateActionGrant": "Autoriser",
+  "updatePermissionFailedBody": "Autorisation refusée. Déplacez l'application vers un dossier accessible en écriture ou exécutez-la une fois en tant qu'administrateur."
 }

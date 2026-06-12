@@ -41,9 +41,11 @@ class MessageLookup extends MessageLookupByLibrary {
 
   static m9(profileName) => "Reiniciar interfaç d\'usuari a ${profileName}?";
 
-  static m10(address, port) => "${address}:${port} no sembla funcionar.";
+  static m10(version) => "La versió ${version} està disponible.";
 
-  static m11(port) => "Utilitzar port alternatiu ${port}";
+  static m11(address, port) => "${address}:${port} no sembla funcionar.";
+
+  static m12(port) => "Utilitzar port alternatiu ${port}";
 
   @override
   final Map<String, dynamic> messages = _notInlinedMessages(_notInlinedMessages);
@@ -187,14 +189,25 @@ class MessageLookup extends MessageLookupByLibrary {
     'tryAgain': MessageLookupByLibrary.simpleMessage('Intentar una altra vegada'),
     'unknownError': MessageLookupByLibrary.simpleMessage('Error desconegut.'),
     'upDownArrows': MessageLookupByLibrary.simpleMessage('Fletxes Amunt / Avall'),
+    'updateActionGrant': MessageLookupByLibrary.simpleMessage('Permet'),
+    'updateActionLater': MessageLookupByLibrary.simpleMessage('Més tard'),
+    'updateActionRestart': MessageLookupByLibrary.simpleMessage('Reinicia'),
+    'updateActionUpdate': MessageLookupByLibrary.simpleMessage('Actualitza'),
+    'updateAvailableBody': m10,
+    'updateAvailableTitle': MessageLookupByLibrary.simpleMessage('Actualització disponible'),
+    'updateDownloading': MessageLookupByLibrary.simpleMessage('Baixant l\'actualització…'),
+    'updateFailedBody': MessageLookupByLibrary.simpleMessage('Ha fallat l\'actualització.'),
+    'updatePermissionBody': MessageLookupByLibrary.simpleMessage('La carpeta de l\'aplicació no és escrivible. Concedeix permís per habilitar les actualitzacions.'),
+    'updatePermissionFailedBody': MessageLookupByLibrary.simpleMessage('No s\'ha concedit el permís. Mou l\'aplicació a una carpeta escrivible o executa-la un cop com a administrador.'),
+    'updateRestartBody': MessageLookupByLibrary.simpleMessage('Actualització baixada. Reinicia per aplicar-la.'),
     'useDbAsPrimaryLevel': MessageLookupByLibrary.simpleMessage('Utilitzar dB como nivell primari'),
     'version': MessageLookupByLibrary.simpleMessage('Versión'),
     'voice': MessageLookupByLibrary.simpleMessage('Voz'),
-    'warnHttpPortClosed': m10,
+    'warnHttpPortClosed': m11,
     'warnSaveTheProfileAnyway': MessageLookupByLibrary.simpleMessage('Guardar aquest perfil igualment?'),
     'warnStreamingPortClosed': MessageLookupByLibrary.simpleMessage('El port de Streaming sembla tancat.'),
     'warnTranscodingPortClosed': MessageLookupByLibrary.simpleMessage('El port de Transcodificació sembla tancat.'),
-    'warnUsingAlternativePort': m11,
+    'warnUsingAlternativePort': m12,
     'yes': MessageLookupByLibrary.simpleMessage('Si')
   };
 }

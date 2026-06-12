@@ -61,7 +61,7 @@ Expected: `1.1.2+5001`. If the exe is missing, run `flutter build windows --rele
 flutter pub add "desktop_updater:^2.0.0-dev.1" version
 ```
 
-Expected: both resolve (`desktop_updater 2.0.0-dev.1`, `version 3.x`). Only `pubspec.yaml` changes (lock is gitignored).
+Expected: both resolve (`desktop_updater 2.0.0-dev.1`, `version 3.x`). Only `pubspec.yaml` changes (lock is gitignored). Note: pub writes the prerelease back as an exact pin (`desktop_updater: 2.0.0-dev.1`, no caret) — keep it; an exact pin is the deliberate choice for a prerelease.
 
 - [ ] **Step 4: Create the seam**
 
@@ -322,12 +322,18 @@ Future<bool> grantInstallDirAccess() async {
     _log.warning('USERNAME not set; cannot grant access');
     return false;
   }
+  // Apostrophes would terminate the single-quoted PowerShell string below;
+  // '' is PowerShell's escape for a literal ' inside one.
+  final escapedDir = dir.replaceAll("'", "''");
+  final escapedUser = user.replaceAll("'", "''");
   try {
     final process = await Process.start('powershell', [
       '-NoProfile',
       '-Command',
+      // (OI)(CI) = object + container inherit, so the Modify grant reaches
+      // existing and future files in the install folder.
       'Start-Process icacls -Verb RunAs -Wait -ArgumentList '
-          '\'"$dir" /grant "$user":(OI)(CI)M\'',
+          '\'"$escapedDir" /grant "$escapedUser":(OI)(CI)M\'',
     ]);
     await process.exitCode;
   } catch (e) {
@@ -950,7 +956,7 @@ class _UpdateDialogState extends State<UpdateDialog> {
         return [
           TextButton(
             onPressed: () => Navigator.of(context).pop(),
-            child: Text(messages.updateActionClose),
+            child: Text(messages.close),
           ),
         ];
     }
@@ -964,6 +970,8 @@ Note: tests render the dialog inline (not via `showDialog`), so `Navigator.pop` 
 
 Run: `flutter test test/widget/update_dialog_test.dart`
 Expected: PASS (7 tests).
+
+> **Review addendum (executed):** quality review added three hardenings — restart failures now `await` + transition to the error phase; `canPop` is also false while downloading (Escape must not orphan an in-flight download); a comment documents the intentional first-frame prompt. Two extra tests (restart-failure, mandatory-ignores-Escape) bring the dialog suite to 9.
 
 - [ ] **Step 5: Full verify + commit**
 
@@ -1111,7 +1119,9 @@ Future<void> maybeShowUpdateDialog(
     if (!context.mounted) {
       return;
     }
-    await showDialog<void>(
+    // Scheduled, not awaited: showDialog's future resolves only when the
+    // dialog pops, and this gate has nothing left to do once it is shown.
+    unawaited(showDialog<void>(
       context: context,
       barrierDismissible: false,
       builder: (_) => UpdateDialog(
@@ -1120,7 +1130,7 @@ Future<void> maybeShowUpdateDialog(
         isInstallDirWritable: isInstallDirWritable,
         grantInstallDirAccess: grantInstallDirAccess,
       ),
-    );
+    ));
   } catch (e) {
     _log.fine('Update check skipped: $e');
   }
@@ -1281,11 +1291,14 @@ class DesktopUpdaterClient implements DesktopUpdater {
   }
 
   Version _parseVersion(String raw) {
+    final trimmed = raw.trim();
     try {
-      return Version.parse(raw.trim());
+      return Version.parse(trimmed);
     } catch (_) {
       // Non-semver string (e.g. a bare build number) — degrade gracefully.
-      return Version(0, 0, 0, build: raw.trim());
+      // Keep only build-legal characters so the fallback cannot itself throw.
+      final safe = trimmed.replaceAll(RegExp(r'[^0-9A-Za-z\-.]'), '-');
+      return safe.isEmpty ? Version(0, 0, 0) : Version(0, 0, 0, build: safe);
     }
   }
 }
@@ -1441,6 +1454,7 @@ dart pub global run dhttpd --path "$env:TEMP\esm-serve" --port 8080
 - [ ] "Restart" exits the app, swaps files, relaunches
 - [ ] After relaunch, About screen shows 1.1.3 — and the dialog does NOT reappear (5002 is now current)
 - [ ] Optional ACL path: copy the install folder into a protected location (e.g. `C:\Program Files\esm-test`), relaunch, confirm the Allow button + UAC flow grants access and the update applies
+- [ ] Optional (from Task 6 review): a deletion-only release variant — manifest entry whose new version only removes a file (no changed files) — still stages and applies correctly
 
 - [ ] **Step 6: Revert temporaries**
 

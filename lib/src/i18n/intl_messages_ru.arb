@@ -207,5 +207,16 @@
       "port": {}
     }
   },
-  "yes": "Да"
+  "yes": "Да",
+  "updateAvailableTitle": "Доступно обновление",
+  "updateAvailableBody": "Доступна версия {version}.",
+  "updateActionUpdate": "Обновить",
+  "updateActionLater": "Позже",
+  "updateDownloading": "Загрузка обновления…",
+  "updateRestartBody": "Обновление загружено. Перезапустите для установки.",
+  "updateActionRestart": "Перезапуск",
+  "updateFailedBody": "Не удалось обновить.",
+  "updatePermissionBody": "Папка приложения недоступна для записи. Предоставьте разрешение для обновлений.",
+  "updateActionGrant": "Разрешить",
+  "updatePermissionFailedBody": "Разрешение не предоставлено. Переместите приложение в доступную для записи папку или запустите его один раз от имени администратора."
 }

@@ -41,9 +41,11 @@ class MessageLookup extends MessageLookupByLibrary {
 
   static m9(profileName) => "Benutzeroberfläche für ${profileName} neu starten?";
 
-  static m10(address, port) => "${address}:${port} scheint nicht erreichbar zu sein.";
+  static m10(version) => "Version ${version} ist verfügbar.";
 
-  static m11(port) => "Alternativen Port ${port} verwenden";
+  static m11(address, port) => "${address}:${port} scheint nicht erreichbar zu sein.";
+
+  static m12(port) => "Alternativen Port ${port} verwenden";
 
   @override
   final Map<String, dynamic> messages = _notInlinedMessages(_notInlinedMessages);
@@ -187,14 +189,25 @@ class MessageLookup extends MessageLookupByLibrary {
     'tryAgain': MessageLookupByLibrary.simpleMessage('Erneut versuchen'),
     'unknownError': MessageLookupByLibrary.simpleMessage('Unbekannter Fehler.'),
     'upDownArrows': MessageLookupByLibrary.simpleMessage('Aufwärts-/Abwärtspfeile'),
+    'updateActionGrant': MessageLookupByLibrary.simpleMessage('Erlauben'),
+    'updateActionLater': MessageLookupByLibrary.simpleMessage('Später'),
+    'updateActionRestart': MessageLookupByLibrary.simpleMessage('Neu starten'),
+    'updateActionUpdate': MessageLookupByLibrary.simpleMessage('Aktualisieren'),
+    'updateAvailableBody': m10,
+    'updateAvailableTitle': MessageLookupByLibrary.simpleMessage('Update verfügbar'),
+    'updateDownloading': MessageLookupByLibrary.simpleMessage('Update wird geladen…'),
+    'updateFailedBody': MessageLookupByLibrary.simpleMessage('Update fehlgeschlagen.'),
+    'updatePermissionBody': MessageLookupByLibrary.simpleMessage('Der App-Ordner ist schreibgeschützt. Erteilen Sie die Berechtigung für Updates.'),
+    'updatePermissionFailedBody': MessageLookupByLibrary.simpleMessage('Berechtigung nicht erteilt. Verschieben Sie die App in einen beschreibbaren Ordner oder starten Sie sie einmal als Administrator.'),
+    'updateRestartBody': MessageLookupByLibrary.simpleMessage('Update geladen. Zum Anwenden neu starten.'),
     'useDbAsPrimaryLevel': MessageLookupByLibrary.simpleMessage('dB als Primärpegel verwenden'),
     'version': MessageLookupByLibrary.simpleMessage('Version'),
     'voice': MessageLookupByLibrary.simpleMessage('Sprache'),
-    'warnHttpPortClosed': m10,
+    'warnHttpPortClosed': m11,
     'warnSaveTheProfileAnyway': MessageLookupByLibrary.simpleMessage('Gerät trotzdem speichern?'),
     'warnStreamingPortClosed': MessageLookupByLibrary.simpleMessage('Der Streaming-Port scheint geschlossen zu sein.'),
     'warnTranscodingPortClosed': MessageLookupByLibrary.simpleMessage('Der Transcodierungsport scheint geschlossen zu sein.'),
-    'warnUsingAlternativePort': m11,
+    'warnUsingAlternativePort': m12,
     'yes': MessageLookupByLibrary.simpleMessage('Ja')
   };
 }

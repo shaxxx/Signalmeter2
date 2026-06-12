@@ -41,9 +41,11 @@ class MessageLookup extends MessageLookupByLibrary {
 
   static m9(profileName) => "在${profileName}上重新启动用户接口？";
 
-  static m10(address, port) => "${address}:${port}似乎无法访问。";
+  static m10(version) => "新版本 ${version} 可用。";
 
-  static m11(port) => "使用备用端口${port}";
+  static m11(address, port) => "${address}:${port}似乎无法访问。";
+
+  static m12(port) => "使用备用端口${port}";
 
   @override
   final Map<String, dynamic> messages = _notInlinedMessages(_notInlinedMessages);
@@ -187,14 +189,25 @@ class MessageLookup extends MessageLookupByLibrary {
     'tryAgain': MessageLookupByLibrary.simpleMessage('重试'),
     'unknownError': MessageLookupByLibrary.simpleMessage('未知错误。'),
     'upDownArrows': MessageLookupByLibrary.simpleMessage('上/下箭头'),
+    'updateActionGrant': MessageLookupByLibrary.simpleMessage('允许'),
+    'updateActionLater': MessageLookupByLibrary.simpleMessage('稍后'),
+    'updateActionRestart': MessageLookupByLibrary.simpleMessage('重启'),
+    'updateActionUpdate': MessageLookupByLibrary.simpleMessage('更新'),
+    'updateAvailableBody': m10,
+    'updateAvailableTitle': MessageLookupByLibrary.simpleMessage('有可用更新'),
+    'updateDownloading': MessageLookupByLibrary.simpleMessage('正在下载更新…'),
+    'updateFailedBody': MessageLookupByLibrary.simpleMessage('更新失败。'),
+    'updatePermissionBody': MessageLookupByLibrary.simpleMessage('应用文件夹不可写。请授予权限以启用更新。'),
+    'updatePermissionFailedBody': MessageLookupByLibrary.simpleMessage('未授予权限。请将应用移至可写文件夹，或以管理员身份运行一次。'),
+    'updateRestartBody': MessageLookupByLibrary.simpleMessage('更新已下载，重启后生效。'),
     'useDbAsPrimaryLevel': MessageLookupByLibrary.simpleMessage('使用dB作为主要电平'),
     'version': MessageLookupByLibrary.simpleMessage('版本'),
     'voice': MessageLookupByLibrary.simpleMessage('语音'),
-    'warnHttpPortClosed': m10,
+    'warnHttpPortClosed': m11,
     'warnSaveTheProfileAnyway': MessageLookupByLibrary.simpleMessage('仍然保存设备吗？'),
     'warnStreamingPortClosed': MessageLookupByLibrary.simpleMessage('流端口似乎已关闭。'),
     'warnTranscodingPortClosed': MessageLookupByLibrary.simpleMessage('转码端口似乎已关闭。'),
-    'warnUsingAlternativePort': m11,
+    'warnUsingAlternativePort': m12,
     'yes': MessageLookupByLibrary.simpleMessage('是')
   };
 }
