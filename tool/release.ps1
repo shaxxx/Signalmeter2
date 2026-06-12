@@ -151,3 +151,40 @@ if (-not (Test-Path (Join-Path $updateTree 'hashes.json'))) {
 $zipPath = Join-Path $distDir "enigma_signal_meter-$($v.Display)-windows.zip"
 Write-Host '==> zip first-install download' -ForegroundColor Cyan
 Compress-Archive -Path $appFolder -DestinationPath $zipPath -Force
+
+# Manifest --------------------------------------------------------------------
+$releaseUrl = "$($script:BaseUrl)/$($v.Display)/windows/"
+$manifest = Add-ManifestItem -Manifest $manifest -DisplayVersion $v.Display `
+    -Build $v.Build -Date (Get-Date -Format 'yyyy-MM-dd') `
+    -IsMandatory $Mandatory.IsPresent -Url $releaseUrl -NoteLines $Notes
+Write-Manifest $manifest $script:ManifestPath
+Write-Host "==> manifest updated: $($script:ManifestPath)" -ForegroundColor Cyan
+
+# Upload bundle ----------------------------------------------------------------
+$uploadDir  = Join-Path $distDir 'upload'
+$uploadTree = Join-Path $uploadDir "$($v.Display)\windows"
+New-Item -ItemType Directory -Force $uploadTree | Out-Null
+Copy-Item (Join-Path $updateTree '*') $uploadTree -Recurse
+Copy-Item $zipPath $uploadDir
+Copy-Item $script:ManifestPath $uploadDir
+
+Write-Host @"
+
+Release $($v.Display)+$($v.Build) staged in $uploadDir
+
+Upload in THIS order:
+ 1. Contents of  upload\$($v.Display)\windows\
+    -> $releaseUrl  (new folder; immutable once published)
+ 2. upload\enigma_signal_meter-$($v.Display)-windows.zip
+    -> wherever the website links the Windows download
+ 3. upload\app-archive.json
+    -> $($script:ProductionManifestUrl)  (REPLACE existing - always LAST)
+
+Server rules: manifest served with Cache-Control: no-cache; version folders
+immutable; files byte-exact (no CDN compression/transformation).
+
+Afterwards, record the release in git:
+  git add tool/app-archive.json
+  git commit -m "chore(release): publish $($v.Display)+$($v.Build) windows"
+  git tag v$($v.Display)+$($v.Build)
+"@ -ForegroundColor Green
