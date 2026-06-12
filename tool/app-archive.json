@@ -1,0 +1,20 @@
+{
+  "appName": "Enigma Signal Meter",
+  "description": "Enigma Signal Meter desktop updates",
+  "items": [
+    {
+      "version": "1.1.2",
+      "shortVersion": 5001,
+      "date": "2026-06-12",
+      "mandatory": false,
+      "platform": "windows",
+      "url": "https://www.krkadoni.com/signalmeter/1.1.2/windows/",
+      "changes": [
+        {
+          "type": "feat",
+          "message": "First Windows release with built-in auto-update"
+        }
+      ]
+    }
+  ]
+}
