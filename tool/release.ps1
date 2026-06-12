@@ -101,3 +101,32 @@ function Write-Manifest($Manifest, [string]$Path) {
 
 # --- main (everything below is skipped when dot-sourced for testing) -------
 if ($MyInvocation.InvocationName -eq '.') { return }
+
+Set-Location $script:RepoRoot
+
+# Preflight ------------------------------------------------------------------
+if (-not (Get-Command flutter -ErrorAction SilentlyContinue)) { Fail 'flutter is not on PATH' }
+if (-not (Get-Command dart -ErrorAction SilentlyContinue)) { Fail 'dart is not on PATH' }
+
+if (git status --porcelain) { Fail 'working tree is not clean - commit or stash first' }
+$branch = git rev-parse --abbrev-ref HEAD
+if ($branch -ne 'master') { Fail "current branch is '$branch' - releases are cut from master" }
+
+$constants = Get-Content (Join-Path $script:RepoRoot 'lib/src/constants.dart') -Raw
+if (-not $constants.Contains($script:ProductionManifestUrl)) {
+    Fail "appArchiveUrl in lib/src/constants.dart is not the production URL $($script:ProductionManifestUrl)"
+}
+
+$v = Get-PubspecVersion (Join-Path $script:RepoRoot 'pubspec.yaml')
+$distDir = Join-Path $script:RepoRoot "dist\$($v.Build)"
+if (Test-Path $distDir) {
+    if (-not $Force) { Fail "$distDir already exists (use -Force to rebuild)" }
+    Remove-Item -Recurse -Force $distDir
+}
+
+$manifest = Read-Manifest $script:ManifestPath
+if (Test-BuildInManifest $manifest $v.Build) {
+    Fail "build $($v.Build) is already published in $($script:ManifestPath)"
+}
+
+Write-Host "Releasing $($script:AppName) $($v.Display)+$($v.Build)" -ForegroundColor Green
