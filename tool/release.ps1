@@ -130,3 +130,24 @@ if (Test-BuildInManifest $manifest $v.Build) {
 }
 
 Write-Host "Releasing $($script:AppName) $($v.Display)+$($v.Build)" -ForegroundColor Green
+
+# Build + package ------------------------------------------------------------
+Invoke-Step 'flutter clean' { flutter clean }
+Invoke-Step 'flutter pub get' { flutter pub get }
+Invoke-Step 'flutter build windows --release' { flutter build windows --release }
+Invoke-Step 'desktop_updater:release' { dart run desktop_updater:release windows }
+Invoke-Step 'desktop_updater:archive' { dart run desktop_updater:archive windows }
+
+$appFolder  = Join-Path $distDir "enigma_signal_meter-$($v.Display)+$($v.Build)-windows"
+$updateTree = Join-Path $distDir "$($v.Display)+$($v.Build)-windows"
+if (-not (Test-Path (Join-Path $appFolder 'enigma_signal_meter.exe'))) {
+    Fail "expected app folder $appFolder is missing or incomplete"
+}
+if (-not (Test-Path (Join-Path $updateTree 'hashes.json'))) {
+    Fail "expected update tree $updateTree is missing hashes.json"
+}
+
+# First-install zip (zip root is the app folder, so extraction is tidy) ------
+$zipPath = Join-Path $distDir "enigma_signal_meter-$($v.Display)-windows.zip"
+Write-Host '==> zip first-install download' -ForegroundColor Cyan
+Compress-Archive -Path $appFolder -DestinationPath $zipPath -Force
