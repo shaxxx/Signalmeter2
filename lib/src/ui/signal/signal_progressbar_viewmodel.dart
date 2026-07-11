@@ -60,7 +60,7 @@ class SignalProgressbarViewModel {
     if (signalResponse.signal.acg == -1) {
       return messages.noInformation;
     }
-    return 'ACG: ${signalResponse.signal.acg}%';
+    return 'AGC: ${signalResponse.signal.acg}%';
   }
 
   double acgDouble() {

@@ -149,7 +149,7 @@ class SignalCircularProgressViewModel {
         return 'dB';
         break;
       case SignalViewEnum.CircularAcg:
-        return 'ACG';
+        return 'AGC';
         break;
       case SignalViewEnum.CircularBer:
         return 'BER';
